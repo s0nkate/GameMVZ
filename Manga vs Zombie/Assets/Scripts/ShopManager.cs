@@ -8,7 +8,7 @@ public class ShopManager : MonoBehaviour {
 	public List<GameObject> listPlayer;
 	public List<GameObject> listItem;
 	public List<GameObject> listSkill;
-	public GameObject itemSelected;
+	public List<GameObject> itemSelected;
 	public static ShopManager Instance
 	{
 		get
@@ -31,13 +31,67 @@ public class ShopManager : MonoBehaviour {
 
 	void Awake()
 	{
+		GameObject tabPlayer = GameObject.FindGameObjectWithTag("listplayer");
+		GameObject tabItem = GameObject.FindGameObjectWithTag("listitem");
+		GameObject tabSkill = GameObject.FindGameObjectWithTag("listskill");
+
+		listPlayer = tabPlayer.GetComponent<ShopTab>().ListItem;
+		listItem = tabItem.GetComponent<ShopTab>().ListItem;
+		listSkill = tabSkill.GetComponent<ShopTab>().ListItem;
 		DontDestroyOnLoad(gameObject);
 	}
 
+	public void Click(ShopItems go)
+	{
+		ShopItems temp;
+		go.isBought = true;
+		foreach(GameObject item in listPlayer)
+		{
+			temp = item.GetComponent<ShopItems>();
+			if(temp.isSelected)
+			{
+				if(go != temp)
+				{
+					go.isSelected = true;
+					temp.isSelected = false;
+				}
+			}
+		}
+
+		foreach(GameObject item in listItem)
+		{
+			temp = item.GetComponent<ShopItems>();
+			if(temp.isSelected)
+			{
+				if(go != temp)
+				{
+					go.isSelected = true;
+					temp.isSelected = false;
+				}
+			}
+		}
+
+		foreach(GameObject item in listSkill)
+		{
+			temp = item.GetComponent<ShopItems>();
+			if(temp.isSelected)
+			{
+				if(go != temp)
+				{
+					go.isSelected = true;
+					temp.isSelected = false;
+				}
+			}
+		}
+	}
+	void Update()
+	{
+		
+	}
 	public void Buy()
 	{
 		//kiem tra tien
-		itemSelected.GetComponent<ShopItems>().Buy();
+		//itemSelected.GetComponent<ShopItems>().Buy();
 	}
 
 

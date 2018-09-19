@@ -7,6 +7,9 @@ TagManager:
   - price
   - image
   - background
+  - listplayer
+  - listitem
+  - listskill
   layers:
   - Default
   - TransparentFX

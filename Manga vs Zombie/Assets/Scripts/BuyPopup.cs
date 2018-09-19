@@ -7,7 +7,7 @@ public class BuyPopup : MonoBehaviour {
 
 	private Text priceObj;
 	private Image imageObj;	
-	private GameObject item;
+	public GameObject item;
 	void Start () {
 		foreach (Transform child in transform)
 		{
@@ -43,5 +43,15 @@ public class BuyPopup : MonoBehaviour {
 		imageObj.sprite = item.GetComponent<ShopItems>().imageObj.sprite;
 	}
 
-	
+
+	public void Buy()
+	{
+		gameObject.SetActive(false);
+		ShopManager.Instance.Click(item.GetComponent<ShopItems>());
+	}
+	public void Cancel()
+	{
+		gameObject.SetActive(false);
+		// ShopManager.Instance.itemSelected = item;
+	}
 }

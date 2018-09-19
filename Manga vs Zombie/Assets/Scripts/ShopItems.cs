@@ -68,27 +68,11 @@ public class ShopItems : MonoBehaviour {
 
 	public void Click()
 	{	
-		ShopManager.Instance.itemSelected = gameObject;
 		if(isBought)
 		{
-			if(isSelected)
-			{
-				
-			}else
-			{	
-				ShopItems pre = ShopManager.Instance.itemSelected.GetComponent<ShopItems>();
-				pre.isSelected = false;
-				Debug.Log("Prename: " + pre.name);
-				Debug.Log("Pre isSelected: " + pre.isSelected);
-				Debug.Log("Pre Color: " + pre.GetComponent<Image>().color);
-				isSelected = true;
-			}
-			
+			ShopManager.Instance.Click(gameObject.GetComponent<ShopItems>());
 		}else
-		{
-			GetComponent<Image>().color = new Color(255, 217, 27);
-			buyPopup.GetComponent<BuyPopup>().Click(this.gameObject);
-		}		
+			buyPopup.GetComponent<BuyPopup>().Click(gameObject);
 	}
 
 	public void Buy()
