@@ -1,53 +1,38 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Player1Controller : MonoBehaviour
 {
-
     public bool faceright = true;
-    public float attackdelay = 0.4f;
+    public static float  attackdelay;
     public bool attacking = false;
     public bool attacking1 = false;
     public Animator anim;
     public Collider2D trigger;
-    public bool skill1 = false;
-    public float skill1delay = 1;
-    public bool skill2 = false;
-    public float skill2delay = 0.5f;
-    public Collider2D trigger1;
-    public Collider2D trigger2;
-    public Image imageColldown1;
-    public float cooldown1 = 5;
-    public bool isCooldown1=false;
-    public Image imageColldown2;
-    public float cooldown2 = 0.5f;
-    public bool isCooldown2 = false;
+    public Player1Skill p;
+    float h = 0;
+    public  int dmg;
+
     void Awake()
     {
         anim = gameObject.GetComponent<Animator>();
+        p = gameObject.GetComponent<Player1Skill>();
         trigger.enabled = false;
-
     }
 
-
-    void FixedUpdate()
+    void Update()
     {
-        float h = 0;
         if (h > 0 && !faceright)
         {
             Flip();
-
-
         }
         if (h < 0 && faceright)
         {
             Flip();
-
         }
-
-
         if (attacking1)
         {
             if (attackdelay > 0)
@@ -56,7 +41,6 @@ public class Player1Controller : MonoBehaviour
             }
             else
             {
-
                 attacking1 = false;
 
                 trigger.enabled = false;
@@ -77,64 +61,12 @@ public class Player1Controller : MonoBehaviour
 
             }
         }
-        if (skill1)
-        {
-             
-            if (skill1delay > 0)
-            {
-                skill1delay -= Time.deltaTime;
-            }
-            else
-            {
 
-                skill1 = false;
-                trigger1.enabled = false;
-
-            }
-        }
-       
-        if (isCooldown1)
-            {
-                imageColldown1.fillAmount += Time.deltaTime;
-            }
-            if (imageColldown1.fillAmount >= 1)
-            {
-                imageColldown1.fillAmount = 0;
-                isCooldown1 = false;
-            }
-        if (isCooldown2)
-        {
-            imageColldown2.fillAmount += cooldown2*Time.deltaTime;
-        }
-        if (imageColldown2.fillAmount >= 1)
-        {
-            imageColldown2.fillAmount = 0;
-            isCooldown2 = false;
-        }
-        if (skill2)
-        {
-            if (skill2delay > 0)
-            {
-                skill2delay -= Time.deltaTime;
-            }
-            else
-            {
-
-                skill2 = false;
-                trigger2.enabled = false;
-
-            }
-        }
-        
-
-      
         anim.SetBool("Attacking", attacking);
         anim.SetBool("Attacking1", attacking1);
-        anim.SetBool("Skill1", skill1);
-        anim.SetBool("Skill2", skill2);
-
-
     }
+
+  
     public void Flip()
     {
         faceright = !faceright;
@@ -145,7 +77,10 @@ public class Player1Controller : MonoBehaviour
     }
     public void Attack()
     {
-        int random = Random.Range(0, 2);
+        int random = UnityEngine.Random.Range(0, 2);
+        trigger.enabled = true;
+        dmg = 20;
+        attackdelay = 1;
         if (random == 0)
         {
             attacking = true;
@@ -154,66 +89,48 @@ public class Player1Controller : MonoBehaviour
         {
             attacking1 = true;
         }
-
-
     }
     public void AttackLeft()
     {
-        float h = -1;
-        if (h > 0 && !faceright)
+        if (attacking1 == false && attacking == false)
         {
-            Flip();
+            float h = -1;
+            if (h > 0 && !faceright && p.skill1 == false && p.skill2 == false)
+            {
+                Flip();
+            }
+            if (h < 0 && faceright && p.skill1 == false && p.skill2 == false)
+            {
+                Flip();
+            }
+            Attack();
 
-
+            
         }
-        if (h < 0 && faceright)
-        {
-            Flip();
-
-
-        }
-        Attack();
-        trigger.enabled = true;
-        attackdelay = 0.3f;
     }
     public void AttackRight()
     {
-        float h = 1;
-        if (h > 0 && !faceright)
+        if (attacking1 == false && attacking == false)
         {
-            Flip();
-
-
+            float h = 1;
+            if (h > 0 && !faceright && p.skill1 == false && p.skill2 == false)
+            {
+                Flip();
+            }
+            if (h < 0 && faceright && p.skill1 == false && p.skill2 == false)
+            {
+                Flip();
+            }
+            Attack();
+            
         }
-        if (h < 0 && faceright)
-        {
-            Flip();
-
-
-        }
-        Attack();
-        trigger.enabled = true;
-        attackdelay = 0.3f;
     }
-    public void Skill1()
+
+    public static void UpdateABC(float value)
     {
-        isCooldown1 = true;
-        skill1 = true;
-        skill1delay = 1;
-        trigger1.enabled = true;
-        
-        
-
+        attackdelay = value;
+        Debug.Log("Value = " + attackdelay);
     }
-    public void Skill2()
-    {
-        isCooldown2 = true;
-        skill2 = true;
-        skill2delay = 0.5f;
-        trigger2.enabled = true;
-
-    }
-   
 }
-    
+
 
