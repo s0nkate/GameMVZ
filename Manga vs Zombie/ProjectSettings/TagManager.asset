@@ -10,6 +10,8 @@ TagManager:
   - listplayer
   - listitem
   - listskill
+  - coin
+  - info
   layers:
   - Default
   - TransparentFX

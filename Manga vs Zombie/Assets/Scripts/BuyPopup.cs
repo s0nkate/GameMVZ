@@ -7,7 +7,7 @@ public class BuyPopup : MonoBehaviour {
 
 	private Text priceObj;
 	private Image imageObj;	
-	public GameObject item;
+	private GameObject item;
 	void Start () {
 		foreach (Transform child in transform)
 		{
@@ -27,14 +27,14 @@ public class BuyPopup : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if(gameObject.activeSelf)
+			UpdateItem(item);
 	}
 
 	public void Click(GameObject item)
 	{
-		gameObject.SetActive(true);
 		this.item = item;
-		UpdateItem(item);
+		gameObject.SetActive(true);
 	}
 
 	void UpdateItem(GameObject item)
@@ -47,11 +47,10 @@ public class BuyPopup : MonoBehaviour {
 	public void Buy()
 	{
 		gameObject.SetActive(false);
-		ShopManager.Instance.Click(item.GetComponent<ShopItems>());
+		ShopManager.Instance.Buy(item.GetComponent<ShopItems>());
 	}
 	public void Cancel()
 	{
 		gameObject.SetActive(false);
-		// ShopManager.Instance.itemSelected = item;
 	}
 }
