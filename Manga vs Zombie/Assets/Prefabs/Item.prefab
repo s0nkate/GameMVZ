@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 224556369842102604}
   - component: {fileID: 222261237634890514}
   - component: {fileID: 114303249165075022}
+  - component: {fileID: 114145178505979126}
   m_Layer: 5
   m_Name: Image
   m_TagString: image
@@ -137,6 +138,7 @@ MonoBehaviour:
   priceObj: {fileID: 0}
   imageObj: {fileID: 0}
   info: 
+  canBuy: 1
   infoObj: {fileID: 0}
 --- !u!114 &114124285784016778
 MonoBehaviour:
@@ -165,6 +167,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114145178505979126
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1420814561484142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1741964061, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 0
 --- !u!114 &114210464385897956
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -217,7 +232,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 7ce943736b5fa324d82ab3a3a3eb1952, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a29adcea3417e1e4c957d297a8a0cb78, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -264,7 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -479,8 +494,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -168.5}
-  m_SizeDelta: {x: 0, y: -337}
+  m_AnchoredPosition: {x: 173.6, y: -168.5}
+  m_SizeDelta: {x: -347.1, y: -337}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224556369842102604
 RectTransform:
@@ -498,7 +513,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -238, y: 15}
-  m_SizeDelta: {x: 365, y: 365}
+  m_SizeDelta: {x: 275.75757, y: 372.72726}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224676938734424232
 RectTransform:
@@ -533,6 +548,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 180.4, y: 34}
-  m_SizeDelta: {x: 417, y: 274}
+  m_AnchoredPosition: {x: 180.4, y: 82.7}
+  m_SizeDelta: {x: 417, y: 234.6}
   m_Pivot: {x: 0.5, y: 0.5}

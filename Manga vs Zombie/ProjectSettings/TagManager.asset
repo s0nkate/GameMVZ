@@ -12,6 +12,7 @@ TagManager:
   - listskill
   - coin
   - info
+  - house
   layers:
   - Default
   - TransparentFX
@@ -21,8 +22,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Zoombie
+  - Floor
   - 
   - 
   - 
@@ -48,4 +49,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: zoombie1
+    uniqueID: 3229767683
+    locked: 0
+  - name: zoombie2
+    uniqueID: 211009115
     locked: 0

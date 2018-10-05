@@ -8,7 +8,7 @@ public enum Direction {
 }
 
 public class Player : MonoBehaviour, IShopItems {
-
+	public static int selectedCount = 0;
 	public int damage;
 	public int defend;
 	public int speedFight;
@@ -43,4 +43,20 @@ public class Player : MonoBehaviour, IShopItems {
     {
         return "\nDamage: "+ damage +" \nDefend: "+ defend +"\nSpeed Fight: "+ speedFight;
     }
+
+    public bool SelectItem()
+    {
+        if(selectedCount >= 1)
+		{
+			return false;
+		}
+		selectedCount++;
+		return true;
+    }
+
+	public void UnSelectItem()
+	{
+		if(selectedCount > 0)
+			selectedCount--;
+	}
 }
