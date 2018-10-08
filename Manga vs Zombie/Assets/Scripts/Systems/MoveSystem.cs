@@ -8,17 +8,15 @@ using Unity.Mathematics;
 
 namespace ECSSystem
 {
-	public class ZoombieMoveSystem : ComponentSystem 
+	public class MoveSystem : ComponentSystem 
 	{
 		struct Data
 		{
 			public Transform transform;
 			public Move move;
-			public Zoombie zoombie;
+			public Faction faction;
 			public Animator animator;
 		}
-
-
 
 		protected override void OnUpdate()
 		{
@@ -29,7 +27,7 @@ namespace ECSSystem
 					e.transform.localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
 				}
 
-				if(e.zoombie.currentState == State.Walk)
+				if(e.faction.currentState == State.Walk)
 				{
 					e.animator.SetInteger("stage", (int)State.Walk);
 					e.transform.Translate(e.move.speed * Time.deltaTime, 0 , 0);

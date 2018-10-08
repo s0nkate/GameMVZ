@@ -5,7 +5,6 @@ using Unity.Entities;
 using ECSComponent;
 using UnityEngine.UI;
 
-
 namespace ECSSystem
 {
 	public class HeathSystem : ComponentSystem 
@@ -14,7 +13,6 @@ namespace ECSSystem
 		{
 			public Heath heath;
 		}
-
 
 		struct ZoombieData
 		{
@@ -32,13 +30,12 @@ namespace ECSSystem
 		{
 			foreach (var e in GetEntities<Data>())
 			{
-				e.heath.heathSlider.maxValue = e.heath.maxHeath;
-				e.heath.heathSlider.value = e.heath.heath;
+				e.heath.heathSlider.maxValue = e.heath.maxValue;
+				e.heath.heathSlider.value = e.heath.value;
 				if(e.heath.OnInjured == null)
 				{
 					e.heath.OnInjured += this.OnInjured;
 				}
-
 			}
 		}
 
@@ -46,7 +43,7 @@ namespace ECSSystem
 		{
 			foreach (var e in GetEntities<ZoombieData>())
 			{
-				if(e.heath.heath <= 0)
+				if(e.heath.value <= 0)
 				{
 					e.animator.SetInteger("stage", (int)State.Dead);
 				}
@@ -55,7 +52,7 @@ namespace ECSSystem
 
 		private void OnInjured(Heath heath, int damage)
 		{
-			heath.heath -= damage;
+			heath.value -= damage;
 		}
 	}
 }

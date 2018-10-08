@@ -5,6 +5,7 @@ using ECSComponent;
 
 namespace ECSComponent
 {
+	[RequireComponent(typeof(Faction))]
 	public class Attack : MonoBehaviour 
 	{
 		public int damage;
@@ -17,10 +18,10 @@ namespace ECSComponent
 			if(collision.transform.CompareTag("house"))
 			{
 				target = collision.transform.gameObject.GetComponent<Heath>();
-				Zoombie zoombie = gameObject.GetComponent<Zoombie>();
-				if(zoombie != null)
+				Faction faction = gameObject.GetComponent<Faction>();
+				if(faction != null)
 				{
-					zoombie.currentState = State.Attack;
+					faction.currentState = State.Attack;
 				}
 				isAttack = true;
 			}

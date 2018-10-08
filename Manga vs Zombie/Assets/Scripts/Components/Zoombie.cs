@@ -1,15 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Entities;
 
 namespace ECSComponent
 {
-	public enum State : int
-	{
-			Walk = 1,
-			Attack = 2,
-			Dead = 3
-	}
+	
 	public enum ZoombieType
 	{
 			Walker,
@@ -21,7 +17,7 @@ namespace ECSComponent
 	{
 		public Transform prefab;
 
-		public State currentState;
-		public ZoombieType type; 
+		public ZoombieType type;
+		public GameObject explosion; 
 	}
 }

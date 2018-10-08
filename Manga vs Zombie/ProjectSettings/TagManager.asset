@@ -24,7 +24,7 @@ TagManager:
   - 
   - Zoombie
   - Floor
-  - 
+  - Background
   - 
   - 
   - 
@@ -55,4 +55,7 @@ TagManager:
     locked: 0
   - name: zoombie2
     uniqueID: 211009115
+    locked: 0
+  - name: background
+    uniqueID: 1136951141
     locked: 0

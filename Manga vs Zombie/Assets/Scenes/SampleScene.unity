@@ -128,10 +128,11 @@ GameObject:
   - component: {fileID: 255449949}
   - component: {fileID: 255449948}
   - component: {fileID: 255449947}
-  - component: {fileID: 255449942}
   - component: {fileID: 255449950}
   - component: {fileID: 255449951}
   - component: {fileID: 255449943}
+  - component: {fileID: 255449952}
+  - component: {fileID: 255449942}
   m_Layer: 8
   m_Name: zoombie4
   m_TagString: Untagged
@@ -147,7 +148,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 255449940}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.735, y: -3.477, z: 0}
+  m_LocalPosition: {x: -1.773, y: -2.549, z: 0}
   m_LocalScale: {x: 0.12, y: 0.12, z: 1}
   m_Children:
   - {fileID: 682499986}
@@ -162,13 +163,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 255449940}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed9d283796f8f3e4b8ae1d2e2bdc677e, type: 3}
+  m_Script: {fileID: 11500000, guid: 6c4b400d2df61e240b04f5fac7b2d34b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  timeDelay: 1
-  isAttack: 0
-  houseHeath: {fileID: 0}
+  Value: 1
+  currentState: 1
 --- !u!50 &255449943
 Rigidbody2D:
   serializedVersion: 4
@@ -291,8 +290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c6a5fec6eac8d4f978b579fdb2f7c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heath: 203
-  maxHeath: 200
+  value: 100
+  maxValue: 100
   heathSlider: {fileID: 1736531004}
 --- !u!114 &255449949
 MonoBehaviour:
@@ -317,8 +316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 255449941}
-  currentState: 1
-  type: 0
+  type: 2
 --- !u!61 &255449951
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -331,7 +329,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.086351395, y: -0.57568127}
+  m_Offset: {x: 0.086351395, y: -0.5214926}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -342,8 +340,23 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.0799828, y: 4.608638}
+  m_Size: {x: 3.0799828, y: 4.5002613}
   m_EdgeRadius: 0
+--- !u!114 &255449952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 255449940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aac095bad1493fa4fa2ccc3a76997dcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  timeDelay: 0.5
+  isAttack: 0
+  target: {fileID: 0}
 --- !u!1 &297391943
 GameObject:
   m_ObjectHideFlags: 0
@@ -1550,8 +1563,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c6a5fec6eac8d4f978b579fdb2f7c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heath: 100
-  maxHeath: 100
+  value: 200
+  maxValue: 200
   heathSlider: {fileID: 1166225855}
 --- !u!114 &1315542186
 MonoBehaviour:

@@ -13,7 +13,7 @@ namespace ECSSystem
 		float time = 0;
 		struct Data
 		{
-			public Zoombie zoombie;
+			public Faction faction;
 			public Attack attack;
 			public Animator animator;
 		}
@@ -22,7 +22,7 @@ namespace ECSSystem
 		{
 			foreach (var e in GetEntities<Data>())
 			{	
-				if(e.zoombie.currentState == State.Attack)
+				if(e.faction.currentState == State.Attack)
 				{
 					ChangeToAttack(e);					
 				}
