@@ -94,6 +94,8 @@ GameObject:
   - component: {fileID: 50694285854046168}
   - component: {fileID: 114827707487808328}
   - component: {fileID: 114508668634094784}
+  - component: {fileID: 114212283497132362}
+  - component: {fileID: 82522334214949306}
   m_Layer: 8
   m_Name: zoombie4
   m_TagString: Untagged
@@ -113,22 +115,6 @@ GameObject:
   - component: {fileID: 114990385484150472}
   m_Layer: 8
   m_Name: Fill
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1572809277725544
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4852007285727604}
-  - component: {fileID: 82301193717178172}
-  m_Layer: 8
-  m_Name: Audio Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,25 +161,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1308305872416930}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.53, y: -1.14, z: -3}
+  m_LocalPosition: {x: -1.286, y: -0.98, z: -3}
   m_LocalScale: {x: 0.12, y: 0.12, z: 1}
   m_Children:
-  - {fileID: 4852007285727604}
   - {fileID: 224463624215043872}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4852007285727604
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1572809277725544}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.72099, y: 0.72099, z: 0.72099}
-  m_Children: []
-  m_Father: {fileID: 4017491754283454}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50694285854046168
@@ -215,7 +187,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &61894562329339746
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -241,12 +213,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1968741, y: 4.5002613}
   m_EdgeRadius: 0
---- !u!82 &82301193717178172
+--- !u!82 &82522334214949306
 AudioSource:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1572809277725544}
+  m_GameObject: {fileID: 1308305872416930}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -254,13 +226,13 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 0.4814242
+  MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -451,6 +423,20 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114212283497132362
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1308305872416930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 704e6c8e0046bfa4dac50a39215ac250, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSound: {fileID: 8300000, guid: 3238423780971844182aad0878cbc71e, type: 3}
+  attackSound: {fileID: 8300000, guid: 25ef2af4c37e4254ea6c6ca03d5bc6db, type: 3}
+  deadSound: {fileID: 8300000, guid: 98235a3c4762d284fb48678d15eeea9e, type: 3}
 --- !u!114 &114288832930783214
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -785,7 +771,7 @@ RectTransform:
   m_Children:
   - {fileID: 224139738895590044}
   m_Father: {fileID: 4017491754283454}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

@@ -15,6 +15,7 @@ namespace ECSSystem
 			public Transform transform;
 			public ZoombieSpawn zoombieSpawn;
 		}
+		
 		protected override void OnUpdate()
 		{
 			foreach (var entity in GetEntities<Data>())
@@ -31,14 +32,14 @@ namespace ECSSystem
 		{
 			while(true)
 			{
-				Object.Instantiate(GetRandomZoombieGameObject(entity.zoombieSpawn), entity.transform.position, Quaternion.identity);
+				Object.Instantiate(GetRandomZoombieGameObject(entity.zoombieSpawn), entity.transform.position, entity.transform.localRotation);
 				yield return new WaitForSeconds(entity.zoombieSpawn.timeDelay);
 			}
 		}
 
 		GameObject GetRandomZoombieGameObject(ZoombieSpawn zoombieSpawn)
 		{
-			System.Random rand = new System.Random();
+			System.Random rand = new System.Random(System.DateTime.Now.Millisecond);
 			int max = zoombieSpawn.list.Count;
 			return zoombieSpawn.list[rand.Next(0, max)];
 		}

@@ -19,6 +19,7 @@ namespace ECSSystem
 			public Zoombie zoombie;
 			public Animator animator;
 			public Heath heath;
+			public Faction faction;
 		}
 		protected override void OnUpdate()
 		{
@@ -45,6 +46,7 @@ namespace ECSSystem
 			{
 				if(e.heath.value <= 0)
 				{
+					e.faction.currentState = State.Dead;
 					e.animator.SetInteger("stage", (int)State.Dead);
 				}
 			}
