@@ -6,8 +6,7 @@ using UnityEngine.UI;
 public class ShopManager : MonoBehaviour {
 
 	private static ShopManager _instance;
-	private Text coinText;
-	public int coin=300;
+	private Text moneyText;
 	public int itemSaveCount;
 	public int itemSelectCount;
 	public List<GameObject> listPlayer;
@@ -36,7 +35,7 @@ public class ShopManager : MonoBehaviour {
 		GameObject tabPlayer = GameObject.FindGameObjectWithTag ("listplayer");
 		GameObject tabItem = GameObject.FindGameObjectWithTag ("listitem");
 		GameObject tabSkill = GameObject.FindGameObjectWithTag ("listskill");
-		coinText = GameObject.FindWithTag ("coin").GetComponent<Text> ();
+		moneyText = GameObject.FindWithTag ("coin").GetComponent<Text> ();
 
 		listPlayer = tabPlayer.GetComponent<ShopTab> ().ListItem;
 		listItem = tabItem.GetComponent<ShopTab> ().ListItem;
@@ -47,8 +46,8 @@ public class ShopManager : MonoBehaviour {
 
 	public void Buy (ShopItems go) {
 		//kiem tra tien
-		if (go.price <= coin && go.price >= 0 && !go.isBought) {
-			coin = coin - go.price;
+		if (go.price <= GameManager.Instance.money && go.price >= 0 && !go.isBought) {
+			GameManager.Instance.money -= go.price;
 			go.isBought = true;
 			Save();
 		}
@@ -56,9 +55,9 @@ public class ShopManager : MonoBehaviour {
 
 
 	void Update () {
-		coinText = GameObject.FindWithTag ("coin").GetComponent<Text> ();
+		moneyText = GameObject.FindWithTag ("coin").GetComponent<Text> ();
 		//coin = int.Parse (coinText.text);
-		coinText.text = coin.ToString ();
+		moneyText.text = GameManager.Instance.money.ToString ();
 		CheckItem(listItem);
 		CheckItem(listPlayer);
 		CheckItem(listSkill);
@@ -78,7 +77,7 @@ public class ShopManager : MonoBehaviour {
 			temp = one.GetComponent<ShopItems> ();
 			if(!temp.isBought)
 			{	
-				if(temp.price > coin)
+				if(temp.price > GameManager.Instance.money)
 					temp.canBuy = false;
 				else
 					temp.canBuy = true;
@@ -125,14 +124,13 @@ public class ShopManager : MonoBehaviour {
 
 		PlayerPrefs.SetInt("ItemSaveCount", itemSaveCount);
 		PlayerPrefs.SetInt("ItemSelectCount", itemSelectCount);
-		PlayerPrefs.SetInt("Coin", coin);
+		PlayerPrefs.SetInt("Money", GameManager.Instance.money);
 		PlayerPrefs.Save();
 	}
 
 	public void Load()
 	{
-		coin = PlayerPrefs.GetInt("Coin");
-		Debug.Log(coin);
+		GameManager.Instance.money = PlayerPrefs.GetInt("Money");
 		itemSaveCount = PlayerPrefs.GetInt("ItemSaveCount");		
 		for(var i = 0; i< itemSaveCount; i++)
 		{

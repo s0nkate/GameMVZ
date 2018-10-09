@@ -44,10 +44,12 @@ namespace ECSSystem
 		{
 			foreach (var e in GetEntities<ZoombieData>())
 			{
-				if(e.heath.value <= 0)
+				if(e.heath.value <= 0 && e.faction.currentState != State.Dead)
 				{
 					e.faction.currentState = State.Dead;
 					e.animator.SetInteger("stage", (int)State.Dead);
+					GameManager.Instance.AddMoney(e.zoombie.money);
+					GameManager.Instance.AddScore(e.zoombie.score);
 				}
 			}
 		}

@@ -11,7 +11,6 @@ namespace ECSComponent
 		Skill =2
 	}
 
-	[RequireComponent(typeof(ShopItem))]
 	public class ShopItem : MonoBehaviour 
 	{
 		public int price;
