@@ -32,7 +32,12 @@ namespace ECSSystem
 		{
 			while(true)
 			{
-				Object.Instantiate(GetRandomZoombieGameObject(entity.zoombieSpawn), entity.transform.position, entity.transform.localRotation);
+				GameObject zombie = Object.Instantiate(GetRandomZoombieGameObject(entity.zoombieSpawn), entity.transform.position, entity.transform.localRotation) as GameObject;
+				//Nếu zoombie từ phải sang thì xoay thanh máu theo trục y 180 độ
+				if(!entity.transform.localRotation.Equals(new Vector3(0, 0, 0)))
+				{
+					zombie.transform.GetChild(0).localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
+				}
 				yield return new WaitForSeconds(entity.zoombieSpawn.timeDelay);
 			}
 		}
