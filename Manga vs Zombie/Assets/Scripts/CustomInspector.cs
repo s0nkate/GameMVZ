@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using UnityEditorInternal;
 using System.IO;
 using LitJson;
-
+using System.Linq;
 
 public class CustomInspector : EditorWindow
 {
@@ -55,6 +55,11 @@ public class CustomInspector : EditorWindow
     float Editdmgskill2;
     float Editcool2;
 
+    //void Test()
+    //{
+    //    List<Character> player = JsonHelper.FromJson<Character>(jsonString).ToList();
+    //    Debug.Log(jsonString);
+    //}
     public void LoadData(string filePath, int ID)
     {
         //Load Data
@@ -172,6 +177,7 @@ public class CustomInspector : EditorWindow
 
     private void Awake()
     {
+
         LoadData("/PlayerSave.json", 1);
         //Datachange("/PlayerSave.json", 1, "1","1",2,1,1,1,1,1);
         //AddData("/PlayerSave.json", "1", "1", 4, 4, 4, 4, 4, 4);
@@ -245,9 +251,9 @@ public class CustomInspector : EditorWindow
                 EditorGUILayout.EndHorizontal();
                 EditorGUILayout.BeginHorizontal();
 
-                image = (Texture2D)EditorGUILayout.ObjectField("Avatar", image, typeof(Texture2D), false);
+                image = (Texture2D)EditorGUILayout.ObjectField("Avatar", playerTexture, typeof(Texture2D), false);
 
-                GUILayout.Label(playerTexture, GUILayout.Width(200));
+                //GUILayout.Label(playerTexture, GUILayout.Width(200));
                 EditorGUILayout.EndHorizontal();
                 EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
 
