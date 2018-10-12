@@ -1,0 +1,26 @@
+{
+  "Player": [
+    {
+      "_id": 0,
+      "_urlimage": "1",
+      "_name": "9999999999",
+      "_dmg": 546,
+      "_delay": 456546,
+      "_dmgSkill1": 56456,
+      "_coolDown1": 456456,
+      "_dmgSkill2": 456546,
+      "_coolDown2": 0
+    },
+    {
+      "_id": 1,
+      "_urlimage": "Assets/Sprite/sprite sasuke/sskimage.jpg",
+      "_name": "Sasuke",
+      "_dmg": 20,
+      "_delay": 0.30000001192092896,
+      "_dmgSkill1": 50,
+      "_coolDown1": 10,
+      "_dmgSkill2": 100,
+      "_coolDown2": 20
+    }
+  ]
+}
