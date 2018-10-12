@@ -4,23 +4,17 @@ using UnityEngine;
 
 public class Skill2trigger : MonoBehaviour {
 
-    Player1Skill p;
+    public Player1Controller p;
 
-     void Awake()
-    {
-        p = gameObject.transform.parent.GetComponent<Player1Skill>();
-    }
+   
 
 
-
-
-    private void OnTriggerEnter2D(Collider2D col)
+   private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("Enemy"))
         {
-            col.SendMessageUpwards("Damage", p.dmg2);
+            col.SendMessageUpwards("Damage", p.Editdmgskill2);
+
         }
-
-
     }
 }

@@ -2,25 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Attacktrigger : MonoBehaviour {
-
-    Player1Controller c;
-    void Awake()
-    {
-        c= gameObject.transform.parent.GetComponent<Player1Controller>();
-    }
-
+public class Attacktrigger : MonoBehaviour
+{
+    public Player1Controller p;
+   
 
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if ( col.CompareTag("Enemy"))
+        if (col.CompareTag("Enemy"))
         {
-            col.SendMessageUpwards("Damage", c.dmg);
+            col.SendMessageUpwards("Damage", p.Editdmg);
+
         }
-    
-
     }
-
-    
 }
