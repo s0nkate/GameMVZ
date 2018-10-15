@@ -32,6 +32,6 @@ public class GameGUI : MonoBehaviour
 	{
 		moneyText.text = GameManager.Instance.money.ToString();
 		scoreText.text = GameManager.Instance.score.ToString();
-		heighScoreText.text = GameManager.Instance.heighScore.ToString();
+		// heighScoreText.text = GameManager.Instance.heighScore.ToString();
 	}
 }

@@ -14,9 +14,15 @@ namespace ECSSystem
 			public Heath heath;
 		}
 
-		struct ZoombieData
+		struct HouseData
 		{
-			public Zoombie zoombie;
+			public House house;
+			public Heath heath;
+		}
+
+		struct ZombieData
+		{
+			public Zombie zoombie;
 			public Animator animator;
 			public Heath heath;
 			public Faction faction;
@@ -25,8 +31,20 @@ namespace ECSSystem
 		{
 			CheckHeath();
 			CheckDead();
+			CheckHouse();
 		}
 
+		void CheckHouse()
+		{
+			foreach (var e in GetEntities<HouseData>())
+			{
+				if(e.heath.value <= 0 )
+				{
+					Debug.Log("gameover");
+					GameManager.Instance.GameOver();
+				}
+			}
+		}
 		void CheckHeath()
 		{
 			foreach (var e in GetEntities<Data>())
@@ -42,7 +60,7 @@ namespace ECSSystem
 
 		void CheckDead()
 		{
-			foreach (var e in GetEntities<ZoombieData>())
+			foreach (var e in GetEntities<ZombieData>())
 			{
 				if(e.heath.value <= 0 && e.faction.currentState != State.Dead)
 				{

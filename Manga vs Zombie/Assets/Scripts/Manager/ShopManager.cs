@@ -41,6 +41,7 @@ public class ShopManager : MonoBehaviour {
 		listItem = tabItem.GetComponent<ShopTab> ().ListItem;
 		listSkill = tabSkill.GetComponent<ShopTab> ().ListItem;
 		Load();
+		Display(false);
 		//DontDestroyOnLoad(gameObject);
 	}
 

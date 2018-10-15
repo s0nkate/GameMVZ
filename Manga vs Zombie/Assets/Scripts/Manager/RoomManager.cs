@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class RoomManager : Photon.PunBehaviour 
 {
-	object[] content = new object[] { new Vector3(10.0f, 2.0f, 5.0f), 1, 2, 5, 10 };
 	bool reliable = true;
+	public static int senderId;
 	RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 	void Start () 
 	{
@@ -19,14 +19,14 @@ public class RoomManager : Photon.PunBehaviour
 
 	public void AcceptJoinRoom()
 	{
-		PhotonNetwork.RaiseEvent(NetworkManager.AcceptJoinRoom, content, reliable, raiseEventOptions);
+		PhotonNetwork.RaiseEvent(NetworkManager.AcceptJoinRoom, senderId, reliable, raiseEventOptions);
 		gameObject.SetActive(false);
 	}
 
 
 	public void CancelJoinRoom()
 	{
-		PhotonNetwork.RaiseEvent(NetworkManager.CancelJoinRoom, content, reliable, raiseEventOptions);
+		PhotonNetwork.RaiseEvent(NetworkManager.CancelJoinRoom, senderId, reliable, raiseEventOptions);
 		gameObject.SetActive(false);
 	}
 }

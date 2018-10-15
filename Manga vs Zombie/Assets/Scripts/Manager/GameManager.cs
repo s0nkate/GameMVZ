@@ -9,8 +9,9 @@ public class GameManager : MonoBehaviour {
 	public int money;
 	public int score;
 	public int heighScore = 10;
-	public GameObject playScene;
+	// public GameObject playScene;
 	public GameObject requestJoinPopup;
+	public GameObject finalPopup;
 	public static GameManager Instance = null;
 	private void Awake()
 	{
@@ -23,6 +24,12 @@ public class GameManager : MonoBehaviour {
 			Destroy(gameObject);
 		}
 		DontDestroyOnLoad (gameObject);
+	}
+
+	void Start()
+	{
+		requestJoinPopup = GameObject.FindWithTag("requestjoin");
+		finalPopup = GameObject.FindWithTag("finalpopup");
 	}
 
 
@@ -47,6 +54,13 @@ public class GameManager : MonoBehaviour {
 
 	}
 
+	public void GameOver()
+	{
+		finalPopup.SetActive(true);
+		Time.timeScale = 0;
+		
+	}
+
 	public void DisplayRequestPopup()
 	{
 		requestJoinPopup.SetActive(true);
@@ -54,7 +68,19 @@ public class GameManager : MonoBehaviour {
 
 	public void PlayGame()
 	{
-		playScene.SetActive(true);
+		SceneManager.LoadScene("GamePlayUI");
+	}
+
+	public void ReturnMainMenu()
+	{
+		requestJoinPopup.SetActive(false);
+		finalPopup.SetActive(false);
+		SceneManager.LoadScene("GamePlayUI");
+	}
+
+	public void RestartGame(int level)
+	{
+
 	}
 
 	public void ExitGame()

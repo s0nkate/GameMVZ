@@ -13,6 +13,9 @@ TagManager:
   - coin
   - info
   - house
+  - zombieobject
+  - finalpopup
+  - requestjoin
   layers:
   - Default
   - TransparentFX

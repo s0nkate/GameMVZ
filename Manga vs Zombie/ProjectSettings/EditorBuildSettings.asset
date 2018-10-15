@@ -8,10 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenuUI.unity
     guid: 7705c38ea31fb1841a4251dd5f5012c2
-  - enabled: 0
-    path: Assets/Photon Unity Networking/Demos/DemoHub/DemoHub-Scene-V2.unity
-    guid: 7dfd47dc8b9484dd79d8636d8603a9e5
-  - enabled: 0
-    path: Assets/Photon Unity Networking/Demos/Demo2DJumpAndRunWithPhysics/Demo2DJumpAndRunWithPhysics-Scene.unity
-    guid: 2cd8533503c3ea649b6c543c6126c811
+  - enabled: 1
+    path: Assets/Scenes/GamePlayUI.unity
+    guid: cc22b0a6d7b94ee45a9156c01a2c3407
   m_configObjects: {}
