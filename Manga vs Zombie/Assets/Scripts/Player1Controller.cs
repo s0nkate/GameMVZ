@@ -13,7 +13,6 @@ public class Player1Controller : MonoBehaviour
     public Animator anim;
     public Collider2D trigger;
     float h = 0;
-
     public bool skill1 = false;
     public float skill1delay = 1;
     public bool skill2 = false;
@@ -24,66 +23,53 @@ public class Player1Controller : MonoBehaviour
     public bool isCooldown1 = false;
     public Image imageColldown2;
     public bool isCooldown2 = false;
-    public float dl;
+    public static float dl;
+    public static float Editcool1;
+    public static float Editcool2;
+    public static float Delay;
+    public static int i=0;
+    public Text text1;
+    public Text text2;
+
+    public InventoryPlayerList playerlist;
+  
+    protected AnimatorOverrideController animatorOverrideController;
+    protected AnimationClipOverrides clipOverrides;
 
 
-    public string Editurl;
-    public string Editname;
-    public float Editdmg;
-    public float Editdelay;
-    public float Editdmgskill1;
-    public float Editcool1;
-    public float Editdmgskill2;
-    public float Editcool2;
 
-
-    string jsonstring;
-
-    public void LoadData(string filePath, int ID)
-    {
-        //Load Data
-        string jsonString = File.ReadAllText(Application.dataPath + filePath);
-
-
-        Character[] player = JsonHelper.FromJson<Character>(jsonString);
-
-        //Loop through the Json Data Array
-        for (int i = 0; i < player.Length; i++)
-        {
-            //Check if Id matches
-            if (player[i]._Id == ID)
-            {
-
-                //Increment Change value?
-                Editurl = player[i]._Urlimage;
-                Editname = player[i]._Name;
-                Editdmg = player[i]._Dmg;
-                Editdelay = player[i]._Delay;
-                Editdmgskill1 = player[i]._DmgSkill1;
-                Editcool1 = player[i]._Cooldown1;
-                Editdmgskill2 = player[i]._DmgSkill2;
-                Editcool2 = player[i]._Cooldown2;
-
-                break;
-            }
-
-        }
-    }
     void Awake()
     {
         anim = gameObject.GetComponent<Animator>();
         trigger.enabled = false;
-        LoadData("/PlayerSave.json", 1);
+        
     }
     void Start()
     {
 
-       // Debug.Log(Editdmg);
+        LoadData();
+        Debug.Log(i);
+        text1.text = "Damage:     " + playerlist.playerList[i]._DmgSkill1.ToString();
+        text2.text = "Damage:     " + playerlist.playerList[i]._DmgSkill2.ToString();
+
+        animatorOverrideController = new AnimatorOverrideController(anim.runtimeAnimatorController);
+        anim.runtimeAnimatorController = animatorOverrideController;
+
+        clipOverrides = new AnimationClipOverrides(animatorOverrideController.overridesCount);
+        animatorOverrideController.GetOverrides(clipOverrides);
+        clipOverrides["Player1 Idle"] = playerlist.playerList[i].playIdle;
+        clipOverrides["Player1 Kick"] = playerlist.playerList[i].playattack1;
+        clipOverrides["Player1 Punch"] = playerlist.playerList[i].playattack2;
+        clipOverrides["Player1 Skill1"] = playerlist.playerList[i].playskill1;
+        clipOverrides["Player1 Skill2"] = playerlist.playerList[i].playskill2;
+        animatorOverrideController.ApplyOverrides(clipOverrides);
+        GetComponent<Animator>().runtimeAnimatorController = animatorOverrideController;
     }
 
     void Update()
     {
 
+        
 
         if (h > 0 && !faceright)
         {
@@ -115,6 +101,7 @@ public class Player1Controller : MonoBehaviour
             if (dl > 0)
             {
                 dl -= Time.deltaTime;
+                
             }
             else
             {
@@ -150,7 +137,7 @@ public class Player1Controller : MonoBehaviour
         }
         if (isCooldown1)
         {
-            imageColldown1.fillAmount += 1 / Editcool1 * Time.deltaTime;
+            imageColldown1.fillAmount += 1 / playerlist.playerList[i]._Cooldown1 * Time.deltaTime;
 
 
             if (imageColldown1.fillAmount >= 1)
@@ -162,7 +149,7 @@ public class Player1Controller : MonoBehaviour
         if (isCooldown2)
         {
 
-            imageColldown2.fillAmount += 1 / Editcool2 * Time.deltaTime;
+            imageColldown2.fillAmount += 1 / playerlist.playerList[i]._Cooldown2 * Time.deltaTime;
 
             if (imageColldown2.fillAmount >= 1)
             {
@@ -174,11 +161,12 @@ public class Player1Controller : MonoBehaviour
 
 
 
-
+       
         anim.SetBool("Skill1", skill1);
         anim.SetBool("Skill2", skill2);
         anim.SetBool("Attacking", attacking);
         anim.SetBool("Attacking1", attacking1);
+
     }
 
     public void Flip()
@@ -195,7 +183,7 @@ public class Player1Controller : MonoBehaviour
         int random = UnityEngine.Random.Range(0, 2);
         trigger.enabled = true;
 
-        dl = Editdelay;
+        dl =playerlist.playerList[i]._Delay;
 
         if (random == 0)
         {
@@ -272,39 +260,13 @@ public class Player1Controller : MonoBehaviour
         }
     }
 
-
-
-    [Serializable]
-    public class Character
+    public  void LoadData()
     {
-        public int _Id;
-        public string _Urlimage;
-        public string _Name;
-        public float _Dmg;
-        public float _Delay;
-        public float _DmgSkill1;
-        public float _Cooldown1;
-        public float _DmgSkill2;
-        public float _Cooldown2;
-        public Character()
-        {
 
-        }
-        public Character(int id, string urlimage, string playerName, float dmg, float delay, float dmgSkill1, float cooldown1, float dmgSkill2, float cooldown2)
-        {
-            _Id = id;
-            _Urlimage = urlimage;
-            _Name = playerName;
-            _Dmg = dmg;
-            _Delay = delay;
-            _DmgSkill1 = dmgSkill1;
-            _Cooldown1 = cooldown1;
-            _DmgSkill2 = dmgSkill2;
-            _Cooldown2 = cooldown2;
-        }
-
-
+        i = playerlist.selectedPlayerindex;
     }
+    
+  
 }
 
 

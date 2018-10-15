@@ -10,10 +10,10 @@ public class Attacktrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Enemy"))
-        {
-            col.SendMessageUpwards("Damage", p.Editdmg);
+        //if (col.CompareTag("Enemy"))
+        //{
+        //    col.SendMessageUpwards("Damage", p.Editdmg);
 
-        }
+        //}
     }
 }

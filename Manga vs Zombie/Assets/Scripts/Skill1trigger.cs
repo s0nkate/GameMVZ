@@ -11,10 +11,10 @@ public class Skill1trigger : MonoBehaviour {
 
    private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Enemy"))
-        {
-            col.SendMessageUpwards("Damage", p.Editdmgskill1);
+        //if (col.CompareTag("Enemy"))
+        //{
+        //    col.SendMessageUpwards("Damage", p.Editdmgskill1);
 
-        }
+        //}
     }
 }

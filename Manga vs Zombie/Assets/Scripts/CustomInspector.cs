@@ -220,7 +220,7 @@ public class CustomInspector : EditorWindow
 
 
     }
-    [MenuItem("Window/Custom Isnpector")]
+    //[MenuItem("Window/Custom Isnpector")]
     public static void ShowWindow()
     {
         EditorWindow.GetWindow(typeof(CustomInspector));
@@ -296,7 +296,7 @@ public class CustomInspector : EditorWindow
                     GUILayout.TextField(stringToEdit3, 5, GUILayout.Width(200));
 
                 string tdmg1 = stringToEdit3.ToString();
-                UpdateDamage.Updatedmg1((string)tdmg1);
+//UpdateDamage.Updatedmg1((string)tdmg1);
                 EditorGUILayout.EndHorizontal();
 
                 EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
@@ -318,7 +318,7 @@ public class CustomInspector : EditorWindow
                     GUILayout.TextField(stringToEdit5, 5, GUILayout.Width(200));
 
                 string tdmg2 = stringToEdit5.ToString();
-                UpdateDamage.Updatedmg2((string)tdmg2);
+                //UpdateDamage.Updatedmg2((string)tdmg2);
 
                 EditorGUILayout.EndHorizontal();
 
