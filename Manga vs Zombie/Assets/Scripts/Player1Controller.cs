@@ -36,7 +36,9 @@ public class Player1Controller : MonoBehaviour
     protected AnimatorOverrideController animatorOverrideController;
     protected AnimationClipOverrides clipOverrides;
 
-
+    public float dmg;
+    public float dmg1;
+    public float dmg2;
 
     void Awake()
     {
@@ -46,9 +48,13 @@ public class Player1Controller : MonoBehaviour
     }
     void Start()
     {
+       
 
         LoadData();
-        Debug.Log(i);
+        dmg = playerlist.playerList[i]._Dmg;
+        dmg1 = playerlist.playerList[i]._DmgSkill1;
+        dmg2 = playerlist.playerList[i]._DmgSkill2;
+        Debug.Log("Id player:" +  i);
         text1.text = "Damage:     " + playerlist.playerList[i]._DmgSkill1.ToString();
         text2.text = "Damage:     " + playerlist.playerList[i]._DmgSkill2.ToString();
 
