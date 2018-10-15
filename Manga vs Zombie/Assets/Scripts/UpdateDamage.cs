@@ -11,7 +11,12 @@ public class UpdateDamage : MonoBehaviour
     public Text text2;
     public static string UpdateDMG2;
     static bool update=false;
+    [SerializeField] Character _character;
 
+    private void Start()
+    {
+        Debug.Log(_character.Name);
+    }
 
     private void Update()
     {

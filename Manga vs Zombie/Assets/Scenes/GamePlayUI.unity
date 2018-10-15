@@ -700,7 +700,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 383474994}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fae92f9d79b9c6143b3afa6ebfffbe1c, type: 3}
   m_Name: 
@@ -720,14 +720,15 @@ MonoBehaviour:
   isCooldown1: 0
   imageColldown2: {fileID: 1738508534}
   isCooldown2: 0
-  _playerName: 
-  _dmg: 0
-  _delay: 0
-  _dmgSkill1: 0
-  _cooldown1: 0
-  _dmgSkill2: 0
-  _cooldown2: 0
   dl: 0
+  Editurl: 
+  Editname: 
+  Editdmg: 0
+  Editdelay: 0
+  Editdmgskill1: 0
+  Editcool1: 0
+  Editdmgskill2: 0
+  Editcool2: 0
 --- !u!1 &482064754
 GameObject:
   m_ObjectHideFlags: 0
@@ -1540,12 +1541,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d334a93c5bd24940af12115f0a31733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ReadSJ: []
-  JI:
-    IconName: 
-    IconID: 0
-    AssignIcon: {fileID: 21300000, guid: 06eb0457a0d15064a914b2d4a5386ddd, type: 3}
-  JString: 
 --- !u!1 &1000455697
 GameObject:
   m_ObjectHideFlags: 0
@@ -1994,6 +1989,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text1: {fileID: 1997206676}
   text2: {fileID: 482064756}
+  _character: {fileID: 11400000, guid: cebf253882e32084ba98f235e4198a02, type: 2}
 --- !u!4 &1176631284
 Transform:
   m_ObjectHideFlags: 0

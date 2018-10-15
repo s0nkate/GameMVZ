@@ -78,7 +78,7 @@ public class Player1Controller : MonoBehaviour
     void Start()
     {
 
-        Debug.Log(Editdmg);
+       // Debug.Log(Editdmg);
     }
 
     void Update()

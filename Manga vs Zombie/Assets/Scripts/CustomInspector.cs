@@ -54,6 +54,7 @@ public class CustomInspector : EditorWindow
     float Editcool1;
     float Editdmgskill2;
     float Editcool2;
+    int lenght;
 
     //void Test()
     //{
@@ -84,7 +85,7 @@ public class CustomInspector : EditorWindow
                 Editcool1 = player[i]._Cooldown1;
                 Editdmgskill2 = player[i]._DmgSkill2;
                 Editcool2 = player[i]._Cooldown2;
-
+                lenght = player.Length;
                 break;
             }
 
@@ -239,6 +240,7 @@ public class CustomInspector : EditorWindow
         switch (tab)
         {
             case 0:
+                
                 scrollPositon = GUILayout.BeginScrollView(scrollPositon);
                 GUILayout.Label("Player Settings", EditorStyles.boldLabel);
 
@@ -323,7 +325,7 @@ public class CustomInspector : EditorWindow
                 EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
 
 
-
+                
 
                 //EditorGUILayout.BeginHorizontal();
                 //player1 = EditorGUILayout.ObjectField(player1, typeof(GameObject), true) as GameObject;

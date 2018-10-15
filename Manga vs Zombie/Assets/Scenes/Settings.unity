@@ -3330,12 +3330,12 @@ Prefab:
     - target: {fileID: 224556369842102604, guid: 86f9b6c757e11414398dd0dff49a4cbb,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 275.75757
+      value: 91
       objectReference: {fileID: 0}
     - target: {fileID: 224556369842102604, guid: 86f9b6c757e11414398dd0dff49a4cbb,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 372.72726
+      value: 136
       objectReference: {fileID: 0}
     - target: {fileID: 114303249165075022, guid: 86f9b6c757e11414398dd0dff49a4cbb,
         type: 2}
