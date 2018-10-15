@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aab94e02876ca3543ab673770ee15b07, type: 3}
+  m_Name: InventoryPlayerList
+  m_EditorClassIdentifier: 
+  playerList:
+  - _image: {fileID: 2800000, guid: c41a479c5b89cf84fa61a589b2f758da, type: 3}
+    _Name: Sakuke
+    _Dmg: 20
+    _Delay: 0.3
+    _DmgSkill1: 50
+    _Cooldown1: 10
+    _DmgSkill2: 100
+    _Cooldown2: 20
+    playskill1: {fileID: 7400000, guid: 6ed525c0d0bcf0848862d052ff0cccc8, type: 2}
+    playskill2: {fileID: 7400000, guid: deb30a4483d3ebd4abd707617220fda6, type: 2}
+    playattack1: {fileID: 7400000, guid: 23d7d154608526c43b3494d4dabd5517, type: 2}
+    playattack2: {fileID: 7400000, guid: ce2b58d37f9ea51449a1a1812648b6fa, type: 2}
+    playIdle: {fileID: 7400000, guid: a704447060c0c4544af5422e38cd50fd, type: 2}
+  - _image: {fileID: 2800000, guid: 8d31ac6abd5c16047bb0c6f0c2b730d3, type: 3}
+    _Name: Naruto
+    _Dmg: 30
+    _Delay: 0.3
+    _DmgSkill1: 50
+    _Cooldown1: 10
+    _DmgSkill2: 100
+    _Cooldown2: 20
+    playskill1: {fileID: 0}
+    playskill2: {fileID: 0}
+    playattack1: {fileID: 0}
+    playattack2: {fileID: 0}
+    playIdle: {fileID: 0}
