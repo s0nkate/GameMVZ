@@ -30,6 +30,12 @@ public class Player1Controller : MonoBehaviour
     public static int i=0;
     public Text text1;
     public Text text2;
+    public Image image1;
+    public Image image2;
+    public Image image3;
+    public Image image4;
+    public  Sprite sprite;
+
 
     public InventoryPlayerList playerlist;
   
@@ -44,7 +50,8 @@ public class Player1Controller : MonoBehaviour
     {
         anim = gameObject.GetComponent<Animator>();
         trigger.enabled = false;
-        
+       
+
     }
     void Start()
     {
@@ -57,6 +64,10 @@ public class Player1Controller : MonoBehaviour
         Debug.Log("Id player:" +  i);
         text1.text = "Damage:     " + playerlist.playerList[i]._DmgSkill1.ToString();
         text2.text = "Damage:     " + playerlist.playerList[i]._DmgSkill2.ToString();
+        image1.sprite = playerlist.playerList[i]._Image1;
+        image2.sprite = playerlist.playerList[i]._Image1;
+        image4.sprite = playerlist.playerList[i]._Image2;
+        image3.sprite = playerlist.playerList[i]._Image2;
 
         animatorOverrideController = new AnimatorOverrideController(anim.runtimeAnimatorController);
         anim.runtimeAnimatorController = animatorOverrideController;
@@ -69,7 +80,7 @@ public class Player1Controller : MonoBehaviour
         clipOverrides["Player1 Skill1"] = playerlist.playerList[i].playskill1;
         clipOverrides["Player1 Skill2"] = playerlist.playerList[i].playskill2;
         animatorOverrideController.ApplyOverrides(clipOverrides);
-        GetComponent<Animator>().runtimeAnimatorController = animatorOverrideController;
+        //GetComponent<Animator>().runtimeAnimatorController = animatorOverrideController;
     }
 
     void Update()
@@ -243,7 +254,7 @@ public class Player1Controller : MonoBehaviour
         {
             isCooldown1 = true;
             skill1 = true;
-            skill1delay = 1;
+            skill1delay = 0.7f;
             trigger1.enabled = true;
 
 
@@ -257,7 +268,7 @@ public class Player1Controller : MonoBehaviour
         {
             isCooldown2 = true;
             skill2 = true;
-            skill2delay = 1;
+            skill2delay = 0.7f;
             trigger2.enabled = true;
 
 
