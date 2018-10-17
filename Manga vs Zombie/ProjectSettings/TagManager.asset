@@ -19,6 +19,7 @@ TagManager:
   - ZombiePool
   - SkillGUI
   - PlayerBehaviour
+  - PlayerSpawn
   layers:
   - Default
   - TransparentFX

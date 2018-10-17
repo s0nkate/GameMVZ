@@ -42,4 +42,7 @@ MonoBehaviour:
   - RequestForPickupItems
   - RequestForPickupTimes
   - TaggedPlayer
+  - InstantiateZombie
+  - ActiveZombie
+  - DeactiveZombie
   DisableAutoOpenWizard: 1

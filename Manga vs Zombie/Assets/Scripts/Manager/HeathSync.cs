@@ -6,7 +6,7 @@ using ECSComponent;
 public class HeathSync : Photon.MonoBehaviour, IPunObservable
 {
 	Heath heath;
-	int heathNetwork;
+    int heathNetwork;
 	public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.isWriting)
@@ -15,14 +15,23 @@ public class HeathSync : Photon.MonoBehaviour, IPunObservable
         }
         else
         {           
-            this.heath.value = (int)stream.ReceiveNext();
+            heathNetwork = (int)stream.ReceiveNext();
+            heath.value = heathNetwork;
         }
     }
 
 
-	void Start () 
+	void Awake () 
 	{
-		heath = GetComponent<Heath>();
+		heath = gameObject.GetComponent<Heath>();
 	}
+
+    void Update()
+    {
+        // if(!photonView.isMine)
+        // {
+        //     heath.value = heathNetwork;
+        // }
+    }
 	
 }

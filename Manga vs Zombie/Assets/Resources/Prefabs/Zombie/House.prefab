@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 114648422513615714}
   - component: {fileID: 114679474318475722}
   - component: {fileID: 114574884205551718}
+  - component: {fileID: 114514563638883344}
   m_Layer: 0
   m_Name: House
   m_TagString: house
@@ -137,8 +138,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1486898449754244}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.34, y: -0.06, z: -2}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.039999973, y: 3.3862426, z: -92}
   m_LocalScale: {x: 0.47251222, y: 0.73613733, z: 0.63853}
   m_Children:
   - {fileID: 224622334296140580}
@@ -251,9 +252,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c6a5fec6eac8d4f978b579fdb2f7c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 200
-  maxValue: 200
+  value: 1000
+  maxValue: 1000
   heathSlider: {fileID: 114661619420978878}
+--- !u!114 &114514563638883344
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1486898449754244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23faa3a9e378a014597673b5fbbe5d57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114574884205551718
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -322,12 +334,12 @@ MonoBehaviour:
     ExtrapolateNumberOfStoredPositions: 1
     DrawErrorGizmo: 1
   m_RotationModel:
-    SynchronizeEnabled: 1
+    SynchronizeEnabled: 0
     InterpolateOption: 1
     InterpolateRotateTowardsSpeed: 180
     InterpolateLerpSpeed: 5
   m_ScaleModel:
-    SynchronizeEnabled: 1
+    SynchronizeEnabled: 0
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
@@ -432,6 +444,7 @@ MonoBehaviour:
   ownershipTransfer: 0
   ObservedComponents:
   - {fileID: 114574884205551718}
+  - {fileID: 114514563638883344}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1

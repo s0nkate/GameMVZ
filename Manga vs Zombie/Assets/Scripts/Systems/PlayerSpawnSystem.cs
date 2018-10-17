@@ -19,11 +19,12 @@ namespace ECSSystem
 		{
 			foreach (var entity in GetEntities<Data>())
 			{
-				if(!entity.playerSpawn.isActived && entity.photonView.isMine)
+				Debug.Log(entity.playerSpawn.isActived);
+				Debug.Log("isMine " + entity.photonView.isMine);
+				if(!entity.playerSpawn.isActived)
 				{
-					GameObject player = PhotonNetwork.Instantiate("Prefabs/Player/Player", entity.transform.position, entity.transform.localRotation, 0);
-					GameObject playerBehaviour = GameObject.FindWithTag("PlayerBehaviour");
-					player.GetComponent<Player1Controller>().SetPlayerBehaviour(playerBehaviour);
+					Debug.Log("instance player");
+					GameObject player = PhotonNetwork.Instantiate("Prefabs/Player/Player", entity.transform.position, entity.transform.localRotation, 0) as GameObject;
 					entity.playerSpawn.isActived = true;
 				}
 			}

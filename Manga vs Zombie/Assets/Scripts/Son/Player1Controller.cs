@@ -43,11 +43,9 @@ public class Player1Controller : Photon.MonoBehaviour
 
     void Awake()
     {
-        SkillGUI skillGUI = GameObject.FindWithTag("SkillGUI").GetComponent<SkillGUI>();
-        text1 = skillGUI.text1;
-        text2 = skillGUI.text2;
-        imageColldown1 = skillGUI.imageColldown1;
-        imageColldown2 = skillGUI.imageColldown2;
+        
+        
+        
 
         anim = gameObject.GetComponent<Animator>();
 
@@ -58,6 +56,18 @@ public class Player1Controller : Photon.MonoBehaviour
     {
 
         LoadData();
+        SkillGUI skillGUI = GameObject.FindWithTag("SkillGUI").GetComponent<SkillGUI>();
+        GameObject playerBehaviour = GameObject.FindWithTag("PlayerBehaviour");
+		GameObject playerSpawn = GameObject.FindWithTag("PlayerSpawn");
+
+        transform.parent = playerSpawn.transform;
+        SetPlayerBehaviour(playerBehaviour);
+
+        text1 = skillGUI.text1;
+        text2 = skillGUI.text2;
+        imageColldown1 = skillGUI.imageColldown1;
+        imageColldown2 = skillGUI.imageColldown2;
+
         dmg = playerlist.playerList[i]._Dmg;
         dmg1 = playerlist.playerList[i]._DmgSkill1;
         dmg2 = playerlist.playerList[i]._DmgSkill2;

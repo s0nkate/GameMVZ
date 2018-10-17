@@ -20,7 +20,7 @@ namespace ECSSystem
 		{
 			foreach (var entity in GetEntities<Data>())
 			{
-				if(!entity.zombieSpawn.isActived && PhotonNetwork.player.IsMasterClient)
+				if(!entity.zombieSpawn.isActived)
 				{
 					entity.zombieSpawn.StartCoroutine(Addzombie(entity));
 					entity.zombieSpawn.isActived = true;
@@ -33,11 +33,7 @@ namespace ECSSystem
 			
 			while(true)
 			{
-				GameObject zombie = entity.zombiePool.GetZombie();
-				if(zombie != null)
-				{
-					zombie.SetActive(true);
-				}
+				entity.zombiePool.GetZombie();	
 				yield return new WaitForSeconds(entity.zombieSpawn.timeDelay);
 			}
 		}	

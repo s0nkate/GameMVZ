@@ -721,7 +721,7 @@ GameObject:
   - component: {fileID: 114582502}
   m_Layer: 5
   m_Name: PlayerSpawn
-  m_TagString: Untagged
+  m_TagString: PlayerSpawn
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7972,7 +7972,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.5, y: 0.127}
-  m_AnchoredPosition: {x: 1.5836792, y: 91.046326}
+  m_AnchoredPosition: {x: 1.5836792, y: 91.04636}
   m_SizeDelta: {x: 0, y: 180.02338}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1251262210
@@ -8211,8 +8211,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombiePool: []
-  zombieSpawn: {fileID: 1275350190}
-  spawnTransform: {fileID: 1275350186}
   zombieCount: 20
 --- !u!114 &1275350188
 MonoBehaviour:
@@ -8282,12 +8280,12 @@ MonoBehaviour:
     ExtrapolateNumberOfStoredPositions: 1
     DrawErrorGizmo: 1
   m_RotationModel:
-    SynchronizeEnabled: 0
+    SynchronizeEnabled: 1
     InterpolateOption: 1
     InterpolateRotateTowardsSpeed: 180
     InterpolateLerpSpeed: 5
   m_ScaleModel:
-    SynchronizeEnabled: 0
+    SynchronizeEnabled: 1
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
@@ -9325,7 +9323,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 1, y: 0.127}
-  m_AnchoredPosition: {x: -1.5836487, y: 91.04631}
+  m_AnchoredPosition: {x: -1.5836487, y: 91.04634}
   m_SizeDelta: {x: 0, y: 180.02338}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1431142369
@@ -11121,6 +11119,11 @@ Prefab:
       propertyPath: m_ScaleModel.SynchronizeEnabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114123132132084412, guid: 08ba963e4ca98e349936d824d5520245,
+        type: 2}
+      propertyPath: m_PositionModel.SynchronizeEnabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 08ba963e4ca98e349936d824d5520245, type: 2}
@@ -11147,8 +11150,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombiePool: []
-  zombieSpawn: {fileID: 1619988118}
-  spawnTransform: {fileID: 1619988115}
   zombieCount: 20
 --- !u!114 &1619988118
 MonoBehaviour:
@@ -14496,11 +14497,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 32855736}
     m_Modifications:
-    - target: {fileID: 114679474318475722, guid: 31b3e949ea332c74ab34f246e82456ff,
-        type: 2}
-      propertyPath: ObservedComponents.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4442653769413500, guid: 31b3e949ea332c74ab34f246e82456ff, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0.039999973
@@ -14535,44 +14531,13 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114679474318475722, guid: 31b3e949ea332c74ab34f246e82456ff,
         type: 2}
-      propertyPath: instantiationId
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114679474318475722, guid: 31b3e949ea332c74ab34f246e82456ff,
-        type: 2}
       propertyPath: viewIdField
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114463351327822662, guid: 31b3e949ea332c74ab34f246e82456ff,
-        type: 2}
-      propertyPath: value
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 114463351327822662, guid: 31b3e949ea332c74ab34f246e82456ff,
-        type: 2}
-      propertyPath: maxValue
-      value: 1000
-      objectReference: {fileID: 0}
     - target: {fileID: 114679474318475722, guid: 31b3e949ea332c74ab34f246e82456ff,
         type: 2}
-      propertyPath: ObservedComponents.Array.data[1]
-      value: 
-      objectReference: {fileID: 2087988473}
-    - target: {fileID: 212308173499758512, guid: 31b3e949ea332c74ab34f246e82456ff,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: fd5af705975442c45b79601a852b3676,
-        type: 3}
-    - target: {fileID: 114574884205551718, guid: 31b3e949ea332c74ab34f246e82456ff,
-        type: 2}
-      propertyPath: m_RotationModel.SynchronizeEnabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114574884205551718, guid: 31b3e949ea332c74ab34f246e82456ff,
-        type: 2}
-      propertyPath: m_ScaleModel.SynchronizeEnabled
-      value: 0
+      propertyPath: instantiationId
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31b3e949ea332c74ab34f246e82456ff, type: 2}
@@ -14582,22 +14547,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4442653769413500, guid: 31b3e949ea332c74ab34f246e82456ff,
     type: 2}
   m_PrefabInternal: {fileID: 2087988470}
---- !u!1 &2087988472 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1486898449754244, guid: 31b3e949ea332c74ab34f246e82456ff,
-    type: 2}
-  m_PrefabInternal: {fileID: 2087988470}
---- !u!114 &2087988473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2087988472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23faa3a9e378a014597673b5fbbe5d57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2094144986
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZombieSpawn : MonoBehaviour {
+public class ZombieSpawn : MonoBehaviour 
+{
 
 	public float timeDelay;
 	public List<GameObject> list;

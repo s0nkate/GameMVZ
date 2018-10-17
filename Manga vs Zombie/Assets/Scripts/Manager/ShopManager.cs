@@ -63,9 +63,6 @@ public class ShopManager : MonoBehaviour {
 		CheckItem(listPlayer);
 		CheckItem(listSkill);
 	}
-
-
-
 	public void EnterGame () {
 
 	}
