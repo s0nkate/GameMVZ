@@ -6,11 +6,13 @@ public class DeadAnimationEnd : MonoBehaviour {
 
 	public void Destroy()
 	{
-		Destroy(transform.gameObject);
+		// Destroy(transform.gameObject);
+		gameObject.SetActive(false);
 	}
 
 	public void DestroyMysefl()
 	{
-		Destroy(transform.gameObject);
+		// Destroy(transform.gameObject);
+		gameObject.SetActive(false);
 	}
 }

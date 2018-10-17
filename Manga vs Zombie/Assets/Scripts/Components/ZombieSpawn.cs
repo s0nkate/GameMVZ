@@ -7,4 +7,9 @@ public class ZombieSpawn : MonoBehaviour {
 	public float timeDelay;
 	public List<GameObject> list;
 	public bool isActived;
+
+	public void Start()
+	{
+		
+	}
 }

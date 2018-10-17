@@ -21,7 +21,9 @@ namespace ECSSystem
 			{
 				if(!entity.playerSpawn.isActived && entity.photonView.isMine)
 				{
-					PhotonNetwork.Instantiate("Prefabs/Player/Player", entity.transform.position, entity.transform.localRotation, 0);
+					GameObject player = PhotonNetwork.Instantiate("Prefabs/Player/Player", entity.transform.position, entity.transform.localRotation, 0);
+					GameObject playerBehaviour = GameObject.FindWithTag("PlayerBehaviour");
+					player.GetComponent<Player1Controller>().SetPlayerBehaviour(playerBehaviour);
 					entity.playerSpawn.isActived = true;
 				}
 			}

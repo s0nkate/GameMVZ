@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
 	public int money;
 	public int score;
 	public int heighScore = 10;
-	// public GameObject playScene;
+	public GameObject playScene;
 	public GameObject requestJoinPopup;
 	public GameObject finalPopup;
 	public static GameManager Instance = null;
@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour {
 
 	void Start()
 	{
-		requestJoinPopup = GameObject.FindWithTag("requestjoin");
-		finalPopup = GameObject.FindWithTag("finalpopup");
+		// requestJoinPopup = GameObject.FindWithTag("requestjoin");
+		// finalPopup = GameObject.FindWithTag("finalpopup");
 	}
 
 
@@ -68,7 +68,8 @@ public class GameManager : MonoBehaviour {
 
 	public void PlayGame()
 	{
-		SceneManager.LoadScene("GamePlayUI");
+		// SceneManager.LoadScene("GamePlayUI");
+		playScene.SetActive(true);
 	}
 
 	public void ReturnMainMenu()

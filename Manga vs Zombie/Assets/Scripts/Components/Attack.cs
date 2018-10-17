@@ -11,20 +11,42 @@ namespace ECSComponent
 		public int damage;
 		public float timeDelay;
 		public bool isAttack;
-		public Heath target;
+		public List<Heath> target;
+		private float time = 0;
 
-		void OnCollisionEnter2D(Collision2D collision)
+		void OnCollisionStay2D(Collision2D collision)
 		{
 			if(collision.transform.CompareTag("house"))
 			{
-				target = collision.transform.gameObject.GetComponent<Heath>();
+				Heath heath = collision.transform.gameObject.GetComponent<Heath>();
 				Faction faction = gameObject.GetComponent<Faction>();
-				if(faction != null)
-				{
-					faction.currentState = State.Attack;
-				}
+				faction.currentState = State.Attack;
 				isAttack = true;
+				if(time >= timeDelay)
+				{
+					heath.TakeDamage(damage);
+					time = 0;
+				}
+				else
+				{
+					time += Time.deltaTime;
+				}				
 			}
+
+			// if(collision.transform.CompareTag("Enemy"))
+			// {
+			// 	Debug.Log("Player attack");
+			// 	Heath heath = collision.transform.gameObject.GetComponent<Heath>();
+			// 	Faction faction = gameObject.GetComponent<Faction>();
+			// 	if(faction.value == FactionType.Player)
+			// 	{
+			// 		target.Add(heath);
+			// 		faction.currentState = State.Attack;
+			// 	}
+			// 	isAttack = true;
+			// }
+
+
 		}
 
 	}

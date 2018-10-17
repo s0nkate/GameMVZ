@@ -12,6 +12,7 @@ namespace ECSSystem
 		{
 			public Transform transform;
 			public ZombieSpawn zombieSpawn;
+			public ZombiePool zombiePool;
 			public PhotonView photonView;
 		}
 		
@@ -27,41 +28,18 @@ namespace ECSSystem
 			}
 		}
 
-		// [PunRPC]
 		IEnumerator Addzombie(Data entity)
 		{
-			GameObject zombieContainer = GameObject.FindWithTag("zombieobject");
+			
 			while(true)
 			{
-				string name = "Prefabs/Zombie/"+GetRandomZombiePrefabname(entity.zombieSpawn);
-				// Debug.Log(name);
-				// GameObject zombie = Object.Instantiate(GetRandomZombieGameObject(entity.zombieSpawn), entity.transform.position, entity.transform.localRotation) as GameObject;
-				
-				
-				if(entity.photonView.isMine)
+				GameObject zombie = entity.zombiePool.GetZombie();
+				if(zombie != null)
 				{
-					GameObject zombie =  (GameObject)PhotonNetwork.Instantiate(name,  entity.transform.position, entity.transform.localRotation, 0);
-					zombie.transform.parent = zombieContainer.transform;
-					//Nếu zombie từ phải sang thì xoay thanh máu theo trục y 180 độ
-					if(!entity.transform.localRotation.Equals(new Vector3(0, 0, 0)))
-					{
-						zombie.transform.GetChild(0).localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
-					}
+					zombie.SetActive(true);
 				}
 				yield return new WaitForSeconds(entity.zombieSpawn.timeDelay);
 			}
-		}
-
-		// GameObject GetRandomZombieGameObject(ZombieSpawn zombieSpawn)
-		// {
-		// 	int max = zombieSpawn.list.Count;
-		// 	return zombieSpawn.list[Random.Range(0, max)];
-		// }
-
-		string GetRandomZombiePrefabname(ZombieSpawn zombieSpawn)
-		{
-			int max = zombieSpawn.list.Count;
-			return zombieSpawn.list[Random.Range(0, max)].name;
-		}
+		}	
 	}
 }

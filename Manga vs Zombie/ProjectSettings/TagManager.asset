@@ -13,9 +13,12 @@ TagManager:
   - coin
   - info
   - house
-  - zombieobject
   - finalpopup
   - requestjoin
+  - Enemy
+  - ZombiePool
+  - SkillGUI
+  - PlayerBehaviour
   layers:
   - Default
   - TransparentFX

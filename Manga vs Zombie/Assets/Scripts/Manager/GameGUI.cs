@@ -30,8 +30,8 @@ public class GameGUI : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		moneyText.text = GameManager.Instance.money.ToString();
-		scoreText.text = GameManager.Instance.score.ToString();
+		// moneyText.text = GameManager.Instance.money.ToString();
+		// scoreText.text = GameManager.Instance.score.ToString();
 		// heighScoreText.text = GameManager.Instance.heighScore.ToString();
 	}
 }

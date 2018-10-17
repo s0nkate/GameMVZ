@@ -47,11 +47,12 @@ GameObject:
   - component: {fileID: 82730168444809054}
   - component: {fileID: 114204044966904936}
   - component: {fileID: 114050307985713234}
-  - component: {fileID: 114542993238332050}
   - component: {fileID: 114607564922000512}
+  - component: {fileID: 114013855886646922}
+  - component: {fileID: 114727738140687766}
   m_Layer: 8
   m_Name: zoombie5
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -163,7 +164,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1071941083800032}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.082, y: -1.157, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.12, y: 0.12, z: 1}
   m_Children:
   - {fileID: 224472087181190702}
@@ -187,7 +188,7 @@ Rigidbody2D:
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!61 &61092261182130134
@@ -328,6 +329,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114013855886646922
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1071941083800032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23faa3a9e378a014597673b5fbbe5d57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114049164686691554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -427,7 +439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c4b400d2df61e240b04f5fac7b2d34b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Value: 1
+  value: 1
   currentState: 1
 --- !u!114 &114126837800785620
 MonoBehaviour:
@@ -470,7 +482,8 @@ MonoBehaviour:
   damage: 10
   timeDelay: 0.5
   isAttack: 0
-  target: {fileID: 0}
+  target:
+  - {fileID: 0}
 --- !u!114 &114204044966904936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -492,7 +505,8 @@ MonoBehaviour:
   ownershipTransfer: 0
   ObservedComponents:
   - {fileID: 114050307985713234}
-  - {fileID: 114542993238332050}
+  - {fileID: 114727738140687766}
+  - {fileID: 114013855886646922}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1
@@ -539,19 +553,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114542993238332050
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1071941083800032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e7cb724808c322458aa4d15f5035fa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizeVelocity: 1
-  m_SynchronizeAngularVelocity: 1
 --- !u!114 &114607564922000512
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -622,6 +623,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114727738140687766
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1071941083800032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters: []
+  m_SynchronizeLayers: []
 --- !u!114 &114815643190148760
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -7,20 +7,19 @@ namespace ECSComponent
 	public enum FactionType
     {
     	Player = 0,
-        Zoombie = 1
+        Zombie = 1
     }
 
 	public enum State : int
 	{
+		Idle = 0,
 		Walk = 1,
 		Attack = 2,		
 		Dead = 3
 	}
 	public class Faction : MonoBehaviour
     {
-        
-
-        public FactionType Value;
+        public FactionType value;
 		public State currentState;
 
     }
