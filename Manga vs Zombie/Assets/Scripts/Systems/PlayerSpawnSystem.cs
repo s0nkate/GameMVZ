@@ -19,8 +19,6 @@ namespace ECSSystem
 		{
 			foreach (var entity in GetEntities<Data>())
 			{
-				Debug.Log(entity.playerSpawn.isActived);
-				Debug.Log("isMine " + entity.photonView.isMine);
 				if(!entity.playerSpawn.isActived)
 				{
 					Debug.Log("instance player");
