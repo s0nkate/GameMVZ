@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8bd80d992f6f944da65427c3db884bb, type: 3}
+  m_Name: InventoryEnemyList
+  m_EditorClassIdentifier: 
+  selectedEnemyIndex: 0
+  enemyList:
+  - name: huy
+    image: {fileID: 2800000, guid: b536034c567b0904c963c08512f4a612, type: 3}
+    health: 60
+    speed: 50
+    damage: 50
+    Delay: 50
+    money: 50
+    score: 50
+    type: 1
+    idle: {fileID: 7400000, guid: deb30a4483d3ebd4abd707617220fda6, type: 2}
+    walk: {fileID: 7400000, guid: ce2b58d37f9ea51449a1a1812648b6fa, type: 2}
+    attack: {fileID: 7400000, guid: 6ed525c0d0bcf0848862d052ff0cccc8, type: 2}
+    dead: {fileID: 7400000, guid: 23d7d154608526c43b3494d4dabd5517, type: 2}
+  - name: 
+    image: {fileID: 0}
+    health: 0
+    speed: 0
+    damage: 0
+    Delay: 0
+    money: 0
+    score: 0
+    type: 0
+    idle: {fileID: 0}
+    walk: {fileID: 0}
+    attack: {fileID: 0}
+    dead: {fileID: 0}
+  - name: New Enemy
+    image: {fileID: 2800000, guid: c3a5028e8e85b04459975e0d6926f9e6, type: 3}
+    health: 0
+    speed: 0
+    damage: 0
+    Delay: 0
+    money: 0
+    score: 0
+    type: 0
+    idle: {fileID: 0}
+    walk: {fileID: 0}
+    attack: {fileID: 0}
+    dead: {fileID: 0}

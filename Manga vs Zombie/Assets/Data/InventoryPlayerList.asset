@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aab94e02876ca3543ab673770ee15b07, type: 3}
   m_Name: InventoryPlayerList
   m_EditorClassIdentifier: 
+  selectedPlayerindex: 1
   playerList:
   - _image: {fileID: 2800000, guid: c41a479c5b89cf84fa61a589b2f758da, type: 3}
     _Name: Sakuke
@@ -18,8 +19,10 @@ MonoBehaviour:
     _Delay: 0.3
     _DmgSkill1: 50
     _Cooldown1: 10
+    _Image1: {fileID: 0}
     _DmgSkill2: 100
     _Cooldown2: 20
+    _Image2: {fileID: 0}
     playskill1: {fileID: 7400000, guid: 6ed525c0d0bcf0848862d052ff0cccc8, type: 2}
     playskill2: {fileID: 7400000, guid: deb30a4483d3ebd4abd707617220fda6, type: 2}
     playattack1: {fileID: 7400000, guid: 23d7d154608526c43b3494d4dabd5517, type: 2}
@@ -31,10 +34,12 @@ MonoBehaviour:
     _Delay: 0.3
     _DmgSkill1: 50
     _Cooldown1: 10
+    _Image1: {fileID: 0}
     _DmgSkill2: 100
     _Cooldown2: 20
-    playskill1: {fileID: 0}
-    playskill2: {fileID: 0}
-    playattack1: {fileID: 0}
-    playattack2: {fileID: 0}
-    playIdle: {fileID: 0}
+    _Image2: {fileID: 0}
+    playskill1: {fileID: 7400000, guid: 490db480628ace44e960070492658215, type: 2}
+    playskill2: {fileID: 7400000, guid: ba8abe23196fc334b8ae244e9c8eff42, type: 2}
+    playattack1: {fileID: 7400000, guid: 5659c3c595528d244ae33c9bdbc1e9e2, type: 2}
+    playattack2: {fileID: 7400000, guid: 25988a3bdd9b98f4eb647929e5057f1d, type: 2}
+    playIdle: {fileID: 7400000, guid: 8d626519be8a3da429c6f66a9185ef98, type: 2}

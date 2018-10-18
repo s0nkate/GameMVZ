@@ -1883,6 +1883,7 @@ MonoBehaviour:
   dmg: 0
   dmg1: 0
   dmg2: 0
+  playerBehaviour: {fileID: 0}
 --- !u!114 &114818652035618568
 MonoBehaviour:
   m_ObjectHideFlags: 1
