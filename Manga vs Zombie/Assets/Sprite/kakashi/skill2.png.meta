@@ -1,0 +1,426 @@
+fileFormatVersion: 2
+guid: 59283993edfbcaa40ae0e55147f2e344
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: skill2_0
+    21300002: skill2_1
+    21300004: skill2_2
+    21300006: skill2_3
+    21300008: skill2_4
+    21300010: skill2_5
+    21300012: skill2_6
+    21300014: skill2_12
+    21300016: skill2_14
+    21300018: skill2_16
+    21300020: skill2_17
+    21300022: skill2_22
+    21300024: skill2_23
+    21300026: skill2_24
+  externalObjects: {}
+  serializedVersion: 7
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: skill2_0
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 89
+        width: 40
+        height: 61
+      alignment: 9
+      pivot: {x: 0.45883942, y: 0.01716864}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3480d1501d15ba6439947fa537483c49
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill2_1
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 89
+        width: 36
+        height: 62
+      alignment: 9
+      pivot: {x: 0.4593472, y: 0.016104544}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f28b3e024a998e4781cf4aaee3bfbe7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill2_2
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 87
+        width: 60
+        height: 48
+      alignment: 9
+      pivot: {x: 0.48170623, y: 0.019792875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0708ce8dbb394c47ac0efbbc29cfd57
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill2_3
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 87
+        width: 86
+        height: 48
+      alignment: 9
+      pivot: {x: 0.4914913, y: 0.027415117}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edb3eecf2cd95b5469375d46533d7941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill2_4
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 87
+        width: 86
+        height: 48
+      alignment: 9
+      pivot: {x: 0.48723692, y: 0.027415117}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73adc5d179f16334da9120f0787f5d8d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill2_5
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 87
+        width: 88
+        height: 48
+      alignment: 9
+      pivot: {x: 0.493094, y: 0.037871044}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6c9e9081eeaa6042b0924991693d02f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill2_6
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 87
+        width: 88
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.031540394}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d17d8299a86846b45bfe539e661a8697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill2_12
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 89
+        width: 46
+        height: 46
+      alignment: 9
+      pivot: {x: 0.48018214, y: 0.037595667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbdc2632a2202c5419c5a34c187ed634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill2_14
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 5
+        width: 67
+        height: 58
+      alignment: 9
+      pivot: {x: 0.062013343, y: 0.05592774}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aca55df61ff6b974787f366e6661dd11
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill2_16
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 8
+        width: 86
+        height: 53
+      alignment: 9
+      pivot: {x: 0.045373075, y: 0.011302624}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a654496797325441b49e8be4c0618e7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill2_17
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 8
+        width: 79
+        height: 59
+      alignment: 9
+      pivot: {x: 0.021575928, y: 0.009743513}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7be32b6910b774444acba7779e1c6224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill2_22
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 8
+        width: 92
+        height: 58
+      alignment: 9
+      pivot: {x: -0.13479084, y: 0.0120185}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 664edd5cd707f1c43afe6f804381d980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill2_23
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 8
+        width: 90
+        height: 61
+      alignment: 9
+      pivot: {x: -0.094233535, y: 0.016091753}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c7585f20411f6545aa6339a618dffd4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill2_24
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 8
+        width: 72
+        height: 57
+      alignment: 9
+      pivot: {x: -0.23233795, y: 0.022496609}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b8941d5632bc9e4a8077bf05a7ee38c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 686757ace0107aa409ad08d7921db7a8
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
