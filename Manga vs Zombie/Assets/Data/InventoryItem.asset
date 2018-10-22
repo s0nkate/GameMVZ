@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 106321a4d68df8c4197e899a33af3265, type: 3}
+  m_Name: InventoryItem
+  m_EditorClassIdentifier: 
+  itemlist:
+  - nameItem: HpTower
+    image: {fileID: 2800000, guid: 3d31477841c2a9246ab78f436e888260, type: 3}
+    effect: +100 Hp for Tower
+    price: 0
+  - nameItem: DefenseTower
+    image: {fileID: 2800000, guid: 2857753413460be46a54f767f1c126a8, type: 3}
+    effect: +50 Defense for Tower
+    price: 0
+  - nameItem: DownAttackEnemy
+    image: {fileID: 2800000, guid: 930869112fdeef8429ed590642935232, type: 3}
+    effect: -10 Damage all Enemy
+    price: 0
+  selecteditemindex: 0

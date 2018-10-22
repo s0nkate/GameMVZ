@@ -9,14 +9,18 @@ public class InventoryItemEditor : EditorWindow
 
     public InventoryPlayerList inventoryPlayerList;
     public InventoryEnemyList inventoryEnemyList;
-    public InventoryMap inventoryMap;
+    public InventoryItemList inventoryItemList;
+    public InventorySceneList inventorySceneList;
     private int viewIndex = 1;
     private int viewIndex1 = 1;
-    private string[] toolBar = new string[] { "Player", "Enemy", "Map", "Shop", "sence" };
+    private int viewIndex2 = 1;
+    private int viewIndex3 = 1;
+    private string[] toolBar = new string[] { "Player", "Enemy", "Scene", "Shop" };
+    private string[] toolBar1 = new string[] { "Player", "Item" };
     int tab;
-    float myFloat = 5;
-    bool mybool = false;
+    int tab1;
     public InventoryEnemy.Type type;
+    public Vector2 scrollPositon;
     [MenuItem("Window/Custom Inspector %#e")]
     static void Init()
     {
@@ -39,7 +43,12 @@ public class InventoryItemEditor : EditorWindow
         if (EditorPrefs.HasKey("ObjectPath2"))
         {
             string objectPath2 = EditorPrefs.GetString("ObjectPath2");
-            inventoryMap = AssetDatabase.LoadAssetAtPath(objectPath2, typeof(InventoryMap)) as InventoryMap;
+            inventorySceneList = AssetDatabase.LoadAssetAtPath(objectPath2, typeof(InventorySceneList)) as InventorySceneList;
+        }
+        if (EditorPrefs.HasKey("ObjectPath3"))
+        {
+            string objectPath3 = EditorPrefs.GetString("ObjectPath3");
+            inventoryItemList = AssetDatabase.LoadAssetAtPath(objectPath3, typeof(InventoryItemList)) as InventoryItemList;
         }
     }
 
@@ -51,6 +60,7 @@ public class InventoryItemEditor : EditorWindow
         switch (tab)
         {
             case 0:
+                scrollPositon = GUILayout.BeginScrollView(scrollPositon);
                 GUILayout.BeginHorizontal();
                 GUILayout.Label(" Player Editor", EditorStyles.boldLabel);
                 if (inventoryPlayerList != null)
@@ -179,10 +189,11 @@ public class InventoryItemEditor : EditorWindow
                 {
                     EditorUtility.SetDirty(inventoryPlayerList);
                 }
-
+                GUILayout.EndScrollView();
                 break;
 
             case 1:
+                scrollPositon = GUILayout.BeginScrollView(scrollPositon);
 
                 GUILayout.BeginHorizontal();
                 GUILayout.Label(" Enemy Editor", EditorStyles.boldLabel);
@@ -246,7 +257,7 @@ public class InventoryItemEditor : EditorWindow
                     }
                     if (GUILayout.Button("Delete Enemy", GUILayout.ExpandWidth(false)))
                     {
-                        DeleteItem(viewIndex - 1);
+                        DeleteItem(viewIndex1 - 1);
                     }
 
                     GUILayout.EndHorizontal();
@@ -255,7 +266,7 @@ public class InventoryItemEditor : EditorWindow
                     if (inventoryEnemyList.enemyList.Count > 0)
                     {
                         GUILayout.BeginHorizontal();
-                        viewIndex = Mathf.Clamp(EditorGUILayout.IntField("Current Enemy", viewIndex1, GUILayout.ExpandWidth(false)), 1, inventoryEnemyList.enemyList.Count);
+                        viewIndex1 = Mathf.Clamp(EditorGUILayout.IntField("Current Enemy", viewIndex1, GUILayout.ExpandWidth(false)), 1, inventoryEnemyList.enemyList.Count);
                         //Mathf.Clamp (viewIndex, 1, inventoryItemList.itemList.Count);
                         EditorGUILayout.LabelField("of   " + inventoryEnemyList.enemyList.Count.ToString() + "  Enemy", "", GUILayout.ExpandWidth(false));
                         GUILayout.EndHorizontal();
@@ -269,10 +280,10 @@ public class InventoryItemEditor : EditorWindow
                         inventoryEnemyList.enemyList[viewIndex1 - 1].score = EditorGUILayout.IntField("Scose ", inventoryEnemyList.enemyList[viewIndex1 - 1].score, GUILayout.ExpandWidth(false));
                         type = (InventoryEnemy.Type)EditorGUILayout.EnumPopup("Type", type, GUILayout.ExpandWidth(false));
                         GUILayout.Label("Animation", EditorStyles.boldLabel);
-                        inventoryEnemyList.enemyList[viewIndex - 1].idle = EditorGUILayout.ObjectField("Idle", inventoryEnemyList.enemyList[viewIndex - 1].idle, typeof(AnimationClip), false) as AnimationClip;
-                        inventoryEnemyList.enemyList[viewIndex - 1].walk = EditorGUILayout.ObjectField("Walk", inventoryEnemyList.enemyList[viewIndex - 1].walk, typeof(AnimationClip), false) as AnimationClip;
-                        inventoryEnemyList.enemyList[viewIndex - 1].attack = EditorGUILayout.ObjectField("Attack", inventoryEnemyList.enemyList[viewIndex - 1].attack, typeof(AnimationClip), false) as AnimationClip;
-                        inventoryEnemyList.enemyList[viewIndex - 1].dead = EditorGUILayout.ObjectField("Dead", inventoryEnemyList.enemyList[viewIndex - 1].dead, typeof(AnimationClip), false) as AnimationClip;
+                        inventoryEnemyList.enemyList[viewIndex1 - 1].idle = EditorGUILayout.ObjectField("Idle", inventoryEnemyList.enemyList[viewIndex - 1].idle, typeof(AnimationClip), false) as AnimationClip;
+                        inventoryEnemyList.enemyList[viewIndex1 - 1].walk = EditorGUILayout.ObjectField("Walk", inventoryEnemyList.enemyList[viewIndex - 1].walk, typeof(AnimationClip), false) as AnimationClip;
+                        inventoryEnemyList.enemyList[viewIndex1- 1].attack = EditorGUILayout.ObjectField("Attack", inventoryEnemyList.enemyList[viewIndex - 1].attack, typeof(AnimationClip), false) as AnimationClip;
+                        inventoryEnemyList.enemyList[viewIndex1 - 1].dead = EditorGUILayout.ObjectField("Dead", inventoryEnemyList.enemyList[viewIndex - 1].dead, typeof(AnimationClip), false) as AnimationClip;
 
 
 
@@ -288,61 +299,264 @@ public class InventoryItemEditor : EditorWindow
         if (GUILayout.Button("Use Enemy"))
         {
 
-            inventoryPlayerList.selectedPlayerindex = viewIndex1 - 1;
+            //inventoryPlayerList.selectedPlayerindex = viewIndex1 - 1;
         }
 
         if (GUI.changed)
         {
             EditorUtility.SetDirty(inventoryEnemyList);
         }
-
+                GUILayout.EndScrollView();
         break;
     
             case 2:
+                scrollPositon = GUILayout.BeginScrollView(scrollPositon);
+
                 GUILayout.BeginHorizontal();
-                GUILayout.Label(" Enemy Editor", EditorStyles.boldLabel);
-                if (inventoryMap != null)
+                GUILayout.Label(" Scene Editor", EditorStyles.boldLabel);
+                if (inventorySceneList != null)
                 {
-                    if (GUILayout.Button("Show Map List"))
+                    if (GUILayout.Button("Show Scene List"))
                     {
                         EditorUtility.FocusProjectWindow();
-                        Selection.activeObject = inventoryMap;
+                        Selection.activeObject = inventorySceneList;
                     }
                 }
-                if (GUILayout.Button("Open Map List"))
+                if (GUILayout.Button("Open Scene List"))
                 {
                     OpenItemList();
                 }
-                
-                 GUILayout.EndHorizontal();
-                GUILayout.Label("Map Settings", EditorStyles.boldLabel);
-                inventoryMap.Backgournd=EditorGUILayout.ObjectField("Backgournd",inventoryMap.Backgournd, typeof(Texture2D), false) as Texture2D;
-                inventoryMap.Foregournd = EditorGUILayout.ObjectField("Foregournd", inventoryMap.Foregournd, typeof(Texture2D), false) as Texture2D;
-                inventoryMap.Tower = EditorGUILayout.ObjectField("Tower", inventoryMap.Tower, typeof(Texture2D), false) as Texture2D;
-                inventoryMap.Towerenemy = EditorGUILayout.ObjectField("Towerenemy", inventoryMap.Towerenemy, typeof(Texture2D), false) as Texture2D;
-                if (GUI.changed)
+                GUILayout.EndHorizontal();
+                if (inventorySceneList != null)
                 {
-                    EditorUtility.SetDirty(inventoryMap);
+                    GUILayout.BeginHorizontal();
+
+                    GUILayout.Space(10);
+
+                    if (GUILayout.Button("Prev", GUILayout.ExpandWidth(false)))
+                    {
+                        if (viewIndex3 > 1)
+                            viewIndex3--;
+                    }
+                    GUILayout.Space(5);
+                    if (GUILayout.Button("Next", GUILayout.ExpandWidth(false)))
+                    {
+                        if (viewIndex3 < inventorySceneList.scenelist.Count)
+                        {
+                            viewIndex3++;
+                        }
+                    }
+
+                    GUILayout.Space(60);
+
+                    if (GUILayout.Button("Add Scene", GUILayout.ExpandWidth(false)))
+                    {
+                        AddItem();
+                    }
+                    if (GUILayout.Button("Delete Scene", GUILayout.ExpandWidth(false)))
+                    {
+                        DeleteItem(viewIndex3 - 1);
+                    }
+                    GUILayout.EndHorizontal();
                 }
-                
+                if (inventorySceneList.scenelist.Count > 0)
+                {
+                    GUILayout.BeginHorizontal();
+                    viewIndex3 = Mathf.Clamp(EditorGUILayout.IntField("Current Scene", viewIndex3, GUILayout.ExpandWidth(false)), 1, inventorySceneList.scenelist.Count);
+                    //Mathf.Clamp (viewIndex, 1, inventoryItemList.itemList.Count);
+                    EditorGUILayout.LabelField("of   " + inventorySceneList.scenelist.Count.ToString() + "  Scene", "", GUILayout.ExpandWidth(false));
+                    GUILayout.EndHorizontal();
+                    GUILayout.Label("Scene Settings", EditorStyles.boldLabel);
+                    GUILayout.Label("Level " + viewIndex3);
+                    inventorySceneList.scenelist[viewIndex3 - 1].TimePlay = EditorGUILayout.FloatField("Time Play", inventorySceneList.scenelist[viewIndex3 - 1].TimePlay, GUILayout.ExpandWidth(false));
+                    inventorySceneList.scenelist[viewIndex3 - 1].DelayEnemy = EditorGUILayout.FloatField("Delay Enemy", inventorySceneList.scenelist[viewIndex3 - 1].DelayEnemy, GUILayout.ExpandWidth(false));
+                    inventorySceneList.scenelist[viewIndex3 - 1].Backgournd = EditorGUILayout.ObjectField("Backgournd", inventorySceneList.scenelist[viewIndex3 - 1].Backgournd, typeof(Texture2D), false) as Texture2D;
+                    inventorySceneList.scenelist[viewIndex3 - 1].Foregournd = EditorGUILayout.ObjectField("Foregournd", inventorySceneList.scenelist[viewIndex3 - 1].Foregournd, typeof(Texture2D), false) as Texture2D;
+                    inventorySceneList.scenelist[viewIndex3 - 1].Tower = EditorGUILayout.ObjectField("Tower", inventorySceneList.scenelist[viewIndex3 - 1].Tower, typeof(Texture2D), false) as Texture2D;
+                    inventorySceneList.scenelist[viewIndex3 - 1].Towerenemy = EditorGUILayout.ObjectField("Tower Enemy", inventorySceneList.scenelist[viewIndex3 - 1].Towerenemy, typeof(Texture2D), false) as Texture2D;
+                    if (GUI.changed)
+                    {
+                        EditorUtility.SetDirty(inventorySceneList);
+                    }
+                }
+                GUILayout.EndScrollView();
                 break;
             case 3:
                 GUILayout.Label("Shop Settings", EditorStyles.boldLabel);
+                tab1 = GUILayout.Toolbar(tab1, toolBar1);
+                switch (tab1)
+                {
+                    case 0:
+                        scrollPositon = GUILayout.BeginScrollView(scrollPositon);
 
-                break;
-            case 4:
-                GUILayout.Label("Sence Settings", EditorStyles.boldLabel);
-                //GUILayout.Label(EditorWindow.focusedWindow.ToString());
-                GUILayout.Label("Sound Settings", EditorStyles.boldLabel);
-                mybool = EditorGUILayout.Toggle("Mute All Sounds", mybool);
+                        GUILayout.Label(" Shop Player Editor", EditorStyles.boldLabel);
+                        if (inventoryPlayerList != null)
+                        {
+                            if (GUILayout.Button("Show Player List"))
+                            {
+                                EditorUtility.FocusProjectWindow();
+                                Selection.activeObject = inventoryPlayerList;
+                            }
+
+                            GUILayout.BeginHorizontal();
+
+                            GUILayout.Space(10);
+
+                            if (GUILayout.Button("Prev", GUILayout.ExpandWidth(false)))
+                            {
+                                if (viewIndex > 1)
+                                    viewIndex--;
+                            }
+                            GUILayout.Space(5);
+                            if (GUILayout.Button("Next", GUILayout.ExpandWidth(false)))
+                            {
+                                if (viewIndex < inventoryPlayerList.playerList.Count)
+                                {
+                                    viewIndex++;
+                                }
+                            }
+
+                            GUILayout.Space(60);
 
 
-                myFloat = EditorGUILayout.Slider("Sounds", myFloat, 0, 10);
-                EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
-                break;
+                            if (GUILayout.Button("Delete Player", GUILayout.ExpandWidth(false)))
+                            {
+                                DeleteItem(viewIndex - 1);
+                            }
+                        }
+                        GUILayout.EndHorizontal();
+                        if (inventoryPlayerList.playerList.Count > 0)
+                        {
+                            GUILayout.BeginHorizontal();
+                            viewIndex = Mathf.Clamp(EditorGUILayout.IntField("Current Player", viewIndex, GUILayout.ExpandWidth(false)), 1, inventoryPlayerList.playerList.Count);
+                            EditorGUILayout.LabelField("  of   " + inventoryPlayerList.playerList.Count.ToString() + "  Player", "", GUILayout.ExpandWidth(false));
+                            GUILayout.EndHorizontal();
+                            GUILayout.BeginHorizontal();
+                            GUILayout.Label(inventoryPlayerList.playerList[viewIndex - 1]._image, GUILayout.Height(70), GUILayout.Width(70));
+                            GUILayout.EndHorizontal();
+                            GUILayout.Label("Player Name :" + inventoryPlayerList.playerList[viewIndex - 1]._Name);
+                            
+                            GUILayout.Label("Dmg : " + inventoryPlayerList.playerList[viewIndex - 1]._Dmg);
 
+                            GUILayout.Label("Delay : " + inventoryPlayerList.playerList[viewIndex - 1]._Delay);
+
+                            GUILayout.Label("DmgSkill1 : " + inventoryPlayerList.playerList[viewIndex - 1]._DmgSkill1);
+                            GUILayout.Label("Cooldown1 : " + inventoryPlayerList.playerList[viewIndex - 1]._Cooldown1);
+                            GUILayout.Label("DmgSkill2 : " + inventoryPlayerList.playerList[viewIndex - 1]._DmgSkill2);
+                            GUILayout.Label("Cooldown2 : " + inventoryPlayerList.playerList[viewIndex - 1]._Cooldown2);
+                           
+                            inventoryPlayerList.playerList[viewIndex - 1].Price = EditorGUILayout.IntField("Price: ", inventoryPlayerList.playerList[viewIndex - 1].Price, GUILayout.ExpandWidth(false));
+                            
+                            if (GUI.changed)
+                            {
+                                EditorUtility.SetDirty(inventoryPlayerList);
+                            }
+                        }
+                        GUILayout.EndScrollView();
+                        break;
+                    case 1:
+                        scrollPositon = GUILayout.BeginScrollView(scrollPositon);
+
+                        GUILayout.BeginHorizontal();
+                        GUILayout.Label(" Shop Item Editor", EditorStyles.boldLabel);
+                        if (inventoryItemList != null)
+                        {
+                            if (GUILayout.Button("Show Item List"))
+                            {
+                                EditorUtility.FocusProjectWindow();
+                                Selection.activeObject = inventoryItemList;
+                            }
+                        }
+                        if (GUILayout.Button("Open Item List"))
+                        {
+                            OpenItemList();
+                        }
+                        GUILayout.EndHorizontal();
+                        GUILayout.Space(20);
+
+                        if (inventoryItemList != null)
+                        {
+                            GUILayout.BeginHorizontal();
+
+                            GUILayout.Space(10);
+
+                            if (GUILayout.Button("Prev", GUILayout.ExpandWidth(false)))
+                            {
+                                if (viewIndex2 > 1)
+                                    viewIndex2--;
+                            }
+                            GUILayout.Space(5);
+                            if (GUILayout.Button("Next", GUILayout.ExpandWidth(false)))
+                            {
+                                if (viewIndex2 < inventoryItemList.itemlist.Count)
+                                {
+                                    viewIndex2++;
+                                }
+                            }
+
+                            GUILayout.Space(60);
+
+                            if (GUILayout.Button("Add Player", GUILayout.ExpandWidth(false)))
+                            {
+                                AddItem();
+                            }
+                            if (GUILayout.Button("Delete Player", GUILayout.ExpandWidth(false)))
+                            {
+                                DeleteItem(viewIndex2 - 1);
+                            }
+
+                            GUILayout.EndHorizontal();
+                            if (inventoryItemList.itemlist == null)
+                                Debug.Log("wtf");
+                            if (inventoryItemList.itemlist.Count > 0)
+                            {
+                                GUILayout.BeginHorizontal();
+                                viewIndex2 = Mathf.Clamp(EditorGUILayout.IntField("Current Item", viewIndex2, GUILayout.ExpandWidth(false)), 1, inventoryItemList.itemlist.Count);
+                               
+                                EditorGUILayout.LabelField("of   " + inventoryItemList.itemlist.Count.ToString() + "  Item", "", GUILayout.ExpandWidth(false));
+                                GUILayout.EndHorizontal();
+
+
+                                inventoryItemList.itemlist[viewIndex2 - 1].nameItem = EditorGUILayout.TextField("Item Name", inventoryItemList.itemlist[viewIndex2 - 1].nameItem as string);
+                                inventoryItemList.itemlist[viewIndex2 - 1].image = EditorGUILayout.ObjectField("Item Image", inventoryItemList.itemlist[viewIndex2 - 1].image, typeof(Texture2D), false) as Texture2D;
+                                inventoryItemList.itemlist[viewIndex2 - 1].effect = EditorGUILayout.TextField("Item Effect", inventoryItemList.itemlist[viewIndex2 - 1].effect as string);
+                                inventoryItemList.itemlist[viewIndex2 - 1].price = EditorGUILayout.IntField(" Price ", inventoryItemList.itemlist[viewIndex2 - 1].price);
+
+                            }
+                          
+                        }
+                        if (GUI.changed)
+                        {
+                            EditorUtility.SetDirty(inventoryItemList);
+                        }
+                        GUILayout.EndScrollView();
+                        break;
+                }
+                 break;
+                        
+                //    case 4:
+                //        GUILayout.Label("Sence Settings", EditorStyles.boldLabel);
+                //        //GUILayout.Label(EditorWindow.focusedWindow.ToString());
+                //        GUILayout.Label("Sound Settings", EditorStyles.boldLabel);
+                //        mybool = EditorGUILayout.Toggle("Mute All Sounds", mybool);
+              
+
+                //        myFloat = EditorGUILayout.Slider("Sounds", myFloat, 0, 10);
+                //if (mybool)
+                //{
+                //    AudioListener.volume = myFloat;
+                //}
+                //else
+                //{
+                //    AudioListener.volume = 0;
+                //}
+                //EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+                //        break;
+                
         }
+        
     }
+   
     void CreateNewItemList()
     { if(tab==0) { 
        
@@ -364,6 +578,19 @@ public class InventoryItemEditor : EditorWindow
                 inventoryEnemyList.enemyList = new List<InventoryEnemy>();
                 string relPath1 = AssetDatabase.GetAssetPath(inventoryEnemyList);
                 EditorPrefs.SetString("ObjectPath1", relPath1);
+            }
+
+
+        }
+        if (tab == 3)
+        {
+            viewIndex2 = 1;
+            inventoryItemList = CreateInventoryItemList.Create3();
+            if (inventoryItemList)
+            {
+                inventoryItemList.itemlist = new List<InventoryItem>();
+                string relPath2 = AssetDatabase.GetAssetPath(inventoryItemList);
+                EditorPrefs.SetString("ObjectPath3", relPath2);
             }
 
 
@@ -403,16 +630,31 @@ public class InventoryItemEditor : EditorWindow
         }
         if (tab == 2)
         {
-            string absPath2 = EditorUtility.OpenFilePanel("Select Inventory Map", "", "");
+            string absPath2 = EditorUtility.OpenFilePanel("Select Inventory Scene", "", "");
             if (absPath2.StartsWith(Application.dataPath))
             {
                 string relPath2 = absPath2.Substring(Application.dataPath.Length - "Assets".Length);
-                inventoryMap = AssetDatabase.LoadAssetAtPath(relPath2, typeof(InventoryMap)) as InventoryMap;
-                if (inventoryMap == null)
-                    inventoryMap = new InventoryMap();
-                if (inventoryMap)
+                inventorySceneList = AssetDatabase.LoadAssetAtPath(relPath2, typeof(InventorySceneList)) as InventorySceneList;
+                if (inventorySceneList == null)
+                    inventorySceneList = new InventorySceneList();
+                if (inventorySceneList)
                 {
                     EditorPrefs.SetString("ObjectPath2", relPath2);
+                }
+            }
+        }
+        if (tab == 3)
+        {
+            string absPath2 = EditorUtility.OpenFilePanel("Select Inventory Item List", "", "");
+            if (absPath2.StartsWith(Application.dataPath))
+            {
+                string relPath3 = absPath2.Substring(Application.dataPath.Length - "Assets".Length);
+                inventoryItemList = AssetDatabase.LoadAssetAtPath(relPath3, typeof(InventoryItemList)) as InventoryItemList;
+                if (inventoryItemList.itemlist == null)
+                    inventoryItemList.itemlist = new List<InventoryItem>();
+                if (inventoryItemList)
+                {
+                    EditorPrefs.SetString("ObjectPath3", relPath3);
                 }
             }
         }
@@ -424,7 +666,6 @@ public class InventoryItemEditor : EditorWindow
         {
             InventoryPlayer newItem = new InventoryPlayer();
             newItem._Name = "New Item";
-            //newItem._Id = inventoryPlayerList.playerList.Count;
             inventoryPlayerList.playerList.Add(newItem);
             viewIndex = inventoryPlayerList.playerList.Count;
             
@@ -437,6 +678,23 @@ public class InventoryItemEditor : EditorWindow
             inventoryEnemyList.enemyList.Add(newItem1);
             viewIndex1 = inventoryEnemyList.enemyList.Count;
         }
+        if (tab == 2)
+        {
+            InventoryScene newItem3 = new InventoryScene();
+            
+           
+            inventorySceneList.scenelist.Add(newItem3);
+            viewIndex3 = inventorySceneList.scenelist.Count;
+           
+        }
+        if (tab == 3)
+        {
+            InventoryItem newItem2 = new InventoryItem();
+            newItem2.nameItem = "New Item";
+
+            inventoryItemList.itemlist.Add(newItem2);
+            viewIndex2 = inventoryItemList.itemlist.Count;
+        }
     }
     void DeleteItem(int index)
     {
@@ -447,6 +705,14 @@ public class InventoryItemEditor : EditorWindow
         if (tab == 1)
         { 
         inventoryEnemyList.enemyList.RemoveAt(index);
+        }
+        if (tab == 3)
+        {
+            inventoryItemList.itemlist.RemoveAt(index);
+        }
+        if (tab == 2)
+        {
+            inventorySceneList.scenelist.RemoveAt(index);
         }
     }
   

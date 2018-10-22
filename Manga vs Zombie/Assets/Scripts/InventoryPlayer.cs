@@ -15,6 +15,7 @@ public class InventoryPlayer   {
     public float _DmgSkill2;
     public float _Cooldown2;
     public Sprite _Image2;
+    public int Price;
 
     public AnimationClip playskill1;
     public AnimationClip playskill2;

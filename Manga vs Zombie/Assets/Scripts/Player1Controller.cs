@@ -185,7 +185,24 @@ public class Player1Controller : MonoBehaviour
         anim.SetBool("Attacking1", attacking1);
 
     }
+    public void StartDame()
+    {
+        trigger1.enabled = true;
+        
+    }
+    public void StartDame1()
+    {
+        trigger2.enabled = true;
+        if (skill2delay > 0)
+        {
+            skill2delay -= Time.deltaTime;
+        }
+        else
+        {
 
+            trigger2.enabled = false;
+        }
+    }
     public void Flip()
     {
         faceright = !faceright;
@@ -255,7 +272,7 @@ public class Player1Controller : MonoBehaviour
             isCooldown1 = true;
             skill1 = true;
             skill1delay = 0.7f;
-            trigger1.enabled = true;
+            
 
 
 
@@ -269,7 +286,7 @@ public class Player1Controller : MonoBehaviour
             isCooldown2 = true;
             skill2 = true;
             skill2delay = 0.7f;
-            trigger2.enabled = true;
+            
 
 
 
