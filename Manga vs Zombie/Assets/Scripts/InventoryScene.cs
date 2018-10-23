@@ -5,7 +5,7 @@ using UnityEngine;
 public class InventoryScene  {
     
    
-    public float TimePlay;
+    public int TimePlay;
     public float DelayEnemy;
     public Texture2D Backgournd;
     public Texture2D Foregournd;

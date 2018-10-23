@@ -368,7 +368,7 @@ public class InventoryItemEditor : EditorWindow
                     GUILayout.EndHorizontal();
                     GUILayout.Label("Scene Settings", EditorStyles.boldLabel);
                     GUILayout.Label("Level " + viewIndex3);
-                    inventorySceneList.scenelist[viewIndex3 - 1].TimePlay = EditorGUILayout.FloatField("Time Play", inventorySceneList.scenelist[viewIndex3 - 1].TimePlay, GUILayout.ExpandWidth(false));
+                    inventorySceneList.scenelist[viewIndex3 - 1].TimePlay = EditorGUILayout.IntField("Time Play", inventorySceneList.scenelist[viewIndex3 - 1].TimePlay, GUILayout.ExpandWidth(false));
                     inventorySceneList.scenelist[viewIndex3 - 1].DelayEnemy = EditorGUILayout.FloatField("Delay Enemy", inventorySceneList.scenelist[viewIndex3 - 1].DelayEnemy, GUILayout.ExpandWidth(false));
                     inventorySceneList.scenelist[viewIndex3 - 1].Backgournd = EditorGUILayout.ObjectField("Backgournd", inventorySceneList.scenelist[viewIndex3 - 1].Backgournd, typeof(Texture2D), false) as Texture2D;
                     inventorySceneList.scenelist[viewIndex3 - 1].Foregournd = EditorGUILayout.ObjectField("Foregournd", inventorySceneList.scenelist[viewIndex3 - 1].Foregournd, typeof(Texture2D), false) as Texture2D;
@@ -378,6 +378,7 @@ public class InventoryItemEditor : EditorWindow
                     {
                         EditorUtility.SetDirty(inventorySceneList);
                     }
+                    inventorySceneList.selectedsceneindex = viewIndex3;
                 }
                 GUILayout.EndScrollView();
                 break;

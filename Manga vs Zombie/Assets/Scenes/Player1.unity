@@ -246,8 +246,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.48, y: 0.68}
+    pivot: {x: 0.49991345, y: 0.0034720441}
+    oldSize: {x: 0.4, y: 0.56666666}
     newSize: {x: 0.48, y: 0.68}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -268,11 +268,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   faceright: 1
-  attackdelay: 0.3
   attacking: 0
   attacking1: 0
   anim: {fileID: 0}
   trigger: {fileID: 1978050488}
+  skill1: 0
+  skill1delay: 1
+  skill2: 0
+  skill2delay: 1
+  trigger1: {fileID: 0}
+  trigger2: {fileID: 0}
+  imageColldown1: {fileID: 0}
+  isCooldown1: 0
+  imageColldown2: {fileID: 0}
+  isCooldown2: 0
+  text1: {fileID: 0}
+  text2: {fileID: 0}
+  image1: {fileID: 0}
+  image2: {fileID: 0}
+  image3: {fileID: 0}
+  image4: {fileID: 0}
+  sprite: {fileID: 0}
+  playerlist: {fileID: 0}
+  dmg: 0
+  dmg1: 0
+  dmg2: 0
 --- !u!1 &1461005802
 GameObject:
   m_ObjectHideFlags: 0
