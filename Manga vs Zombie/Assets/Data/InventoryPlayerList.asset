@@ -11,12 +11,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aab94e02876ca3543ab673770ee15b07, type: 3}
   m_Name: InventoryPlayerList
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   selectedPlayerindex: 4
+=======
+  selectedPlayerindex: 0
+>>>>>>> huy
   playerList:
   - _image: {fileID: 2800000, guid: c41a479c5b89cf84fa61a589b2f758da, type: 3}
     _Name: Sasuke
     _Dmg: 20
     _Delay: 0.3
+<<<<<<< HEAD
     _DmgSkill1: 80
     _Cooldown1: 1
     _Image1: {fileID: 21300004, guid: b456c962b7bd85544b2a8368a19cd75b, type: 3}
@@ -24,6 +29,14 @@ MonoBehaviour:
     _Cooldown2: 1
     _Image2: {fileID: 21300008, guid: 7af727ae038ab674db9a92511fc3d36f, type: 3}
     Price: 0
+=======
+    _DmgSkill1: 101
+    _Cooldown1: 10
+    _Image1: {fileID: 21300004, guid: b456c962b7bd85544b2a8368a19cd75b, type: 3}
+    _DmgSkill2: 222
+    _Cooldown2: 20
+    _Image2: {fileID: 21300008, guid: 7af727ae038ab674db9a92511fc3d36f, type: 3}
+>>>>>>> huy
     playskill1: {fileID: 7400000, guid: 6ed525c0d0bcf0848862d052ff0cccc8, type: 2}
     playskill2: {fileID: 7400000, guid: deb30a4483d3ebd4abd707617220fda6, type: 2}
     playattack1: {fileID: 7400000, guid: ce2b58d37f9ea51449a1a1812648b6fa, type: 2}
@@ -31,6 +44,7 @@ MonoBehaviour:
     playIdle: {fileID: 7400000, guid: a704447060c0c4544af5422e38cd50fd, type: 2}
   - _image: {fileID: 2800000, guid: 69aa07ee0a989864d8a9f6be620015a9, type: 3}
     _Name: Naruto
+<<<<<<< HEAD
     _Dmg: 20
     _Delay: 0.3
     _DmgSkill1: 150
@@ -40,12 +54,23 @@ MonoBehaviour:
     _Cooldown2: 1
     _Image2: {fileID: 21300018, guid: 49537196f236ebe4f85a0d21906c0e01, type: 3}
     Price: 0
+=======
+    _Dmg: 10
+    _Delay: 0.5
+    _DmgSkill1: 90
+    _Cooldown1: 10
+    _Image1: {fileID: 21300006, guid: 85a8af187bcd2684d8b2d877f9316e69, type: 3}
+    _DmgSkill2: 150
+    _Cooldown2: 5
+    _Image2: {fileID: 21300018, guid: 49537196f236ebe4f85a0d21906c0e01, type: 3}
+>>>>>>> huy
     playskill1: {fileID: 7400000, guid: 490db480628ace44e960070492658215, type: 2}
     playskill2: {fileID: 7400000, guid: ba8abe23196fc334b8ae244e9c8eff42, type: 2}
     playattack1: {fileID: 7400000, guid: 5659c3c595528d244ae33c9bdbc1e9e2, type: 2}
     playattack2: {fileID: 7400000, guid: 25988a3bdd9b98f4eb647929e5057f1d, type: 2}
     playIdle: {fileID: 7400000, guid: 8d626519be8a3da429c6f66a9185ef98, type: 2}
   - _image: {fileID: 2800000, guid: 6532be68adc97684d875521a5c00dfaf, type: 3}
+<<<<<<< HEAD
     _Name: KaKaShi
     _Dmg: 30
     _Delay: 0.3
@@ -56,12 +81,24 @@ MonoBehaviour:
     _Cooldown2: 1
     _Image2: {fileID: 21300014, guid: 59283993edfbcaa40ae0e55147f2e344, type: 3}
     Price: 0
+=======
+    _Name: tung
+    _Dmg: 50
+    _Delay: 0.3
+    _DmgSkill1: 100
+    _Cooldown1: 10
+    _Image1: {fileID: 21300000, guid: 65a9ba962f3c5bf4a8576274ee02885e, type: 3}
+    _DmgSkill2: 300
+    _Cooldown2: 15
+    _Image2: {fileID: 21300014, guid: 59283993edfbcaa40ae0e55147f2e344, type: 3}
+>>>>>>> huy
     playskill1: {fileID: 7400000, guid: deca720387f72764fb140d12279622aa, type: 2}
     playskill2: {fileID: 7400000, guid: ba99cfa8c8b0ad84c81f031d18426c0c, type: 2}
     playattack1: {fileID: 7400000, guid: 3f06e77b8b3434244a8c790f9b312c4c, type: 2}
     playattack2: {fileID: 7400000, guid: be90e18e9633c454d912529d89c31fab, type: 2}
     playIdle: {fileID: 7400000, guid: da544963aeb5a194f808e524bd963ce4, type: 2}
   - _image: {fileID: 2800000, guid: b5b8ee425695dac4e8ba1c934a277cd6, type: 3}
+<<<<<<< HEAD
     _Name: Trunks
     _Dmg: 25
     _Delay: 0.3
@@ -72,11 +109,23 @@ MonoBehaviour:
     _Cooldown2: 1
     _Image2: {fileID: 21300010, guid: 3fe5341aa9b24034db26f5521c7a7edd, type: 3}
     Price: 0
+=======
+    _Name: New Item
+    _Dmg: 20
+    _Delay: 0.3
+    _DmgSkill1: 100
+    _Cooldown1: 10
+    _Image1: {fileID: 21300004, guid: 08d7d088f9240294690ecea7f7974c99, type: 3}
+    _DmgSkill2: 250
+    _Cooldown2: 20
+    _Image2: {fileID: 21300010, guid: 3fe5341aa9b24034db26f5521c7a7edd, type: 3}
+>>>>>>> huy
     playskill1: {fileID: 7400000, guid: fd23f24d96f86954aa025165b7eeabc8, type: 2}
     playskill2: {fileID: 7400000, guid: 2dbce27afe239af40b399d715d4ad5b4, type: 2}
     playattack1: {fileID: 7400000, guid: 6d73a094f3320b44192bf0d5d476ab8e, type: 2}
     playattack2: {fileID: 7400000, guid: 1f369a1c30a431b4ab4ed4a090b2268d, type: 2}
     playIdle: {fileID: 7400000, guid: 483bf65f2af7c174c97a08d2ac29a0de, type: 2}
+<<<<<<< HEAD
   - _image: {fileID: 2800000, guid: 5885691cd315b6f4dac40a13d073ba08, type: 3}
     _Name: Zero
     _Dmg: 30
@@ -173,3 +222,5 @@ MonoBehaviour:
     playattack1: {fileID: 7400000, guid: ad6f38f7d9110034297cd71fdc07108f, type: 2}
     playattack2: {fileID: 7400000, guid: 9396d2cc3c0677c43abd0dd9c88586ea, type: 2}
     playIdle: {fileID: 7400000, guid: e43f1ddd89a334544bfcdf9c70d7fde3, type: 2}
+=======
+>>>>>>> huy

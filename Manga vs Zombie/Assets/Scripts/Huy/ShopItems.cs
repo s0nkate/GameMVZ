@@ -4,7 +4,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 public class ShopItems : MonoBehaviour {
-
 	public int price;
 	public Sprite image;
 	public bool isBought;
@@ -19,10 +18,11 @@ public class ShopItems : MonoBehaviour {
 	public Text infoObj;
 	private GameObject pricePanel;
 	private Color color;
+	public GameObject useButton;
 
 	void Start () {
 		
-
+		useButton = transform.Find("UseButton").gameObject;
 		color = GetComponent<Image> ().color;
 
 		foreach (Transform child in transform) {
@@ -48,13 +48,18 @@ public class ShopItems : MonoBehaviour {
 		info = GetComponent<IShopItems> ().GetInfo();
 		if (isBought) {
 			pricePanel.SetActive (false);
+			useButton.SetActive(true);
 			GetComponent<Image> ().color = boughtColor;
 			if (isSelected) {
 				GetComponent<Image> ().color = selectedColor;
-			} else { }
+			} else
+			{
+				
+			}
 
 		} else {
 			pricePanel.SetActive (true);
+			useButton.SetActive(false);
 			GetComponent<Image> ().color = color;
 		}
 
@@ -83,5 +88,25 @@ public class ShopItems : MonoBehaviour {
 		isBought = true;
 		buyPopup.SetActive (false);
 	}
+
+	public void ChangeSelected()
+	{			
+		if(isSelected)
+		{
+			isSelected = false;
+			GetComponent<IShopItems>().UnSelectItem();
+		}
+			
+		else
+		{			
+			if(GetComponent<IShopItems>().SelectItem())
+			{
+				isSelected = true;
+			}			
+		}
+
+		ShopManager.Instance.Save();	
+	}
+	
 
 }

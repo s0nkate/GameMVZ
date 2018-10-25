@@ -8,10 +8,16 @@ TextureImporter:
     21300006: skill4_3
     21300008: skill4_4
     21300010: skill4_6
+<<<<<<< HEAD
     21300012: skill4_11
     21300014: skill4_10
     21300016: skill4_12
     21300018: skill4_7
+=======
+    21300012: skill4_8
+    21300014: skill4_10
+    21300016: skill4_12
+>>>>>>> huy
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -55,7 +61,11 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
   spritePixelsToUnits: 120
+=======
+  spritePixelsToUnits: 100
+>>>>>>> huy
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -135,7 +145,11 @@ TextureImporter:
         width: 36
         height: 75
       alignment: 9
+<<<<<<< HEAD
       pivot: {x: 0.43308797, y: 0.010386962}
+=======
+      pivot: {x: 0.4906523, y: 0.011768595}
+>>>>>>> huy
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -155,7 +169,11 @@ TextureImporter:
         width: 36
         height: 75
       alignment: 9
+<<<<<<< HEAD
       pivot: {x: 0.43783337, y: 0.0075097657}
+=======
+      pivot: {x: 0.48388493, y: 0.010273031}
+>>>>>>> huy
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -175,7 +193,11 @@ TextureImporter:
         width: 39
         height: 74
       alignment: 9
+<<<<<<< HEAD
       pivot: {x: 0.499088, y: 0.010500109}
+=======
+      pivot: {x: 0.48314705, y: 0.010500315}
+>>>>>>> huy
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -195,7 +217,11 @@ TextureImporter:
         width: 40
         height: 75
       alignment: 9
+<<<<<<< HEAD
       pivot: {x: 0.5118278, y: 0.007738037}
+=======
+      pivot: {x: 0.4911049, y: 0.013264364}
+>>>>>>> huy
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -215,7 +241,11 @@ TextureImporter:
         width: 85
         height: 75
       alignment: 9
+<<<<<<< HEAD
       pivot: {x: 0.11492058, y: 0.019864706}
+=======
+      pivot: {x: 0.20390858, y: 0.01986491}
+>>>>>>> huy
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -235,7 +265,11 @@ TextureImporter:
         width: 103
         height: 75
       alignment: 9
+<<<<<<< HEAD
       pivot: {x: 0.091972575, y: 0.005908407}
+=======
+      pivot: {x: 0.18754089, y: 0.007290039}
+>>>>>>> huy
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -247,7 +281,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
+<<<<<<< HEAD
       name: skill4_11
+=======
+      name: skill4_8
+>>>>>>> huy
       rect:
         serializedVersion: 2
         x: 6
@@ -255,7 +293,11 @@ TextureImporter:
         width: 143
         height: 75
       alignment: 9
+<<<<<<< HEAD
       pivot: {x: 0.081920035, y: 0.037674356}
+=======
+      pivot: {x: 0.14568385, y: 0.029385071}
+>>>>>>> huy
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -275,7 +317,11 @@ TextureImporter:
         width: 159
         height: 75
       alignment: 9
+<<<<<<< HEAD
       pivot: {x: 0.06038085, y: 0.022221578}
+=======
+      pivot: {x: 0.11251476, y: 0.036037292}
+>>>>>>> huy
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -291,11 +337,19 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 371
+<<<<<<< HEAD
         y: 56
         width: 45
         height: 76
       alignment: 9
       pivot: {x: 0.19387546, y: 0.008217711}
+=======
+        y: 54
+        width: 45
+        height: 76
+      alignment: 9
+      pivot: {x: 0.37808228, y: 0.03548522}
+>>>>>>> huy
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -306,6 +360,7 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+<<<<<<< HEAD
     - serializedVersion: 2
       name: skill4_7
       rect:
@@ -326,6 +381,8 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+=======
+>>>>>>> huy
     outline: []
     physicsShape: []
     bones: []

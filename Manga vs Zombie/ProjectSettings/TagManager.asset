@@ -4,7 +4,26 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
   - Enemy
+=======
+  - price
+  - image
+  - background
+  - listplayer
+  - listitem
+  - listskill
+  - coin
+  - info
+  - house
+  - finalpopup
+  - requestjoin
+  - Enemy
+  - ZombiePool
+  - SkillGUI
+  - PlayerBehaviour
+  - PlayerSpawn
+>>>>>>> huy
   layers:
   - Default
   - TransparentFX
@@ -14,9 +33,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Zoombie
+  - Floor
+  - Background
   - 
   - 
   - 
@@ -41,4 +60,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: zoombie1
+    uniqueID: 3229767683
+    locked: 0
+  - name: zoombie2
+    uniqueID: 211009115
+    locked: 0
+  - name: background
+    uniqueID: 1136951141
     locked: 0

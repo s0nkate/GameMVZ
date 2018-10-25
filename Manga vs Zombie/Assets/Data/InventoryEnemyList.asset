@@ -22,12 +22,21 @@ MonoBehaviour:
     money: 50
     score: 50
     type: 1
+<<<<<<< HEAD
     idle: {fileID: 0}
     walk: {fileID: 0}
     attack: {fileID: 0}
     dead: {fileID: 0}
   - name: tung
     image: {fileID: 2800000, guid: c3a5028e8e85b04459975e0d6926f9e6, type: 3}
+=======
+    idle: {fileID: 7400000, guid: deb30a4483d3ebd4abd707617220fda6, type: 2}
+    walk: {fileID: 7400000, guid: ce2b58d37f9ea51449a1a1812648b6fa, type: 2}
+    attack: {fileID: 7400000, guid: 6ed525c0d0bcf0848862d052ff0cccc8, type: 2}
+    dead: {fileID: 7400000, guid: 23d7d154608526c43b3494d4dabd5517, type: 2}
+  - name: 
+    image: {fileID: 0}
+>>>>>>> huy
     health: 0
     speed: 0
     damage: 0
@@ -40,7 +49,11 @@ MonoBehaviour:
     attack: {fileID: 0}
     dead: {fileID: 0}
   - name: New Enemy
+<<<<<<< HEAD
     image: {fileID: 0}
+=======
+    image: {fileID: 2800000, guid: c3a5028e8e85b04459975e0d6926f9e6, type: 3}
+>>>>>>> huy
     health: 0
     speed: 0
     damage: 0

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Item : MonoBehaviour, IShopItems {
-
+	public static int selectedCount = 0;
 	void Start () {
 
 	}
@@ -20,4 +20,20 @@ public class Item : MonoBehaviour, IShopItems {
     {
         return "\nDamage: \nTime Delay: ";
     }
+	public bool SelectItem()
+    {
+        
+		if(selectedCount >= 2)
+		{
+			return false;
+		}
+		selectedCount++;
+		return true;
+    }
+
+	public void UnSelectItem()
+	{
+		if(selectedCount > 0)
+			selectedCount--;
+	}
 }
