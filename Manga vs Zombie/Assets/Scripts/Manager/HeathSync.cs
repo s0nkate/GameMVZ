@@ -7,6 +7,7 @@ public class HeathSync : Photon.MonoBehaviour, IPunObservable
 {
 	Heath heath;
     int heathNetwork;
+    static float t = 0.0f;
 	public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.isWriting)
@@ -15,8 +16,7 @@ public class HeathSync : Photon.MonoBehaviour, IPunObservable
         }
         else
         {           
-            heathNetwork = (int)stream.ReceiveNext();
-            heath.value = heathNetwork;
+            heath.value = (int)stream.ReceiveNext();
         }
     }
 
@@ -24,14 +24,17 @@ public class HeathSync : Photon.MonoBehaviour, IPunObservable
 	void Awake () 
 	{
 		heath = gameObject.GetComponent<Heath>();
+        heathNetwork = heath.value;
 	}
 
-    void Update()
-    {
-        // if(!photonView.isMine)
-        // {
-        //     heath.value = heathNetwork;
-        // }
-    }
+    // void Update()
+    // {
+    //     if(!photonView.isMine)
+    //     {
+            // heath.value = heathNetwork;
+            // // heath.value = Mathf.Lerp(heath.value, heathNetwork, t);
+            // t += 0.5f * Time.deltaTime;
+    //     }
+    // }
 	
 }

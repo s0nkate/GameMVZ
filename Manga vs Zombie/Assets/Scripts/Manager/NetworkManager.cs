@@ -80,8 +80,13 @@ public class NetworkManager : Photon.PunBehaviour
 		}
 		else
 		{
+			
 			loadingText.text = "Joined Room";
+			// Debug.Log("acctive player1");
 			GameManager.Instance.PlayGame();
+			// PlayerManager.Instance.SetPlayer(GameManager.Instance.instancePlayer[0]);
+			
+			
 		}
 			
 	}
@@ -114,7 +119,12 @@ public class NetworkManager : Photon.PunBehaviour
 				if(playerRequestId == PhotonNetwork.player.ID)
 				{
 					loadingText.text = "Joined Room";
-					GameManager.Instance.PlayGame();				
+					GameManager.Instance.PlayGame();
+					// Debug.Log("acctive player2");
+					// PlayerManager.Instance.SetPlayer(GameManager.Instance.instancePlayer[1]);
+					// Debug.Log("acctive player1");
+					// GameManager.Instance.instancePlayer[0].SetActive(true);
+										
 				}
 				break;				
 			case CancelJoinRoom:

@@ -6,6 +6,10 @@ using ECSComponent;
 public class Skill2trigger : MonoBehaviour {
 
     public Player1Controller p;
+
+   
+
+
    private void OnTriggerStay2D(Collider2D col)
     {
         if (col.CompareTag("Enemy"))

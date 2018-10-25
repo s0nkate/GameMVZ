@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject playScene;
 	public GameObject requestJoinPopup;
 	public GameObject finalPopup;
+	// public GameObject[] instancePlayer;
 	public static GameManager Instance = null;
 	private void Awake()
 	{
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour {
 	{
 		// requestJoinPopup = GameObject.FindWithTag("requestjoin");
 		// finalPopup = GameObject.FindWithTag("finalpopup");
+		// instancePlayer = GameObject.FindGameObjectsWithTag("Player");
 	}
 
 

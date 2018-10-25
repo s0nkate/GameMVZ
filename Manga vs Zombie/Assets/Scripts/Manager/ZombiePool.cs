@@ -7,70 +7,64 @@ using ECSComponent;
 public class ZombiePool : Photon.MonoBehaviour 
 {
 
-	// public static ZombiePool Instance = null;
 	public List<GameObject> zombiePool;
 	ZombieSpawn zombieSpawn;
 	Transform spawnTransform;
-	public int zombieCount = 20;
+	public int zombieCount = 6;
+	// public PhotonView photonView;
 	void Start()
 	{
 		zombieSpawn = GetComponent<ZombieSpawn>();
 		spawnTransform = zombieSpawn.transform;
-		zombiePool = new List<GameObject>();
-		
-		for (int i = 0; i < zombieCount; i++) 
-		{
-  			GameObject zombie = (GameObject) CreateZombie();
-			if(zombie != null)
-			{
-				zombie.SetActive(false); 
-  				zombiePool.Add(zombie);
-			}
-		}
+		// zombiePool = new List<GameObject>();
+		// photonView = GetComponent<PhotonView>();
+		// if(PhotonNetwork.isMasterClient)
+		// {
+		// 	for (int i = 0; i < zombieCount; i++) 
+		// 	{
+		// 		photonView.RPC("CreateZombie", PhotonTargets.AllBuffered);
+		// 	}
+		// }
 	}
+
+	public void ActiveZombie()
+	{
+		photonView.RPC("GetZombie", PhotonTargets.AllBuffered);
+	}
+
 
 	[PunRPC]
-	void ActiveZombie(int i)
-	{
-		zombiePool[i].SetActive(true);
-	}
-
-	public GameObject GetZombie()
+	public void GetZombie()
 	{
 		for(int i = 0; i < zombieCount; i++)
 		{
 			if(!zombiePool[i].activeInHierarchy)
 			{
-				// zombiePool[i].SetActive(true);
 				Heath heath = zombiePool[i].GetComponent<Heath>();
 				Faction faction = zombiePool[i].GetComponent<Faction>();
 
 				faction.currentState = State.Walk;
 				heath.value = heath.maxValue;
-				// zombiePool[i].transform.parent = spawnTransform;
 				zombiePool[i].transform.position = spawnTransform.position;
-				// zombiePool[i].SetActive(true);
-				photonView.RPC("ActiveZombie", PhotonTargets.AllBuffered, i);
-				return zombiePool[i];
+				zombiePool[i].SetActive(true);
+				return;	
 			}
 		}
-
-		return null;
 	}
 
-	GameObject CreateZombie()
+	[PunRPC]
+	void CreateZombie()
 	{
 			// GameObject	zombie = Instantiate(GetRandomZombiePrefab(zombieSpawn), transform.position, spawnTransform.localRotation, transform);
-			string name = "Prefabs/Zombie/" + GetRandomZombiePrefabname(zombieSpawn);
-			GameObject	zombie = PhotonNetwork.Instantiate(name , transform.position, spawnTransform.localRotation, 0);
-			zombie.transform.parent = spawnTransform;
+			// string name = "Prefabs/Zombie/" + GetRandomZombiePrefabname(zombieSpawn);
+			GameObject	zombie = Instantiate(GetRandomZombiePrefab(zombieSpawn) , transform.position, spawnTransform.localRotation, spawnTransform);
 			//Nếu zombie từ phải sang thì xoay thanh máu theo trục y 180 độ
 			if(!spawnTransform.localRotation.Equals(new Vector3(0, 0, 0)))
 			{
 				zombie.transform.GetChild(0).localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
 			}
 			zombie.SetActive(false);
-			return zombie;
+			zombiePool.Add(zombie);
 	}
 
 	string GetRandomZombiePrefabname(ZombieSpawn zombieSpawn)

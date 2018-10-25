@@ -17,15 +17,15 @@ namespace ECSSystem
 
 		protected override void OnUpdate()
 		{
-			foreach (var entity in GetEntities<Data>())
-			{
-				if(!entity.playerSpawn.isActived)
-				{
-					Debug.Log("instance player");
-					GameObject player = PhotonNetwork.Instantiate("Prefabs/Player/Player", entity.transform.position, entity.transform.localRotation, 0) as GameObject;
-					entity.playerSpawn.isActived = true;
-				}
-			}
+			// foreach (var entity in GetEntities<Data>())
+			// {
+			// 	if(!entity.playerSpawn.isActived)
+			// 	{
+			// 		Debug.Log("instance player");
+					
+			// 		entity.playerSpawn.isActived = true;
+			// 	}
+			// }
 		}
 	}
 }

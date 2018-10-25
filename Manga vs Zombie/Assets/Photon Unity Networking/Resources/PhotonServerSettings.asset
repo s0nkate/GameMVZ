@@ -45,4 +45,8 @@ MonoBehaviour:
   - InstantiateZombie
   - ActiveZombie
   - DeactiveZombie
+  - CreateZombie
+  - GetZombie
+  - SpawnPlayer
+  - ActivePlayer
   DisableAutoOpenWizard: 1

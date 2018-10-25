@@ -11,16 +11,17 @@ public class RoomManager : Photon.PunBehaviour
 	{
 		
 	}
-	
 	void Update () 
 	{
-		
 	}
 
 	public void AcceptJoinRoom()
 	{
 		PhotonNetwork.RaiseEvent(NetworkManager.AcceptJoinRoom, senderId, reliable, raiseEventOptions);
+		// Debug.Log("acctive player2");
+		// GameManager.Instance.instancePlayer[1].SetActive(true);
 		gameObject.SetActive(false);
+		
 	}
 
 

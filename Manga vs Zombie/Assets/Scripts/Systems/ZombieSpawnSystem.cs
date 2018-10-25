@@ -30,7 +30,6 @@ namespace ECSSystem
 
 		IEnumerator Addzombie(Data entity)
 		{
-			
 			while(true)
 			{
 				entity.zombiePool.GetZombie();	

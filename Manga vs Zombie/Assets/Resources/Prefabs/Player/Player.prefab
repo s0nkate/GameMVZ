@@ -84,6 +84,8 @@ GameObject:
   - component: {fileID: 114156304184168664}
   - component: {fileID: 114956740718922850}
   - component: {fileID: 114992937511569638}
+  - component: {fileID: 114135976815014114}
+  - component: {fileID: 114470940261785628}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -239,6 +241,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114135976815014114
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1942538490770404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79a60a83cf093404984bc52d8e641108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  price: 0
+  isBought: 0
+  isSelected: 0
+  type: 0
 --- !u!114 &114156304184168664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -316,6 +333,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114156304184168664}
   - {fileID: 114992937511569638}
+  - {fileID: 114470940261785628}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1
@@ -377,6 +395,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 0
   currentState: 0
+--- !u!114 &114470940261785628
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1942538490770404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddf0d48a69eb04e48884a8a3afb9f2ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  timeDelay: 0
+  animator: {fileID: 95352752012054000}
 --- !u!114 &114499533090854510
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -486,10 +518,10 @@ MonoBehaviour:
   m_PositionModel:
     SynchronizeEnabled: 1
     TeleportEnabled: 1
-    TeleportIfDistanceGreaterThan: 3
-    InterpolateOption: 2
+    TeleportIfDistanceGreaterThan: 1
+    InterpolateOption: 4
     InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 1
+    InterpolateLerpSpeed: 5
     InterpolateMoveTowardsAcceleration: 2
     InterpolateMoveTowardsDeceleration: 2
     InterpolateSpeedCurve:
@@ -534,7 +566,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    ExtrapolateOption: 1
+    ExtrapolateOption: 0
     ExtrapolateSpeed: 1
     ExtrapolateIncludingRoundTripTime: 1
     ExtrapolateNumberOfStoredPositions: 1
@@ -543,10 +575,10 @@ MonoBehaviour:
     SynchronizeEnabled: 1
     InterpolateOption: 2
     InterpolateRotateTowardsSpeed: 180
-    InterpolateLerpSpeed: 5
+    InterpolateLerpSpeed: 2
   m_ScaleModel:
     SynchronizeEnabled: 1
-    InterpolateOption: 2
+    InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
 --- !u!212 &212040842857629538

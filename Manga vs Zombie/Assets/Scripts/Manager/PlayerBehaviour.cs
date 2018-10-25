@@ -50,7 +50,6 @@ public class PlayerBehaviour : Photon.PunBehaviour
 	{
 		
 	}
-
 	public void SetIdle()
 	{
 		behaviour = BehaviourType.Idle;

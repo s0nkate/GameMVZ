@@ -43,25 +43,19 @@ public class Player1Controller : Photon.MonoBehaviour
 
     void Awake()
     {
-        
-        
-        
-
         anim = gameObject.GetComponent<Animator>();
 
-        trigger.enabled = false;
-        
+        trigger.enabled = false;       
     }
     void Start()
     {
 
         LoadData();
         SkillGUI skillGUI = GameObject.FindWithTag("SkillGUI").GetComponent<SkillGUI>();
-        GameObject playerBehaviour = GameObject.FindWithTag("PlayerBehaviour");
 		GameObject playerSpawn = GameObject.FindWithTag("PlayerSpawn");
 
         transform.parent = playerSpawn.transform;
-        SetPlayerBehaviour(playerBehaviour);
+        playerBehaviour = GameObject.FindWithTag("SkillGUI").GetComponent<PlayerBehaviour>();
 
         text1 = skillGUI.text1;
         text2 = skillGUI.text2;
@@ -177,11 +171,7 @@ public class Player1Controller : Photon.MonoBehaviour
                 isCooldown2 = false;
             }
         }
-
-
-
-
-       
+      
         anim.SetBool("Skill1", skill1);
         anim.SetBool("Skill2", skill2);
         anim.SetBool("Attacking", attacking);
@@ -279,11 +269,6 @@ public class Player1Controller : Photon.MonoBehaviour
     {
 
         i = playerlist.selectedPlayerindex;
-    }
-    
-    public void SetPlayerBehaviour(GameObject playerBehaviour)
-    {
-        this.playerBehaviour = playerBehaviour.GetComponent<PlayerBehaviour>();
     }
   
 }
