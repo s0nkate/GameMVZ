@@ -11,17 +11,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aab94e02876ca3543ab673770ee15b07, type: 3}
   m_Name: InventoryPlayerList
   m_EditorClassIdentifier: 
-  selectedPlayerindex: 8
+  selectedPlayerindex: 4
   playerList:
   - _image: {fileID: 2800000, guid: c41a479c5b89cf84fa61a589b2f758da, type: 3}
     _Name: Sasuke
     _Dmg: 20
     _Delay: 0.3
     _DmgSkill1: 80
-    _Cooldown1: 7
+    _Cooldown1: 1
     _Image1: {fileID: 21300004, guid: b456c962b7bd85544b2a8368a19cd75b, type: 3}
     _DmgSkill2: 220
-    _Cooldown2: 15
+    _Cooldown2: 1
     _Image2: {fileID: 21300008, guid: 7af727ae038ab674db9a92511fc3d36f, type: 3}
     Price: 0
     playskill1: {fileID: 7400000, guid: 6ed525c0d0bcf0848862d052ff0cccc8, type: 2}
@@ -34,10 +34,10 @@ MonoBehaviour:
     _Dmg: 20
     _Delay: 0.3
     _DmgSkill1: 150
-    _Cooldown1: 10
+    _Cooldown1: 1
     _Image1: {fileID: 21300006, guid: 85a8af187bcd2684d8b2d877f9316e69, type: 3}
     _DmgSkill2: 220
-    _Cooldown2: 20
+    _Cooldown2: 1
     _Image2: {fileID: 21300018, guid: 49537196f236ebe4f85a0d21906c0e01, type: 3}
     Price: 0
     playskill1: {fileID: 7400000, guid: 490db480628ace44e960070492658215, type: 2}
@@ -50,10 +50,10 @@ MonoBehaviour:
     _Dmg: 30
     _Delay: 0.3
     _DmgSkill1: 200
-    _Cooldown1: 10
+    _Cooldown1: 1
     _Image1: {fileID: 21300000, guid: 65a9ba962f3c5bf4a8576274ee02885e, type: 3}
     _DmgSkill2: 300
-    _Cooldown2: 20
+    _Cooldown2: 1
     _Image2: {fileID: 21300014, guid: 59283993edfbcaa40ae0e55147f2e344, type: 3}
     Price: 0
     playskill1: {fileID: 7400000, guid: deca720387f72764fb140d12279622aa, type: 2}
@@ -66,10 +66,10 @@ MonoBehaviour:
     _Dmg: 25
     _Delay: 0.3
     _DmgSkill1: 200
-    _Cooldown1: 10
+    _Cooldown1: 1
     _Image1: {fileID: 21300004, guid: 08d7d088f9240294690ecea7f7974c99, type: 3}
     _DmgSkill2: 250
-    _Cooldown2: 15
+    _Cooldown2: 1
     _Image2: {fileID: 21300010, guid: 3fe5341aa9b24034db26f5521c7a7edd, type: 3}
     Price: 0
     playskill1: {fileID: 7400000, guid: fd23f24d96f86954aa025165b7eeabc8, type: 2}
@@ -82,10 +82,10 @@ MonoBehaviour:
     _Dmg: 30
     _Delay: 0.3
     _DmgSkill1: 200
-    _Cooldown1: 15
+    _Cooldown1: 1
     _Image1: {fileID: 21300002, guid: 04ab4fa3bf773e04ebb0754978c511af, type: 3}
     _DmgSkill2: 250
-    _Cooldown2: 15
+    _Cooldown2: 1
     _Image2: {fileID: 21300020, guid: 84f6ac049e26cab4f800cb3ff16a2848, type: 3}
     Price: 0
     playskill1: {fileID: 7400000, guid: 2d7b7f019cc41cd44874dd5a908ee20d, type: 2}
@@ -98,10 +98,10 @@ MonoBehaviour:
     _Dmg: 30
     _Delay: 0.3
     _DmgSkill1: 100
-    _Cooldown1: 10
+    _Cooldown1: 1
     _Image1: {fileID: 21300010, guid: 99235fe28ac4b354995d7cba8ab95e8f, type: 3}
     _DmgSkill2: 300
-    _Cooldown2: 15
+    _Cooldown2: 1
     _Image2: {fileID: 21300010, guid: 646e8f384e91ad842a6d8ed3fc15c984, type: 3}
     Price: 0
     playskill1: {fileID: 7400000, guid: d4a833022acf647418d0010378765eb3, type: 2}
@@ -114,10 +114,10 @@ MonoBehaviour:
     _Dmg: 40
     _Delay: 0.3
     _DmgSkill1: 150
-    _Cooldown1: 10
+    _Cooldown1: 1
     _Image1: {fileID: 21300014, guid: 20b99a0745544e64697486cf6bc7c3e1, type: 3}
     _DmgSkill2: 320
-    _Cooldown2: 15
+    _Cooldown2: 1
     _Image2: {fileID: 21300004, guid: 1677e6ee28a38a7409d39c191f64a439, type: 3}
     Price: 0
     playskill1: {fileID: 7400000, guid: 5734b2eea8c74d84c8fbf906790e3190, type: 2}
@@ -130,10 +130,10 @@ MonoBehaviour:
     _Dmg: 30
     _Delay: 0.3
     _DmgSkill1: 200
-    _Cooldown1: 15
+    _Cooldown1: 1
     _Image1: {fileID: 21300004, guid: 4a14cbd8892e59647a044cd538fc27be, type: 3}
     _DmgSkill2: 300
-    _Cooldown2: 15
+    _Cooldown2: 1
     _Image2: {fileID: 21300016, guid: 2ff3989fab36cd9429ef7487d3e0c4fe, type: 3}
     Price: 0
     playskill1: {fileID: 7400000, guid: c689b0e7147999d4a8794a851d46dc1c, type: 2}
@@ -146,10 +146,10 @@ MonoBehaviour:
     _Dmg: 30
     _Delay: 0.3
     _DmgSkill1: 300
-    _Cooldown1: 15
+    _Cooldown1: 1
     _Image1: {fileID: 21300014, guid: 051d5fdfd187e1043b9bf753aca91866, type: 3}
     _DmgSkill2: 400
-    _Cooldown2: 20
+    _Cooldown2: 1
     _Image2: {fileID: 21300010, guid: 58256af54864cf44aaff9b0e41a80dc4, type: 3}
     Price: 0
     playskill1: {fileID: 7400000, guid: d63567a415f1d1347bae354d22d296a9, type: 2}
