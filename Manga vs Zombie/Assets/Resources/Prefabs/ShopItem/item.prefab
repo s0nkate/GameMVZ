@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 114307888564580084}
   - component: {fileID: 114807833149319982}
   m_Layer: 5
-  m_Name: sasuke
+  m_Name: item
   m_TagString: background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
