@@ -269,6 +269,7 @@ public class Player1Controller : Photon.MonoBehaviour
     {
 
         i = playerlist.selectedPlayerindex;
+        
     }
   
 }

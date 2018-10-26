@@ -15,6 +15,10 @@ public class ShopManager : MonoBehaviour {
 	public Player selectedPlayer;
 	public List<Item> selcectedItems;
 	public List<Skill> selcectedSkills;
+	public InventoryPlayerList inventoryPlayerList;
+	public InventoryItemList inventoryItemList;
+	public GameObject prefab;
+	public GameObject buyPopup;
 	public static ShopManager Instance {
 		get {
 			if (_instance == null) {
@@ -32,23 +36,39 @@ public class ShopManager : MonoBehaviour {
 	}
 
 	void Start () {
+		// inventoryPlayerList.selectedPlayerindex = 2;
 		GameObject tabPlayer = GameObject.FindGameObjectWithTag ("listplayer");
 		GameObject tabItem = GameObject.FindGameObjectWithTag ("listitem");
-		GameObject tabSkill = GameObject.FindGameObjectWithTag ("listskill");
 		moneyText = GameObject.FindWithTag ("coin").GetComponent<Text> ();
-
-		listPlayer = tabPlayer.GetComponent<ShopTab> ().ListItem;
-		listItem = tabItem.GetComponent<ShopTab> ().ListItem;
-		listSkill = tabSkill.GetComponent<ShopTab> ().ListItem;
-		Load();
+		
+		LoadPlayer(tabPlayer);
+		// Load();
 		Display(false);
 		//DontDestroyOnLoad(gameObject);
 	}
 
+	void LoadPlayer(GameObject tabPlayer)
+	{
+		foreach (var player in inventoryPlayerList.playerList)
+		{
+			GameObject playerPrefab = Instantiate(prefab, transform.position, transform.localRotation, tabPlayer.transform) as GameObject;
+			// playerPrefab.AddComponent<>();
+			ShopItems shopItems = playerPrefab.GetComponent<ShopItems>();
+			shopItems.price = player.Price;
+			Texture2D  texture = player._image;
+			shopItems.image = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+			shopItems.name = player._Name;
+			string info = "Name: " + player._Name +"\nDamage: " + player._Dmg + "\nTime delay:" + player._Delay;
+			shopItems.info = info;
+			shopItems.buyPopup = buyPopup;
+		}
+	}
+
+
 	public void Buy (ShopItems go) {
 		//kiem tra tien
-		if (go.price <= GameManager.Instance.money && go.price >= 0 && !go.isBought) {
-			GameManager.Instance.money -= go.price;
+		if (go.price <= GameManager.Instance.Gold && go.price >= 0 && !go.isBought) {
+			GameManager.Instance.Gold -= go.price;
 			go.isBought = true;
 			Save();
 		}
@@ -58,7 +78,7 @@ public class ShopManager : MonoBehaviour {
 	void Update () {
 		moneyText = GameObject.FindWithTag ("coin").GetComponent<Text> ();
 		//coin = int.Parse (coinText.text);
-		moneyText.text = GameManager.Instance.money.ToString ();
+		moneyText.text = GameManager.Instance.Gold.ToString ();
 		CheckItem(listItem);
 		CheckItem(listPlayer);
 		CheckItem(listSkill);
@@ -75,7 +95,7 @@ public class ShopManager : MonoBehaviour {
 			temp = one.GetComponent<ShopItems> ();
 			if(!temp.isBought)
 			{	
-				if(temp.price > GameManager.Instance.money)
+				if(temp.price > GameManager.Instance.Gold)
 					temp.canBuy = false;
 				else
 					temp.canBuy = true;
@@ -120,23 +140,24 @@ public class ShopManager : MonoBehaviour {
 		SaveAList(listItem);
 		SaveAList(listSkill);
 
-		PlayerPrefs.SetInt("ItemSaveCount", itemSaveCount);
-		PlayerPrefs.SetInt("ItemSelectCount", itemSelectCount);
-		PlayerPrefs.SetInt("Money", GameManager.Instance.money);
+		// PlayerPrefs.SetInt("ItemSaveCount", itemSaveCount);
+		// PlayerPrefs.SetInt("ItemSelectCount", itemSelectCount);
+		// PlayerPrefs.SetInt("Money", GameManager.Instance.money);
 		PlayerPrefs.Save();
 	}
 
-	public void Load()
-	{
-		GameManager.Instance.money = PlayerPrefs.GetInt("Money");
-		itemSaveCount = PlayerPrefs.GetInt("ItemSaveCount");		
-		for(var i = 0; i< itemSaveCount; i++)
-		{
-			string itemName = PlayerPrefs.GetString("Item"+i);
-			GameObject.Find(itemName).GetComponent<ShopItems>().isBought = true;
-		}
-		SaveItemSelected();
-	}
+	// public void Load()
+	// {
+
+	// 	GameManager.Instance.money = PlayerPrefs.GetInt("Money");
+	// 	itemSaveCount = PlayerPrefs.GetInt("ItemSaveCount");		
+	// 	for(var i = 0; i< itemSaveCount; i++)
+	// 	{
+	// 		string itemName = PlayerPrefs.GetString("Item"+i);
+	// 		GameObject.Find(itemName).GetComponent<ShopItems>().isBought = true;
+	// 	}
+	// 	SaveItemSelected();
+	// }
 
 
 	public void SaveItemSelected()

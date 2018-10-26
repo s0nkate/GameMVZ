@@ -23,13 +23,22 @@ public class CreateInventoryItemList
         AssetDatabase.SaveAssets();
         return asset1;
     }
-    [MenuItem("Assets/Create/Inventory Map")]
-    public static InventoryMap Create2()
+    [MenuItem("Assets/Create/Inventory Scene")]
+    public static InventorySceneList Create2()
     {
-        InventoryMap asset2 = ScriptableObject.CreateInstance<InventoryMap>();
+        InventorySceneList asset2 = ScriptableObject.CreateInstance<InventorySceneList>();
 
-        AssetDatabase.CreateAsset(asset2, "Assets/InventoryMap.asset");
+        AssetDatabase.CreateAsset(asset2, "Assets/InventoryScene.asset");
         AssetDatabase.SaveAssets();
         return asset2;
+    }
+    [MenuItem("Assets/Create/Inventory Item")]
+    public static InventoryItemList Create3()
+    {
+        InventoryItemList asset3 = ScriptableObject.CreateInstance<InventoryItemList>();
+
+        AssetDatabase.CreateAsset(asset3, "Assets/InventoryItem.asset");
+        AssetDatabase.SaveAssets();
+        return asset3;
     }
 }

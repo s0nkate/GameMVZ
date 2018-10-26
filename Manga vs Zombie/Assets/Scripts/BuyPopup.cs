@@ -33,8 +33,8 @@ public class BuyPopup : MonoBehaviour {
 
 	public void Click(GameObject item)
 	{
-		this.item = item;
 		gameObject.SetActive(true);
+		this.item = item;
 	}
 
 	void UpdateItem(GameObject item)

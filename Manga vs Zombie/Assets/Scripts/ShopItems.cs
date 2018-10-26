@@ -19,6 +19,7 @@ public class ShopItems : MonoBehaviour {
 	private GameObject pricePanel;
 	private Color color;
 	public GameObject useButton;
+	public string name;
 
 	void Start () {
 		
@@ -45,7 +46,7 @@ public class ShopItems : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		info = GetComponent<IShopItems> ().GetInfo();
+		
 		if (isBought) {
 			pricePanel.SetActive (false);
 			useButton.SetActive(true);
@@ -80,6 +81,7 @@ public class ShopItems : MonoBehaviour {
 
 	public void Click () {
 		if (!isBought && canBuy) {
+			Debug.Log("click buy");
 			buyPopup.GetComponent<BuyPopup> ().Click (gameObject);
 		} 
 	}
