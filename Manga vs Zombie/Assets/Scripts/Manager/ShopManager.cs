@@ -43,7 +43,7 @@ public class ShopManager : MonoBehaviour {
 		
 		LoadPlayer(tabPlayer);
 		// Load();
-		Display(false);
+		// Display(false);
 		//DontDestroyOnLoad(gameObject);
 	}
 

@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
 	public GameObject playScene;
+    public GameObject loading;
 	public GameObject requestJoinPopup;
 	public GameObject finalPopup;
 	public int Score;
@@ -33,7 +34,7 @@ public class GameManager : MonoBehaviour {
     public GameObject NextLvUI;
     public GameObject MenuUI;
     public GameObject YNUI;
-    public GameObject Player;
+    
     public GameObject Highscore;
     public GameObject YNQuitUI;
     public GameObject start;
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour {
     public GameObject backResult;
     public GameObject Pausebtn;
     private bool endgame = false;
+    bool isPlaying = false;
 	// public GameObject[] instancePlayer;
 	public static GameManager Instance = null;
 	private void Awake()
@@ -135,7 +137,7 @@ public class GameManager : MonoBehaviour {
        
       
 
-        if (time==0 && endgame==false && i< scenelist.scenelist.Count-1)
+        if (isPlaying && time==0 && endgame==false && i< scenelist.scenelist.Count-1)
         {
             NextLv();
             UpLevel();
@@ -227,8 +229,10 @@ public class GameManager : MonoBehaviour {
         quitResult.SetActive(true);
         backResult.SetActive(true);
         Pausebtn.SetActive(true);
+        loading.SetActive(false);
+        
 		playScene.SetActive(true);
-
+        isPlaying = true;
         pause = false;
         endgame = false;
         time = scenelist.scenelist[0].TimePlay;
@@ -298,7 +302,8 @@ public class GameManager : MonoBehaviour {
     public void NoQbtn()
     {
         YNQuitUI.SetActive(false);
-        Pausebtn.SetActive(true);
+        if(isPlaying)
+            Pausebtn.SetActive(true);
         if (MenuUI.activeInHierarchy == true)
         {
             start.SetActive(true);
