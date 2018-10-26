@@ -9764,6 +9764,10 @@ MonoBehaviour:
   text2: {fileID: 118701408}
   imageColldown1: {fileID: 2124860209}
   imageColldown2: {fileID: 738582700}
+  image1: {fileID: 79069309}
+  image2: {fileID: 2124860209}
+  image3: {fileID: 412385180}
+  image4: {fileID: 738582700}
 --- !u!114 &1604261510
 MonoBehaviour:
   m_ObjectHideFlags: 0
