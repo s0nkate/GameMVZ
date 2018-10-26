@@ -18,19 +18,19 @@ MonoBehaviour:
     Foregournd: {fileID: 2800000, guid: 0eb2b6a41af67d94e8dd7e774444036a, type: 3}
     Tower: {fileID: 2800000, guid: ec16264a5b09a3e41b92af722a1fa9e1, type: 3}
     Towerenemy: {fileID: 2800000, guid: 17a1c6289c575a64b9252975d8b967fb, type: 3}
-  - TimePlay: 1
+  - TimePlay: 6
     DelayEnemy: 4
     Backgournd: {fileID: 2800000, guid: 6b7874053c88e264889abb237f89d9fe, type: 3}
     Foregournd: {fileID: 2800000, guid: 0eb2b6a41af67d94e8dd7e774444036a, type: 3}
     Tower: {fileID: 2800000, guid: ec16264a5b09a3e41b92af722a1fa9e1, type: 3}
     Towerenemy: {fileID: 2800000, guid: dafd310f7b0d5e049940b2eea8a7ba85, type: 3}
-  - TimePlay: 2
+  - TimePlay: 7
     DelayEnemy: 3.5
     Backgournd: {fileID: 2800000, guid: 62b7377ca4b42f94d9e1ad726b45997f, type: 3}
     Foregournd: {fileID: 2800000, guid: 0eb2b6a41af67d94e8dd7e774444036a, type: 3}
     Tower: {fileID: 2800000, guid: ec16264a5b09a3e41b92af722a1fa9e1, type: 3}
     Towerenemy: {fileID: 2800000, guid: dafd310f7b0d5e049940b2eea8a7ba85, type: 3}
-  - TimePlay: 10
+  - TimePlay: 8
     DelayEnemy: 3
     Backgournd: {fileID: 2800000, guid: 900851948443fde469369980d12122e3, type: 3}
     Foregournd: {fileID: 2800000, guid: 0eb2b6a41af67d94e8dd7e774444036a, type: 3}

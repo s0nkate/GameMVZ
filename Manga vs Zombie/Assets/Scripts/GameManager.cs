@@ -21,8 +21,8 @@ public class GameManager : MonoBehaviour {
     public Texture2D Foregournd;
     public Texture2D Tower;
     public Texture2D Towerenemy;
-    public int i=0;
-    float t=0;
+    public int i;
+    float t = 0;
     private bool pause = true;
     public GameObject PauseUI;
     public GameObject ResultUI;
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour {
     public GameObject Pausebtn;
     private bool endgame = false;
     void Start () {
-
+        i = 0;
         YNUI.SetActive(false);
         Player.SetActive(false);
         MenuUI.SetActive(true);
@@ -166,7 +166,7 @@ public class GameManager : MonoBehaviour {
         quitResult.SetActive(true);
         backResult.SetActive(true);
         Pausebtn.SetActive(true);
-
+        i = 0;
         pause = false;
         endgame = false;
         time = scenelist.scenelist[0].TimePlay;
