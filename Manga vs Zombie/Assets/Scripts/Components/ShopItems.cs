@@ -3,7 +3,15 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
+public enum ShopItemType : int
+	{
+		Player = 0,
+		Item = 1,
+	}
 public class ShopItems : MonoBehaviour {
+	public int index;
+	public ShopItemType type;
 	public int price;
 	public Sprite image;
 	public bool isBought;
@@ -92,21 +100,33 @@ public class ShopItems : MonoBehaviour {
 	}
 
 	public void ChangeSelected()
-	{			
+	{	
+
+		//unselect		
 		if(isSelected)
 		{
-			isSelected = false;
-			GetComponent<IShopItems>().UnSelectItem();
+			if(type == ShopItemType.Player)
+			{
+				return;
+			}
+			else 
+			{
+				isSelected = false;
+			}		
 		}
-			
+		//select
 		else
-		{			
-			if(GetComponent<IShopItems>().SelectItem())
+		{
+			if(type == ShopItemType.Player)
 			{
 				isSelected = true;
-			}			
-		}
-
+			}
+			else
+			{
+				isSelected = true;
+			}	
+		}		
+		// Debug.Log(ShopManager.Instance.G);
 		ShopManager.Instance.Save();	
 	}
 	

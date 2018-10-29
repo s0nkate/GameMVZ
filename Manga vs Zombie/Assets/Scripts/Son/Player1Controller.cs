@@ -94,7 +94,6 @@ public class Player1Controller : Photon.MonoBehaviour
         animatorOverrideController.ApplyOverrides(clipOverrides);
         GetComponent<Animator>().runtimeAnimatorController = animatorOverrideController;
     }
-
     void Update()
     {
         if (h > 0 && !faceright)
