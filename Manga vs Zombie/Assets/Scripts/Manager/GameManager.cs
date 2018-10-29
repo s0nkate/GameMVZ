@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour {
         
     }
     public void ExitRoom()
+
     {
         PhotonNetwork.LeaveRoom();
     }
