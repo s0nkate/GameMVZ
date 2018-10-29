@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour {
     public GameObject backResult;
     public GameObject Pausebtn;
     private bool endgame = false;
-    bool isPlaying = false;
+    public bool isPlaying = false;
     public List<ShopItems> playerShopList;
     public List<ShopItems> itemShopList;
 	// public GameObject[] instancePlayer;
