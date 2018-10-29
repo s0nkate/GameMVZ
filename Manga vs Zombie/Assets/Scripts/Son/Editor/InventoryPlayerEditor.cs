@@ -280,10 +280,10 @@ public class InventoryItemEditor : EditorWindow
                         inventoryEnemyList.enemyList[viewIndex1 - 1].score = EditorGUILayout.IntField("Scose ", inventoryEnemyList.enemyList[viewIndex1 - 1].score, GUILayout.ExpandWidth(false));
                         type = (InventoryEnemy.Type)EditorGUILayout.EnumPopup("Type", type, GUILayout.ExpandWidth(false));
                         GUILayout.Label("Animation", EditorStyles.boldLabel);
-                        inventoryEnemyList.enemyList[viewIndex1 - 1].idle = EditorGUILayout.ObjectField("Idle", inventoryEnemyList.enemyList[viewIndex - 1].idle, typeof(AnimationClip), false) as AnimationClip;
-                        inventoryEnemyList.enemyList[viewIndex1 - 1].walk = EditorGUILayout.ObjectField("Walk", inventoryEnemyList.enemyList[viewIndex - 1].walk, typeof(AnimationClip), false) as AnimationClip;
-                        inventoryEnemyList.enemyList[viewIndex1- 1].attack = EditorGUILayout.ObjectField("Attack", inventoryEnemyList.enemyList[viewIndex - 1].attack, typeof(AnimationClip), false) as AnimationClip;
-                        inventoryEnemyList.enemyList[viewIndex1 - 1].dead = EditorGUILayout.ObjectField("Dead", inventoryEnemyList.enemyList[viewIndex - 1].dead, typeof(AnimationClip), false) as AnimationClip;
+                        inventoryEnemyList.enemyList[viewIndex1 - 1].idle = EditorGUILayout.ObjectField("Idle", inventoryEnemyList.enemyList[viewIndex1 - 1].idle, typeof(AnimationClip), false) as AnimationClip;
+                        inventoryEnemyList.enemyList[viewIndex1 - 1].walk = EditorGUILayout.ObjectField("Walk", inventoryEnemyList.enemyList[viewIndex1 - 1].walk, typeof(AnimationClip), false) as AnimationClip;
+                        inventoryEnemyList.enemyList[viewIndex1- 1].attack = EditorGUILayout.ObjectField("Attack", inventoryEnemyList.enemyList[viewIndex1 - 1].attack, typeof(AnimationClip), false) as AnimationClip;
+                        inventoryEnemyList.enemyList[viewIndex1 - 1].dead = EditorGUILayout.ObjectField("Dead", inventoryEnemyList.enemyList[viewIndex1 - 1].dead, typeof(AnimationClip), false) as AnimationClip;
 
 
 
