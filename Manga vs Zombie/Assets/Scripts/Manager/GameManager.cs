@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using ECSComponent;
 
 public class GameManager : MonoBehaviour {
 
@@ -198,7 +199,8 @@ public class GameManager : MonoBehaviour {
         Towerenemy.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Towerenemy;
         Towerenemy1.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Towerenemy;
         
-
+        // ZombiePool.onNextLevel.Invoke();
+        // House.onNextLevel.Invoke();
         Score = PlayerPrefs.GetInt("Score");
         Gold = PlayerPrefs.GetInt("Gold");
     }
@@ -285,7 +287,7 @@ public class GameManager : MonoBehaviour {
         Highscore.SetActive(false);
         playScene.SetActive(false);
         HighScoreText.text = HighScore.ToString();
-       ExitRoom();
+        ExitRoom();
         isPlaying = false;
         ResultUI.SetActive(false);
        

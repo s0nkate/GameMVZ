@@ -39,11 +39,13 @@ public class InventoryItemEditor : EditorWindow
         {
             string objectPath1 = EditorPrefs.GetString("ObjectPath1");
             inventoryEnemyList = AssetDatabase.LoadAssetAtPath(objectPath1, typeof(InventoryEnemyList)) as InventoryEnemyList;
+            
         }
         if (EditorPrefs.HasKey("ObjectPath2"))
         {
             string objectPath2 = EditorPrefs.GetString("ObjectPath2");
             inventorySceneList = AssetDatabase.LoadAssetAtPath(objectPath2, typeof(InventorySceneList)) as InventorySceneList;
+            
         }
         if (EditorPrefs.HasKey("ObjectPath3"))
         {
@@ -316,6 +318,7 @@ public class InventoryItemEditor : EditorWindow
                 GUILayout.Label(" Scene Editor", EditorStyles.boldLabel);
                 if (inventorySceneList != null)
                 {
+                    Debug.Log("if khac null 1");
                     if (GUILayout.Button("Show Scene List"))
                     {
                         EditorUtility.FocusProjectWindow();
@@ -326,9 +329,11 @@ public class InventoryItemEditor : EditorWindow
                 {
                     OpenItemList();
                 }
+                Debug.Log("if null ?");
                 GUILayout.EndHorizontal();
                 if (inventorySceneList != null)
                 {
+                    Debug.Log("if khac null 2");
                     GUILayout.BeginHorizontal();
 
                     GUILayout.Space(10);
@@ -617,6 +622,7 @@ public class InventoryItemEditor : EditorWindow
         }
         if (tab == 1)
         {
+            Debug.Log("tab=1");
             string absPath1 = EditorUtility.OpenFilePanel("Select Inventory Item List", "", "");
             if (absPath1.StartsWith(Application.dataPath))
             {
@@ -632,15 +638,22 @@ public class InventoryItemEditor : EditorWindow
         }
         if (tab == 2)
         {
+             Debug.Log("tab=2");
             string absPath2 = EditorUtility.OpenFilePanel("Select Inventory Scene", "", "");
             if (absPath2.StartsWith(Application.dataPath))
             {
+                Debug.Log("absPath2");
                 string relPath2 = absPath2.Substring(Application.dataPath.Length - "Assets".Length);
                 inventorySceneList = AssetDatabase.LoadAssetAtPath(relPath2, typeof(InventorySceneList)) as InventorySceneList;
                 if (inventorySceneList == null)
+                {
+                    Debug.Log("null create new");
                     inventorySceneList = new InventorySceneList();
+                }
+                    
                 if (inventorySceneList)
                 {
+                    Debug.Log("k null");
                     EditorPrefs.SetString("ObjectPath2", relPath2);
                 }
             }

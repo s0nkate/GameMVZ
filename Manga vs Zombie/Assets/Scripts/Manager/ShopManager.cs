@@ -98,6 +98,7 @@ public class ShopManager : MonoBehaviour {
 		if (go.price <= GameManager.Instance.Gold && go.price >= 0 && !go.isBought) {
 			GameManager.Instance.Gold -= go.price;
 			go.isBought = true;
+			inventoryPlayerList.selectedPlayerindex = go.index;
 			Save();
 		}
 	}
@@ -139,8 +140,8 @@ public class ShopManager : MonoBehaviour {
 			{
 				if(item.type == ShopItemType.Player)
 				{
-					// PlayerPrefs.SetInt("PlayerBought"  + playerBoughtCount++, item.index);
-					inventoryPlayerList.selectedPlayerindex = item.index;
+					PlayerPrefs.SetInt("PlayerBought"  + playerBoughtCount++, item.index);
+					
 				}
 				else
 				{
@@ -151,7 +152,8 @@ public class ShopManager : MonoBehaviour {
 			if(item.isSelected)
 			{
 				if(item.type == ShopItemType.Player)
-					PlayerPrefs.SetInt("PlayerSelected", item.index);
+					inventoryPlayerList.selectedPlayerindex = item.index;
+					// PlayerPrefs.SetInt("PlayerSelected", item.index);
 				else
 					PlayerPrefs.SetInt("ItemSelected" + itemSelected++, item.index);
 			}
@@ -182,6 +184,11 @@ public class ShopManager : MonoBehaviour {
 		// if(playerSelected != -1)
 		// {
 		// 	GameManager.Instance.playerShopList[playerSelected].isSelected = true;
+		// }
+		// else
+		// {
+		GameManager.Instance.playerShopList[defaultPlayerIndex].isBought = true;
+		GameManager.Instance.playerShopList[defaultPlayerIndex].isSelected = true;
 		// }
 
 		int itemSelected0 = PlayerPrefs.GetInt("ItemSelected0", -1);
