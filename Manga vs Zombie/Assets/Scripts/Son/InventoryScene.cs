@@ -7,10 +7,11 @@ public class InventoryScene  {
    
     public int TimePlay;
     public float DelayEnemy;
-    public Texture2D Backgournd;
-    public Texture2D Foregournd;
-    public Texture2D Tower;
-    public Texture2D Towerenemy;
+    public int Healtower;
+    public Sprite Backgournd;
+    public Sprite Foregournd;
+    public Sprite Tower;
+    public Sprite Towerenemy;
 
 
 }

@@ -22,10 +22,11 @@ public class GameManager : MonoBehaviour {
     public Text GoldWin;
 
     public InventorySceneList scenelist;
-    public Texture2D Backgournd;
-    public Texture2D Foregournd;
-    public Texture2D Tower;
-    public Texture2D Towerenemy;
+    public GameObject Backgournd;
+    public GameObject Foregournd;
+    public GameObject Tower;
+    public GameObject Towerenemy;
+    public GameObject Towerenemy1;
     public int i=0;
     float t=0;
     private bool pause = true;
@@ -71,6 +72,7 @@ public class GameManager : MonoBehaviour {
         NextLvUI.SetActive(false);
         Highscore.SetActive(false);
         YNQuitUI.SetActive(false);
+        //Backgournd = gameObject.GetComponent<SpriteRenderer>().sprite;
         
     }
     public void ExitRoom()
@@ -136,12 +138,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 
-	
 
-	public void RestartGame(int level)
-	{
-
-	}
 
 	public void ExitGame()
 	{
@@ -197,10 +194,11 @@ public class GameManager : MonoBehaviour {
   
         i++;
         time = scenelist.scenelist[i].TimePlay;
-        Backgournd = scenelist.scenelist[i].Backgournd;
-        Foregournd = scenelist.scenelist[i].Foregournd;
-        Tower = scenelist.scenelist[i].Tower;
-        Towerenemy = scenelist.scenelist[i].Towerenemy;
+        Backgournd.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Backgournd;
+        Foregournd.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Foregournd;
+        Tower.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Tower;
+        Towerenemy.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Towerenemy;
+        Towerenemy1.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Towerenemy;
         
         Score = PlayerPrefs.GetInt("Score");
         Gold = PlayerPrefs.GetInt("Gold");
@@ -223,7 +221,7 @@ public class GameManager : MonoBehaviour {
     }
     public void Pause()
     {
-        if (isPlaying == false && NextLvUI.activeInHierarchy==false)
+        if (isPlaying == true && NextLvUI.activeInHierarchy==false)
         {
             PauseUI.SetActive(true);
             pause = true;
@@ -263,15 +261,16 @@ public class GameManager : MonoBehaviour {
         time = scenelist.scenelist[0].TimePlay;
         Score = 0;
         Gold = 0;
-        Backgournd = scenelist.scenelist[0].Backgournd;
-        Foregournd = scenelist.scenelist[0].Foregournd;
-        Tower = scenelist.scenelist[0].Tower;
-        Towerenemy = scenelist.scenelist[0].Towerenemy;
+        Backgournd.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Backgournd;
+        Foregournd.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Foregournd;
+        Tower.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Tower;
+        Towerenemy.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Towerenemy;
+        Towerenemy1.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Towerenemy;
     }
     public void BackMenu()
     {
         PauseUI.SetActive(false);
-        YNUI.SetActive(true);
+        YNUI.SetActive(true);   
         quitResult.SetActive(false);
         backResult.SetActive(false);
         Pausebtn.SetActive(false);
@@ -288,6 +287,7 @@ public class GameManager : MonoBehaviour {
         HighScoreText.text = HighScore.ToString();
        ExitRoom();
         isPlaying = false;
+        ResultUI.SetActive(false);
        
         
      
@@ -310,8 +310,9 @@ public class GameManager : MonoBehaviour {
         }
         if (ResultUI.activeInHierarchy == true)
         {
-            quitResult.SetActive(false);
-            backResult.SetActive(false);
+            //quitResult.SetActive(false);
+            //backResult.SetActive(false);
+            ResultUI.SetActive(false);
         }
         if (MenuUI.activeInHierarchy == true)
         {

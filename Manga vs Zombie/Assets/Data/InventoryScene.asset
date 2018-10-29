@@ -14,26 +14,30 @@ MonoBehaviour:
   scenelist:
   - TimePlay: 5
     DelayEnemy: 5
-    Backgournd: {fileID: 2800000, guid: d9513a7d4c873c34cb721c60026edafc, type: 3}
-    Foregournd: {fileID: 2800000, guid: 0eb2b6a41af67d94e8dd7e774444036a, type: 3}
-    Tower: {fileID: 2800000, guid: ec16264a5b09a3e41b92af722a1fa9e1, type: 3}
-    Towerenemy: {fileID: 2800000, guid: 17a1c6289c575a64b9252975d8b967fb, type: 3}
+    Healtower: 1000
+    Backgournd: {fileID: 21300000, guid: 8b5fc53702459e64399e1648f0cedf4b, type: 3}
+    Foregournd: {fileID: 21300000, guid: b78cad6431209a247a5a25b30684d5ab, type: 3}
+    Tower: {fileID: 21300000, guid: fd5af705975442c45b79601a852b3676, type: 3}
+    Towerenemy: {fileID: 21300000, guid: 19bddf6f98beb6d458c77f229f452f6d, type: 3}
   - TimePlay: 1
     DelayEnemy: 4
-    Backgournd: {fileID: 2800000, guid: 6b7874053c88e264889abb237f89d9fe, type: 3}
-    Foregournd: {fileID: 2800000, guid: 0eb2b6a41af67d94e8dd7e774444036a, type: 3}
-    Tower: {fileID: 2800000, guid: ec16264a5b09a3e41b92af722a1fa9e1, type: 3}
-    Towerenemy: {fileID: 2800000, guid: dafd310f7b0d5e049940b2eea8a7ba85, type: 3}
+    Healtower: 1000
+    Backgournd: {fileID: 21300000, guid: 54cf32d2aa618ee4d883365db704390f, type: 3}
+    Foregournd: {fileID: 21300000, guid: b78cad6431209a247a5a25b30684d5ab, type: 3}
+    Tower: {fileID: 21300000, guid: fd5af705975442c45b79601a852b3676, type: 3}
+    Towerenemy: {fileID: 21300000, guid: 19bddf6f98beb6d458c77f229f452f6d, type: 3}
   - TimePlay: 2
     DelayEnemy: 3.5
-    Backgournd: {fileID: 2800000, guid: 62b7377ca4b42f94d9e1ad726b45997f, type: 3}
-    Foregournd: {fileID: 2800000, guid: 0eb2b6a41af67d94e8dd7e774444036a, type: 3}
-    Tower: {fileID: 2800000, guid: ec16264a5b09a3e41b92af722a1fa9e1, type: 3}
-    Towerenemy: {fileID: 2800000, guid: dafd310f7b0d5e049940b2eea8a7ba85, type: 3}
+    Healtower: 1000
+    Backgournd: {fileID: 21300000, guid: 7d7c34ff91f171243982f8a2dbad6dae, type: 3}
+    Foregournd: {fileID: 21300000, guid: b78cad6431209a247a5a25b30684d5ab, type: 3}
+    Tower: {fileID: 21300000, guid: fd5af705975442c45b79601a852b3676, type: 3}
+    Towerenemy: {fileID: 21300000, guid: 19bddf6f98beb6d458c77f229f452f6d, type: 3}
   - TimePlay: 10
     DelayEnemy: 3
-    Backgournd: {fileID: 2800000, guid: 900851948443fde469369980d12122e3, type: 3}
-    Foregournd: {fileID: 2800000, guid: 0eb2b6a41af67d94e8dd7e774444036a, type: 3}
-    Tower: {fileID: 2800000, guid: ec16264a5b09a3e41b92af722a1fa9e1, type: 3}
-    Towerenemy: {fileID: 2800000, guid: 17a1c6289c575a64b9252975d8b967fb, type: 3}
-  selectedsceneindex: 1
+    Healtower: 1000
+    Backgournd: {fileID: 21300000, guid: 2a8e8a8cc54dff842aaac7596d87b5dc, type: 3}
+    Foregournd: {fileID: 21300000, guid: b78cad6431209a247a5a25b30684d5ab, type: 3}
+    Tower: {fileID: 21300000, guid: fd5af705975442c45b79601a852b3676, type: 3}
+    Towerenemy: {fileID: 21300000, guid: 19bddf6f98beb6d458c77f229f452f6d, type: 3}
+  selectedsceneindex: 3

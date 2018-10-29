@@ -370,10 +370,11 @@ public class InventoryItemEditor : EditorWindow
                     GUILayout.Label("Level " + viewIndex3);
                     inventorySceneList.scenelist[viewIndex3 - 1].TimePlay = EditorGUILayout.IntField("Time Play", inventorySceneList.scenelist[viewIndex3 - 1].TimePlay, GUILayout.ExpandWidth(false));
                     inventorySceneList.scenelist[viewIndex3 - 1].DelayEnemy = EditorGUILayout.FloatField("Delay Enemy", inventorySceneList.scenelist[viewIndex3 - 1].DelayEnemy, GUILayout.ExpandWidth(false));
-                    inventorySceneList.scenelist[viewIndex3 - 1].Backgournd = EditorGUILayout.ObjectField("Backgournd", inventorySceneList.scenelist[viewIndex3 - 1].Backgournd, typeof(Texture2D), false) as Texture2D;
-                    inventorySceneList.scenelist[viewIndex3 - 1].Foregournd = EditorGUILayout.ObjectField("Foregournd", inventorySceneList.scenelist[viewIndex3 - 1].Foregournd, typeof(Texture2D), false) as Texture2D;
-                    inventorySceneList.scenelist[viewIndex3 - 1].Tower = EditorGUILayout.ObjectField("Tower", inventorySceneList.scenelist[viewIndex3 - 1].Tower, typeof(Texture2D), false) as Texture2D;
-                    inventorySceneList.scenelist[viewIndex3 - 1].Towerenemy = EditorGUILayout.ObjectField("Tower Enemy", inventorySceneList.scenelist[viewIndex3 - 1].Towerenemy, typeof(Texture2D), false) as Texture2D;
+                    inventorySceneList.scenelist[viewIndex3 - 1].Healtower = EditorGUILayout.IntField("Healtower", inventorySceneList.scenelist[viewIndex3 - 1].Healtower, GUILayout.ExpandWidth(false));
+                    inventorySceneList.scenelist[viewIndex3 - 1].Backgournd = EditorGUILayout.ObjectField("Backgournd", inventorySceneList.scenelist[viewIndex3 - 1].Backgournd, typeof(Sprite), false) as Sprite;
+                    inventorySceneList.scenelist[viewIndex3 - 1].Foregournd = EditorGUILayout.ObjectField("Foregournd", inventorySceneList.scenelist[viewIndex3 - 1].Foregournd, typeof(Sprite), false) as Sprite;
+                    inventorySceneList.scenelist[viewIndex3 - 1].Tower = EditorGUILayout.ObjectField("Tower", inventorySceneList.scenelist[viewIndex3 - 1].Tower, typeof(Sprite), false) as Sprite;
+                    inventorySceneList.scenelist[viewIndex3 - 1].Towerenemy = EditorGUILayout.ObjectField("Tower Enemy", inventorySceneList.scenelist[viewIndex3 - 1].Towerenemy, typeof(Sprite), false) as Sprite;
                     if (GUI.changed)
                     {
                         EditorUtility.SetDirty(inventorySceneList);
