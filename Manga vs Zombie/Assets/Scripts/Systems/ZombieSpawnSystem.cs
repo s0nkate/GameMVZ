@@ -20,7 +20,12 @@ namespace ECSSystem
 		{
 			foreach (var entity in GetEntities<Data>())
 			{
-				if(!entity.zombieSpawn.isActived)
+				if(!GameManager.Instance.isPlaying)
+				{
+					entity.zombieSpawn.isActived = false;
+				}
+
+				if(!entity.zombieSpawn.isActived && GameManager.Instance.isPlaying)
 				{
 					entity.zombieSpawn.StartCoroutine(Addzombie(entity));
 					entity.zombieSpawn.isActived = true;

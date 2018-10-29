@@ -74,6 +74,10 @@ public class GameManager : MonoBehaviour {
         YNQuitUI.SetActive(false);
         
     }
+    public void ExitRoom()
+	{
+		PhotonNetwork.LeaveRoom();
+	}
 
     public void LoadData()
     {
