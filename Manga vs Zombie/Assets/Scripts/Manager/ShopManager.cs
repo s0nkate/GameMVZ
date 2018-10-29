@@ -20,6 +20,7 @@ public class ShopManager : MonoBehaviour {
 	public GameObject buyPopup;
 	public GameObject tabPlayer;
 	public GameObject tabItem;
+	public int defaultPlayerIndex;
 	public static ShopManager Instance {
 		get {
 			if (_instance == null) {
@@ -39,8 +40,11 @@ public class ShopManager : MonoBehaviour {
 	void Start () {
 		listPlayer = new List<ShopItems>();
 		listItem = new List<ShopItems>();
+		defaultPlayerIndex = inventoryPlayerList.selectedPlayerindex;
 		LoadPlayer(tabPlayer);
 		LoadItem(tabItem);
+		listPlayer[defaultPlayerIndex].isBought = true;
+		listPlayer[defaultPlayerIndex].isSelected = true;
 		GameManager.Instance.playerShopList = ShopManager.Instance.listPlayer;
         GameManager.Instance.itemShopList = ShopManager.Instance.listItem;
 		CheckBuyAndSelect();
@@ -135,7 +139,8 @@ public class ShopManager : MonoBehaviour {
 			{
 				if(item.type == ShopItemType.Player)
 				{
-					PlayerPrefs.SetInt("PlayerBought"  + playerBoughtCount++, item.index);
+					// PlayerPrefs.SetInt("PlayerBought"  + playerBoughtCount++, item.index);
+					inventoryPlayerList.selectedPlayerindex = item.index;
 				}
 				else
 				{
@@ -173,11 +178,11 @@ public class ShopManager : MonoBehaviour {
 		}
 
 		//Set player and item selected
-		int playerSelected = PlayerPrefs.GetInt("PlayerSelected", -1);
-		if(playerSelected != -1)
-		{
-			GameManager.Instance.playerShopList[playerSelected].isSelected = true;
-		}
+		// int playerSelected = PlayerPrefs.GetInt("PlayerSelected", -1);
+		// if(playerSelected != -1)
+		// {
+		// 	GameManager.Instance.playerShopList[playerSelected].isSelected = true;
+		// }
 
 		int itemSelected0 = PlayerPrefs.GetInt("ItemSelected0", -1);
 		if(itemSelected0 != -1)
