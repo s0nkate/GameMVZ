@@ -195,11 +195,7 @@ public class GameManager : MonoBehaviour {
   
         i++;
         time = scenelist.scenelist[i].TimePlay;
-        Backgournd.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Backgournd;
-        Foregournd.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Foregournd;
-        Tower.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Tower;
-        Towerenemy.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Towerenemy;
-        Towerenemy1.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Towerenemy;
+        
         
         ZombiePool.onNextLevel.Invoke();
         House.onNextLevel.Invoke();
@@ -247,6 +243,11 @@ public class GameManager : MonoBehaviour {
         pause = false;
         isPlaying = true;
         NextLvUI.SetActive(false);
+        Backgournd.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Backgournd;
+        Foregournd.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Foregournd;
+        Tower.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Tower;
+        Towerenemy.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Towerenemy;
+        Towerenemy1.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Towerenemy;
     }
     public void PlayGame()
     {
