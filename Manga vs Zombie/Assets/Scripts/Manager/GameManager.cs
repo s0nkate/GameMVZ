@@ -81,8 +81,7 @@ public class GameManager : MonoBehaviour {
 
     public void LoadData()
     {
-        playerShopList = ShopManager.Instance.listPlayer;
-        itemShopList = ShopManager.Instance.listItem;
+       
         HighScore = PlayerPrefs.GetInt("HighScore");
         HighScoreText.text = HighScore.ToString();
     }
@@ -206,7 +205,7 @@ public class GameManager : MonoBehaviour {
         Foregournd = scenelist.scenelist[i].Foregournd;
         Tower = scenelist.scenelist[i].Tower;
         Towerenemy = scenelist.scenelist[i].Towerenemy;
-        
+        ZombiePool.onNextLevel.Invoke();
         Score = PlayerPrefs.GetInt("Score");
         Gold = PlayerPrefs.GetInt("Gold");
     }
@@ -267,7 +266,7 @@ public class GameManager : MonoBehaviour {
         endgame = false;
         time = scenelist.scenelist[0].TimePlay;
         Score = 0;
-        Gold = 0;
+        // Gold = 0;
         Backgournd = scenelist.scenelist[0].Backgournd;
         Foregournd = scenelist.scenelist[0].Foregournd;
         Tower = scenelist.scenelist[0].Tower;

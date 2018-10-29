@@ -2,20 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 using ECSComponent;
+using UnityEngine.Events;
+
 
 [RequireComponent(typeof(ZombieSpawn))]
 public class ZombiePool : Photon.MonoBehaviour 
 {
 
 	public List<GameObject> zombiePool;
+	public InventorySceneList inventorySceneList; 
 	ZombieSpawn zombieSpawn;
 	Transform spawnTransform;
 	public int zombieCount = 6;
+	public static UnityEvent onNextLevel;
 	// public PhotonView photonView;
 	void Start()
 	{
 		zombieSpawn = GetComponent<ZombieSpawn>();
 		spawnTransform = zombieSpawn.transform;
+		if (onNextLevel == null)
+		{
+            onNextLevel = new UnityEvent();
+			
+		}
+		onNextLevel.AddListener(LoadLevel);
+		
+
+		LoadLevel();
 		// zombiePool = new List<GameObject>();
 		// photonView = GetComponent<PhotonView>();
 		// if(PhotonNetwork.isMasterClient)
@@ -25,6 +38,13 @@ public class ZombiePool : Photon.MonoBehaviour
 		// 		photonView.RPC("CreateZombie", PhotonTargets.AllBuffered);
 		// 	}
 		// }
+	}
+
+	void LoadLevel()
+	{
+		float time = inventorySceneList.scenelist[GameManager.Instance.i].DelayEnemy;
+		zombieSpawn.SetTimeDelay(time);
+		Debug.Log("loadlevel");
 	}
 
 	public void ActiveZombie()
