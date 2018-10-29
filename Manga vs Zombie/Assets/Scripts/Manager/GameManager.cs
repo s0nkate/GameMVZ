@@ -44,8 +44,8 @@ public class GameManager : MonoBehaviour {
     public GameObject quitResult;
     public GameObject backResult;
     public GameObject Pausebtn;
-    private bool endgame = false;
-    bool isPlaying = false;
+    
+    public bool isPlaying = false;
     public List<ShopItems> playerShopList;
     public List<ShopItems> itemShopList;
 	// public GameObject[] instancePlayer;
@@ -73,6 +73,10 @@ public class GameManager : MonoBehaviour {
         Highscore.SetActive(false);
         YNQuitUI.SetActive(false);
         
+    }
+    public void ExitRoom()
+    {
+        PhotonNetwork.LeaveRoom();
     }
 
     public void LoadData()
@@ -132,12 +136,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 
-	public void ReturnMainMenu()
-	{
-		requestJoinPopup.SetActive(false);
-		finalPopup.SetActive(false);
-		SceneManager.LoadScene("GamePlayUI");
-	}
+	
 
 	public void RestartGame(int level)
 	{
@@ -151,7 +150,7 @@ public class GameManager : MonoBehaviour {
 
 	void Update () {
        UpdateData();
-            if (t >= 1 && endgame == false)
+            if (t >= 1 && isPlaying == true)
             {
                 time--;
                 t = 0;
@@ -166,7 +165,7 @@ public class GameManager : MonoBehaviour {
        
       
 
-        if (isPlaying && time==0 && endgame==false && i< scenelist.scenelist.Count-1)
+        if (isPlaying && time==0  && i< scenelist.scenelist.Count-1)
         {
             NextLv();
             UpLevel();
@@ -209,7 +208,7 @@ public class GameManager : MonoBehaviour {
     public void EndGame()
     {
         ResultUI.SetActive(true);
-        endgame = true;
+        isPlaying = false;
         pause = true;
 
         ScoreWin.text = Score.ToString();
@@ -224,7 +223,7 @@ public class GameManager : MonoBehaviour {
     }
     public void Pause()
     {
-        if (endgame == false && NextLvUI.activeInHierarchy==false)
+        if (isPlaying == false && NextLvUI.activeInHierarchy==false)
         {
             PauseUI.SetActive(true);
             pause = true;
@@ -260,7 +259,7 @@ public class GameManager : MonoBehaviour {
 		playScene.SetActive(true);
         isPlaying = true;
         pause = false;
-        endgame = false;
+       
         time = scenelist.scenelist[0].TimePlay;
         Score = 0;
         Gold = 0;
@@ -283,10 +282,13 @@ public class GameManager : MonoBehaviour {
         i = 0;
         YNUI.SetActive(false);
         MenuUI.SetActive(true);
-        endgame = true;
+        
         Highscore.SetActive(false);
         playScene.SetActive(false);
         HighScoreText.text = HighScore.ToString();
+       ExitRoom();
+        isPlaying = false;
+       
         
      
     }

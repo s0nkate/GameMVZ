@@ -1713,6 +1713,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1314569757}
     m_Modifications:
+    - target: {fileID: 114193210033959444, guid: d86b5a9bf640e46418e8bd6537396067,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 224802199186385154, guid: d86b5a9bf640e46418e8bd6537396067,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -1826,6 +1831,36 @@ Prefab:
     - target: {fileID: 1069981488734596, guid: d86b5a9bf640e46418e8bd6537396067, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114236264082001026, guid: d86b5a9bf640e46418e8bd6537396067,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114236264082001026, guid: d86b5a9bf640e46418e8bd6537396067,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114236264082001026, guid: d86b5a9bf640e46418e8bd6537396067,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114193210033959444, guid: d86b5a9bf640e46418e8bd6537396067,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114193210033959444, guid: d86b5a9bf640e46418e8bd6537396067,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114193210033959444, guid: d86b5a9bf640e46418e8bd6537396067,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d86b5a9bf640e46418e8bd6537396067, type: 2}
@@ -4226,7 +4261,7 @@ Prefab:
     - target: {fileID: 114173590051734010, guid: ca7a7d35be0e6e6409d0cb70c8b9f771,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Pause
+      value: ExitGame
       objectReference: {fileID: 0}
     - target: {fileID: 114826619836064460, guid: ca7a7d35be0e6e6409d0cb70c8b9f771,
         type: 2}
@@ -4246,7 +4281,7 @@ Prefab:
     - target: {fileID: 114936156241190146, guid: ca7a7d35be0e6e6409d0cb70c8b9f771,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: QuitGame
+      value: BackMenu
       objectReference: {fileID: 0}
     - target: {fileID: 1741320886589990, guid: ca7a7d35be0e6e6409d0cb70c8b9f771, type: 2}
       propertyPath: m_IsActive
@@ -11326,7 +11361,7 @@ Prefab:
     - target: {fileID: 114466052413952700, guid: 02937ce6f7af4cf4fb513d596bd8afb4,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ReturnMainMenu
+      value: BackMenu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02937ce6f7af4cf4fb513d596bd8afb4, type: 2}
