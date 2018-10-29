@@ -40,4 +40,4 @@ MonoBehaviour:
     Foregournd: {fileID: 21300000, guid: b78cad6431209a247a5a25b30684d5ab, type: 3}
     Tower: {fileID: 21300000, guid: fd5af705975442c45b79601a852b3676, type: 3}
     Towerenemy: {fileID: 21300000, guid: 19bddf6f98beb6d458c77f229f452f6d, type: 3}
-  selectedsceneindex: 3
+  selectedsceneindex: 1
