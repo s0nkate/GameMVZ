@@ -28,6 +28,7 @@ public class ShopItems : MonoBehaviour {
 	private Color color;
 	public GameObject useButton;
 	public string name;
+	public static int itemSelected = 0;
 
 	void Start () {
 		
@@ -101,7 +102,6 @@ public class ShopItems : MonoBehaviour {
 
 	public void ChangeSelected()
 	{	
-
 		//unselect		
 		if(isSelected)
 		{
@@ -112,6 +112,8 @@ public class ShopItems : MonoBehaviour {
 			else 
 			{
 				isSelected = false;
+				itemSelected--;
+
 			}		
 		}
 		//select
@@ -119,14 +121,19 @@ public class ShopItems : MonoBehaviour {
 		{
 			if(type == ShopItemType.Player)
 			{
+				GameManager.Instance.GetSelectedPlayer().isSelected = false;
 				isSelected = true;
 			}
 			else
-			{
-				isSelected = true;
+			{	if(itemSelected < 2)
+				{
+					itemSelected++;
+					isSelected = true;
+				}
+					
 			}	
-		}		
-		// Debug.Log(ShopManager.Instance.G);
+		}	
+		Debug.Log(itemSelected);	
 		ShopManager.Instance.Save();	
 	}
 	

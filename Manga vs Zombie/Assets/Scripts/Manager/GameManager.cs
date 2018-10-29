@@ -83,8 +83,6 @@ public class GameManager : MonoBehaviour {
 
     public void LoadData()
     {
-        playerShopList = ShopManager.Instance.listPlayer;
-        itemShopList = ShopManager.Instance.listItem;
         HighScore = PlayerPrefs.GetInt("HighScore");
         HighScoreText.text = HighScore.ToString();
     }
@@ -200,6 +198,7 @@ public class GameManager : MonoBehaviour {
         Towerenemy.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Towerenemy;
         Towerenemy1.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Towerenemy;
         
+
         Score = PlayerPrefs.GetInt("Score");
         Gold = PlayerPrefs.GetInt("Gold");
     }
@@ -266,6 +265,7 @@ public class GameManager : MonoBehaviour {
         Tower.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Tower;
         Towerenemy.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Towerenemy;
         Towerenemy1.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Towerenemy;
+
     }
     public void BackMenu()
     {

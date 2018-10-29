@@ -3173,7 +3173,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myPlayer: {fileID: 0}
   playerBehaviour: {fileID: 0}
-  photonView: {fileID: 454892084}
 --- !u!4 &454892083
 Transform:
   m_ObjectHideFlags: 0
@@ -6603,8 +6602,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyText: {fileID: 303784921}
-  itemSaveCount: 0
-  itemSelectCount: 0
+  itemBoughtCount: 0
+  playerBoughtCount: 0
   listPlayer: []
   listItem: []
   inventoryPlayerList: {fileID: 11400000, guid: eeb5fd019af4f734cb696dd640d0d004,
@@ -7150,6 +7149,7 @@ MonoBehaviour:
   - {fileID: 206573729}
   - {fileID: 1547323809}
   - {fileID: 1547323809}
+  inventorySceneList: {fileID: 11400000, guid: 9e10a03d91893394bad85cee5b0aa859, type: 2}
   zombieCount: 6
 --- !u!114 &1275350188
 MonoBehaviour:
@@ -9829,6 +9829,90 @@ Prefab:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4412736043292318, guid: 08ba963e4ca98e349936d824d5520245, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4654515737279214, guid: 08ba963e4ca98e349936d824d5520245, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4187611767126350, guid: 08ba963e4ca98e349936d824d5520245, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048398241058058, guid: 08ba963e4ca98e349936d824d5520245, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4243386848999880, guid: 08ba963e4ca98e349936d824d5520245, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077032847798896, guid: 08ba963e4ca98e349936d824d5520245, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114940642605178566, guid: 08ba963e4ca98e349936d824d5520245,
+        type: 2}
+      propertyPath: viewIdField
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 114940642605178566, guid: 08ba963e4ca98e349936d824d5520245,
+        type: 2}
+      propertyPath: instantiationId
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 114136786392795040, guid: 08ba963e4ca98e349936d824d5520245,
+        type: 2}
+      propertyPath: viewIdField
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 114136786392795040, guid: 08ba963e4ca98e349936d824d5520245,
+        type: 2}
+      propertyPath: instantiationId
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 114859723552381796, guid: 08ba963e4ca98e349936d824d5520245,
+        type: 2}
+      propertyPath: viewIdField
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 114859723552381796, guid: 08ba963e4ca98e349936d824d5520245,
+        type: 2}
+      propertyPath: instantiationId
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 114992818380524132, guid: 08ba963e4ca98e349936d824d5520245,
+        type: 2}
+      propertyPath: viewIdField
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 114992818380524132, guid: 08ba963e4ca98e349936d824d5520245,
+        type: 2}
+      propertyPath: instantiationId
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 114657281622013422, guid: 08ba963e4ca98e349936d824d5520245,
+        type: 2}
+      propertyPath: viewIdField
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 114657281622013422, guid: 08ba963e4ca98e349936d824d5520245,
+        type: 2}
+      propertyPath: instantiationId
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 114094041771130010, guid: 08ba963e4ca98e349936d824d5520245,
+        type: 2}
+      propertyPath: viewIdField
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 114094041771130010, guid: 08ba963e4ca98e349936d824d5520245,
+        type: 2}
+      propertyPath: instantiationId
+      value: 24
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 08ba963e4ca98e349936d824d5520245, type: 2}
@@ -9861,6 +9945,7 @@ MonoBehaviour:
   - {fileID: 1318910266}
   - {fileID: 805874395}
   - {fileID: 30526149}
+  inventorySceneList: {fileID: 0}
   zombieCount: 6
 --- !u!114 &1619988118
 MonoBehaviour:
