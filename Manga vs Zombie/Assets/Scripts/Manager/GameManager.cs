@@ -83,8 +83,7 @@ public class GameManager : MonoBehaviour {
 
     public void LoadData()
     {
-        playerShopList = ShopManager.Instance.listPlayer;
-        itemShopList = ShopManager.Instance.listItem;
+       
         HighScore = PlayerPrefs.GetInt("HighScore");
         HighScoreText.text = HighScore.ToString();
     }
@@ -194,12 +193,16 @@ public class GameManager : MonoBehaviour {
   
         i++;
         time = scenelist.scenelist[i].TimePlay;
+
         Backgournd.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Backgournd;
         Foregournd.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Foregournd;
         Tower.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Tower;
         Towerenemy.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Towerenemy;
         Towerenemy1.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Towerenemy;
         
+
+        ZombiePool.onNextLevel.Invoke();
+
         Score = PlayerPrefs.GetInt("Score");
         Gold = PlayerPrefs.GetInt("Gold");
     }
@@ -260,12 +263,14 @@ public class GameManager : MonoBehaviour {
        
         time = scenelist.scenelist[0].TimePlay;
         Score = 0;
-        Gold = 0;
+
         Backgournd.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Backgournd;
         Foregournd.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Foregournd;
         Tower.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Tower;
         Towerenemy.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Towerenemy;
         Towerenemy1.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Towerenemy;
+
+
     }
     public void BackMenu()
     {

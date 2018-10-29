@@ -7,7 +7,6 @@ public class PlayerManager : Photon.PunBehaviour {
 	public static PlayerManager Instance = null;
 	public GameObject myPlayer;
 	public GameObject playerBehaviour;
-	public PhotonView photonView;
 	private void Awake()
 	{
 		if (Instance == null)

@@ -8,8 +8,8 @@ public class ShopManager : MonoBehaviour {
 
 	private static ShopManager _instance;
 	public Text moneyText;
-	public int itemSaveCount;
-	public int itemSelectCount;
+	public int itemBoughtCount;
+	public int playerBoughtCount;
 	public List<ShopItems> listPlayer;
 	public List<ShopItems> listItem;
 	// public Player selectedPlayer;
@@ -37,14 +37,13 @@ public class ShopManager : MonoBehaviour {
 	}
 
 	void Start () {
-		// inventoryPlayerList.selectedPlayerindex = 2;
-		// GameObject tabPlayer = GameObject.FindGameObjectWithTag ("listplayer");
-		// GameObject tabItem = GameObject.FindGameObjectWithTag ("listitem");
-		// moneyText = GameObject.FindWithTag ("coin").GetComponent<Text> ();
 		listPlayer = new List<ShopItems>();
 		listItem = new List<ShopItems>();
 		LoadPlayer(tabPlayer);
 		LoadItem(tabItem);
+		GameManager.Instance.playerShopList = ShopManager.Instance.listPlayer;
+        GameManager.Instance.itemShopList = ShopManager.Instance.listItem;
+		CheckBuyAndSelect();
 		// Load();
 		// Display(false);
 		//DontDestroyOnLoad(gameObject);
@@ -99,7 +98,7 @@ public class ShopManager : MonoBehaviour {
 		}
 	}
 
-
+	
 	void Update () {
 		// moneyText = GameObject.FindWithTag ("coin").GetComponent<Text> ();
 		//coin = int.Parse (coinText.text);
@@ -107,7 +106,8 @@ public class ShopManager : MonoBehaviour {
 		CheckItem(listItem);
 		CheckItem(listPlayer);
 	}
-	public void EnterGame () {
+	public void EnterGame () 
+	{
 
 	}
 
@@ -127,67 +127,83 @@ public class ShopManager : MonoBehaviour {
 
 	void SaveAList(List<ShopItems> list)
 	{
+		
+		int itemSelected = 0;
 		foreach (var item in list)
 		{
 			if(item.isBought)
 			{
-				PlayerPrefs.SetString("Item"+ itemSaveCount++, item.name);
+				if(item.type == ShopItemType.Player)
+				{
+					PlayerPrefs.SetInt("PlayerBought"  + playerBoughtCount++, item.index);
+				}
+				else
+				{
+					PlayerPrefs.SetInt("ItemBought"  + itemBoughtCount++, item.index);
+				}
 			}
 
 			if(item.isSelected)
 			{
-				PlayerPrefs.SetString("Select"+ itemSelectCount++, item.name);
-				Debug.Log("save item selcected");
-
+				if(item.type == ShopItemType.Player)
+					PlayerPrefs.SetInt("PlayerSelected", item.index);
+				else
+					PlayerPrefs.SetInt("ItemSelected" + itemSelected++, item.index);
 			}
+		}
+
+
+	}
+
+	void CheckBuyAndSelect()
+	{
+		itemBoughtCount = PlayerPrefs.GetInt("ItemBoughtCount", -1);		
+		playerBoughtCount = PlayerPrefs.GetInt("PlayerBoughtCount", -1);
+		//Set player and item bought
+		for(int i = 0; i<playerBoughtCount; i++)
+		{
+			int index = PlayerPrefs.GetInt("PlayerBought" + i);
+			GameManager.Instance.playerShopList[index].isBought = true;
+		}
+
+		for(int i = 0; i<itemBoughtCount; i++)
+		{
+			int index = PlayerPrefs.GetInt("ItemBought" + i);
+			GameManager.Instance.itemShopList[index].isBought = true;
+		}
+
+		//Set player and item selected
+		int playerSelected = PlayerPrefs.GetInt("PlayerSelected", -1);
+		if(playerSelected != -1)
+		{
+			GameManager.Instance.playerShopList[playerSelected].isSelected = true;
+		}
+
+		int itemSelected0 = PlayerPrefs.GetInt("ItemSelected0", -1);
+		if(itemSelected0 != -1)
+		{
+			ShopItems.itemSelected++;
+			GameManager.Instance.itemShopList[itemSelected0].isSelected = true;
+		}
+
+		int itemSelected1 = PlayerPrefs.GetInt("ItemSelected1", -1);
+		if(itemSelected1 != -1)
+		{
+			ShopItems.itemSelected++;
+			GameManager.Instance.itemShopList[itemSelected1].isSelected = true;
 		}
 	}
 	public void Save()
 	{
 		PlayerPrefs.DeleteAll();
-		itemSaveCount = 0;
-		itemSelectCount = 0;
-		
+		itemBoughtCount = 0;
+		playerBoughtCount = 0;
 		SaveAList(listPlayer);
 		SaveAList(listItem);
 
-		// PlayerPrefs.SetInt("ItemSaveCount", itemSaveCount);
-		// PlayerPrefs.SetInt("ItemSelectCount", itemSelectCount);
+		PlayerPrefs.SetInt("ItemBoughtCount", itemBoughtCount);
+		PlayerPrefs.SetInt("PlayerBoughtCount", playerBoughtCount);
 		// PlayerPrefs.SetInt("Money", GameManager.Instance.money);
 		PlayerPrefs.Save();
 	}
-
-	// public void Load()
-	// {
-
-	// 	GameManager.Instance.money = PlayerPrefs.GetInt("Money");
-	// 	itemSaveCount = PlayerPrefs.GetInt("ItemSaveCount");		
-	// 	for(var i = 0; i< itemSaveCount; i++)
-	// 	{
-	// 		string itemName = PlayerPrefs.GetString("Item"+i);
-	// 		GameObject.Find(itemName).GetComponent<ShopItems>().isBought = true;
-	// 	}
-	// 	SaveItemSelected();
-	// }
-
-
-	// public void SaveItemSelected()
-	// {
-	// 	itemSelectCount = PlayerPrefs.GetInt("ItemSelectCount");
-	// 	for(var i = 0; i< itemSelectCount; i++)
-	// 	{
-	// 		string itemName = PlayerPrefs.GetString("Select"+i);
-	// 		GameObject item = GameObject.Find(itemName);
-	// 		item.GetComponent<ShopItems>().isSelected = true;
-	// 		if(item.GetComponent<Player>() != null)
-	// 		{
-	// 			selectedPlayer = item.GetComponent<Player>();
-	// 		}else if(item.GetComponent<Item>() != null)
-	// 		{
-	// 			selcectedItems.Add(item.GetComponent<Item>());
-	// 		}
-	// 	}
-	// }
-
-
 }

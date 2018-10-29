@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DeadAnimationEnd : Photon.PunBehaviour {
-	PhotonView photonView;
 	
 	void Awake()
 	{
-		photonView = GetComponent<PhotonView>();
+		// photonView = GetComponent<PhotonView>();
 	}
 	public void Destroy()
 	{
