@@ -73,6 +73,8 @@ public class GameManager : MonoBehaviour {
         NextLvUI.SetActive(false);
         Highscore.SetActive(false);
         YNQuitUI.SetActive(false);
+        ZombiePool.onNextLevel.Invoke();
+        House.onNextLevel.Invoke();
         //Backgournd = gameObject.GetComponent<SpriteRenderer>().sprite;
         
     }
@@ -199,8 +201,8 @@ public class GameManager : MonoBehaviour {
         Towerenemy.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Towerenemy;
         Towerenemy1.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Towerenemy;
         
-        // ZombiePool.onNextLevel.Invoke();
-        // House.onNextLevel.Invoke();
+        ZombiePool.onNextLevel.Invoke();
+        House.onNextLevel.Invoke();
         Score = PlayerPrefs.GetInt("Score");
         Gold = PlayerPrefs.GetInt("Gold");
     }
@@ -243,6 +245,7 @@ public class GameManager : MonoBehaviour {
     public void NextLV()
     {
         pause = false;
+        isPlaying = true;
         NextLvUI.SetActive(false);
     }
     public void PlayGame()

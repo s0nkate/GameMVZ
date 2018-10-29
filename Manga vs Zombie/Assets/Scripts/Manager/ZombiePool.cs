@@ -44,12 +44,25 @@ public class ZombiePool : Photon.MonoBehaviour
 	{
 		float time = inventorySceneList.scenelist[GameManager.Instance.i].DelayEnemy;
 		zombieSpawn.SetTimeDelay(time);
+		photonView.RPC("DisableAllZombie",PhotonTargets.AllBuffered);
 		Debug.Log("loadlevel");
 	}
 
 	public void ActiveZombie()
 	{
 		photonView.RPC("GetZombie", PhotonTargets.AllBuffered);
+	}
+
+	[PunRPC]
+	public void DisableAllZombie()
+	{
+		for(int i = 0; i < zombieCount; i++)
+		{
+			if(zombiePool[i].activeInHierarchy)
+			{
+				zombiePool[i].SetActive(false);
+			}
+		}
 	}
 
 

@@ -8,26 +8,26 @@ namespace ECSComponent
 	public class House : MonoBehaviour 
 	{
 		public int defend;
-		// public InventorySceneList inventorySenceList;
+		public InventorySceneList inventorySenceList;
 
-		// public static UnityEvent onNextLevel;
+		public static UnityEvent onNextLevel;
 
-		// void Start()
-		// {
-		// 	if (onNextLevel == null)
-		// 	{
-        //     	onNextLevel = new UnityEvent();
+		void Start()
+		{
+			if (onNextLevel == null)
+			{
+            	onNextLevel = new UnityEvent();
 			
-		// 	}
-		// 	onNextLevel.AddListener(LoadData);
-		// }
+			}
+			onNextLevel.AddListener(LoadData);
+		}
 
-		// public void LoadData()
-		// {
-		// 	int maxHeath = inventorySenceList.scenelist[inventorySenceList.selectedsceneindex].Healtower;
-		// 	GetComponent<Heath>().maxValue = maxHeath;
-		// 	GetComponent<Heath>().value = maxHeath;
-		// }
+		public void LoadData()
+		{
+			int maxHeath = inventorySenceList.scenelist[GameManager.Instance.i].Healtower;
+			GetComponent<Heath>().maxValue = maxHeath;
+			GetComponent<Heath>().value = maxHeath;
+		}
 
 
 	}

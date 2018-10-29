@@ -14,14 +14,14 @@ MonoBehaviour:
   scenelist:
   - TimePlay: 5
     DelayEnemy: 5
-    Healtower: 1000
+    Healtower: 50
     Backgournd: {fileID: 21300000, guid: 8b5fc53702459e64399e1648f0cedf4b, type: 3}
     Foregournd: {fileID: 21300000, guid: b78cad6431209a247a5a25b30684d5ab, type: 3}
     Tower: {fileID: 21300000, guid: fd5af705975442c45b79601a852b3676, type: 3}
     Towerenemy: {fileID: 21300000, guid: 19bddf6f98beb6d458c77f229f452f6d, type: 3}
   - TimePlay: 1
     DelayEnemy: 4
-    Healtower: 1000
+    Healtower: 100
     Backgournd: {fileID: 21300000, guid: 54cf32d2aa618ee4d883365db704390f, type: 3}
     Foregournd: {fileID: 21300000, guid: b78cad6431209a247a5a25b30684d5ab, type: 3}
     Tower: {fileID: 21300000, guid: fd5af705975442c45b79601a852b3676, type: 3}
