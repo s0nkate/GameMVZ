@@ -35,7 +35,7 @@ namespace ECSSystem
 
 		IEnumerator Addzombie(Data entity)
 		{
-			while(true)
+			while(GameManager.Instance.isPlaying)
 			{
 				entity.zombiePool.GetZombie();	
 				yield return new WaitForSeconds(entity.zombieSpawn.timeDelay);
