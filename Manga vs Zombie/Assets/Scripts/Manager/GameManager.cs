@@ -260,7 +260,7 @@ public class GameManager : MonoBehaviour {
         endgame = true;
         //Player.SetActive(false);
         Highscore.SetActive(false);
-      
+        playScene.SetActive(false);
         HighScoreText.text = HighScore.ToString();
         
      
