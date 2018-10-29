@@ -30,6 +30,11 @@ public class Player1Controller : Photon.MonoBehaviour
     public static int i=0;
     public Text text1;
     public Text text2;
+    public Image image1;
+    public Image image2;
+    public Image image3;
+    public Image image4;
+
 
     public InventoryPlayerList playerlist;
   
@@ -57,17 +62,24 @@ public class Player1Controller : Photon.MonoBehaviour
         transform.parent = playerSpawn.transform;
         playerBehaviour = GameObject.FindWithTag("SkillGUI").GetComponent<PlayerBehaviour>();
 
-        text1 = skillGUI.text1;
-        text2 = skillGUI.text2;
+        text1= skillGUI.text1;
+        text2= skillGUI.text2;
         imageColldown1 = skillGUI.imageColldown1;
         imageColldown2 = skillGUI.imageColldown2;
-
+        image1 = skillGUI.image1;
+        image2 = skillGUI.image2;
+        image3 = skillGUI.image3;
+        image4 = skillGUI.image4;
         dmg = playerlist.playerList[i]._Dmg;
         dmg1 = playerlist.playerList[i]._DmgSkill1;
         dmg2 = playerlist.playerList[i]._DmgSkill2;
         Debug.Log("Id player:" +  i);
         text1.text = "Damage:     " + playerlist.playerList[i]._DmgSkill1.ToString();
         text2.text = "Damage:     " + playerlist.playerList[i]._DmgSkill2.ToString();
+       image1.sprite= playerlist.playerList[i]._Image1;
+        image2.sprite = playerlist.playerList[i]._Image1;
+        image3.sprite = playerlist.playerList[i]._Image2;
+        image4.sprite = playerlist.playerList[i]._Image2;
 
         animatorOverrideController = new AnimatorOverrideController(anim.runtimeAnimatorController);
         anim.runtimeAnimatorController = animatorOverrideController;
@@ -177,6 +189,14 @@ public class Player1Controller : Photon.MonoBehaviour
         anim.SetBool("Attacking1", attacking1);
     }
 
+    public void StartDame()
+    {
+        trigger1.enabled = true;
+    }
+    public void StartDame1()
+    {
+        trigger2.enabled = true;
+    }
     public void Flip()
     {
         faceright = !faceright;
@@ -247,8 +267,8 @@ public class Player1Controller : Photon.MonoBehaviour
         {
             isCooldown1 = true;
             skill1 = true;
-            skill1delay = 1;
-            trigger1.enabled = true;
+            skill1delay = 0.7f;
+            
         }
         playerBehaviour.SetIdle();
     }
@@ -258,8 +278,8 @@ public class Player1Controller : Photon.MonoBehaviour
         {
             isCooldown2 = true;
             skill2 = true;
-            skill2delay = 1;
-            trigger2.enabled = true;
+            skill2delay = 0.7f;
+           
         }
         playerBehaviour.SetIdle();
     }
