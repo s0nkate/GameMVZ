@@ -44,7 +44,6 @@ public class GameManager : MonoBehaviour {
     public GameObject quitResult;
     public GameObject backResult;
     public GameObject Pausebtn;
-    
     public bool isPlaying = false;
     public List<ShopItems> playerShopList;
     public List<ShopItems> itemShopList;
