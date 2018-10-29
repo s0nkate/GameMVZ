@@ -2,23 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using ECSComponent;
 
 public class ShopManager : MonoBehaviour {
 
 	private static ShopManager _instance;
-	private Text moneyText;
+	public Text moneyText;
 	public int itemSaveCount;
 	public int itemSelectCount;
-	public List<GameObject> listPlayer;
-	public List<GameObject> listItem;
-	public List<GameObject> listSkill;
-	public Player selectedPlayer;
-	public List<Item> selcectedItems;
-	public List<Skill> selcectedSkills;
+	public List<ShopItems> listPlayer;
+	public List<ShopItems> listItem;
+	// public Player selectedPlayer;
+	// public List<Item> selcectedItems;
 	public InventoryPlayerList inventoryPlayerList;
 	public InventoryItemList inventoryItemList;
 	public GameObject prefab;
 	public GameObject buyPopup;
+	public GameObject tabPlayer;
+	public GameObject tabItem;
 	public static ShopManager Instance {
 		get {
 			if (_instance == null) {
@@ -37,11 +38,13 @@ public class ShopManager : MonoBehaviour {
 
 	void Start () {
 		// inventoryPlayerList.selectedPlayerindex = 2;
-		GameObject tabPlayer = GameObject.FindGameObjectWithTag ("listplayer");
-		GameObject tabItem = GameObject.FindGameObjectWithTag ("listitem");
-		moneyText = GameObject.FindWithTag ("coin").GetComponent<Text> ();
-		
+		// GameObject tabPlayer = GameObject.FindGameObjectWithTag ("listplayer");
+		// GameObject tabItem = GameObject.FindGameObjectWithTag ("listitem");
+		// moneyText = GameObject.FindWithTag ("coin").GetComponent<Text> ();
+		listPlayer = new List<ShopItems>();
+		listItem = new List<ShopItems>();
 		LoadPlayer(tabPlayer);
+		LoadItem(tabItem);
 		// Load();
 		// Display(false);
 		//DontDestroyOnLoad(gameObject);
@@ -49,19 +52,41 @@ public class ShopManager : MonoBehaviour {
 
 	void LoadPlayer(GameObject tabPlayer)
 	{
-		foreach (var player in inventoryPlayerList.playerList)
+		for(int i = 0; i < inventoryPlayerList.playerList.Count; i++)
 		{
 			GameObject playerPrefab = Instantiate(prefab, transform.position, transform.localRotation, tabPlayer.transform) as GameObject;
-			// playerPrefab.AddComponent<>();
 			ShopItems shopItems = playerPrefab.GetComponent<ShopItems>();
-			shopItems.price = player.Price;
-			Texture2D  texture = player._image;
+			shopItems.index = i;
+			shopItems.price = inventoryPlayerList.playerList[i].Price;
+			Texture2D  texture = inventoryPlayerList.playerList[i]._image;
 			shopItems.image = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-			shopItems.name = player._Name;
-			string info = "Name: " + player._Name +"\nDamage: " + player._Dmg + "\nTime delay:" + player._Delay;
+			shopItems.name = inventoryPlayerList.playerList[i]._Name;
+			string info = "Name: " + inventoryPlayerList.playerList[i]._Name +"\nDamage: " + inventoryPlayerList.playerList[i]._Dmg + "\nTime delay:" + inventoryPlayerList.playerList[i]._Delay;
 			shopItems.info = info;
+			shopItems.type = ShopItemType.Player;
 			shopItems.buyPopup = buyPopup;
+			listPlayer.Add(shopItems);
 		}
+	}
+
+	void LoadItem(GameObject tabItem)
+	{
+		for(int i = 0; i < inventoryItemList.itemlist.Count; i++)
+		{
+			GameObject itemPrefab = Instantiate(prefab, transform.position, transform.localRotation, tabItem.transform) as GameObject;
+			ShopItems shopItems = itemPrefab.GetComponent<ShopItems>();
+			shopItems.index = i;
+			shopItems.price = inventoryItemList.itemlist[i].price;
+			Texture2D  texture = inventoryItemList.itemlist[i].image;
+			shopItems.image = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+			shopItems.name = inventoryItemList.itemlist[i].nameItem;
+			string info = inventoryItemList.itemlist[i].effect;
+			shopItems.info = info;
+			shopItems.type = ShopItemType.Item;
+			shopItems.buyPopup = buyPopup;
+			listItem.Add(shopItems);
+		}
+	
 	}
 
 
@@ -76,53 +101,40 @@ public class ShopManager : MonoBehaviour {
 
 
 	void Update () {
-		moneyText = GameObject.FindWithTag ("coin").GetComponent<Text> ();
+		// moneyText = GameObject.FindWithTag ("coin").GetComponent<Text> ();
 		//coin = int.Parse (coinText.text);
 		moneyText.text = GameManager.Instance.Gold.ToString ();
 		CheckItem(listItem);
 		CheckItem(listPlayer);
-		CheckItem(listSkill);
 	}
 	public void EnterGame () {
 
 	}
 
 	//
-	public void CheckItem(List<GameObject> list)
+	public void CheckItem(List<ShopItems> list)
 	{
-		ShopItems temp;
-		foreach (GameObject one in list) {
-			temp = one.GetComponent<ShopItems> ();
-			if(!temp.isBought)
+		foreach (ShopItems item in list) {
+			if(!item.isBought)
 			{	
-				if(temp.price > GameManager.Instance.Gold)
-					temp.canBuy = false;
+				if(item.price > GameManager.Instance.Gold)
+					item.canBuy = false;
 				else
-					temp.canBuy = true;
+					item.canBuy = true;
 			}
 		}
 	}
 
-	// display shop panel
-	public void Display(bool status)
-	{
-		if(status == false)
-			transform.localScale = new Vector3(0, 0, 0);
-		else
-			transform.localScale = new Vector3(1, 1, 1);
-	}
-
-	void SaveAList(List<GameObject> list)
+	void SaveAList(List<ShopItems> list)
 	{
 		foreach (var item in list)
 		{
-			ShopItems shopItem = item.GetComponent<ShopItems>();
-			if(shopItem.isBought)
+			if(item.isBought)
 			{
 				PlayerPrefs.SetString("Item"+ itemSaveCount++, item.name);
 			}
 
-			if(shopItem.isSelected)
+			if(item.isSelected)
 			{
 				PlayerPrefs.SetString("Select"+ itemSelectCount++, item.name);
 				Debug.Log("save item selcected");
@@ -138,7 +150,6 @@ public class ShopManager : MonoBehaviour {
 		
 		SaveAList(listPlayer);
 		SaveAList(listItem);
-		SaveAList(listSkill);
 
 		// PlayerPrefs.SetInt("ItemSaveCount", itemSaveCount);
 		// PlayerPrefs.SetInt("ItemSelectCount", itemSelectCount);
@@ -160,26 +171,23 @@ public class ShopManager : MonoBehaviour {
 	// }
 
 
-	public void SaveItemSelected()
-	{
-		itemSelectCount = PlayerPrefs.GetInt("ItemSelectCount");
-		for(var i = 0; i< itemSelectCount; i++)
-		{
-			string itemName = PlayerPrefs.GetString("Select"+i);
-			GameObject item = GameObject.Find(itemName);
-			item.GetComponent<ShopItems>().isSelected = true;
-			if(item.GetComponent<Player>() != null)
-			{
-				selectedPlayer = item.GetComponent<Player>();
-			}else if(item.GetComponent<Item>() != null)
-			{
-				selcectedItems.Add(item.GetComponent<Item>());
-			}else
-			{
-				selcectedSkills.Add(item.GetComponent<Skill>());
-			}
-		}
-	}
+	// public void SaveItemSelected()
+	// {
+	// 	itemSelectCount = PlayerPrefs.GetInt("ItemSelectCount");
+	// 	for(var i = 0; i< itemSelectCount; i++)
+	// 	{
+	// 		string itemName = PlayerPrefs.GetString("Select"+i);
+	// 		GameObject item = GameObject.Find(itemName);
+	// 		item.GetComponent<ShopItems>().isSelected = true;
+	// 		if(item.GetComponent<Player>() != null)
+	// 		{
+	// 			selectedPlayer = item.GetComponent<Player>();
+	// 		}else if(item.GetComponent<Item>() != null)
+	// 		{
+	// 			selcectedItems.Add(item.GetComponent<Item>());
+	// 		}
+	// 	}
+	// }
 
 
 }

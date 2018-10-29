@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour {
     public GameObject Pausebtn;
     private bool endgame = false;
     bool isPlaying = false;
+    public List<ShopItems> playerShopList;
+    public List<ShopItems> itemShopList;
 	// public GameObject[] instancePlayer;
 	public static GameManager Instance = null;
 	private void Awake()
@@ -62,39 +64,66 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void Start () {
-
+        LoadData();
         YNUI.SetActive(false);
-        //Player.SetActive(false);
         MenuUI.SetActive(true);
         PauseUI.SetActive(false);
         ResultUI.SetActive(false);
         NextLvUI.SetActive(false);
         Highscore.SetActive(false);
         YNQuitUI.SetActive(false);
-        HighScore = PlayerPrefs.GetInt("HighScore");
-        HighScoreText.text = HighScore.ToString();
         
-    
     }
 
+    public void LoadData()
+    {
+        playerShopList = ShopManager.Instance.listPlayer;
+        itemShopList = ShopManager.Instance.listItem;
+        HighScore = PlayerPrefs.GetInt("HighScore");
+        HighScoreText.text = HighScore.ToString();
+    }
 
-	
+    public ShopItems GetSelectedPlayer()
+    {
+        ShopItems selectedPlayer = null;
+        foreach (var player in playerShopList)
+        {
+            if(player.isSelected)
+            {
+                selectedPlayer = player;
+                break;
+            }
+                
+        }
+        return selectedPlayer;
+    }
 
-	public void LoadData()
+    public List<ShopItems> GetSelectedItem()
+    {
+        List<ShopItems> selectedItem = new List<ShopItems>();
+        foreach (var item in playerShopList)
+        {
+            if(item.isSelected)
+                selectedItem.Add(item);
+        }
+        return selectedItem;
+    }
+	public void UpdateData()
 	{
 
 	}
 
 	public void SaveData()
 	{
+        playerShopList = null;
+        itemShopList = null;
 
 	}
 
 	public void GameOver()
 	{
 		finalPopup.SetActive(true);
-		Time.timeScale = 0;
-		
+		Time.timeScale = 0;		
 	}
 
 	public void DisplayRequestPopup()
@@ -121,7 +150,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void Update () {
-       
+       UpdateData();
             if (t >= 1 && endgame == false)
             {
                 time--;
@@ -145,10 +174,8 @@ public class GameManager : MonoBehaviour {
         }
       
         if(time==0 && i== scenelist.scenelist.Count - 1)
-        {
-            
+        {           
             EndGame();
-
         }
 
         if (pause)
@@ -222,7 +249,6 @@ public class GameManager : MonoBehaviour {
     }
     public void PlayGame()
     {
-       // Player.SetActive(true);
         MenuUI.SetActive(false);
         ResultUI.SetActive(false);
         NextLvUI.SetActive(false);
@@ -258,7 +284,6 @@ public class GameManager : MonoBehaviour {
         YNUI.SetActive(false);
         MenuUI.SetActive(true);
         endgame = true;
-        //Player.SetActive(false);
         Highscore.SetActive(false);
       
         HighScoreText.text = HighScore.ToString();
@@ -320,7 +345,5 @@ public class GameManager : MonoBehaviour {
             quitResult.SetActive(true);
             backResult.SetActive(true);
         }
-
-
     }
 }

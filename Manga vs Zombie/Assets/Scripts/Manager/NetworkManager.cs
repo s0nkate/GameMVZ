@@ -44,6 +44,11 @@ public class NetworkManager : Photon.PunBehaviour
 		PhotonNetwork.CreateRoom(null, new RoomOptions() { MaxPlayers = maxNumberPlayerInARoom }, null);
 	}
 
+	public void ExitRoom()
+	{
+		PhotonNetwork.LeaveRoom();
+	}
+
 	public override void OnConnectedToPhoton()
 	{
 		Debug.Log("OnConnectedToPhoton");

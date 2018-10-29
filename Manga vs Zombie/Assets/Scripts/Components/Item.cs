@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ECSComponent
 {
-	[RequireComponent(typeof(ShopItem))]
+	[RequireComponent(typeof(ShopItems))]
 	public class Item : MonoBehaviour 
 	{
 
