@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour {
     public GameObject backResult;
     public GameObject Pausebtn;
     public bool isPlaying = false;
+    public bool Gameover = false;
     public List<ShopItems> playerShopList;
     public List<ShopItems> itemShopList;
 	// public GameObject[] instancePlayer;
@@ -128,9 +129,11 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void GameOver()
-	{
+	{ if(isPlaying)
 		finalPopup.SetActive(true);
-		Time.timeScale = 0;		
+        isPlaying = false;
+        pause = true;
+        Gameover = true;
 	}
 
 	public void DisplayRequestPopup()
@@ -249,6 +252,24 @@ public class GameManager : MonoBehaviour {
         Towerenemy.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Towerenemy;
         Towerenemy1.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Towerenemy;
     }
+
+    public void Restart()
+    {
+        i = 0;
+        ZombiePool.onNextLevel.Invoke();
+        House.onNextLevel.Invoke();
+        pause = false;
+        isPlaying = true;
+        finalPopup.SetActive(false);
+        Gameover = false;
+        Score = 0;
+        time = scenelist.scenelist[0].TimePlay;
+        Backgournd.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Backgournd;
+        Foregournd.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Foregournd;
+        Tower.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Tower;
+        Towerenemy.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Towerenemy;
+        Towerenemy1.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Towerenemy;
+    }
     public void PlayGame()
     {
         MenuUI.SetActive(false);
@@ -258,8 +279,10 @@ public class GameManager : MonoBehaviour {
         backResult.SetActive(true);
         Pausebtn.SetActive(true);
         loading.SetActive(false);
-        
-		playScene.SetActive(true);
+        Gameover = false;
+        finalPopup.SetActive(false);
+       
+        playScene.SetActive(true);
         isPlaying = true;
         pause = false;
        
@@ -280,6 +303,7 @@ public class GameManager : MonoBehaviour {
         quitResult.SetActive(false);
         backResult.SetActive(false);
         Pausebtn.SetActive(false);
+        finalPopup.SetActive(false);
     }
     public void Yesbtn()
     {
@@ -305,6 +329,10 @@ public class GameManager : MonoBehaviour {
         backResult.SetActive(true);
         YNUI.SetActive(false);
         pause = false;
+        if (Gameover)
+        {
+            finalPopup.SetActive(true);
+        }
     }
     public void QuitGame()
     {
@@ -326,6 +354,10 @@ public class GameManager : MonoBehaviour {
             shop.SetActive(false);
             setting.SetActive(false);
             quit.SetActive(false);
+        }
+        if (finalPopup.activeInHierarchy == true)
+        {
+            finalPopup.SetActive(false);
         }
     }
     public void YesQbtn()
@@ -353,6 +385,10 @@ public class GameManager : MonoBehaviour {
         {
             quitResult.SetActive(true);
             backResult.SetActive(true);
+        }
+        if (Gameover)
+        {
+            finalPopup.SetActive(true);
         }
     }
 }

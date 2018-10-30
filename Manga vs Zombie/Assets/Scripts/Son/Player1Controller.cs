@@ -11,14 +11,14 @@ public class Player1Controller : Photon.MonoBehaviour
     public bool attacking = false;
     public bool attacking1 = false;
     public Animator anim;
-    public Collider2D trigger;
+    public GameObject trigger;
     float h = 0;
     public bool skill1 = false;
     public float skill1delay = 1;
     public bool skill2 = false;
     public float skill2delay = 1;
-    public Collider2D trigger1;
-    public Collider2D trigger2;
+    public GameObject trigger1;
+    public GameObject trigger2;
     public Image imageColldown1;
     public bool isCooldown1 = false;
     public Image imageColldown2;
@@ -50,7 +50,9 @@ public class Player1Controller : Photon.MonoBehaviour
     {
         anim = gameObject.GetComponent<Animator>();
 
-        trigger.enabled = false;       
+        trigger.SetActive(false);
+        trigger1.SetActive(false);
+        trigger2.SetActive(false);
     }
     void Start()
     {
@@ -116,7 +118,7 @@ public class Player1Controller : Photon.MonoBehaviour
             {
                 attacking1 = false;
 
-                trigger.enabled = false;
+                trigger.SetActive(false);
 
             }
         }
@@ -132,7 +134,7 @@ public class Player1Controller : Photon.MonoBehaviour
             {
 
                 attacking = false;
-                trigger.enabled = false;
+                trigger.SetActive(false);
 
             }
         }
@@ -145,7 +147,7 @@ public class Player1Controller : Photon.MonoBehaviour
             else
             {
                 skill1 = false;
-                trigger1.enabled = false;
+                trigger1.SetActive(false);
             }
         }
         if (skill2)
@@ -157,7 +159,7 @@ public class Player1Controller : Photon.MonoBehaviour
             else
             {
                 skill2 = false;
-                trigger2.enabled = false;
+                trigger2.SetActive(false);
             }
         }
         if (isCooldown1)
@@ -191,11 +193,11 @@ public class Player1Controller : Photon.MonoBehaviour
 
     public void StartDame()
     {
-        trigger1.enabled = true;
+        trigger1.SetActive(true);
     }
     public void StartDame1()
     {
-        trigger2.enabled = true;
+        trigger2.SetActive(true);
     }
     public void Flip()
     {
@@ -209,7 +211,7 @@ public class Player1Controller : Photon.MonoBehaviour
     public void Attack()
     {
         int random = UnityEngine.Random.Range(0, 2);
-        trigger.enabled = true;
+        trigger.SetActive(true);
 
         dl =playerlist.playerList[i]._Delay;
 

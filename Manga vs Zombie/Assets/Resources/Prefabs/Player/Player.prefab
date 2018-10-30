@@ -22,14 +22,13 @@ GameObject:
   - component: {fileID: 61242606679983060}
   - component: {fileID: 114758043213553912}
   - component: {fileID: 114157845712196558}
-  - component: {fileID: 114904324864484834}
   m_Layer: 0
   m_Name: Skill2trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1863916118095010
 GameObject:
   m_ObjectHideFlags: 0
@@ -41,14 +40,13 @@ GameObject:
   - component: {fileID: 61745992417837758}
   - component: {fileID: 114729393628145722}
   - component: {fileID: 114422749651474860}
-  - component: {fileID: 114342488084625342}
   m_Layer: 0
   m_Name: Attacktrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1887469897480344
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,14 +58,13 @@ GameObject:
   - component: {fileID: 61893537560529444}
   - component: {fileID: 114499533090854510}
   - component: {fileID: 114305735567635244}
-  - component: {fileID: 114347163438908674}
   m_Layer: 0
   m_Name: Skill1trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1942538490770404
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,7 +96,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1942538490770404}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 540, y: 960, z: 0}
+  m_LocalPosition: {x: -4.345366, y: -2.0855684, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4533346241857440}
@@ -153,7 +150,7 @@ BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1044592102673162}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -178,7 +175,7 @@ BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1863916118095010}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -203,13 +200,13 @@ BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1887469897480344}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.56, y: 0.44}
+  m_Offset: {x: 0.5, y: 0.42}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -255,16 +252,16 @@ MonoBehaviour:
   ShowParameterInspector: 1
   m_SynchronizeParameters:
   - Type: 4
-    SynchronizeType: 1
+    SynchronizeType: 0
     Name: Attacking
   - Type: 4
-    SynchronizeType: 1
+    SynchronizeType: 0
     Name: Skill2
   - Type: 4
-    SynchronizeType: 1
+    SynchronizeType: 0
     Name: Attacking1
   - Type: 4
-    SynchronizeType: 1
+    SynchronizeType: 0
     Name: Skill1
   m_SynchronizeLayers:
   - SynchronizeType: 1
@@ -323,36 +320,6 @@ MonoBehaviour:
   instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
---- !u!114 &114342488084625342
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1863916118095010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aac095bad1493fa4fa2ccc3a76997dcb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
-  timeDelay: 0
-  isAttack: 0
-  target: []
---- !u!114 &114347163438908674
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1887469897480344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aac095bad1493fa4fa2ccc3a76997dcb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 20
-  timeDelay: 0
-  isAttack: 0
-  target: []
 --- !u!114 &114422749651474860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -420,19 +387,23 @@ MonoBehaviour:
   attacking: 0
   attacking1: 0
   anim: {fileID: 95352752012054000}
-  trigger: {fileID: 61745992417837758}
+  trigger: {fileID: 1863916118095010}
   skill1: 0
   skill1delay: 1
   skill2: 0
   skill2delay: 1
-  trigger1: {fileID: 61893537560529444}
-  trigger2: {fileID: 61242606679983060}
+  trigger1: {fileID: 1887469897480344}
+  trigger2: {fileID: 1044592102673162}
   imageColldown1: {fileID: 0}
   isCooldown1: 0
   imageColldown2: {fileID: 0}
   isCooldown2: 0
   text1: {fileID: 0}
   text2: {fileID: 0}
+  image1: {fileID: 0}
+  image2: {fileID: 0}
+  image3: {fileID: 0}
+  image4: {fileID: 0}
   playerlist: {fileID: 11400000, guid: eeb5fd019af4f734cb696dd640d0d004, type: 2}
   dmg: 0
   dmg1: 0
@@ -462,21 +433,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   p: {fileID: 114654693804148844}
---- !u!114 &114904324864484834
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1044592102673162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aac095bad1493fa4fa2ccc3a76997dcb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 20
-  timeDelay: 0
-  isAttack: 0
-  target: []
 --- !u!114 &114956740718922850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -600,7 +556,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 410d4c6d4b2ea8448a540e49f664c90c, type: 3}
+  m_Sprite: {fileID: 21300002, guid: bcedef66e14996143be6799bd04b75e3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
