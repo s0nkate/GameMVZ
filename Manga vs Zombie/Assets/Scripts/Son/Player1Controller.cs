@@ -34,7 +34,6 @@ public class Player1Controller : Photon.MonoBehaviour
     public Image image2;
     public Image image3;
     public Image image4;
-    private PhotonView photonView;
 
     public InventoryPlayerList playerlist;
   
@@ -49,7 +48,6 @@ public class Player1Controller : Photon.MonoBehaviour
     void Awake()
     {
         anim = gameObject.GetComponent<Animator>();
-        photonView = GetComponent<PhotonView>();
         trigger.SetActive(false);
         trigger1.SetActive(false);
         trigger2.SetActive(false);
@@ -191,17 +189,18 @@ public class Player1Controller : Photon.MonoBehaviour
         anim.SetBool("Attacking1", attacking1);
     }
 
-    [PunRPC]
+
     public void StartDame()
     {
-        
-        photonView.RPC("StartSkill", PhotonTargets.All);
+        // photonView.RPC("StartSkill", PhotonTargets.All);
+        StartSkill();
 
     }
     
     public void StartDame1()
     {
-        photonView.RPC("StartSkill1", PhotonTargets.All);
+        // photonView.RPC("StartSkill1", PhotonTargets.All);
+        StartSkill1();
     }
 
     [PunRPC]
