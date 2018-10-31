@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class Player1Controller : Photon.PunBehaviour
+public class Player1Controller : Photon.MonoBehaviour
 {
     public bool faceright = true;
     public static float attackdelay;
@@ -34,7 +34,7 @@ public class Player1Controller : Photon.PunBehaviour
     public Image image2;
     public Image image3;
     public Image image4;
-
+    private PhotonView photonView;
 
     public InventoryPlayerList playerlist;
   
@@ -49,7 +49,7 @@ public class Player1Controller : Photon.PunBehaviour
     void Awake()
     {
         anim = gameObject.GetComponent<Animator>();
-
+        photonView = GetComponent<photonView>();
         trigger.SetActive(false);
         trigger1.SetActive(false);
         trigger2.SetActive(false);
