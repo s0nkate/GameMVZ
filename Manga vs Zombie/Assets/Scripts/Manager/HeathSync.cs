@@ -3,20 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using ECSComponent;
 
-public class HeathSync : Photon.MonoBehaviour, IPunObservable
+public class HeathSync : Photon.PunBehaviour
 {
 	Heath heath;
     int heathNetwork;
+    public PhotonView photonView;
     static float t = 0.0f;
 	public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
+        Debug.Log("OnPhotonSerializeView");
+        
         if (stream.isWriting)
         {
-            stream.SendNext(heath.value);
+            int value = heath.value;
+            stream.Serialize(ref value);
+
         }
         else
-        {           
-            heath.value = (int)stream.ReceiveNext();
+        {         
+            heathNetwork = 0;
+            stream.Serialize(ref heathNetwork);
         }
     }
 
@@ -24,17 +30,18 @@ public class HeathSync : Photon.MonoBehaviour, IPunObservable
 	void Awake () 
 	{
 		heath = gameObject.GetComponent<Heath>();
-        heathNetwork = heath.value;
+        photonView = gameObject.GetComponent<PhotonView>();
+        heathNetwork = heath.maxValue;
 	}
 
-    // void Update()
-    // {
-    //     if(!photonView.isMine)
-    //     {
-            // heath.value = heathNetwork;
-            // // heath.value = Mathf.Lerp(heath.value, heathNetwork, t);
-            // t += 0.5f * Time.deltaTime;
-    //     }
-    // }
+    void Update()
+    {
+        if(!photonView.isMine)
+        {
+            heath.value = heathNetwork;
+            // heath.value = Mathf.Lerp(heath.value, heathNetwork, t);
+            t += 0.5f * Time.deltaTime;
+        }
+    }
 	
 }

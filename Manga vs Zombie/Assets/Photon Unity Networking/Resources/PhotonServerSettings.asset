@@ -49,4 +49,5 @@ MonoBehaviour:
   - GetZombie
   - SpawnPlayer
   - ActivePlayer
+  - DisableAllZombie
   DisableAutoOpenWizard: 1

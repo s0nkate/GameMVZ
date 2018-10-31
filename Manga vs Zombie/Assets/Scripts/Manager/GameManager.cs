@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour {
     public bool isPlaying = false;
     public List<ShopItems> playerShopList;
     public List<ShopItems> itemShopList;
+    
 	// public GameObject[] instancePlayer;
 	public static GameManager Instance = null;
 	private void Awake()
@@ -73,8 +74,7 @@ public class GameManager : MonoBehaviour {
         NextLvUI.SetActive(false);
         Highscore.SetActive(false);
         YNQuitUI.SetActive(false);
-        ZombiePool.onNextLevel.Invoke();
-        House.onNextLevel.Invoke();
+        
         //Backgournd = gameObject.GetComponent<SpriteRenderer>().sprite;
         
     }
