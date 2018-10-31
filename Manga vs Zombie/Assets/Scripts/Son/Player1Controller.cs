@@ -49,7 +49,7 @@ public class Player1Controller : Photon.MonoBehaviour
     void Awake()
     {
         anim = gameObject.GetComponent<Animator>();
-        photonView = GetComponent<photonView>();
+        photonView = GetComponent<PhotonView>();
         trigger.SetActive(false);
         trigger1.SetActive(false);
         trigger2.SetActive(false);
