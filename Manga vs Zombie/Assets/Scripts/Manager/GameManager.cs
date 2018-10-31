@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour {
     public List<ShopItems> GetSelectedItem()
     {
         List<ShopItems> selectedItem = new List<ShopItems>();
-        foreach (var item in playerShopList)
+        foreach (var item in itemShopList)
         {
             if(item.isSelected)
                 selectedItem.Add(item);

@@ -26,8 +26,16 @@ public class PlayerSpawn : Photon.PunBehaviour {
 		// 	photonView.RPC("SpawnPlayer", PhotonTargets.AllBuffered);
 		// 	isInstance = true;
 		// }
+		Vector3 pos = transform.position;
 		GameObject player = PhotonNetwork.Instantiate("Prefabs/Player/Player", transform.position, transform.localRotation, 0) as GameObject;
-		
+		if(PhotonNetwork.player.IsMasterClient)
+		{
+			player.transform.position += new Vector3(0.1f,0,0);
+		}
+		else
+		{
+			player.transform.position += new Vector3(-0.1f,0,0);
+		}
 	}
 
 	[PunRPC]
