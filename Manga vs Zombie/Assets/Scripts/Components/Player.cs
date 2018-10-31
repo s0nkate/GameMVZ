@@ -49,6 +49,7 @@ namespace ECSComponent
 				stream.Serialize(ref position);
 				stream.Serialize(ref rotation);
 				stream.Serialize(ref state);
+				Debug.Log("ME: " + state);
 				// stream.Serialize(ref skill1);
 				// stream.Serialize(ref skill2);
 				// stream.Serialize(ref actack1);
@@ -77,11 +78,11 @@ namespace ECSComponent
 				// bool actack2 = animator.GetBool("Attacking1");
 
 				//photonView.RequestOwnership();
-
 				stream.Serialize(ref isActive);
 				stream.Serialize(ref position);
 				stream.Serialize(ref rotation);
 				stream.Serialize(ref state);
+				Debug.Log("YOU: " + state);
 				// stream.Serialize(ref skill1);
 				// stream.Serialize(ref skill2);
 				// stream.Serialize(ref actack1);

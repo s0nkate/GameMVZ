@@ -288,9 +288,7 @@ public class Player1Controller : Photon.MonoBehaviour
 
     public  void LoadData()
     {
-
-        i = playerlist.selectedPlayerindex;
-        
+        i = GameManager.Instance.GetSelectedPlayer().index;
     }
   
 }
