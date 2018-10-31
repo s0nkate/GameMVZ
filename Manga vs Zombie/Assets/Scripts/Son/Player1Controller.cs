@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class Player1Controller : Photon.MonoBehaviour
+public class Player1Controller : Photon.PunBehaviour
 {
     public bool faceright = true;
     public static float attackdelay;
@@ -191,14 +191,50 @@ public class Player1Controller : Photon.MonoBehaviour
         anim.SetBool("Attacking1", attacking1);
     }
 
+    [PunRPC]
     public void StartDame()
     {
-        trigger1.SetActive(true);
+        
+        photonView.RPC("StartSkill", PhotonTargets.All);
+
     }
+    
     public void StartDame1()
     {
-        trigger2.SetActive(true);
+        photonView.RPC("StartSkill1", PhotonTargets.All);
     }
+
+    [PunRPC]
+    public void StartSkill1()
+    {
+        trigger2.SetActive(true);
+        if (skill2delay > 0)
+        {
+            skill2delay -= Time.deltaTime;
+        }
+        else
+        {
+            skill2 = false;
+            trigger2.SetActive(false);
+        }
+
+    }
+
+    [PunRPC]
+    public void StartSkill()
+    {
+        trigger1.SetActive(true);
+        if (skill1delay > 0)
+        {
+            skill1delay -= Time.deltaTime;
+        }
+        else
+        {
+            skill1 = false;
+            trigger1.SetActive(false);
+        }
+    }
+
     public void Flip()
     {
         faceright = !faceright;

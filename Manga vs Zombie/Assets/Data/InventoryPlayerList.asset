@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aab94e02876ca3543ab673770ee15b07, type: 3}
   m_Name: InventoryPlayerList
   m_EditorClassIdentifier: 
-  selectedPlayerindex: 3
+  selectedPlayerindex: 6
   playerList:
   - _image: {fileID: 2800000, guid: c41a479c5b89cf84fa61a589b2f758da, type: 3}
     _Name: Sasuke
@@ -116,7 +116,7 @@ MonoBehaviour:
     _DmgSkill1: 150
     _Cooldown1: 1
     _Image1: {fileID: 21300014, guid: 20b99a0745544e64697486cf6bc7c3e1, type: 3}
-    _DmgSkill2: 320
+    _DmgSkill2: 30
     _Cooldown2: 1
     _Image2: {fileID: 21300004, guid: 1677e6ee28a38a7409d39c191f64a439, type: 3}
     Price: 0
