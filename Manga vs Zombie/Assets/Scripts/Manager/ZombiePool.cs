@@ -38,6 +38,7 @@ public class ZombiePool : Photon.PunBehaviour
 	public override void OnJoinedRoom()
 	{
 		Debug.Log("OnJoinedRoom by Zombiepool");
+		onNextLevel.Invoke();
 		// if(PhotonNetwork.isMasterClient)
 		// {
 		// 	for (int i = 0; i < zombieCount; i++) 

@@ -38,6 +38,8 @@ namespace ECSComponent
 				bool isActive = gameObject.activeSelf;
 				Vector3 position = transform.position;
 				Quaternion rotation = transform.rotation;
+				PlayerBehaviour playerBehaviour = GetComponent<Player1Controller>().playerBehaviour;
+				int state = (int)playerBehaviour.behaviour;
 				// bool skill1 = animator.GetBool("Skill1");
 				// bool skill2 = animator.GetBool("Skill2");
 				// bool actack1 = animator.GetBool("Attacking");
@@ -46,6 +48,7 @@ namespace ECSComponent
 				stream.Serialize(ref isActive);
 				stream.Serialize(ref position);
 				stream.Serialize(ref rotation);
+				stream.Serialize(ref state);
 				// stream.Serialize(ref skill1);
 				// stream.Serialize(ref skill2);
 				// stream.Serialize(ref actack1);
@@ -66,6 +69,8 @@ namespace ECSComponent
 				bool isActive = gameObject.activeSelf;
 				Vector3 position = transform.position;
 				Quaternion rotation = transform.rotation;
+				PlayerBehaviour playerBehaviour = GetComponent<Player1Controller>().playerBehaviour;
+				int state = 0;
 				// bool skill1 = animator.GetBool("Skill1");
 				// bool skill2 = animator.GetBool("Skill2");
 				// bool actack1 = animator.GetBool("Attacking");
@@ -76,6 +81,7 @@ namespace ECSComponent
 				stream.Serialize(ref isActive);
 				stream.Serialize(ref position);
 				stream.Serialize(ref rotation);
+				stream.Serialize(ref state);
 				// stream.Serialize(ref skill1);
 				// stream.Serialize(ref skill2);
 				// stream.Serialize(ref actack1);
@@ -85,6 +91,7 @@ namespace ECSComponent
 					gameObject.SetActive(isActive);
 					transform.position = position;
 					transform.rotation = rotation;
+					playerBehaviour.SetBehaviour(state);
 					// animator.SetBool("Skill1", (bool) skill1);
         			// animator.SetBool("Skill2", (bool) skill2);
         			// animator.SetBool("Attacking", (bool) actack1);

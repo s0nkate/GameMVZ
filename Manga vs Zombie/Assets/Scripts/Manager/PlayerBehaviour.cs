@@ -2,21 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-public enum BehaviourType
+public enum BehaviourType : int
 {
-		Idle,
-		Left,
-		Right,
-		Skill1,
-		Skill2,
-		Item1,
-		Item2
+		Idle = 0,
+		Left = 1, 
+		Right = 2,
+		Skill1 = 3,
+		Skill2 = 4,
+		Item1 = 5,
+		Item2 = 6
 }
 public class PlayerBehaviour : Photon.PunBehaviour 
 {
 	
 
 	public BehaviourType behaviour;
+
+	public void SetBehaviour(int state)
+	{
+		behaviour = (BehaviourType)state;
+	}
 
 	public void AttackLeft()
 	{
