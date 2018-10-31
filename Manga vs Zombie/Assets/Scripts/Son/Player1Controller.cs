@@ -194,10 +194,30 @@ public class Player1Controller : Photon.MonoBehaviour
     public void StartDame()
     {
         trigger1.SetActive(true);
+        if (skill1delay > 0)
+        {
+            skill1delay -= Time.deltaTime;
+        }
+        else
+        {
+            skill1 = false;
+            trigger1.SetActive(false);
+        }
+
     }
     public void StartDame1()
     {
         trigger2.SetActive(true);
+        if (skill2delay > 0)
+        {
+            skill2delay -= Time.deltaTime;
+        }
+        else
+        {
+            skill2 = false;
+            trigger2.SetActive(false);
+        }
+
     }
     public void Flip()
     {
@@ -289,7 +309,7 @@ public class Player1Controller : Photon.MonoBehaviour
     public  void LoadData()
     {
 
-        i = playerlist.selectedPlayerindex;
+        i = GameManager.Instance.GetSelectedPlayer().index;
         
     }
   

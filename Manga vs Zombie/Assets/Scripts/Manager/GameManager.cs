@@ -253,25 +253,10 @@ public class GameManager : MonoBehaviour {
         Towerenemy1.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Towerenemy;
     }
 
-    public void Restart()
-    {
-        i = 0;
-        ZombiePool.onNextLevel.Invoke();
-        House.onNextLevel.Invoke();
-        pause = false;
-        isPlaying = true;
-        finalPopup.SetActive(false);
-        Gameover = false;
-        Score = 0;
-        time = scenelist.scenelist[0].TimePlay;
-        Backgournd.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Backgournd;
-        Foregournd.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Foregournd;
-        Tower.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Tower;
-        Towerenemy.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Towerenemy;
-        Towerenemy1.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Towerenemy;
-    }
+    
     public void PlayGame()
     {
+        i = 0;
         MenuUI.SetActive(false);
         ResultUI.SetActive(false);
         NextLvUI.SetActive(false);
