@@ -18,6 +18,7 @@ namespace ECSSystem
 		{
 			public House house;
 			public Heath heath;
+			public PhotonView photonView;
 		}
 
 		struct ZombieData
@@ -34,6 +35,8 @@ namespace ECSSystem
 			CheckHouse();
 		}
 
+
+
 		void CheckHouse()
 		{
 			foreach (var e in GetEntities<HouseData>())
@@ -45,6 +48,7 @@ namespace ECSSystem
 				}
 			}
 		}
+
 		void CheckHeath()
 		{
 			foreach (var e in GetEntities<Data>())
@@ -57,7 +61,6 @@ namespace ECSSystem
 				}
 			}
 		}
-
 		void CheckDead()
 		{
 			foreach (var e in GetEntities<ZombieData>())

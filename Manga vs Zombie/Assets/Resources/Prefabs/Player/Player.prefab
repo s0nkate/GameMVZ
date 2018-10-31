@@ -252,16 +252,16 @@ MonoBehaviour:
   ShowParameterInspector: 1
   m_SynchronizeParameters:
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: Attacking
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: Skill2
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: Attacking1
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: Skill1
   m_SynchronizeLayers:
   - SynchronizeType: 1
@@ -461,7 +461,7 @@ MonoBehaviour:
     TeleportIfDistanceGreaterThan: 1
     InterpolateOption: 4
     InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 5
+    InterpolateLerpSpeed: 2
     InterpolateMoveTowardsAcceleration: 2
     InterpolateMoveTowardsDeceleration: 2
     InterpolateSpeedCurve:
@@ -506,14 +506,14 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    ExtrapolateOption: 0
+    ExtrapolateOption: 2
     ExtrapolateSpeed: 1
     ExtrapolateIncludingRoundTripTime: 1
     ExtrapolateNumberOfStoredPositions: 1
     DrawErrorGizmo: 1
   m_RotationModel:
     SynchronizeEnabled: 1
-    InterpolateOption: 2
+    InterpolateOption: 1
     InterpolateRotateTowardsSpeed: 180
     InterpolateLerpSpeed: 2
   m_ScaleModel:

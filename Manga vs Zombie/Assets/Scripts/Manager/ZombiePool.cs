@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 
 [RequireComponent(typeof(ZombieSpawn))]
-public class ZombiePool : Photon.MonoBehaviour 
+public class ZombiePool : Photon.PunBehaviour 
 {
 
 	public List<GameObject> zombiePool;
@@ -16,9 +16,10 @@ public class ZombiePool : Photon.MonoBehaviour
 	public int zombieCount = 6;
 	public static UnityEvent onNextLevel;
 	// public PhotonView photonView;
-	void Start()
+	void Awake()
 	{
 		zombieSpawn = GetComponent<ZombieSpawn>();
+		zombieSpawn.isActived = true;
 		spawnTransform = zombieSpawn.transform;
 		if (onNextLevel == null)
 		{
@@ -30,15 +31,39 @@ public class ZombiePool : Photon.MonoBehaviour
 
 		LoadLevel();
 		// zombiePool = new List<GameObject>();
-		// photonView = GetComponent<PhotonView>();
+
+		// StartCoroutine("CreateZombiePool");		
+	}
+
+	public override void OnJoinedRoom()
+	{
+		Debug.Log("OnJoinedRoom by Zombiepool");
 		// if(PhotonNetwork.isMasterClient)
 		// {
 		// 	for (int i = 0; i < zombieCount; i++) 
 		// 	{
 		// 		photonView.RPC("CreateZombie", PhotonTargets.AllBuffered);
 		// 	}
+		// 	zombieSpawn.isActived = false;
 		// }
 	}
+
+	// IEnumerator CreateZombiePool()
+	// {
+	// 	while(true)
+	// 	{
+	// 		if(PhotonNetwork.isMasterClient)
+	// 		{
+	// 			for (int i = 0; i < zombieCount; i++) 
+	// 			{
+	// 				photonView.RPC("CreateZombie", PhotonTargets.AllBuffered);
+	// 			}
+	// 			zombieSpawn.isActived = true;
+	// 			break;
+	// 		}
+	// 		yield return new WaitForSeconds(0);
+	// 	}
+	// }
 
 	void LoadLevel()
 	{

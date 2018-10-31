@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class NetworkManager : Photon.PunBehaviour
 {
-
+	
+	public PhotonView myPhotonView;
 	public string version = "1.0";
 	public byte maxNumberPlayerInARoom = 2;
 	public RoomInfo[] roomsList;
@@ -17,15 +18,29 @@ public class NetworkManager : Photon.PunBehaviour
 	public bool isInLobby;
 	public bool isInRoom;	
 	 bool isCancel;
-	// object[] content = new object[] { new Vector3(10.0f, 2.0f, 5.0f), 1, 2, 5, 10 }; // Array contains the target position and the IDs of the selected units
 	bool reliable = true;
+	public static int playerWhoIsIt = 0;
 	RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-	void Awake()
+	public static NetworkManager Instance = null;
+	private static PhotonView photonView;
+	private void Awake()
 	{
+		if (Instance == null)
+		{
+			Instance = this;
+		}
+		else if (Instance != this)
+		{
+			Destroy(gameObject);
+		}
 		PhotonNetwork.autoJoinLobby = false;
 		PhotonNetwork.automaticallySyncScene = true;
 		PhotonNetwork.ConnectUsingSettings(version);
+		myPhotonView = GetComponent<PhotonView>();
+		DontDestroyOnLoad (gameObject);
 	}
+
+
 
 	public void ConnectAndJoin () 
 	{
@@ -52,14 +67,20 @@ public class NetworkManager : Photon.PunBehaviour
 		loadingText.text = "Connected to server";
 
 	}
+	// public override void OnOwnershipRequest(object[] viewAndPlayer)
+	// {
+	// 	PhotonView view = viewAndPlayer[0] as PhotonView;
+    //  	PhotonPlayer requestingPlayer = viewAndPlayer[1] as PhotonPlayer;
+	// 	photonView.TransferOwnership(requestingPlayer.ID);
+	// }
 
 	public override void OnJoinedLobby ()
 	{
 		Debug.Log("OnJoinedLobby");
 		isInLobby = true;
+		GameManager.Instance.playScene.SetActive(true);
 		if(isCancel)
 		{
-			
 			CreateRoom();
 			isCancel = false;
 			return;
@@ -71,9 +92,21 @@ public class NetworkManager : Photon.PunBehaviour
 		}
 		
 	}
+	// public override void OnPhotonPlayerConnected(PhotonPlayer player)
+    // {
+    //     Debug.Log("OnPhotonPlayerConnected: " + player);
+    // }
+
+
 	public override void OnJoinedRoom()
 	{
 		Debug.Log("OnJoinedRoom");
+		if (PhotonNetwork.playerList.Length == 1)
+        {
+            playerWhoIsIt = PhotonNetwork.player.ID;
+        }
+
+        Debug.Log("playerWhoIsIt: " + playerWhoIsIt);
 		isInRoom = true;
 		if(!isOwn)
 		{
