@@ -43,7 +43,7 @@ namespace ECSSystem
 			{
 				if(e.heath.value <= 0 )
 				{
-					Debug.Log("gameover");
+					
 					GameManager.Instance.GameOver();
 				}
 			}
