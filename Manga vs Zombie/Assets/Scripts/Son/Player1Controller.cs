@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-public class Player1Controller : Photon.PunBehaviour
+public class Player1Controller : Photon.MonoBehaviour
 {
     public bool faceright = true;
     public static float attackdelay;
@@ -39,7 +39,6 @@ public class Player1Controller : Photon.PunBehaviour
     public Image Imageitem1;
     public Image Imageitem2;
 
-
     public InventoryPlayerList playerlist;
   
     protected AnimatorOverrideController animatorOverrideController;
@@ -53,7 +52,6 @@ public class Player1Controller : Photon.PunBehaviour
     void Awake()
     {
         anim = gameObject.GetComponent<Animator>();
-
         trigger.SetActive(false);
         trigger1.SetActive(false);
         trigger2.SetActive(false);
@@ -220,17 +218,18 @@ public class Player1Controller : Photon.PunBehaviour
         anim.SetBool("Attacking1", attacking1);
     }
 
-    [PunRPC]
+
     public void StartDame()
     {
-        
-        photonView.RPC("StartSkill", PhotonTargets.All);
+        // photonView.RPC("StartSkill", PhotonTargets.All);
+        StartSkill();
 
     }
     
     public void StartDame1()
     {
-        photonView.RPC("StartSkill1", PhotonTargets.All);
+        // photonView.RPC("StartSkill1", PhotonTargets.All);
+        StartSkill1();
     }
 
     [PunRPC]
