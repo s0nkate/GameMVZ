@@ -316,8 +316,8 @@ MonoBehaviour:
   - {fileID: 114992937511569638}
   - {fileID: 114470940261785628}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 0
-  instantiationId: -1
+  viewIdField: 25
+  instantiationId: 25
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114422749651474860
@@ -404,6 +404,10 @@ MonoBehaviour:
   image2: {fileID: 0}
   image3: {fileID: 0}
   image4: {fileID: 0}
+  Textitem1: {fileID: 0}
+  Textitem2: {fileID: 0}
+  Imageitem1: {fileID: 0}
+  Imageitem2: {fileID: 0}
   playerlist: {fileID: 11400000, guid: eeb5fd019af4f734cb696dd640d0d004, type: 2}
   dmg: 0
   dmg1: 0

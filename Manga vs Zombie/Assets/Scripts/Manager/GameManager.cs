@@ -50,9 +50,14 @@ public class GameManager : MonoBehaviour {
     public bool Gameover = false;
     public List<ShopItems> playerShopList;
     public List<ShopItems> itemShopList;
-    
-	// public GameObject[] instancePlayer;
-	public static GameManager Instance = null;
+    public Text Textitem1;
+    public Text Textitem2;
+    public Image Imageitem1;
+    public Image Imageitem2;
+
+
+    // public GameObject[] instancePlayer;
+    public static GameManager Instance = null;
 	private void Awake()
 	{
 		if (Instance == null)
@@ -109,7 +114,7 @@ public class GameManager : MonoBehaviour {
     public List<ShopItems> GetSelectedItem()
     {
         List<ShopItems> selectedItem = new List<ShopItems>();
-        foreach (var item in playerShopList)
+        foreach (var item in itemShopList)
         {
             if(item.isSelected)
                 selectedItem.Add(item);
@@ -118,8 +123,9 @@ public class GameManager : MonoBehaviour {
     }
 	public void UpdateData()
 	{
+        
 
-	}
+    }
 
 	public void SaveData()
 	{
@@ -270,7 +276,7 @@ public class GameManager : MonoBehaviour {
         playScene.SetActive(true);
         isPlaying = true;
         pause = false;
-       
+        House.onNextLevel.Invoke();
         time = scenelist.scenelist[0].TimePlay;
         Score = 0;
         Gold = 0;

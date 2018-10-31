@@ -69,6 +69,7 @@ namespace ECSSystem
 				{
 					e.faction.currentState = State.Dead;
 					e.animator.SetInteger("stage", (int)State.Dead);
+
 					// GameManager.Instance.AddMoney(e.zoombie.money);
 					// GameManager.Instance.AddScore(e.zoombie.score);
 				}

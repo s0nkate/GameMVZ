@@ -2,7 +2,7 @@
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
-
+using System.Collections.Generic;
 
 public class Player1Controller : Photon.PunBehaviour
 {
@@ -34,6 +34,10 @@ public class Player1Controller : Photon.PunBehaviour
     public Image image2;
     public Image image3;
     public Image image4;
+    public Text Textitem1;
+    public Text Textitem2;
+    public Image Imageitem1;
+    public Image Imageitem2;
 
 
     public InventoryPlayerList playerlist;
@@ -72,6 +76,10 @@ public class Player1Controller : Photon.PunBehaviour
         image2 = skillGUI.image2;
         image3 = skillGUI.image3;
         image4 = skillGUI.image4;
+        Textitem1 = skillGUI.Textitem1;
+        Textitem2 = skillGUI.Textitem2;
+        Imageitem1 = skillGUI.Imageitem1;
+        Imageitem2 = skillGUI.Imageitem2;
         dmg = playerlist.playerList[i]._Dmg;
         dmg1 = playerlist.playerList[i]._DmgSkill1;
         dmg2 = playerlist.playerList[i]._DmgSkill2;
@@ -82,6 +90,9 @@ public class Player1Controller : Photon.PunBehaviour
         image2.sprite = playerlist.playerList[i]._Image1;
         image3.sprite = playerlist.playerList[i]._Image2;
         image4.sprite = playerlist.playerList[i]._Image2;
+
+        
+
 
         animatorOverrideController = new AnimatorOverrideController(anim.runtimeAnimatorController);
         anim.runtimeAnimatorController = animatorOverrideController;
@@ -95,7 +106,25 @@ public class Player1Controller : Photon.PunBehaviour
         clipOverrides["Player1 Skill2"] = playerlist.playerList[i].playskill2;
         animatorOverrideController.ApplyOverrides(clipOverrides);
         GetComponent<Animator>().runtimeAnimatorController = animatorOverrideController;
+
+        List<ShopItems> listItem = GameManager.Instance.GetSelectedItem();
+        Debug.Log(listItem.Count);
+        switch (listItem.Count) {
+            
+            case 1:
+        Textitem1.text = listItem[0].info;
+        Imageitem1.sprite = listItem[0].image;
+                break;
+            case 2:
+                Textitem1.text = listItem[0].info;
+                Imageitem1.sprite = listItem[0].image;
+                Textitem2.text = listItem[1].info;
+            Imageitem2.sprite = listItem[1].image;
+                break;
+            default:
+                break;
     }
+}
     void Update()
     {
         if (h > 0 && !faceright)
