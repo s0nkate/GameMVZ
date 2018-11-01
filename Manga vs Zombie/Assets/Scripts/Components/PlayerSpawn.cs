@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ECSComponent;
 
 public class PlayerSpawn : Photon.PunBehaviour {
 
@@ -27,7 +28,7 @@ public class PlayerSpawn : Photon.PunBehaviour {
 		// 	isInstance = true;
 		// }
 		GameObject player = PhotonNetwork.Instantiate("Prefabs/Player/Player", transform.position, transform.localRotation, 0) as GameObject;
-		
+        player.GetComponent<Player>().id = PhotonNetwork.player.ID;
 	}
 
 	[PunRPC]

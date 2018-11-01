@@ -9,8 +9,9 @@ using UnityEngine.Events;
 public class ZombiePool : Photon.PunBehaviour 
 {
 
-	public List<GameObject> zombiePool;
-	public InventorySceneList inventorySceneList; 
+	public Queue<GameObject> zombieQueue;
+    public List<GameObject> zombiePool;
+    public InventorySceneList inventorySceneList; 
 	ZombieSpawn zombieSpawn;
 	Transform spawnTransform;
 	public int zombieCount = 6;
@@ -19,52 +20,40 @@ public class ZombiePool : Photon.PunBehaviour
 	void Awake()
 	{
 		zombieSpawn = GetComponent<ZombieSpawn>();
-		zombieSpawn.isActived = true;
-		spawnTransform = zombieSpawn.transform;
+        zombieQueue = new Queue<GameObject>();
+        spawnTransform = zombieSpawn.transform;
 		if (onNextLevel == null)
 		{
             onNextLevel = new UnityEvent();
 			
 		}
 		onNextLevel.AddListener(LoadLevel);
-		
 
-		LoadLevel();
-		// zombiePool = new List<GameObject>();
+        
+        //LoadLevel();
+       
+        // zombiePool = new List<GameObject>();
 
-		// StartCoroutine("CreateZombiePool");		
-	}
+        // StartCoroutine("CreateZombiePool");		
+    }
 
 	public override void OnJoinedRoom()
 	{
 		Debug.Log("OnJoinedRoom by Zombiepool");
-		onNextLevel.Invoke();
-		// if(PhotonNetwork.isMasterClient)
-		// {
-		// 	for (int i = 0; i < zombieCount; i++) 
-		// 	{
-		// 		photonView.RPC("CreateZombie", PhotonTargets.AllBuffered);
-		// 	}
-		// 	zombieSpawn.isActived = false;
-		// }
-	}
+        
+        onNextLevel.Invoke();
+        zombieSpawn.isActived = true;
+        // if(PhotonNetwork.isMasterClient)
+        // {
+        // 	for (int i = 0; i < zombieCount; i++) 
+        // 	{
+        // 		photonView.RPC("CreateZombie", PhotonTargets.AllBuffered);
+        // 	}
+        // 	zombieSpawn.isActived = false;
+        // }
+    }
 
-	// IEnumerator CreateZombiePool()
-	// {
-	// 	while(true)
-	// 	{
-	// 		if(PhotonNetwork.isMasterClient)
-	// 		{
-	// 			for (int i = 0; i < zombieCount; i++) 
-	// 			{
-	// 				photonView.RPC("CreateZombie", PhotonTargets.AllBuffered);
-	// 			}
-	// 			zombieSpawn.isActived = true;
-	// 			break;
-	// 		}
-	// 		yield return new WaitForSeconds(0);
-	// 	}
-	// }
+
 
 	void LoadLevel()
 	{
@@ -79,39 +68,72 @@ public class ZombiePool : Photon.PunBehaviour
 		photonView.RPC("GetZombie", PhotonTargets.AllBuffered);
 	}
 
-	[PunRPC]
+    private void Update()
+    {
+        //AddToQueue();
+    }
+
+    void AddToQueue()
+    {
+        Debug.Log("addqueue");
+        foreach (var zombie in zombiePool)
+        {
+            if (!zombie.activeInHierarchy)
+            {
+                Debug.Log(zombie);
+                zombieQueue.Enqueue(zombie);
+            }
+        }
+    }
+
+    [PunRPC]
 	public void DisableAllZombie()
 	{
-		for(int i = 0; i < zombieCount; i++)
-		{
-			if(zombiePool[i].activeInHierarchy)
-			{
-				zombiePool[i].SetActive(false);
-			}
-		}
-	}
+        for (int i = 0; i < zombieCount; i++)
+        {
+            if (zombiePool[i].activeInHierarchy)
+            {
+                zombiePool[i].SetActive(false);
+            }
+        }
+
+
+    }
 
 
 	[PunRPC]
 	public void GetZombie()
 	{
-		for(int i = 0; i < zombieCount; i++)
-		{
-			if(!zombiePool[i].activeInHierarchy)
-			{
-				Heath heath = zombiePool[i].GetComponent<Heath>();
-				Faction faction = zombiePool[i].GetComponent<Faction>();
+        //for(int i = 0; i < zombieCount; i++)
+        //{
+        //if(!zombiePool[i].activeInHierarchy)
+        //{
+        //	Heath heath = zombiePool[i].GetComponent<Heath>();
+        //	Faction faction = zombiePool[i].GetComponent<Faction>();
+        //             heath.value = heath.maxValue;
+        //             heath.isDead = false;
 
-				faction.currentState = State.Walk;
-				heath.value = heath.maxValue;
-				zombiePool[i].transform.position = spawnTransform.position;
-				zombiePool[i].SetActive(true);
-				return;	
-			}
-		}
-	}
+        //	zombiePool[i].transform.position = spawnTransform.position;
+        //	zombiePool[i].SetActive(true);
+        //             faction.currentState = State.Walk;
+        //             return;	
+        //}
+        //}
+        AddToQueue();
+        GameObject zombie = zombieQueue.Dequeue();
+        Heath heath = zombie.GetComponent<Heath>();
+        Faction faction = zombie.GetComponent<Faction>();
+        heath.value = heath.maxValue;
+        heath.isDead = false;
 
-	[PunRPC]
+        zombie.transform.position = spawnTransform.position;
+        zombie.SetActive(true);
+        faction.currentState = State.Walk;
+
+
+    }
+
+    [PunRPC]
 	void CreateZombie()
 	{
 			// GameObject	zombie = Instantiate(GetRandomZombiePrefab(zombieSpawn), transform.position, spawnTransform.localRotation, transform);
@@ -123,7 +145,7 @@ public class ZombiePool : Photon.PunBehaviour
 				zombie.transform.GetChild(0).localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
 			}
 			zombie.SetActive(false);
-			zombiePool.Add(zombie);
+			
 	}
 
 	string GetRandomZombiePrefabname(ZombieSpawn zombieSpawn)

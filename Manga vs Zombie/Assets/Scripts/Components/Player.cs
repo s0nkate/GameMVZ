@@ -10,7 +10,7 @@ namespace ECSComponent
 		public int damage;
 		public float timeDelay;
 		public Animator animator;
-
+        public int id;
 		// public void OnPhotonInstantiate(PhotonMessageInfo info)
 		// {
 		// 	Debug.Log("player instance");

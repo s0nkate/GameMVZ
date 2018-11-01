@@ -22,13 +22,13 @@ namespace ECSSystem
 			{
 				if(!GameManager.Instance.isPlaying)
 				{
-					entity.zombieSpawn.isActived = false;
+					entity.zombieSpawn.isActived = true;
 				}
 
-				if(!entity.zombieSpawn.isActived && GameManager.Instance.isPlaying)
+				if(entity.zombieSpawn.isActived && GameManager.Instance.isPlaying)
 				{
 					entity.zombieSpawn.StartCoroutine(Addzombie(entity));
-					entity.zombieSpawn.isActived = true;
+					entity.zombieSpawn.isActived = false;
 				}
 			}
 		}
