@@ -74,7 +74,6 @@ namespace ECSSystem
             int i = 0;
             foreach (var e in GetEntities<ZombieData>())
 			{
-                Debug.Log(i+"ngoai if" + e.heath.value + e.faction.currentState);
                 if (e.heath.value <= 0)
                 {
                     e.faction.currentState = State.Dead;
@@ -106,6 +105,11 @@ namespace ECSSystem
             if (id == PhotonNetwork.player.ID) { 
                 GameManager.Instance.Score += score;
             GameManager.Instance.Gold += money;
+                Debug.Log(id + " " + PhotonNetwork.player.ID);
+            }
+            else
+            {
+                Debug.Log(id +" " + PhotonNetwork.player.ID);
             }
         }
 	}

@@ -75,12 +75,11 @@ public class ZombiePool : Photon.PunBehaviour
 
     void AddToQueue()
     {
-        Debug.Log("addqueue");
         foreach (var zombie in zombiePool)
         {
             if (!zombie.activeInHierarchy)
             {
-                Debug.Log(zombie);
+
                 zombieQueue.Enqueue(zombie);
             }
         }

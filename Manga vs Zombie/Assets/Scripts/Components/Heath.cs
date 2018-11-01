@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 namespace ECSComponent
 {
-	public class Heath : MonoBehaviour 
-	{
+	public class Heath : MonoBehaviour
+    {
 		public int value;
 		public int maxValue;
 		public Slider heathSlider;
@@ -31,5 +31,7 @@ namespace ECSComponent
                 CheckID(GetComponent<Zombie>().score, GetComponent<Zombie>().money, id);
             }
         }
-	}	
+
+    
+    }	
 }

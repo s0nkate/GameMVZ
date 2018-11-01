@@ -29,6 +29,7 @@ public class PlayerSpawn : Photon.PunBehaviour {
 		// }
 		GameObject player = PhotonNetwork.Instantiate("Prefabs/Player/Player", transform.position, transform.localRotation, 0) as GameObject;
         player.GetComponent<Player>().id = PhotonNetwork.player.ID;
+        Debug.Log("Id: " + PhotonNetwork.player.ID);
 	}
 
 	[PunRPC]

@@ -106,7 +106,7 @@ public class Player1Controller : Photon.MonoBehaviour
         GetComponent<Animator>().runtimeAnimatorController = animatorOverrideController;
 
         List<ShopItems> listItem = GameManager.Instance.GetSelectedItem();
-        Debug.Log(listItem.Count);
+        
         switch (listItem.Count) {
             
             case 1:

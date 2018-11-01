@@ -286,7 +286,7 @@ public class GameManager : MonoBehaviour {
         Tower.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Tower;
         Towerenemy.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Towerenemy;
         Towerenemy1.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Towerenemy;
-        Debug.Log("id: " + PhotonNetwork.player.ID);
+       
     }
     public void BackMenu()
     {
