@@ -15,7 +15,7 @@ public class Skill1trigger : MonoBehaviour {
         if (col.CompareTag("Enemy"))
         {
             col.GetComponent<Heath>().SendMessageUpwards("TakeDamage", p.dmg1);
-
+            col.GetComponent<Heath>().idAttack = transform.parent.GetComponent<Player>().id;
         }
     }
 }

@@ -15,7 +15,7 @@ public class Attacktrigger : MonoBehaviour
         if (col.CompareTag("Enemy"))
         {
             col.GetComponent<Heath>().SendMessageUpwards("TakeDamage", p.dmg);
-
+            col.GetComponent<Heath>().idAttack = transform.parent.GetComponent<Player>().id;
         }
     }
 }

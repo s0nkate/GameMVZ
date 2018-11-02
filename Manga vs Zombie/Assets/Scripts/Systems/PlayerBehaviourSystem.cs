@@ -35,11 +35,11 @@ namespace ECSSystem
 							entity.controller.Skill2 ();
 							break;
 						case BehaviourType.Item1:
-							// entity.controller.AttackLeft();
+							entity.controller.UseItem1();
 							break;
 						case BehaviourType.Item2:
-							// entity.controller.AttackLeft();
-							break;
+                            entity.controller.UseItem2();
+                            break;
 						default:
 							break;
 					}

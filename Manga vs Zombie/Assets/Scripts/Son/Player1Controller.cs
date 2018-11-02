@@ -38,6 +38,13 @@ public class Player1Controller : Photon.MonoBehaviour
     public Text Textitem2;
     public Image Imageitem1;
     public Image Imageitem2;
+    public SkillGUI skillGUI;
+    public AudioClip SoundPunch;
+    public AudioClip SoundKick;
+    public AudioClip SoundSkill1;
+    public AudioClip SoundSkill2;
+    public AudioSource audiosrc;
+    //public SoundManager soundmng;
 
     public InventoryPlayerList playerlist;
   
@@ -58,9 +65,10 @@ public class Player1Controller : Photon.MonoBehaviour
     }
     void Start()
     {
-
+        
+        audiosrc = GetComponent<AudioSource>();
         LoadData();
-        SkillGUI skillGUI = GameObject.FindWithTag("SkillGUI").GetComponent<SkillGUI>();
+         skillGUI = GameObject.FindWithTag("SkillGUI").GetComponent<SkillGUI>();
 		GameObject playerSpawn = GameObject.FindWithTag("PlayerSpawn");
 
         transform.parent = playerSpawn.transform;
@@ -88,8 +96,11 @@ public class Player1Controller : Photon.MonoBehaviour
         image2.sprite = playerlist.playerList[i]._Image1;
         image3.sprite = playerlist.playerList[i]._Image2;
         image4.sprite = playerlist.playerList[i]._Image2;
+        SoundPunch = playerlist.playerList[i]._SoundPunch;
+        SoundKick = playerlist.playerList[i]._SoundKick;
+        SoundSkill1 = playerlist.playerList[i]._SoundSkill1;
+        SoundSkill2 = playerlist.playerList[i]._SoundSkill2;
 
-        
 
 
         animatorOverrideController = new AnimatorOverrideController(anim.runtimeAnimatorController);
@@ -282,10 +293,12 @@ public class Player1Controller : Photon.MonoBehaviour
         if (random == 0)
         {
             attacking = true;
+            audiosrc.PlayOneShot(SoundKick,SoundManager.Instance.volume);
         }
         else
         {
             attacking1 = true;
+            audiosrc.PlayOneShot(SoundPunch, SoundManager.Instance.volume);
         }
 
     }
@@ -334,7 +347,7 @@ public class Player1Controller : Photon.MonoBehaviour
             isCooldown1 = true;
             skill1 = true;
             skill1delay = 0.7f;
-            
+            audiosrc.PlayOneShot(SoundSkill1, SoundManager.Instance.volume);
         }
         playerBehaviour.SetIdle();
     }
@@ -345,9 +358,22 @@ public class Player1Controller : Photon.MonoBehaviour
             isCooldown2 = true;
             skill2 = true;
             skill2delay = 0.7f;
-           
+            audiosrc.PlayOneShot(SoundSkill2, SoundManager.Instance.volume);
         }
         playerBehaviour.SetIdle();
+    }
+    public void UseItem1()
+    {
+        Textitem2.text = skillGUI.DefauTextItem;
+        Imageitem2.sprite = skillGUI.DefaultItem;
+
+    }
+    public void UseItem2()
+    {
+       
+        Textitem1.text = skillGUI.DefauTextItem;
+        Imageitem1.sprite = skillGUI.DefaultItem;
+
     }
 
     public  void LoadData()

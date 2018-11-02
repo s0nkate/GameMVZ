@@ -9,11 +9,15 @@ public class InventoryPlayer   {
     public string _Name;
     public float _Dmg;
     public float _Delay;
+    public AudioClip _SoundPunch;
+    public AudioClip _SoundKick;
     public float _DmgSkill1;
     public float _Cooldown1;
+    public AudioClip _SoundSkill1;
     public Sprite _Image1;
     public float _DmgSkill2;
     public float _Cooldown2;
+    public AudioClip _SoundSkill2;
     public Sprite _Image2;
     public int Price;
 
