@@ -366,10 +366,10 @@ MonoBehaviour:
   m_PositionModel:
     SynchronizeEnabled: 1
     TeleportEnabled: 1
-    TeleportIfDistanceGreaterThan: 1
+    TeleportIfDistanceGreaterThan: 2
     InterpolateOption: 4
     InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 3
+    InterpolateLerpSpeed: 5
     InterpolateMoveTowardsAcceleration: 2
     InterpolateMoveTowardsDeceleration: 2
     InterpolateSpeedCurve:
@@ -527,6 +527,8 @@ MonoBehaviour:
   value: 100
   maxValue: 100
   heathSlider: {fileID: 114997435961512966}
+  idAttack: 0
+  isDead: 0
 --- !u!114 &114351022036754664
 MonoBehaviour:
   m_ObjectHideFlags: 1

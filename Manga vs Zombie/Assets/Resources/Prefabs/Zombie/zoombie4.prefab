@@ -344,7 +344,7 @@ MonoBehaviour:
   m_PositionModel:
     SynchronizeEnabled: 1
     TeleportEnabled: 1
-    TeleportIfDistanceGreaterThan: 1
+    TeleportIfDistanceGreaterThan: 2
     InterpolateOption: 4
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 3
@@ -399,9 +399,9 @@ MonoBehaviour:
     DrawErrorGizmo: 1
   m_RotationModel:
     SynchronizeEnabled: 1
-    InterpolateOption: 2
+    InterpolateOption: 1
     InterpolateRotateTowardsSpeed: 180
-    InterpolateLerpSpeed: 3
+    InterpolateLerpSpeed: 5
   m_ScaleModel:
     SynchronizeEnabled: 1
     InterpolateOption: 2
@@ -671,6 +671,8 @@ MonoBehaviour:
   value: 100
   maxValue: 100
   heathSlider: {fileID: 114181693928009370}
+  idAttack: 0
+  isDead: 0
 --- !u!114 &114827707487808328
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -23,6 +23,7 @@ namespace ECSSystem
 					switch (entity.controller.playerBehaviour.behaviour) 
 					{
 						case BehaviourType.Left:
+							Debug.Log("system" + PhotonNetwork.player.ID);
 							entity.controller.AttackLeft ();
 							break;
 						case BehaviourType.Right:

@@ -15,12 +15,17 @@ namespace ECSComponent
 	}
 	
 	[RequireComponent(typeof(Faction))]
-	public class Zombie : MonoBehaviour 
-	{
+	public class Zombie : MonoBehaviour
+    {
 		public Transform prefab;
 		public int money;
 		public int score;
 		public ZombieType type;
-		public GameObject explosion; 
-	}
+		public GameObject explosion;
+
+        
+    }
+
+
+  
 }

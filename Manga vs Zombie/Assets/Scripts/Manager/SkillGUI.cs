@@ -14,4 +14,9 @@ public class SkillGUI : MonoBehaviour {
     public Image image2;
     public Image image3;
     public Image image4;
+    public Text Textitem1;
+    public Text Textitem2;
+    public Image Imageitem1;
+    public Image Imageitem2;
+
 }

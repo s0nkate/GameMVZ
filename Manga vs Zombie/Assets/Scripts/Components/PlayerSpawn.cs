@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ECSComponent;
 
 public class PlayerSpawn : Photon.PunBehaviour {
 
 	public List<GameObject> list;
 	public bool isActived;
 	public bool isInstance;
+	object[] index = new object[1];
 	// public PhotonView photonView;
 	void Awake()
 	{
@@ -26,22 +28,18 @@ public class PlayerSpawn : Photon.PunBehaviour {
 		// 	photonView.RPC("SpawnPlayer", PhotonTargets.AllBuffered);
 		// 	isInstance = true;
 		// }
-		Vector3 pos = transform.position;
-		GameObject player = PhotonNetwork.Instantiate("Prefabs/Player/Player", transform.position, transform.localRotation, 0) as GameObject;
-		if(PhotonNetwork.player.IsMasterClient)
-		{
-			player.transform.position += new Vector3(0.1f,0,0);
-		}
-		else
-		{
-			player.transform.position += new Vector3(-0.1f,0,0);
-		}
+		
+		index[0] = GameManager.Instance.GetSelectedPlayer().index;
+		GameObject player = PhotonNetwork.Instantiate("Prefabs/Player/Player", transform.position, transform.localRotation, 0, index) as GameObject;
+        player.GetComponent<Player>().id = PhotonNetwork.player.ID;
+        Debug.Log("Id: " + PhotonNetwork.player.ID);
 	}
 
 	[PunRPC]
 	void SpawnPlayer()
 	{
 		GameObject player = Instantiate(Resources.Load("Prefabs/Player/Player"), transform.position, transform.localRotation, transform) as GameObject;
+		player.GetComponent<Player>().id = PhotonNetwork.player.ID;
 	}
 
 	

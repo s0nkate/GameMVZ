@@ -25,6 +25,7 @@ public class PlayerBehaviour : Photon.PunBehaviour
 
 	public void AttackLeft()
 	{
+		Debug.Log(PhotonNetwork.player.ID);
 		behaviour = BehaviourType.Left;
 	}
 

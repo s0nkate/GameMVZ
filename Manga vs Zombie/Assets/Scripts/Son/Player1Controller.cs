@@ -2,7 +2,7 @@
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
-
+using System.Collections.Generic;
 
 public class Player1Controller : Photon.MonoBehaviour
 {
@@ -34,6 +34,10 @@ public class Player1Controller : Photon.MonoBehaviour
     public Image image2;
     public Image image3;
     public Image image4;
+    public Text Textitem1;
+    public Text Textitem2;
+    public Image Imageitem1;
+    public Image Imageitem2;
 
     public InventoryPlayerList playerlist;
   
@@ -44,10 +48,15 @@ public class Player1Controller : Photon.MonoBehaviour
     public float dmg1;
     public float dmg2;
     public PlayerBehaviour playerBehaviour;
+    SkillGUI skillGUI;
 
     void Awake()
     {
         anim = gameObject.GetComponent<Animator>();
+        playerBehaviour = GameObject.FindWithTag("SkillGUI").GetComponent<PlayerBehaviour>();
+        skillGUI = GameObject.FindWithTag("SkillGUI").GetComponent<SkillGUI>();
+		GameObject playerSpawn = GameObject.FindWithTag("PlayerSpawn");
+        transform.parent = playerSpawn.transform;
         trigger.SetActive(false);
         trigger1.SetActive(false);
         trigger2.SetActive(false);
@@ -56,12 +65,8 @@ public class Player1Controller : Photon.MonoBehaviour
     {
 
         LoadData();
-        SkillGUI skillGUI = GameObject.FindWithTag("SkillGUI").GetComponent<SkillGUI>();
-		GameObject playerSpawn = GameObject.FindWithTag("PlayerSpawn");
-
-        transform.parent = playerSpawn.transform;
-        playerBehaviour = GameObject.FindWithTag("SkillGUI").GetComponent<PlayerBehaviour>();
-
+        
+        
         text1= skillGUI.text1;
         text2= skillGUI.text2;
         imageColldown1 = skillGUI.imageColldown1;
@@ -70,16 +75,23 @@ public class Player1Controller : Photon.MonoBehaviour
         image2 = skillGUI.image2;
         image3 = skillGUI.image3;
         image4 = skillGUI.image4;
+        Textitem1 = skillGUI.Textitem1;
+        Textitem2 = skillGUI.Textitem2;
+        Imageitem1 = skillGUI.Imageitem1;
+        Imageitem2 = skillGUI.Imageitem2;
         dmg = playerlist.playerList[i]._Dmg;
         dmg1 = playerlist.playerList[i]._DmgSkill1;
         dmg2 = playerlist.playerList[i]._DmgSkill2;
         Debug.Log("Id player:" +  i);
         text1.text = "Damage:     " + playerlist.playerList[i]._DmgSkill1.ToString();
         text2.text = "Damage:     " + playerlist.playerList[i]._DmgSkill2.ToString();
-       image1.sprite= playerlist.playerList[i]._Image1;
+        image1.sprite= playerlist.playerList[i]._Image1;
         image2.sprite = playerlist.playerList[i]._Image1;
         image3.sprite = playerlist.playerList[i]._Image2;
         image4.sprite = playerlist.playerList[i]._Image2;
+
+        
+
 
         animatorOverrideController = new AnimatorOverrideController(anim.runtimeAnimatorController);
         anim.runtimeAnimatorController = animatorOverrideController;
@@ -93,7 +105,25 @@ public class Player1Controller : Photon.MonoBehaviour
         clipOverrides["Player1 Skill2"] = playerlist.playerList[i].playskill2;
         animatorOverrideController.ApplyOverrides(clipOverrides);
         GetComponent<Animator>().runtimeAnimatorController = animatorOverrideController;
+
+        List<ShopItems> listItem = GameManager.Instance.GetSelectedItem();
+        
+        switch (listItem.Count) {
+            
+            case 1:
+        Textitem1.text = listItem[0].info;
+        Imageitem1.sprite = listItem[0].image;
+                break;
+            case 2:
+                Textitem1.text = listItem[0].info;
+                Imageitem1.sprite = listItem[0].image;
+                Textitem2.text = listItem[1].info;
+            Imageitem2.sprite = listItem[1].image;
+                break;
+            default:
+                break;
     }
+}
     void Update()
     {
         if (h > 0 && !faceright)
@@ -182,7 +212,7 @@ public class Player1Controller : Photon.MonoBehaviour
                 isCooldown2 = false;
             }
         }
-      
+        
         anim.SetBool("Skill1", skill1);
         anim.SetBool("Skill2", skill2);
         anim.SetBool("Attacking", attacking);
@@ -262,6 +292,7 @@ public class Player1Controller : Photon.MonoBehaviour
     }
     public void AttackLeft()
     {
+        Debug.Log("system" + PhotonNetwork.player.ID);
         if (attacking1 == false && attacking == false && skill1 == false && skill2 == false)
         {
             float h = -1;
@@ -277,7 +308,7 @@ public class Player1Controller : Photon.MonoBehaviour
 
 
         }
-        playerBehaviour.SetIdle();
+        Invoke("Idle", 0.2f);
     }
     public void AttackRight()
     {
@@ -295,7 +326,7 @@ public class Player1Controller : Photon.MonoBehaviour
             Attack();
 
         }
-        playerBehaviour.SetIdle();
+        Invoke("Idle", 0.2f);
     }
     public void Skill1()
     {
@@ -307,7 +338,7 @@ public class Player1Controller : Photon.MonoBehaviour
             skill1delay = 0.7f;
             
         }
-        playerBehaviour.SetIdle();
+        Invoke("Idle", 0.2f);
     }
     public void Skill2()
     {
@@ -318,12 +349,19 @@ public class Player1Controller : Photon.MonoBehaviour
             skill2delay = 0.7f;
            
         }
+        Invoke("Idle", 0.2f);
+
+        
+    }
+
+    void Idle()
+    {
         playerBehaviour.SetIdle();
     }
 
     public  void LoadData()
     {
-        i = GameManager.Instance.GetSelectedPlayer().index;
+        i = (int)photonView.instantiationData[0];
     }
   
 }

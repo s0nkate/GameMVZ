@@ -8,7 +8,9 @@ using UnityEngine.UI;
 namespace ECSSystem
 {
 	public class HeathSystem : ComponentSystem 
+    
 	{
+        
 		struct Data
 		{
 			public Heath heath;
@@ -27,6 +29,7 @@ namespace ECSSystem
 			public Animator animator;
 			public Heath heath;
 			public Faction faction;
+
 		}
 		protected override void OnUpdate()
 		{
@@ -59,26 +62,69 @@ namespace ECSSystem
 				{
 					e.heath.OnInjured += this.OnInjured;
 				}
-			}
+
+                if (e.heath.CheckID == null)
+                {
+                    e.heath.CheckID += this.CheckID;
+                }
+            }
 		}
 		void CheckDead()
 		{
-			foreach (var e in GetEntities<ZombieData>())
+          
+            int i = 0;
+            foreach (var e in GetEntities<ZombieData>())
 			{
-				if(e.heath.value <= 0 && e.faction.currentState != State.Dead)
+                if (e.heath.value <= 0)
+                {
+                    e.faction.currentState = State.Dead;
+                    e.animator.SetInteger("stage", (int)State.Dead);
+                }
+                if ( e.heath.value <= 0 && !e.heath.isDead)
 				{
-					e.faction.currentState = State.Dead;
-					e.animator.SetInteger("stage", (int)State.Dead);
-					// GameManager.Instance.AddMoney(e.zoombie.money);
-					// GameManager.Instance.AddScore(e.zoombie.score);
+                    //e.faction.currentState = State.Dead;
+                    //e.animator.SetInteger("stage", (int)State.Dead);
+                    e.heath.isDead = true;
+                    i++;
+					
+                    e.heath.CheckID(e.zoombie.score,e.zoombie.money ,e.heath.idAttack);
+                    
+                    
 				}
-			}
+               
+
+            }
+            i = 0;
 		}
 
-		private void OnInjured(Heath heath, int damage)
+		private void OnInjured(GameObject heath, int damage)
+		{
+			// heath.value -= damage;
+			// PhotonView photonView = heath.GetComponent<PhotonView>();
+			Heath hp = heath.GetComponent<Heath>();
+			hp.value -= damage;
+			// photonView.RPC("IncreaseHeath", PhotonTargets.Others, hp, damage);
+
+		}
+
+		[PunRPC]
+		void IncreaseHeath(Heath heath, int damage)
 		{
 			heath.value -= damage;
+
 		}
+        private void CheckID(int score,int money,int id)
+        {
+            if (id == PhotonNetwork.player.ID) { 
+                GameManager.Instance.Score += score;
+            	GameManager.Instance.Gold += money;
+                Debug.Log(id + " " + PhotonNetwork.player.ID);
+            }
+            else
+            {
+                Debug.Log(id +" " + PhotonNetwork.player.ID);
+            }
+        }
 	}
 }
 

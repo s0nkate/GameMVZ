@@ -50,6 +50,7 @@ MonoBehaviour:
   - SpawnPlayer
   - ActivePlayer
   - DisableAllZombie
+  - StartDame
   - StartSkill
   - StartSkill1
   DisableAutoOpenWizard: 1

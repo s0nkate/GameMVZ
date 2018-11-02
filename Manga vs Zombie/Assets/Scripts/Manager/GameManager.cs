@@ -50,9 +50,17 @@ public class GameManager : MonoBehaviour {
     public bool Gameover = false;
     public List<ShopItems> playerShopList;
     public List<ShopItems> itemShopList;
+    public Text Textitem1;
+    public Text Textitem2;
+    public Image Imageitem1;
+    public Image Imageitem2;
+    public int masterIndex;
+    public int clientIndex;
     
-	// public GameObject[] instancePlayer;
-	public static GameManager Instance = null;
+
+
+    // public GameObject[] instancePlayer;
+    public static GameManager Instance = null;
 	private void Awake()
 	{
 		if (Instance == null)
@@ -118,8 +126,9 @@ public class GameManager : MonoBehaviour {
     }
 	public void UpdateData()
 	{
+        
 
-	}
+    }
 
 	public void SaveData()
 	{
@@ -270,7 +279,7 @@ public class GameManager : MonoBehaviour {
         playScene.SetActive(true);
         isPlaying = true;
         pause = false;
-       
+        House.onNextLevel.Invoke();
         time = scenelist.scenelist[0].TimePlay;
         Score = 0;
         Gold = 0;
@@ -279,7 +288,7 @@ public class GameManager : MonoBehaviour {
         Tower.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Tower;
         Towerenemy.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Towerenemy;
         Towerenemy1.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Towerenemy;
-
+       
     }
     public void BackMenu()
     {

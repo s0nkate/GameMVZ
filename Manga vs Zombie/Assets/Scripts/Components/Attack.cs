@@ -13,6 +13,7 @@ namespace ECSComponent
 		public bool isAttack;
 		public List<Heath> target;
 		private float time = 0;
+        
 
 		void OnCollisionStay2D(Collision2D collision)
 		{

@@ -243,7 +243,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1942538490770404}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
   m_Name: 
@@ -312,8 +312,6 @@ MonoBehaviour:
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0
   ObservedComponents:
-  - {fileID: 114156304184168664}
-  - {fileID: 114992937511569638}
   - {fileID: 114470940261785628}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
@@ -404,6 +402,10 @@ MonoBehaviour:
   image2: {fileID: 0}
   image3: {fileID: 0}
   image4: {fileID: 0}
+  Textitem1: {fileID: 0}
+  Textitem2: {fileID: 0}
+  Imageitem1: {fileID: 0}
+  Imageitem2: {fileID: 0}
   playerlist: {fileID: 11400000, guid: eeb5fd019af4f734cb696dd640d0d004, type: 2}
   dmg: 0
   dmg1: 0

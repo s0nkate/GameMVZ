@@ -1481,12 +1481,12 @@ MonoBehaviour:
   group: 0
   OwnerShipWasTransfered: 0
   prefixBackup: -1
-  synchronization: 3
+  synchronization: 0
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0
   ObservedComponents:
-  - {fileID: 114582503}
+  - {fileID: 0}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 5
   instantiationId: 5
@@ -3946,6 +3946,81 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &453776256
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 453776257}
+  - component: {fileID: 453776259}
+  - component: {fileID: 453776258}
+  m_Layer: 5
+  m_Name: Text (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &453776257
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 453776256}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 861919010}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 168.50002, y: -56.799995}
+  m_SizeDelta: {x: 160, y: 80}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &453776258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 453776256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 60
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 6
+    m_MaxSize: 60
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
+--- !u!222 &453776259
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 453776256}
+  m_CullTransparentMesh: 0
 --- !u!1 &454892081
 GameObject:
   m_ObjectHideFlags: 0
@@ -6382,6 +6457,7 @@ RectTransform:
   m_LocalScale: {x: 1.0003201, y: 1.0003201, z: 1.00032}
   m_Children:
   - {fileID: 1452800664}
+  - {fileID: 453776257}
   m_Father: {fileID: 1131026094}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8771,7 +8847,7 @@ MonoBehaviour:
   - {fileID: 1879334572}
   - {fileID: 206573729}
   - {fileID: 1547323809}
-  - {fileID: 1547323809}
+  - {fileID: 1985544658}
   inventorySceneList: {fileID: 11400000, guid: 9e10a03d91893394bad85cee5b0aa859, type: 2}
   zombieCount: 6
 --- !u!114 &1275350188
@@ -11412,6 +11488,10 @@ MonoBehaviour:
   image2: {fileID: 2124860209}
   image3: {fileID: 412385180}
   image4: {fileID: 738582700}
+  Textitem1: {fileID: 504377633}
+  Textitem2: {fileID: 764068567}
+  Imageitem1: {fileID: 2048513953}
+  Imageitem2: {fileID: 487533657}
 --- !u!114 &1604261510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14345,6 +14425,11 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1966740408}
   m_CullTransparentMesh: 0
+--- !u!1 &1985544658 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1308305872416930, guid: 3ea7abba9d2acad4582f7fe4929b6019,
+    type: 2}
+  m_PrefabInternal: {fileID: 1081007714}
 --- !u!1 &2026007695
 GameObject:
   m_ObjectHideFlags: 0
@@ -14500,6 +14585,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2047445516}
   - component: {fileID: 2047445515}
+  - component: {fileID: 2047445517}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -14557,6 +14643,12 @@ MonoBehaviour:
   Gameover: 0
   playerShopList: []
   itemShopList: []
+  Textitem1: {fileID: 0}
+  Textitem2: {fileID: 0}
+  Imageitem1: {fileID: 0}
+  Imageitem2: {fileID: 0}
+  masterIndex: 0
+  clientIndex: 0
 --- !u!4 &2047445516
 Transform:
   m_ObjectHideFlags: 0
@@ -14570,6 +14662,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2047445517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2047445514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 0
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 18
+  instantiationId: 18
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
 --- !u!1 &2048513951
 GameObject:
   m_ObjectHideFlags: 0
@@ -14878,12 +14996,12 @@ Prefab:
     - target: {fileID: 114463351327822662, guid: 31b3e949ea332c74ab34f246e82456ff,
         type: 2}
       propertyPath: maxValue
-      value: 600
+      value: 600000
       objectReference: {fileID: 0}
     - target: {fileID: 114463351327822662, guid: 31b3e949ea332c74ab34f246e82456ff,
         type: 2}
       propertyPath: value
-      value: 600
+      value: 600000
       objectReference: {fileID: 0}
     - target: {fileID: 1486898449754244, guid: 31b3e949ea332c74ab34f246e82456ff, type: 2}
       propertyPath: m_Layer
