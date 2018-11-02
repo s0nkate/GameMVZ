@@ -18,5 +18,8 @@ public class SkillGUI : MonoBehaviour {
     public Text Textitem2;
     public Image Imageitem1;
     public Image Imageitem2;
+    public Sprite DefaultItem;
+    public string DefauTextItem = "None";
+
 
 }

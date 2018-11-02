@@ -13,6 +13,7 @@ public class SoundManager : MonoBehaviour
 	public bool effectSoundActive;
 	public float volume;
 	public static SoundManager Instance = null;
+   
 
 	private void Awake()
 	{
@@ -25,12 +26,15 @@ public class SoundManager : MonoBehaviour
 			Destroy(gameObject);
 		}
 		DontDestroyOnLoad (gameObject);
-	}
+       
+    }
 
 	void Start()
 	{
-		volumeSilder.maxValue = 1f;
+        //Kakashis2 = Resources.Load<AudioClip>("Kakashis2");
+        volumeSilder.maxValue = 1f;
 		volumeSilder.value = volume;
+      
 	}
 
 	public void Update()
@@ -39,5 +43,5 @@ public class SoundManager : MonoBehaviour
 		effectSoundActive = soundEffect.isOn;
 		volume = volumeSilder.value;
 	}
-
+   
 }

@@ -118,6 +118,7 @@ namespace ECSSystem
             if (id == PhotonNetwork.player.ID) { 
                 GameManager.Instance.Score += score;
             	GameManager.Instance.Gold += money;
+
                 Debug.Log(id + " " + PhotonNetwork.player.ID);
             }
             else

@@ -21,6 +21,7 @@ TagManager:
   - PlayerBehaviour
   - PlayerSpawn
   - BuyPopup
+  - sound
   layers:
   - Default
   - TransparentFX
