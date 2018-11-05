@@ -91,10 +91,15 @@ namespace ECSComponent
                 // stream.Serialize(ref actack2);
                 // if(!photonView.isMine)
                 // {
-                gameObject.SetActive(isActive);
-				playerBehaviour.SetBehaviour(state);
-				transform.position = position;
-				transform.rotation = rotation;
+                if(!photonView)
+				{
+					gameObject.SetActive(isActive);
+					playerBehaviour.SetBehaviour(state);
+					Debug.Log("state" + state);
+					transform.position = position;
+					transform.rotation = rotation;
+				}
+				
 				
 					// animator.SetBool("Skill1", (bool) skill1);
         			// animator.SetBool("Skill2", (bool) skill2);
