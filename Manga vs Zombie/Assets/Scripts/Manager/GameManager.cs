@@ -48,6 +48,8 @@ public class GameManager : MonoBehaviour {
     public GameObject Pausebtn;
     public bool isPlaying = false;
     public bool Gameover = false;
+    public bool item1 =true;
+    public bool item2 =true;
     public List<ShopItems> playerShopList;
     public List<ShopItems> itemShopList;
     public Text Textitem1;
@@ -83,7 +85,7 @@ public class GameManager : MonoBehaviour {
         NextLvUI.SetActive(false);
         Highscore.SetActive(false);
         YNQuitUI.SetActive(false);
-        
+       
         //Backgournd = gameObject.GetComponent<SpriteRenderer>().sprite;
         
     }
@@ -95,6 +97,7 @@ public class GameManager : MonoBehaviour {
 
     public void LoadData()
     {
+        Gold = PlayerPrefs.GetInt("Gold");
         HighScore = PlayerPrefs.GetInt("HighScore");
         HighScoreText.text = HighScore.ToString();
     }
@@ -222,6 +225,7 @@ public class GameManager : MonoBehaviour {
 
         ScoreWin.text = Score.ToString();
         GoldWin.text = "+" + Gold.ToString();
+        PlayerPrefs.SetInt("Gold", Gold);
         HighScore = PlayerPrefs.GetInt("HighScore");
         if (HighScore < Score)
         {
@@ -275,14 +279,14 @@ public class GameManager : MonoBehaviour {
         loading.SetActive(false);
         Gameover = false;
         finalPopup.SetActive(false);
-       
+        item1 = true;
+        item2 = true;
         playScene.SetActive(true);
         isPlaying = true;
         pause = false;
         House.onNextLevel.Invoke();
         time = scenelist.scenelist[0].TimePlay;
         Score = 0;
-        Gold = 0;
         Backgournd.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Backgournd;
         Foregournd.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Foregournd;
         Tower.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Tower;
@@ -312,9 +316,9 @@ public class GameManager : MonoBehaviour {
         ExitRoom();
         isPlaying = false;
         ResultUI.SetActive(false);
-       
+
         
-     
+
     }
     public void Nobtn()
     {

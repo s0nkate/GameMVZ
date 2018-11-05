@@ -43,8 +43,8 @@ public class ShopManager : MonoBehaviour {
 		defaultPlayerIndex = inventoryPlayerList.selectedPlayerindex;
 		LoadPlayer(tabPlayer);
 		LoadItem(tabItem);
-		listPlayer[defaultPlayerIndex].isBought = true;
-		listPlayer[defaultPlayerIndex].isSelected = true;
+		listPlayer[defaultPlayerIndex].isBought = false;
+		listPlayer[defaultPlayerIndex].isSelected = false;
 		GameManager.Instance.playerShopList = ShopManager.Instance.listPlayer;
         GameManager.Instance.itemShopList = ShopManager.Instance.listItem;
 		CheckBuyAndSelect();
