@@ -38,7 +38,6 @@ public class Player1Controller : Photon.MonoBehaviour
     public Text Textitem2;
     public Image Imageitem1;
     public Image Imageitem2;
-
     public SkillGUI skillGUI;
     public AudioClip SoundPunch;
     public AudioClip SoundKick;
@@ -46,7 +45,7 @@ public class Player1Controller : Photon.MonoBehaviour
     public AudioClip SoundSkill2;
     public AudioSource audiosrc;
     //public SoundManager soundmng;
-
+    public  List<ShopItems> listItem;
 
     public InventoryPlayerList playerlist;
   
@@ -125,8 +124,7 @@ public class Player1Controller : Photon.MonoBehaviour
         clipOverrides["Player1 Skill2"] = playerlist.playerList[i].playskill2;
         animatorOverrideController.ApplyOverrides(clipOverrides);
         GetComponent<Animator>().runtimeAnimatorController = animatorOverrideController;
-
-        List<ShopItems> listItem = GameManager.Instance.GetSelectedItem();
+        listItem = GameManager.Instance.GetSelectedItem();
         
         switch (listItem.Count) {
             
@@ -139,6 +137,7 @@ public class Player1Controller : Photon.MonoBehaviour
                 Imageitem1.sprite = listItem[0].image;
                 Textitem2.text = listItem[1].info;
             Imageitem2.sprite = listItem[1].image;
+                
                 break;
             default:
                 break;
@@ -384,15 +383,42 @@ public class Player1Controller : Photon.MonoBehaviour
     {
         Textitem2.text = skillGUI.DefauTextItem;
         Imageitem2.sprite = skillGUI.DefaultItem;
-
+        if (GameManager.Instance.item1)
+        {
+            Effect(listItem[1].index);
+        }
+        GameManager.Instance.item1 = false;
     }
     public void UseItem2()
     {
-       
         Textitem1.text = skillGUI.DefauTextItem;
         Imageitem1.sprite = skillGUI.DefaultItem;
+        if (GameManager.Instance.item2)
+        {
+            Effect(listItem[0].index);
+        }
+        GameManager.Instance.item2 = false;
 
     }
+    public void Effect(int index)
+    {
+        switch (index)
+        {
+            case 0:
+
+                Debug.Log("tang mau");
+                break;
+            case 1:
+                Debug.Log("tang thu");
+                break;
+            case 2:
+                Debug.Log("giam dame");
+                break;
+
+        }
+
+    }
+
 
     public  void LoadData()
     {

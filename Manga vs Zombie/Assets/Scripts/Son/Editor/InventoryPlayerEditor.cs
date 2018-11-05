@@ -504,11 +504,11 @@ public class InventoryItemEditor : EditorWindow
 
                             GUILayout.Space(60);
 
-                            if (GUILayout.Button("Add Player", GUILayout.ExpandWidth(false)))
+                            if (GUILayout.Button("Add Item", GUILayout.ExpandWidth(false)))
                             {
                                 AddItem();
                             }
-                            if (GUILayout.Button("Delete Player", GUILayout.ExpandWidth(false)))
+                            if (GUILayout.Button("Delete Item", GUILayout.ExpandWidth(false)))
                             {
                                 DeleteItem(viewIndex2 - 1);
                             }
