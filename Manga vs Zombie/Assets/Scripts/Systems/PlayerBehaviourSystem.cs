@@ -41,9 +41,12 @@ namespace ECSSystem
 							break;
 						case BehaviourType.Item1:
 							entity.controller.UseItem1();
-							break;
+                            entity.controller.playerBehaviour.SetIdle();
+
+                            break;
 						case BehaviourType.Item2:
                             entity.controller.UseItem2();
+                            entity.controller.playerBehaviour.SetIdle();
                             break;
 						default:
 							break;

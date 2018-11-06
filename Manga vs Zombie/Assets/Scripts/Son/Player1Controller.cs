@@ -47,7 +47,7 @@ public class Player1Controller : Photon.MonoBehaviour
     public AudioSource audiosrc;
     //public SoundManager soundmng;
     public  List<ShopItems> listItem;
-
+  
     public InventoryPlayerList playerlist;
   
     protected AnimatorOverrideController animatorOverrideController;
@@ -67,11 +67,13 @@ public class Player1Controller : Photon.MonoBehaviour
         trigger.SetActive(false);
         trigger1.SetActive(false);
         trigger2.SetActive(false);
+      
     }
     void Start()
     {
         
         audiosrc = GetComponent<AudioSource>();
+       
         
         if(photonView.isMine)
         {
@@ -130,6 +132,7 @@ public class Player1Controller : Photon.MonoBehaviour
         SoundSkill2 = playerlist.playerList[i]._SoundSkill2;
 
         anim = GetComponent<Animator>();
+
         animatorOverrideController = new AnimatorOverrideController(anim.runtimeAnimatorController);
         anim.runtimeAnimatorController = animatorOverrideController;
         clipOverrides = new AnimationClipOverrides(animatorOverrideController.overridesCount);
@@ -143,16 +146,17 @@ public class Player1Controller : Photon.MonoBehaviour
         GetComponent<Animator>().runtimeAnimatorController = animatorOverrideController;
         listItem = GameManager.Instance.GetSelectedItem();
         
-        
-         
-}
+    }
+
+
     void Update()
     {
+       
         if (h > 0 && !faceright)
         {
             Flip();
         }
-        if (h < 0 && faceright)
+        if (h < 0 && faceright) 
         {
             Flip();
         }
@@ -397,8 +401,9 @@ public class Player1Controller : Photon.MonoBehaviour
         if (GameManager.Instance.item1)
         {
             Effect(listItem[1].index);
+            GameManager.Instance.item1 = false;
         }
-        GameManager.Instance.item1 = false;
+       
     }
     public void UseItem2()
     {
@@ -407,8 +412,9 @@ public class Player1Controller : Photon.MonoBehaviour
         if (GameManager.Instance.item2)
         {
             Effect(listItem[0].index);
+            GameManager.Instance.item2 = false;
         }
-        GameManager.Instance.item2 = false;
+       
 
     }
     public void Effect(int index)
@@ -430,7 +436,8 @@ public class Player1Controller : Photon.MonoBehaviour
 
     }
 
-
+  
+    
     public  void LoadData()
     {
         i = (int)photonView.instantiationData[0];

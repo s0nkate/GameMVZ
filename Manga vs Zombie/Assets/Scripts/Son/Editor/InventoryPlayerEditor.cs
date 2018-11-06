@@ -7,7 +7,6 @@ using ECSComponent;
 
 public class InventoryItemEditor : EditorWindow
 {
-
     public InventoryPlayerList inventoryPlayerList;
     public InventoryEnemyList inventoryEnemyList;
     public InventoryItemList inventoryItemList;
@@ -55,8 +54,6 @@ public class InventoryItemEditor : EditorWindow
 
     void OnGUI()
     {
-
-
         tab = GUILayout.Toolbar(tab, toolBar);
         switch (tab)
         {
@@ -138,34 +135,24 @@ public class InventoryItemEditor : EditorWindow
                     {
                         GUILayout.BeginHorizontal();
                         viewIndex = Mathf.Clamp(EditorGUILayout.IntField("Current Player", viewIndex, GUILayout.ExpandWidth(false)), 1, inventoryPlayerList.playerList.Count);
-                        //Mathf.Clamp (viewIndex, 1, inventoryItemList.itemList.Count);
                         EditorGUILayout.LabelField("of   " + inventoryPlayerList.playerList.Count.ToString() + "  Player", "", GUILayout.ExpandWidth(false));
                         GUILayout.EndHorizontal();
-
-                        //inventoryPlayerList.playerList[viewIndex - 1]._Id =
-                        //EditorGUILayout.IntField("Player Id", inventoryPlayerList.playerList[viewIndex - 1]._Id, GUILayout.ExpandWidth(false));
                         inventoryPlayerList.playerList[viewIndex - 1]._Name = EditorGUILayout.TextField("Player Name", inventoryPlayerList.playerList[viewIndex - 1]._Name as string);
                         inventoryPlayerList.playerList[viewIndex - 1]._image = EditorGUILayout.ObjectField("Player Avatar", inventoryPlayerList.playerList[viewIndex - 1]._image, typeof(Texture2D), false) as Texture2D;
-
-
                         inventoryPlayerList.playerList[viewIndex - 1]._Dmg = EditorGUILayout.FloatField("Dmg ", inventoryPlayerList.playerList[viewIndex - 1]._Dmg, GUILayout.ExpandWidth(false));
                         inventoryPlayerList.playerList[viewIndex - 1]._Delay = EditorGUILayout.FloatField("Delay ", inventoryPlayerList.playerList[viewIndex - 1]._Delay, GUILayout.ExpandWidth(false));
                         inventoryPlayerList.playerList[viewIndex - 1]._SoundPunch = EditorGUILayout.ObjectField("SoundPunch ", inventoryPlayerList.playerList[viewIndex - 1]._SoundPunch, typeof(AudioClip), false) as AudioClip;
                         inventoryPlayerList.playerList[viewIndex - 1]._SoundKick = EditorGUILayout.ObjectField("SoundKick ", inventoryPlayerList.playerList[viewIndex - 1]._SoundKick, typeof(AudioClip), false) as AudioClip;
-
                         inventoryPlayerList.playerList[viewIndex - 1]._DmgSkill1 = EditorGUILayout.FloatField("DmgSkill1 ", inventoryPlayerList.playerList[viewIndex - 1]._DmgSkill1, GUILayout.ExpandWidth(false));
-                      
                         inventoryPlayerList.playerList[viewIndex - 1]._Cooldown1 = EditorGUILayout.FloatField("Cooldown1 ", inventoryPlayerList.playerList[viewIndex - 1]._Cooldown1, GUILayout.ExpandWidth(false));
                         GUILayout.BeginHorizontal();
                         inventoryPlayerList.playerList[viewIndex - 1]._SoundSkill1 = EditorGUILayout.ObjectField("SoundSkill1 ", inventoryPlayerList.playerList[viewIndex - 1]._SoundSkill1, typeof(AudioClip), false) as AudioClip;
                         inventoryPlayerList.playerList[viewIndex - 1]._Image1 = EditorGUILayout.ObjectField("", inventoryPlayerList.playerList[viewIndex - 1]._Image1, typeof(Sprite), false) as Sprite;
                         GUILayout.EndHorizontal();
                         inventoryPlayerList.playerList[viewIndex - 1]._DmgSkill2 = EditorGUILayout.FloatField("DmgSkill2 ", inventoryPlayerList.playerList[viewIndex - 1]._DmgSkill2, GUILayout.ExpandWidth(false));
-                        
                         inventoryPlayerList.playerList[viewIndex - 1]._Cooldown2 = EditorGUILayout.FloatField("Cooldown2 ", inventoryPlayerList.playerList[viewIndex - 1]._Cooldown2, GUILayout.ExpandWidth(false));
                         GUILayout.BeginHorizontal();
                         inventoryPlayerList.playerList[viewIndex - 1]._SoundSkill2 = EditorGUILayout.ObjectField("SoundSkill2 ", inventoryPlayerList.playerList[viewIndex - 1]._SoundSkill2, typeof(AudioClip), false) as AudioClip;
-
                         inventoryPlayerList.playerList[viewIndex - 1]._Image2 = EditorGUILayout.ObjectField("", inventoryPlayerList.playerList[viewIndex - 1]._Image2, typeof(Sprite), false) as Sprite;
                         GUILayout.EndHorizontal();
                         GUILayout.Label("Animation", EditorStyles.boldLabel);
@@ -175,16 +162,12 @@ public class InventoryItemEditor : EditorWindow
                         inventoryPlayerList.playerList[viewIndex - 1].playskill1 = EditorGUILayout.ObjectField("Skill1", inventoryPlayerList.playerList[viewIndex - 1].playskill1, typeof(AnimationClip), false) as AnimationClip;
                         inventoryPlayerList.playerList[viewIndex - 1].playskill2 = EditorGUILayout.ObjectField("Skill2", inventoryPlayerList.playerList[viewIndex - 1].playskill2, typeof(AnimationClip), false) as AnimationClip;
 
-
-
-
                     }
                     else
                     {
                         GUILayout.Label("This Inventory Player is Empty.");
                     }
                 }
-
 
                 if (GUILayout.Button("Use Player"))
                 {
@@ -218,21 +201,6 @@ public class InventoryItemEditor : EditorWindow
                 }
 
                 GUILayout.EndHorizontal();
-
-                //if (inventoryEnemyList == null)
-                //{
-                //    GUILayout.BeginHorizontal();
-                //    GUILayout.Space(10);
-                //    //if (GUILayout.Button("Create New Enemy List", GUILayout.ExpandWidth(false)))
-                //    //{
-                //    //    CreateNewItemList();
-                //    //}
-                //    //if (GUILayout.Button("Open Existing Enemy List", GUILayout.ExpandWidth(false)))
-                //    //{
-                //    //    OpenItemList();
-                //    //}
-                //    GUILayout.EndHorizontal();
-                //}
 
                 GUILayout.Space(20);
 
@@ -274,7 +242,6 @@ public class InventoryItemEditor : EditorWindow
                     {
                         GUILayout.BeginHorizontal();
                         viewIndex1 = Mathf.Clamp(EditorGUILayout.IntField("Current Enemy", viewIndex1, GUILayout.ExpandWidth(false)), 1, inventoryEnemyList.enemyList.Count);
-                        //Mathf.Clamp (viewIndex, 1, inventoryItemList.itemList.Count);
                         EditorGUILayout.LabelField("of   " + inventoryEnemyList.enemyList.Count.ToString() + "  Enemy", "", GUILayout.ExpandWidth(false));
                         GUILayout.EndHorizontal();
                         inventoryEnemyList.enemyList[viewIndex1 - 1].name = EditorGUILayout.TextField("Enemy Name", inventoryEnemyList.enemyList[viewIndex1 - 1].name as string);
@@ -291,9 +258,6 @@ public class InventoryItemEditor : EditorWindow
                         inventoryEnemyList.enemyList[viewIndex1 - 1].walk = EditorGUILayout.ObjectField("Walk", inventoryEnemyList.enemyList[viewIndex1 - 1].walk, typeof(AnimationClip), false) as AnimationClip;
                         inventoryEnemyList.enemyList[viewIndex1- 1].attack = EditorGUILayout.ObjectField("Attack", inventoryEnemyList.enemyList[viewIndex1 - 1].attack, typeof(AnimationClip), false) as AnimationClip;
                         inventoryEnemyList.enemyList[viewIndex1 - 1].dead = EditorGUILayout.ObjectField("Dead", inventoryEnemyList.enemyList[viewIndex1 - 1].dead, typeof(AnimationClip), false) as AnimationClip;
-
-
-
                     }
                 }
                 else
@@ -370,7 +334,6 @@ public class InventoryItemEditor : EditorWindow
                 {
                     GUILayout.BeginHorizontal();
                     viewIndex3 = Mathf.Clamp(EditorGUILayout.IntField("Current Scene", viewIndex3, GUILayout.ExpandWidth(false)), 1, inventorySceneList.scenelist.Count);
-                    //Mathf.Clamp (viewIndex, 1, inventoryItemList.itemList.Count);
                     EditorGUILayout.LabelField("of   " + inventorySceneList.scenelist.Count.ToString() + "  Scene", "", GUILayout.ExpandWidth(false));
                     GUILayout.EndHorizontal();
                     GUILayout.Label("Scene Settings", EditorStyles.boldLabel);
@@ -542,26 +505,6 @@ public class InventoryItemEditor : EditorWindow
                         break;
                 }
                  break;
-                        
-                //    case 4:
-                //        GUILayout.Label("Sence Settings", EditorStyles.boldLabel);
-                //        //GUILayout.Label(EditorWindow.focusedWindow.ToString());
-                //        GUILayout.Label("Sound Settings", EditorStyles.boldLabel);
-                //        mybool = EditorGUILayout.Toggle("Mute All Sounds", mybool);
-              
-
-                //        myFloat = EditorGUILayout.Slider("Sounds", myFloat, 0, 10);
-                //if (mybool)
-                //{
-                //    AudioListener.volume = myFloat;
-                //}
-                //else
-                //{
-                //    AudioListener.volume = 0;
-                //}
-                //EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
-                //        break;
-                
         }
         
     }
@@ -588,8 +531,6 @@ public class InventoryItemEditor : EditorWindow
                 string relPath1 = AssetDatabase.GetAssetPath(inventoryEnemyList);
                 EditorPrefs.SetString("ObjectPath1", relPath1);
             }
-
-
         }
         if (tab == 3)
         {
@@ -600,9 +541,7 @@ public class InventoryItemEditor : EditorWindow
                 inventoryItemList.itemlist = new List<InventoryItem>();
                 string relPath2 = AssetDatabase.GetAssetPath(inventoryItemList);
                 EditorPrefs.SetString("ObjectPath3", relPath2);
-            }
-
-
+            }      
         }
     }
 
