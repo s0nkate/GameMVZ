@@ -52,8 +52,9 @@ namespace ECSSystem
 		{
 			if(entity.heath.value <= 0)
 			{
-				Object.Instantiate(entity.zoombie.explosion, entity.transform.position, Quaternion.identity);
+				GameObject explore = Object.Instantiate(entity.zoombie.explosion, entity.transform.position, Quaternion.identity);
 				Object.Destroy(entity.transform.gameObject);
+				Object.Destroy(explore);
 			}
 		}
 	}

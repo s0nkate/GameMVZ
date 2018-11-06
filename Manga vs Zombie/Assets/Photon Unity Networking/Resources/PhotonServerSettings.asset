@@ -55,4 +55,7 @@ MonoBehaviour:
   - StartSkill1
   - AddToQueue
   - AddDataToZombie
+  - NextLV
+  - InactiveZombie
+  - MarkDead
   DisableAutoOpenWizard: 1

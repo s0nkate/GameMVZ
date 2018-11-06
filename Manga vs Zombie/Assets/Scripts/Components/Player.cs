@@ -60,19 +60,15 @@ namespace ECSComponent
 					{
 						case (int)BehaviourType.Left:
 							playerController.AttackLeft ();
-							Debug.Log("left");
 							break;
 						case (int)BehaviourType.Right:
 							playerController.AttackRight ();
-							Debug.Log("right");
 							break;
 						case (int)BehaviourType.Skill1:
 							playerController.Skill1 ();
-							Debug.Log("Skill1");
 							break;
 						case (int)BehaviourType.Skill2:
 							playerController.Skill2 ();
-							Debug.Log("Skill2");
 							break;
 						case (int)BehaviourType.Item1:
 							playerController.UseItem1();
@@ -83,7 +79,6 @@ namespace ECSComponent
 						default:
 							break;
 					}
-					Debug.Log("state" + state);
 					transform.position = position;
 					transform.rotation = rotation;
 				}

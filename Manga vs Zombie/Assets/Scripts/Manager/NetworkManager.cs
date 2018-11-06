@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class NetworkManager : Photon.PunBehaviour
 {
 	
-	public PhotonView myPhotonView;
 	public string version = "1.0";
 	public byte maxNumberPlayerInARoom = 2;
 	public RoomInfo[] roomsList;
@@ -17,12 +16,10 @@ public class NetworkManager : Photon.PunBehaviour
 	public const byte CancelJoinRoom = 2;	
 	public bool isInLobby;
 	public bool isInRoom;	
-	 bool isCancel;
+	bool isCancel;
 	bool reliable = true;
-	public static int playerWhoIsIt = 0;
 	RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 	public static NetworkManager Instance = null;
-	private static PhotonView photonView;
 	private void Awake()
 	{
 		if (Instance == null)
@@ -36,7 +33,6 @@ public class NetworkManager : Photon.PunBehaviour
 		PhotonNetwork.autoJoinLobby = false;
 		PhotonNetwork.automaticallySyncScene = true;
 		PhotonNetwork.ConnectUsingSettings(version);
-		myPhotonView = GetComponent<PhotonView>();
 		DontDestroyOnLoad (gameObject);
 	}
 
@@ -101,12 +97,6 @@ public class NetworkManager : Photon.PunBehaviour
 	public override void OnJoinedRoom()
 	{
 		Debug.Log("OnJoinedRoom");
-		if (PhotonNetwork.playerList.Length == 1)
-        {
-            playerWhoIsIt = PhotonNetwork.player.ID;
-        }
-
-        Debug.Log("playerWhoIsIt: " + playerWhoIsIt);
 		isInRoom = true;
 		if(!isOwn)
 		{

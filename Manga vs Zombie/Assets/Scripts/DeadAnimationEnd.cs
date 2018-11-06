@@ -2,24 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeadAnimationEnd : Photon.PunBehaviour {
-	
+public class DeadAnimationEnd : Photon.PunBehaviour 
+{
 	void Awake()
 	{
-		// photonView = GetComponent<PhotonView>();
+		
 	}
 	public void Destroy()
 	{
 		// Destroy(transform.gameObject);
 		gameObject.SetActive(false);
+		// PhotonView photonView = GetComponent<PhotonView>();
 		// photonView.RPC("DeactiveZombie", PhotonTargets.AllBuffered);
+		// if(PhotonNetwork.player.IsMasterClient)
+		// {
+			
+		// }
+		
 	}
 
 	public void DestroyMysefl()
 	{
 		gameObject.SetActive(false);
-		// Destroy(transform.gameObject);
+		// PhotonView photonView = GetComponent<PhotonView>();
 		// photonView.RPC("DeactiveZombie", PhotonTargets.AllBuffered);
+		// if(PhotonNetwork.player.IsMasterClient)
+		// {
+			
+		// }
 		
 	}
 

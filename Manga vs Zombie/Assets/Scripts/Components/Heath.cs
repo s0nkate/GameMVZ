@@ -32,6 +32,26 @@ namespace ECSComponent
             }
         }
 
+        [PunRPC]
+		void InactiveZombie(int viewID)
+		{
+			PhotonView photonView = PhotonView.Find(viewID);
+			if(photonView != null)
+			{
+				photonView.gameObject.SetActive(false);
+			}
+		}
+
+		[PunRPC]
+		void MarkDead(int viewID)
+		{
+			PhotonView photonView = PhotonView.Find(viewID);
+			if(photonView)
+			{
+				photonView.gameObject.GetComponent<Faction>().currentState = State.Dead;
+				photonView.gameObject.GetComponent<Animator>().SetInteger("stage", (int)State.Dead);	
+			}
+		}
     
     }	
 }

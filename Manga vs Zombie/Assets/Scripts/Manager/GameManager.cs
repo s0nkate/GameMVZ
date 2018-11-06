@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using ECSComponent;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : Photon.PunBehaviour {
 
 	public GameObject playScene;
     public GameObject loading;
@@ -57,8 +57,6 @@ public class GameManager : MonoBehaviour {
     public Image Imageitem1;
     public Image Imageitem2;
     public int effectIndex = -1;
-    public int masterIndex;
-    public int clientIndex;
     
 
 
@@ -94,6 +92,7 @@ public class GameManager : MonoBehaviour {
 
     {
         PhotonNetwork.LeaveRoom();
+        PhotonNetwork.Disconnect();
     }
 
     public void LoadData()
@@ -246,9 +245,17 @@ public class GameManager : MonoBehaviour {
         NextLvUI.SetActive(true);
 
     }
+
+    public void NextLvRPC()
+    {
+        photonView.RPC("NextLV", PhotonTargets.All);
+    }
+
+    [PunRPC]
     public void NextLV()
     {
-        i++;
+        // i++;
+        // Debug.Log("i++");
         pause = false;
         isPlaying = true;
         NextLvUI.SetActive(false);
@@ -297,8 +304,7 @@ public class GameManager : MonoBehaviour {
         finalPopup.SetActive(false);
     }
     public void Yesbtn()
-    {
-        
+    {   
         i = 0;
         YNUI.SetActive(false);
         MenuUI.SetActive(true);
@@ -309,7 +315,6 @@ public class GameManager : MonoBehaviour {
         ExitRoom();
         isPlaying = false;
         ResultUI.SetActive(false);
-
     }
     public void Nobtn()
     {

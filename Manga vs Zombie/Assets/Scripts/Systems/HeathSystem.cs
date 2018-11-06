@@ -29,6 +29,7 @@ namespace ECSSystem
 			public Animator animator;
 			public Heath heath;
 			public Faction faction;
+			public PhotonView photonView;
 
 		}
 		protected override void OnUpdate()
@@ -71,36 +72,30 @@ namespace ECSSystem
 		}
 		void CheckDead()
 		{
-          
-            int i = 0;
             foreach (var e in GetEntities<ZombieData>())
 			{
                 if (e.heath.value <= 0)
                 {
                     e.faction.currentState = State.Dead;
                     e.animator.SetInteger("stage", (int)State.Dead);
+					// e.photonView.RPC("MarkDead", PhotonTargets.AllBuffered, e.photonView.viewID);
                 }
                 if ( e.heath.value <= 0 && !e.heath.isDead)
 				{
-                    //e.faction.currentState = State.Dead;
-                    //e.animator.SetInteger("stage", (int)State.Dead);
-                    e.heath.isDead = true;
-                    i++;
-					
-                    e.heath.CheckID(e.zoombie.score,e.zoombie.money ,e.heath.idAttack);
-                    
+                    e.faction.currentState = State.Dead;
+                    e.animator.SetInteger("stage", (int)State.Dead);
+					e.heath.isDead = true;
+					// e.photonView.RPC("MarkDead", PhotonTargets.AllBuffered, e.photonView.viewID);
+					// e.faction.currentState = State.Dead;
+                    // e.animator.SetInteger("stage", (int)State.Dead);			
                     
 				}
-               
-
+				e.heath.CheckID(e.zoombie.score,e.zoombie.money ,e.heath.idAttack);
             }
-            i = 0;
 		}
 
 		private void OnInjured(GameObject heath, int damage)
 		{
-			// heath.value -= damage;
-			// PhotonView photonView = heath.GetComponent<PhotonView>();
 			Heath hp = heath.GetComponent<Heath>();
 			hp.value -= damage;
 			// photonView.RPC("IncreaseHeath", PhotonTargets.Others, hp, damage);
@@ -113,6 +108,10 @@ namespace ECSSystem
 			heath.value -= damage;
 
 		}
+
+		
+
+		
         private void CheckID(int score,int money,int id)
         {
             if (id == PhotonNetwork.player.ID) { 
@@ -122,7 +121,6 @@ namespace ECSSystem
             }
             else
             {
-                // Debug.Log(id +" " + PhotonNetwork.player.ID);
             }
         }
 	}

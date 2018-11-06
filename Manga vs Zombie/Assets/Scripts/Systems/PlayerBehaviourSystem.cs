@@ -25,19 +25,15 @@ namespace ECSSystem
 					{
 						case BehaviourType.Left:
 							entity.controller.AttackLeft ();
-							Debug.Log("left");
 							break;
 						case BehaviourType.Right:
 							entity.controller.AttackRight ();
-							Debug.Log("right");
 							break;
 						case BehaviourType.Skill1:
 							entity.controller.Skill1 ();
-							Debug.Log("Skill1");
 							break;
 						case BehaviourType.Skill2:
 							entity.controller.Skill2 ();
-							Debug.Log("Skill2");
 							break;
 						case BehaviourType.Item1:
 							entity.controller.UseItem1();

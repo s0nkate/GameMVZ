@@ -25,8 +25,9 @@ namespace ECSSystem
 					entity.zombieSpawn.isActived = true;
 				}
 
-				if(entity.zombieSpawn.isActived && GameManager.Instance.isPlaying)
+				if(PhotonNetwork.player.IsMasterClient && entity.zombieSpawn.isActived && GameManager.Instance.isPlaying)
 				{
+					entity.photonView.RPC("DisableAllZombie", PhotonTargets.All);
 					entity.zombieSpawn.StartCoroutine(Addzombie(entity));
 					entity.zombieSpawn.isActived = false;
 				}
@@ -37,7 +38,7 @@ namespace ECSSystem
 		{
 			while(GameManager.Instance.isPlaying)
 			{
-				entity.zombiePool.GetZombie();	
+				entity.photonView.RPC("GetZombie", PhotonTargets.All);
 				yield return new WaitForSeconds(entity.zombieSpawn.timeDelay);
 			}
 		}	
