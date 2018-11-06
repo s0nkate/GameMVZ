@@ -41,16 +41,19 @@ public class PlayerBehaviour : Photon.PunBehaviour
 	public void UseSkill2()
 	{
 		behaviour = BehaviourType.Skill2;
+      
 	}
 	public void UseItem1()
 	{
 		behaviour = BehaviourType.Item1;
-	}
+       
+    }
 
 	public void UseItem2()
 	{
 		behaviour = BehaviourType.Item2;
-	}
+    
+    }
 	void Update () 
 	{
 		

@@ -208,11 +208,7 @@ public class GameManager : MonoBehaviour {
     }
     public void LoadLevel()
     {
-  
-        i++;
-        time = scenelist.scenelist[i].TimePlay;
-        
-        
+ 
         ZombiePool.onNextLevel.Invoke();
         House.onNextLevel.Invoke();
         Score = PlayerPrefs.GetInt("Score");
@@ -233,7 +229,7 @@ public class GameManager : MonoBehaviour {
             PlayerPrefs.SetInt("HighScore", Score);
             Highscore.SetActive(true);
         }
-        Debug.Log(HighScore);
+      
     }
     public void Pause()
     {
@@ -257,9 +253,11 @@ public class GameManager : MonoBehaviour {
     }
     public void NextLV()
     {
+        i++;
         pause = false;
         isPlaying = true;
         NextLvUI.SetActive(false);
+        time = scenelist.scenelist[i].TimePlay;
         Backgournd.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Backgournd;
         Foregournd.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Foregournd;
         Tower.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Tower;
@@ -283,6 +281,8 @@ public class GameManager : MonoBehaviour {
         playScene.SetActive(true);
         isPlaying = true;
         pause = false;
+        item1 = true;
+        item2 = true;
         House.onNextLevel.Invoke();
         time = scenelist.scenelist[0].TimePlay;
         Score = 0;
