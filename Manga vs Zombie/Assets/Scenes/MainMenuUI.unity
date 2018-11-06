@@ -490,11 +490,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114050307985713234, guid: 7fdc99d8d914408419b50f6b4f45548d,
         type: 2}
-      propertyPath: m_PositionModel.TeleportEnabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114050307985713234, guid: 7fdc99d8d914408419b50f6b4f45548d,
-        type: 2}
       propertyPath: m_PositionModel.TeleportIfDistanceGreaterThan
       value: 0
       objectReference: {fileID: 0}
@@ -924,7 +919,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2047445515}
-        m_MethodName: NextLvRPC
+        m_MethodName: NextLV
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1655,6 +1650,17 @@ MonoBehaviour:
       - m_Target: {fileID: 1432537224}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2047445515}
+        m_MethodName: SoundBtn
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2767,11 +2773,6 @@ Prefab:
         type: 2}
       propertyPath: value
       value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 114050307985713234, guid: 7fdc99d8d914408419b50f6b4f45548d,
-        type: 2}
-      propertyPath: m_PositionModel.TeleportEnabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114050307985713234, guid: 7fdc99d8d914408419b50f6b4f45548d,
         type: 2}
@@ -4251,11 +4252,6 @@ Prefab:
     - target: {fileID: 1969749420875534, guid: 7fdc99d8d914408419b50f6b4f45548d, type: 2}
       propertyPath: m_Layer
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114050307985713234, guid: 7fdc99d8d914408419b50f6b4f45548d,
-        type: 2}
-      propertyPath: m_PositionModel.TeleportEnabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114050307985713234, guid: 7fdc99d8d914408419b50f6b4f45548d,
         type: 2}
@@ -6076,11 +6072,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114050307985713234, guid: 7fdc99d8d914408419b50f6b4f45548d,
         type: 2}
-      propertyPath: m_PositionModel.TeleportEnabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114050307985713234, guid: 7fdc99d8d914408419b50f6b4f45548d,
-        type: 2}
       propertyPath: m_PositionModel.TeleportIfDistanceGreaterThan
       value: 0
       objectReference: {fileID: 0}
@@ -7474,11 +7465,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114032038070042958, guid: 3ea7abba9d2acad4582f7fe4929b6019,
         type: 2}
-      propertyPath: m_PositionModel.InterpolateLerpSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114032038070042958, guid: 3ea7abba9d2acad4582f7fe4929b6019,
-        type: 2}
       propertyPath: m_PositionModel.TeleportIfDistanceGreaterThan
       value: 0
       objectReference: {fileID: 0}
@@ -8119,13 +8105,8 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114032038070042958, guid: 3ea7abba9d2acad4582f7fe4929b6019,
         type: 2}
-      propertyPath: m_PositionModel.InterpolateLerpSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114032038070042958, guid: 3ea7abba9d2acad4582f7fe4929b6019,
-        type: 2}
       propertyPath: m_PositionModel.TeleportIfDistanceGreaterThan
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ea7abba9d2acad4582f7fe4929b6019, type: 2}
@@ -8287,11 +8268,6 @@ Prefab:
         type: 2}
       propertyPath: value
       value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 114032038070042958, guid: 3ea7abba9d2acad4582f7fe4929b6019,
-        type: 2}
-      propertyPath: m_PositionModel.InterpolateLerpSpeed
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114032038070042958, guid: 3ea7abba9d2acad4582f7fe4929b6019,
         type: 2}
@@ -8831,7 +8807,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PositionModel:
     SynchronizeEnabled: 1
-    TeleportEnabled: 0
+    TeleportEnabled: 1
     TeleportIfDistanceGreaterThan: 3
     InterpolateOption: 2
     InterpolateMoveTowardsSpeed: 1
@@ -8887,7 +8863,7 @@ MonoBehaviour:
     DrawErrorGizmo: 1
   m_RotationModel:
     SynchronizeEnabled: 1
-    InterpolateOption: 0
+    InterpolateOption: 2
     InterpolateRotateTowardsSpeed: 180
     InterpolateLerpSpeed: 5
   m_ScaleModel:
@@ -9426,11 +9402,6 @@ Prefab:
     - target: {fileID: 1969749420875534, guid: 7fdc99d8d914408419b50f6b4f45548d, type: 2}
       propertyPath: m_Layer
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114050307985713234, guid: 7fdc99d8d914408419b50f6b4f45548d,
-        type: 2}
-      propertyPath: m_PositionModel.TeleportEnabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114050307985713234, guid: 7fdc99d8d914408419b50f6b4f45548d,
         type: 2}
@@ -11357,11 +11328,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114032038070042958, guid: 3ea7abba9d2acad4582f7fe4929b6019,
         type: 2}
-      propertyPath: m_PositionModel.InterpolateLerpSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114032038070042958, guid: 3ea7abba9d2acad4582f7fe4929b6019,
-        type: 2}
       propertyPath: m_PositionModel.TeleportIfDistanceGreaterThan
       value: 0
       objectReference: {fileID: 0}
@@ -11610,9 +11576,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1789012892}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 10
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 4.71
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -11712,7 +11678,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PositionModel:
     SynchronizeEnabled: 1
-    TeleportEnabled: 0
+    TeleportEnabled: 1
     TeleportIfDistanceGreaterThan: 3
     InterpolateOption: 2
     InterpolateMoveTowardsSpeed: 1
@@ -11768,7 +11734,7 @@ MonoBehaviour:
     DrawErrorGizmo: 1
   m_RotationModel:
     SynchronizeEnabled: 1
-    InterpolateOption: 0
+    InterpolateOption: 2
     InterpolateRotateTowardsSpeed: 180
     InterpolateLerpSpeed: 5
   m_ScaleModel:
@@ -12592,11 +12558,6 @@ Prefab:
     - target: {fileID: 1969749420875534, guid: 7fdc99d8d914408419b50f6b4f45548d, type: 2}
       propertyPath: m_Layer
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114050307985713234, guid: 7fdc99d8d914408419b50f6b4f45548d,
-        type: 2}
-      propertyPath: m_PositionModel.TeleportEnabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114050307985713234, guid: 7fdc99d8d914408419b50f6b4f45548d,
         type: 2}
@@ -14590,7 +14551,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2047445516}
   - component: {fileID: 2047445515}
-  - component: {fileID: 2047445518}
   - component: {fileID: 2047445517}
   m_Layer: 0
   m_Name: GameManager
@@ -14656,6 +14616,11 @@ MonoBehaviour:
   Imageitem1: {fileID: 0}
   Imageitem2: {fileID: 0}
   effectIndex: -1
+  masterIndex: 0
+  clientIndex: 0
+  buttonClick: {fileID: 8300000, guid: bad257f1b905936409ae22fdc1b6efac, type: 3}
+  soundBackground: {fileID: 8300000, guid: 148e6f8b5a166d64083358619d0452cf, type: 3}
+  sound: {fileID: 0}
 --- !u!4 &2047445516
 Transform:
   m_ObjectHideFlags: 0
@@ -14669,44 +14634,101 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2047445517
-MonoBehaviour:
+--- !u!82 &2047445517
+AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2047445514}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18752490bf5788046aa7c02d86b10592, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time: 0
---- !u!114 &2047445518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2047445514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ownerId: 0
-  group: 0
-  OwnerShipWasTransfered: 0
-  prefixBackup: -1
-  synchronization: 3
-  onSerializeTransformOption: 3
-  onSerializeRigidBodyOption: 2
-  ownershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 2047445517}
-  ObservedComponentsFoldoutOpen: 1
-  viewIdField: 18
-  instantiationId: 18
-  currentMasterID: -1
-  isRuntimeInstantiated: 0
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 148e6f8b5a166d64083358619d0452cf, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2048513951
 GameObject:
   m_ObjectHideFlags: 0
@@ -15453,6 +15475,17 @@ MonoBehaviour:
       - m_Target: {fileID: 1432537224}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2047445515}
+        m_MethodName: SoundBtn
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
