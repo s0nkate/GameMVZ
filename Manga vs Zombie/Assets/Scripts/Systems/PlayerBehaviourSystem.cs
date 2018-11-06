@@ -18,12 +18,11 @@ namespace ECSSystem
 		{
 			foreach (var entity in GetEntities<Data> ()) 
 			{
-				if (entity.controller.playerBehaviour != null)
+				if (entity.photonView.isMine && entity.controller.playerBehaviour != null)
 				{
 					switch (entity.controller.playerBehaviour.behaviour) 
 					{
 						case BehaviourType.Left:
-							Debug.Log("system" + PhotonNetwork.player.ID);
 							entity.controller.AttackLeft ();
 							break;
 						case BehaviourType.Right:

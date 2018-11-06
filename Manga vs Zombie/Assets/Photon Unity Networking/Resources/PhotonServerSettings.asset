@@ -53,4 +53,6 @@ MonoBehaviour:
   - StartDame
   - StartSkill
   - StartSkill1
+  - AddToQueue
+  - AddDataToZombie
   DisableAutoOpenWizard: 1
