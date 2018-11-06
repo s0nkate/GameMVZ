@@ -8,8 +8,8 @@ namespace ECSComponent
 	public class ZombieSound : MonoBehaviour 
 	{
 
-		public AudioClip walkSound;
+		
 		public AudioClip attackSound;
-		public AudioClip deadSound;
+		
 	}
 }

@@ -73,9 +73,9 @@ public class Player1Controller : Photon.MonoBehaviour
     {
         
         audiosrc = GetComponent<AudioSource>();
-       
-        
-        if(photonView.isMine)
+        listItem = GameManager.Instance.GetSelectedItem();
+
+        if (photonView.isMine)
         {
             playerBehaviour = GameObject.FindWithTag("SkillGUI").GetComponent<PlayerBehaviour>();
             skillGUI = GameObject.FindWithTag("SkillGUI").GetComponent<SkillGUI>();
@@ -144,7 +144,7 @@ public class Player1Controller : Photon.MonoBehaviour
         clipOverrides["Player1 Skill2"] = playerlist.playerList[i].playskill2;
         animatorOverrideController.ApplyOverrides(clipOverrides);
         GetComponent<Animator>().runtimeAnimatorController = animatorOverrideController;
-        listItem = GameManager.Instance.GetSelectedItem();
+      
         
     }
 
@@ -364,7 +364,7 @@ public class Player1Controller : Photon.MonoBehaviour
     }
     public void Skill1()
     {
-        StartSkill();
+  
 
         if (isCooldown1 == false && skill2 == false && attacking == false && attacking1 == false && skill1 == false)
         {
@@ -377,7 +377,7 @@ public class Player1Controller : Photon.MonoBehaviour
     }
     public void Skill2()
     {
-        StartSkill1();
+      
         if (isCooldown2 == false && skill1 == false && attacking == false && attacking1 == false && skill2 == false)
         {
             isCooldown2 = true;

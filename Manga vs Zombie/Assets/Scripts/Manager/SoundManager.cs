@@ -31,7 +31,7 @@ public class SoundManager : MonoBehaviour
 
 	void Start()
 	{
-        //Kakashis2 = Resources.Load<AudioClip>("Kakashis2");
+        volume = 1f;
         volumeSilder.maxValue = 1f;
 		volumeSilder.value = volume;
       
@@ -42,6 +42,7 @@ public class SoundManager : MonoBehaviour
 		musicSoundActive = music.isOn;
 		effectSoundActive = soundEffect.isOn;
 		volume = volumeSilder.value;
+        GameManager.Instance.sound.volume = volume;
 	}
    
 }

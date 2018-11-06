@@ -44,6 +44,7 @@ public class NetworkManager : Photon.PunBehaviour
 
 	public void ConnectAndJoin () 
 	{
+        GameManager.Instance.SoundBtn();
 		loadingText.text = "Connecting to server....";
 		PhotonNetwork.JoinLobby ();
 
