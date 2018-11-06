@@ -20,7 +20,32 @@ public class PlayerBehaviour : Photon.PunBehaviour
 
 	public void SetBehaviour(int state)
 	{
-		behaviour = (BehaviourType)state;
+		switch (state)
+		{
+			case 0:
+				SetIdle();
+				break;
+			case 1:
+				AttackLeft();
+				break;
+			case 2:
+				AttackRight();
+				break;
+			case 3:
+				UseSkill1();
+				break;
+			case 4:
+				UseSkill2();
+				break;
+			case 5:
+				UseItem1();
+				break;
+			case 6:
+				UseItem2();
+				break;
+			default:
+				break;
+		}
 	}
 
 	public void AttackLeft()

@@ -3,6 +3,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using ECSComponent;
 
 public class Player1Controller : Photon.MonoBehaviour
 {
@@ -78,7 +79,7 @@ public class Player1Controller : Photon.MonoBehaviour
             skillGUI = GameObject.FindWithTag("SkillGUI").GetComponent<SkillGUI>();
             text1= skillGUI.text1;
             text2= skillGUI.text2;
-            
+            GetComponent<Player>().playerBehaviour = playerBehaviour;
             imageColldown1 = skillGUI.imageColldown1;
             imageColldown2 = skillGUI.imageColldown2;
             image1 = skillGUI.image1;
@@ -96,7 +97,29 @@ public class Player1Controller : Photon.MonoBehaviour
             image2.sprite = playerlist.playerList[i]._Image1;
             image3.sprite = playerlist.playerList[i]._Image2;
             image4.sprite = playerlist.playerList[i]._Image2;
-        }   
+
+            switch (listItem.Count) 
+            {
+               case 1:
+                    Textitem1.text = listItem[0].info;
+                    Imageitem1.sprite = listItem[0].image;
+                    break;
+                case 2:
+                    Textitem1.text = listItem[0].info;
+                    Imageitem1.sprite = listItem[0].image;
+                    Textitem2.text = listItem[1].info;
+                    Imageitem2.sprite = listItem[1].image;                
+                    break;
+                default:
+                    break;
+            }
+            
+        }else
+        {
+            gameObject.AddComponent<PlayerBehaviour>();
+            playerBehaviour = GetComponent<PlayerBehaviour>();
+            GetComponent<Player>().playerBehaviour = playerBehaviour;
+        }  
         dmg = playerlist.playerList[i]._Dmg;
         dmg1 = playerlist.playerList[i]._DmgSkill1;
         dmg2 = playerlist.playerList[i]._DmgSkill2;
@@ -120,22 +143,7 @@ public class Player1Controller : Photon.MonoBehaviour
         GetComponent<Animator>().runtimeAnimatorController = animatorOverrideController;
         listItem = GameManager.Instance.GetSelectedItem();
         
-        switch (listItem.Count) {
-            
-            case 1:
-                Textitem1.text = listItem[0].info;
-                Imageitem1.sprite = listItem[0].image;
-                break;
-            case 2:
-                Textitem1.text = listItem[0].info;
-                Imageitem1.sprite = listItem[0].image;
-                Textitem2.text = listItem[1].info;
-            Imageitem2.sprite = listItem[1].image;
-                
-                break;
-            default:
-                break;
-    }
+        
          
 }
     void Update()
@@ -204,7 +212,7 @@ public class Player1Controller : Photon.MonoBehaviour
                 trigger2.SetActive(false);
             }
         }
-        if (isCooldown1)
+        if (isCooldown1 && photonView.isMine)
         {
             imageColldown1.fillAmount += 1 / playerlist.playerList[i]._Cooldown1 * Time.deltaTime;
 
@@ -215,7 +223,7 @@ public class Player1Controller : Photon.MonoBehaviour
                 isCooldown1 = false;
             }
         }
-        if (isCooldown2)
+        if (isCooldown2 && photonView.isMine)
         {
 
             imageColldown2.fillAmount += 1 / playerlist.playerList[i]._Cooldown2 * Time.deltaTime;
@@ -225,6 +233,13 @@ public class Player1Controller : Photon.MonoBehaviour
                 imageColldown2.fillAmount = 0;
                 isCooldown2 = false;
             }
+        }
+
+
+        if(!photonView.isMine)
+        {
+            isCooldown1 = false;
+            isCooldown2 = false;
         }
         
         anim.SetBool("Skill1", skill1);
@@ -260,7 +275,6 @@ public class Player1Controller : Photon.MonoBehaviour
             skill2 = false;
             trigger2.SetActive(false);
         }
-
     }
 
     [PunRPC]
@@ -346,6 +360,7 @@ public class Player1Controller : Photon.MonoBehaviour
     }
     public void Skill1()
     {
+        StartSkill();
 
         if (isCooldown1 == false && skill2 == false && attacking == false && attacking1 == false && skill1 == false)
         {
@@ -358,6 +373,7 @@ public class Player1Controller : Photon.MonoBehaviour
     }
     public void Skill2()
     {
+        StartSkill1();
         if (isCooldown2 == false && skill1 == false && attacking == false && attacking1 == false && skill2 == false)
         {
             isCooldown2 = true;

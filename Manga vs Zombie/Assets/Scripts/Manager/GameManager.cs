@@ -131,7 +131,6 @@ public class GameManager : MonoBehaviour {
 	public void UpdateData()
 	{
         
-
     }
 
 	public void SaveData()
@@ -154,9 +153,6 @@ public class GameManager : MonoBehaviour {
 		requestJoinPopup.SetActive(true);
 	}
 
-
-
-
 	public void ExitGame()
 	{
 		SaveData();
@@ -176,9 +172,6 @@ public class GameManager : MonoBehaviour {
         timeText.text = time.ToString();
         goldText.text = Gold.ToString();
         
-       
-      
-
         if (isPlaying && time==0  && i< scenelist.scenelist.Count-1)
         {
             NextLv();
@@ -208,7 +201,6 @@ public class GameManager : MonoBehaviour {
     }
     public void LoadLevel()
     {
-  
         i++;
         time = scenelist.scenelist[i].TimePlay;
         
@@ -293,7 +285,6 @@ public class GameManager : MonoBehaviour {
         Tower.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Tower;
         Towerenemy.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Towerenemy;
         Towerenemy1.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Towerenemy;
-       
     }
     public void BackMenu()
     {
@@ -317,8 +308,6 @@ public class GameManager : MonoBehaviour {
         ExitRoom();
         isPlaying = false;
         ResultUI.SetActive(false);
-
-        
 
     }
     public void Nobtn()
