@@ -1,21 +1,18 @@
 ﻿using System.Collections;
+using ECSComponent;
 
 using UnityEngine;
 [System.Serializable]
 public class InventoryEnemy  {
     public string name;
     public Texture2D image = null;
-    public float health;
+    public int health;
     public float speed;
-    public float damage;
+    public int damage;
     public float Delay;
     public int money;
     public int score;
-    public enum Type {Walker=0
-            ,Runner=1
-            ,Hulker=2,
-             Exploder=3 };
-    public Type type; 
+    public ZombieType type; 
     public AnimationClip idle;
     public AnimationClip walk;
     public AnimationClip attack;

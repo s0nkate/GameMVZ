@@ -1341,7 +1341,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 114582500}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.18, y: 2, z: -93}
+  m_LocalPosition: {x: -0.061, y: 1.974, z: -93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 32855736}
@@ -8743,6 +8743,7 @@ MonoBehaviour:
   - {fileID: 1985544658}
   inventorySceneList: {fileID: 11400000, guid: 9e10a03d91893394bad85cee5b0aa859, type: 2}
   zombieCount: 6
+  inventoryEnemyList: {fileID: 0}
 --- !u!114 &1275350188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11585,6 +11586,7 @@ MonoBehaviour:
   - {fileID: 30526149}
   inventorySceneList: {fileID: 11400000, guid: 9e10a03d91893394bad85cee5b0aa859, type: 2}
   zombieCount: 6
+  inventoryEnemyList: {fileID: 0}
 --- !u!114 &1619988118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14534,12 +14536,15 @@ MonoBehaviour:
   Pausebtn: {fileID: 84411204}
   isPlaying: 0
   Gameover: 0
+  item1: 1
+  item2: 1
   playerShopList: []
   itemShopList: []
   Textitem1: {fileID: 0}
   Textitem2: {fileID: 0}
   Imageitem1: {fileID: 0}
   Imageitem2: {fileID: 0}
+  effectIndex: -1
   masterIndex: 0
   clientIndex: 0
 --- !u!4 &2047445516

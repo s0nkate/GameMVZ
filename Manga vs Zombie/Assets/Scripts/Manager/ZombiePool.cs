@@ -16,6 +16,8 @@ public class ZombiePool : Photon.PunBehaviour
 	Transform spawnTransform;
 	public int zombieCount = 6;
 	public static UnityEvent onNextLevel;
+    public InventoryEnemyList inventoryEnemyList;
+
 	// public PhotonView photonView;
 	void Awake()
 	{
@@ -71,6 +73,18 @@ public class ZombiePool : Photon.PunBehaviour
     private void Update()
     {
         //AddToQueue();
+    }
+
+    [PunRPC]
+    void AddDataToZombie(GameObject zombie, int index)
+    {
+        zombie.GetComponent<Attack>().damage = inventoryEnemyList.enemyList[index].damage;
+        zombie.GetComponent<Attack>().timeDelay = inventoryEnemyList.enemyList[index].Delay;
+        zombie.GetComponent<Heath>().maxValue = inventoryEnemyList.enemyList[index].health;
+        zombie.GetComponent<Move>().speed = inventoryEnemyList.enemyList[index].speed;
+        zombie.GetComponent<Zombie>().score = inventoryEnemyList.enemyList[index].score;
+        zombie.GetComponent<Zombie>().money = inventoryEnemyList.enemyList[index].money;
+        zombie.GetComponent<Zombie>().type = inventoryEnemyList.enemyList[index].type;
     }
 
     void AddToQueue()
@@ -146,6 +160,8 @@ public class ZombiePool : Photon.PunBehaviour
 			zombie.SetActive(false);
 			
 	}
+
+
 
 	string GetRandomZombiePrefabname(ZombieSpawn zombieSpawn)
 	{

@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour {
     public Text Textitem2;
     public Image Imageitem1;
     public Image Imageitem2;
+    public int effectIndex = -1;
     public int masterIndex;
     public int clientIndex;
     

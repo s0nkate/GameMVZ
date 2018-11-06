@@ -27,7 +27,7 @@ public class Player1Controller : Photon.MonoBehaviour
     public static float Editcool1;
     public static float Editcool2;
     public static float Delay;
-    public static int i=0;
+    public int i=0;
     public Text text1;
     public Text text2;
     public Image image1;
@@ -59,9 +59,8 @@ public class Player1Controller : Photon.MonoBehaviour
 
     void Awake()
     {
-        anim = gameObject.GetComponent<Animator>();
-        playerBehaviour = GameObject.FindWithTag("SkillGUI").GetComponent<PlayerBehaviour>();
-        skillGUI = GameObject.FindWithTag("SkillGUI").GetComponent<SkillGUI>();
+        
+        LoadData();
 		GameObject playerSpawn = GameObject.FindWithTag("PlayerSpawn");
         transform.parent = playerSpawn.transform;
         trigger.SetActive(false);
@@ -72,49 +71,44 @@ public class Player1Controller : Photon.MonoBehaviour
     {
         
         audiosrc = GetComponent<AudioSource>();
-        LoadData();
+        
+        if(photonView.isMine)
+        {
+            playerBehaviour = GameObject.FindWithTag("SkillGUI").GetComponent<PlayerBehaviour>();
+            skillGUI = GameObject.FindWithTag("SkillGUI").GetComponent<SkillGUI>();
+            text1= skillGUI.text1;
+            text2= skillGUI.text2;
+            
+            imageColldown1 = skillGUI.imageColldown1;
+            imageColldown2 = skillGUI.imageColldown2;
+            image1 = skillGUI.image1;
+            image2 = skillGUI.image2;
+            image3 = skillGUI.image3;
+            image4 = skillGUI.image4;
+            Textitem1 = skillGUI.Textitem1;
+            Textitem2 = skillGUI.Textitem2;
+            Imageitem1 = skillGUI.Imageitem1;
+            Imageitem2 = skillGUI.Imageitem2;
 
-         skillGUI = GameObject.FindWithTag("SkillGUI").GetComponent<SkillGUI>();
-		GameObject playerSpawn = GameObject.FindWithTag("PlayerSpawn");
-
-        transform.parent = playerSpawn.transform;
-        playerBehaviour = GameObject.FindWithTag("SkillGUI").GetComponent<PlayerBehaviour>();
-
-        text1= skillGUI.text1;
-        text2= skillGUI.text2;
-        imageColldown1 = skillGUI.imageColldown1;
-        imageColldown2 = skillGUI.imageColldown2;
-        image1 = skillGUI.image1;
-        image2 = skillGUI.image2;
-        image3 = skillGUI.image3;
-        image4 = skillGUI.image4;
-        Textitem1 = skillGUI.Textitem1;
-        Textitem2 = skillGUI.Textitem2;
-        Imageitem1 = skillGUI.Imageitem1;
-        Imageitem2 = skillGUI.Imageitem2;
+            text1.text = "Damage:     " + playerlist.playerList[i]._DmgSkill1.ToString();
+            text2.text = "Damage:     " + playerlist.playerList[i]._DmgSkill2.ToString();
+            image1.sprite= playerlist.playerList[i]._Image1;
+            image2.sprite = playerlist.playerList[i]._Image1;
+            image3.sprite = playerlist.playerList[i]._Image2;
+            image4.sprite = playerlist.playerList[i]._Image2;
+        }   
         dmg = playerlist.playerList[i]._Dmg;
         dmg1 = playerlist.playerList[i]._DmgSkill1;
         dmg2 = playerlist.playerList[i]._DmgSkill2;
-        Debug.Log("Id player:" +  i);
-        text1.text = "Damage:     " + playerlist.playerList[i]._DmgSkill1.ToString();
-        text2.text = "Damage:     " + playerlist.playerList[i]._DmgSkill2.ToString();
-        image1.sprite= playerlist.playerList[i]._Image1;
-        image2.sprite = playerlist.playerList[i]._Image1;
-        image3.sprite = playerlist.playerList[i]._Image2;
-        image4.sprite = playerlist.playerList[i]._Image2;
+        
         SoundPunch = playerlist.playerList[i]._SoundPunch;
         SoundKick = playerlist.playerList[i]._SoundKick;
         SoundSkill1 = playerlist.playerList[i]._SoundSkill1;
         SoundSkill2 = playerlist.playerList[i]._SoundSkill2;
 
-
-
-        
-
-
+        anim = GetComponent<Animator>();
         animatorOverrideController = new AnimatorOverrideController(anim.runtimeAnimatorController);
         anim.runtimeAnimatorController = animatorOverrideController;
-
         clipOverrides = new AnimationClipOverrides(animatorOverrideController.overridesCount);
         animatorOverrideController.GetOverrides(clipOverrides);
         clipOverrides["Player1 Idle"] = playerlist.playerList[i].playIdle;
@@ -129,8 +123,8 @@ public class Player1Controller : Photon.MonoBehaviour
         switch (listItem.Count) {
             
             case 1:
-        Textitem1.text = listItem[0].info;
-        Imageitem1.sprite = listItem[0].image;
+                Textitem1.text = listItem[0].info;
+                Imageitem1.sprite = listItem[0].image;
                 break;
             case 2:
                 Textitem1.text = listItem[0].info;
@@ -142,6 +136,7 @@ public class Player1Controller : Photon.MonoBehaviour
             default:
                 break;
     }
+         
 }
     void Update()
     {
@@ -313,7 +308,7 @@ public class Player1Controller : Photon.MonoBehaviour
     }
     public void AttackLeft()
     {
-        Debug.Log("system" + PhotonNetwork.player.ID);
+    
         if (attacking1 == false && attacking == false && skill1 == false && skill2 == false)
         {
             float h = -1;

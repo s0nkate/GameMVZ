@@ -3,6 +3,7 @@ using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using ECSComponent;
 
 public class InventoryItemEditor : EditorWindow
 {
@@ -19,7 +20,7 @@ public class InventoryItemEditor : EditorWindow
     private string[] toolBar1 = new string[] { "Player", "Item" };
     int tab;
     int tab1;
-    public InventoryEnemy.Type type;
+    public ZombieType type;
     public Vector2 scrollPositon;
     [MenuItem("Window/Custom Inspector %#e")]
     static void Init()
@@ -278,13 +279,13 @@ public class InventoryItemEditor : EditorWindow
                         GUILayout.EndHorizontal();
                         inventoryEnemyList.enemyList[viewIndex1 - 1].name = EditorGUILayout.TextField("Enemy Name", inventoryEnemyList.enemyList[viewIndex1 - 1].name as string);
                         inventoryEnemyList.enemyList[viewIndex1 - 1].image = EditorGUILayout.ObjectField("Enemy avatar", inventoryEnemyList.enemyList[viewIndex1 - 1].image, typeof(Texture2D), false) as Texture2D;
-                        inventoryEnemyList.enemyList[viewIndex1 - 1].health = EditorGUILayout.FloatField("Health ", inventoryEnemyList.enemyList[viewIndex1 - 1].health, GUILayout.ExpandWidth(false));
+                        inventoryEnemyList.enemyList[viewIndex1 - 1].health = EditorGUILayout.IntField("Health ", inventoryEnemyList.enemyList[viewIndex1 - 1].health, GUILayout.ExpandWidth(false));
                         inventoryEnemyList.enemyList[viewIndex1 - 1].speed = EditorGUILayout.FloatField("Speed ", inventoryEnemyList.enemyList[viewIndex1 - 1].speed, GUILayout.ExpandWidth(false));
-                        inventoryEnemyList.enemyList[viewIndex1 - 1].damage = EditorGUILayout.FloatField("Damage ", inventoryEnemyList.enemyList[viewIndex1 - 1].damage, GUILayout.ExpandWidth(false));
+                        inventoryEnemyList.enemyList[viewIndex1 - 1].damage = EditorGUILayout.IntField("Damage ", inventoryEnemyList.enemyList[viewIndex1 - 1].damage, GUILayout.ExpandWidth(false));
                         inventoryEnemyList.enemyList[viewIndex1 - 1].Delay = EditorGUILayout.FloatField("Delay ", inventoryEnemyList.enemyList[viewIndex1 - 1].Delay, GUILayout.ExpandWidth(false));
                         inventoryEnemyList.enemyList[viewIndex1 - 1].money = EditorGUILayout.IntField("Money ", inventoryEnemyList.enemyList[viewIndex1 - 1].money, GUILayout.ExpandWidth(false));
                         inventoryEnemyList.enemyList[viewIndex1 - 1].score = EditorGUILayout.IntField("Scose ", inventoryEnemyList.enemyList[viewIndex1 - 1].score, GUILayout.ExpandWidth(false));
-                        type = (InventoryEnemy.Type)EditorGUILayout.EnumPopup("Type", type, GUILayout.ExpandWidth(false));
+                        type = (ZombieType)EditorGUILayout.EnumPopup("Type", type, GUILayout.ExpandWidth(false));
                         GUILayout.Label("Animation", EditorStyles.boldLabel);
                         inventoryEnemyList.enemyList[viewIndex1 - 1].idle = EditorGUILayout.ObjectField("Idle", inventoryEnemyList.enemyList[viewIndex1 - 1].idle, typeof(AnimationClip), false) as AnimationClip;
                         inventoryEnemyList.enemyList[viewIndex1 - 1].walk = EditorGUILayout.ObjectField("Walk", inventoryEnemyList.enemyList[viewIndex1 - 1].walk, typeof(AnimationClip), false) as AnimationClip;

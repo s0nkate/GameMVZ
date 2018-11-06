@@ -119,11 +119,10 @@ namespace ECSSystem
                 GameManager.Instance.Score += score;
             	GameManager.Instance.Gold += money;
 
-                Debug.Log(id + " " + PhotonNetwork.player.ID);
             }
             else
             {
-                Debug.Log(id +" " + PhotonNetwork.player.ID);
+                // Debug.Log(id +" " + PhotonNetwork.player.ID);
             }
         }
 	}

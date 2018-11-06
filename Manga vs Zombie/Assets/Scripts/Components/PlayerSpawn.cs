@@ -30,12 +30,15 @@ public class PlayerSpawn : Photon.PunBehaviour {
 		// }
 		
 		index[0] = GameManager.Instance.GetSelectedPlayer().index;
-		GameObject player = PhotonNetwork.Instantiate("Prefabs/Player/Player", transform.position, transform.localRotation, 0, index) as GameObject;
-        player.GetComponent<Player>().id = PhotonNetwork.player.ID;
-        if(PhotonNetwork.playerList.Length > 1)
+		Vector3 pos = transform.position;
+		if(PhotonNetwork.playerList.Length > 1)
 		{
-			player.transform.position += new Vector3(0.3f, 0, 0);
+			pos = transform.position + new Vector3(0.2f, 0, 0);
 		}
+		
+		GameObject player = PhotonNetwork.Instantiate("Prefabs/Player/Player", pos, transform.localRotation, 0, index) as GameObject;
+        player.GetComponent<Player>().id = PhotonNetwork.player.ID;
+        
 	}
 
 	[PunRPC]
