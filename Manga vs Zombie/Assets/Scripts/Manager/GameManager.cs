@@ -48,8 +48,8 @@ public class GameManager : MonoBehaviour {
     public GameObject Pausebtn;
     public bool isPlaying = false;
     public bool Gameover = false;
-    public bool item1 =true;
-    public bool item2 =true;
+    public bool item1;
+    public bool item2;
     public List<ShopItems> playerShopList;
     public List<ShopItems> itemShopList;
     public Text Textitem1;
@@ -279,8 +279,6 @@ public class GameManager : MonoBehaviour {
         loading.SetActive(false);
         Gameover = false;
         finalPopup.SetActive(false);
-        item1 = true;
-        item2 = true;
         playScene.SetActive(true);
         isPlaying = true;
         pause = false;
@@ -292,7 +290,7 @@ public class GameManager : MonoBehaviour {
         Tower.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Tower;
         Towerenemy.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Towerenemy;
         Towerenemy1.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Towerenemy;
-       
+        
     }
     public void BackMenu()
     {
