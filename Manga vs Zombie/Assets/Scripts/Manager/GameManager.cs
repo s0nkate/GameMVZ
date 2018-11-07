@@ -57,12 +57,6 @@ public class GameManager : Photon.PunBehaviour {
     public Image Imageitem1;
     public Image Imageitem2;
     public int effectIndex = -1;
-    public int masterIndex;
-    public int clientIndex;
-    public AudioClip buttonClick;
-    public AudioClip soundBackground;
-    public AudioSource sound;
-   
     
 
 
@@ -82,7 +76,6 @@ public class GameManager : Photon.PunBehaviour {
 	}
 
 	void Start () {
-        sound = GetComponent<AudioSource>();
         LoadData();
         YNUI.SetActive(false);
         MenuUI.SetActive(true);
@@ -91,7 +84,6 @@ public class GameManager : Photon.PunBehaviour {
         NextLvUI.SetActive(false);
         Highscore.SetActive(false);
         YNQuitUI.SetActive(false);
-        
        
         //Backgournd = gameObject.GetComponent<SpriteRenderer>().sprite;
         
@@ -100,6 +92,7 @@ public class GameManager : Photon.PunBehaviour {
 
     {
         PhotonNetwork.LeaveRoom();
+        PhotonNetwork.Disconnect();
     }
 
     public void LoadData()
@@ -134,7 +127,10 @@ public class GameManager : Photon.PunBehaviour {
         }
         return selectedItem;
     }
-	
+	public void UpdateData()
+	{
+        
+    }
 
 	public void SaveData()
 	{
@@ -162,7 +158,7 @@ public class GameManager : Photon.PunBehaviour {
 	}
 
 	void Update () {
-     
+       UpdateData();
             if (t >= 1 && isPlaying == true)
             {
                 time--;
@@ -204,7 +200,8 @@ public class GameManager : Photon.PunBehaviour {
     }
     public void LoadLevel()
     {
-     
+        i++;
+        time = scenelist.scenelist[i].TimePlay;
         
         ZombiePool.onNextLevel.Invoke();
         House.onNextLevel.Invoke();
@@ -216,7 +213,7 @@ public class GameManager : Photon.PunBehaviour {
         ResultUI.SetActive(true);
         isPlaying = false;
         pause = true;
-        SoundManager.Instance.volumeSilder.value = 0;
+
         ScoreWin.text = Score.ToString();
         GoldWin.text = "+" + Gold.ToString();
         PlayerPrefs.SetInt("Gold", Gold);
@@ -232,21 +229,14 @@ public class GameManager : Photon.PunBehaviour {
     {
         if (isPlaying == true && NextLvUI.activeInHierarchy==false)
         {
-            SoundBtn();
             PauseUI.SetActive(true);
             pause = true;
-            
-            SoundManager.Instance.volumeSilder.value = 0;
         }
     }
     public void Resume()
     {
-        
-        SoundManager.Instance.volumeSilder.value = PlayerPrefs.GetFloat("Sound");
         pause = false;
         PauseUI.SetActive(false);
-        
-
     }
    
     public void NextLv()
@@ -255,8 +245,8 @@ public class GameManager : Photon.PunBehaviour {
         NextLvUI.SetActive(true);
 
     }
-	
-	public void NextLvRPC()
+
+    public void NextLvRPC()
     {
         photonView.RPC("NextLV", PhotonTargets.All);
     }
@@ -264,8 +254,8 @@ public class GameManager : Photon.PunBehaviour {
     [PunRPC]
     public void NextLV()
     {
-        SoundBtn();
-        i++;
+        // i++;
+        // Debug.Log("i++");
         pause = false;
         isPlaying = true;
         NextLvUI.SetActive(false);
@@ -277,13 +267,10 @@ public class GameManager : Photon.PunBehaviour {
         Towerenemy1.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Towerenemy;
     }
 
-    public void SoundBtn()
-    {
-        sound.PlayOneShot(buttonClick, SoundManager.Instance.volume * 5);
-    }
+    
     public void PlayGame()
     {
-        PlayerPrefs.SetFloat("Sound", SoundManager.Instance.volumeSilder.value);
+
         i = 0;
         MenuUI.SetActive(false);
         ResultUI.SetActive(false);
@@ -299,6 +286,7 @@ public class GameManager : Photon.PunBehaviour {
         pause = false;
         item1 = true;
         item2 = true;
+        PlayerPrefs.SetFloat("Sound", SoundManager.Instance.volumeSilder.value);
         House.onNextLevel.Invoke();
         time = scenelist.scenelist[0].TimePlay;
         Score = 0;
@@ -310,8 +298,6 @@ public class GameManager : Photon.PunBehaviour {
     }
     public void BackMenu()
     {
-       
-        SoundBtn();
         PauseUI.SetActive(false);
         YNUI.SetActive(true);   
         quitResult.SetActive(false);
@@ -320,9 +306,7 @@ public class GameManager : Photon.PunBehaviour {
         finalPopup.SetActive(false);
     }
     public void Yesbtn()
-    {
-        SoundManager.Instance.volumeSilder.value = PlayerPrefs.GetFloat("Sound");
-        SoundBtn();
+    {   
         i = 0;
         YNUI.SetActive(false);
         MenuUI.SetActive(true);
@@ -333,12 +317,9 @@ public class GameManager : Photon.PunBehaviour {
         ExitRoom();
         isPlaying = false;
         ResultUI.SetActive(false);
-        
     }
     public void Nobtn()
     {
-        SoundManager.Instance.volumeSilder.value = PlayerPrefs.GetFloat("Sound");
-        SoundBtn();
         Pausebtn.SetActive(true);
         quitResult.SetActive(true);
         backResult.SetActive(true);
@@ -351,7 +332,6 @@ public class GameManager : Photon.PunBehaviour {
     }
     public void QuitGame()
     {
-        SoundBtn();
         YNQuitUI.SetActive(true);
         Pausebtn.SetActive(false);
         if (PauseUI.activeInHierarchy == true)
@@ -378,13 +358,11 @@ public class GameManager : Photon.PunBehaviour {
     }
     public void YesQbtn()
     {
-        SoundBtn();
         Application.Quit();
 
     }
     public void NoQbtn()
     {
-        SoundBtn();
         YNQuitUI.SetActive(false);
         if(isPlaying)
             Pausebtn.SetActive(true);
