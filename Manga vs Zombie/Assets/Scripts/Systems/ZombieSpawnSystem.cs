@@ -13,12 +13,12 @@ namespace ECSSystem
 			public Transform transform;
 			public ZombieSpawn zombieSpawn;
 			public ZombiePool zombiePool;
-			
-		}
+            public PhotonView photonView;
+        }
 		
 		protected override void OnUpdate()
 		{
-			foreach (Data entity in GetEntities<Data>())
+			foreach (var entity in GetEntities<Data>())
 			{
 				if(!GameManager.Instance.isPlaying)
 				{
