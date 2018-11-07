@@ -17,6 +17,7 @@ namespace ECSComponent
 		void Start()
 		{
 			playerController = GetComponent<Player1Controller>();
+			id = (int)photonView.instantiationData[1];
 		}
 		public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) 
 		{			

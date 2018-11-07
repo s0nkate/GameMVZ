@@ -16,7 +16,7 @@ public class Skill2trigger : MonoBehaviour {
         {
             col.GetComponent<Heath>().SendMessageUpwards("TakeDamage", p.dmg2);
             col.GetComponent<Heath>().idAttack = transform.parent.GetComponent<Player>().id;
-
-        }
+            Debug.Log("Gan idAttack cho zombie " + transform.parent.GetComponent<Player>().id);
+        }   
     }
 }

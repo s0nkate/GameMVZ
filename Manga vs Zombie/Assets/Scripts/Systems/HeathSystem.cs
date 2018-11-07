@@ -47,7 +47,6 @@ namespace ECSSystem
 			{
 				if(e.heath.value <= 0 )
 				{
-					
 					GameManager.Instance.GameOver();
 				}
 			}
@@ -63,11 +62,6 @@ namespace ECSSystem
 				{
 					e.heath.OnInjured += this.OnInjured;
 				}
-
-                if (e.heath.CheckID == null)
-                {
-                    e.heath.CheckID += this.CheckID;
-                }
             }
 		}
 		void CheckDead()
@@ -78,19 +72,14 @@ namespace ECSSystem
                 {
                     e.faction.currentState = State.Dead;
                     e.animator.SetInteger("stage", (int)State.Dead);
-					// e.photonView.RPC("MarkDead", PhotonTargets.AllBuffered, e.photonView.viewID);
                 }
                 if ( e.heath.value <= 0 && !e.heath.isDead)
 				{
                     e.faction.currentState = State.Dead;
                     e.animator.SetInteger("stage", (int)State.Dead);
-					e.heath.isDead = true;
-					// e.photonView.RPC("MarkDead", PhotonTargets.AllBuffered, e.photonView.viewID);
-					// e.faction.currentState = State.Dead;
-                    // e.animator.SetInteger("stage", (int)State.Dead);			
+					e.heath.isDead = true;		
                     
 				}
-				e.heath.CheckID(e.zoombie.score,e.zoombie.money ,e.heath.idAttack);
             }
 		}
 
@@ -108,21 +97,6 @@ namespace ECSSystem
 			heath.value -= damage;
 
 		}
-
-		
-
-		
-        private void CheckID(int score,int money,int id)
-        {
-            if (id == PhotonNetwork.player.ID) { 
-                GameManager.Instance.Score += score;
-            	GameManager.Instance.Gold += money;
-
-            }
-            else
-            {
-            }
-        }
 	}
 }
 

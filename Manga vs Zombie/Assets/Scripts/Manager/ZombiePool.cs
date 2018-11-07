@@ -110,8 +110,6 @@ public class ZombiePool : Photon.PunBehaviour
                 zombiePool[i].SetActive(false);
             }
         }
-
-
     }
 
 

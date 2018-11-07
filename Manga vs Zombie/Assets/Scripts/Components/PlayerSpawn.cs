@@ -8,7 +8,7 @@ public class PlayerSpawn : Photon.PunBehaviour {
 	public List<GameObject> list;
 	public bool isActived;
 	public bool isInstance;
-	object[] index = new object[1];
+	object[] data = new object[2];
 	// public PhotonView photonView;
 	void Awake()
 	{
@@ -29,15 +29,14 @@ public class PlayerSpawn : Photon.PunBehaviour {
 		// 	isInstance = true;
 		// }
 		
-		index[0] = GameManager.Instance.GetSelectedPlayer().index;
+		data[0] = GameManager.Instance.GetSelectedPlayer().index;
+		data[1] = PhotonNetwork.player.ID;
 		Vector3 pos = transform.position;
 		if(PhotonNetwork.playerList.Length > 1)
 		{
 			pos = transform.position + new Vector3(0.2f, 0, 0);
 		}
-		
-		GameObject player = PhotonNetwork.Instantiate("Prefabs/Player/Player", pos, transform.localRotation, 0, index) as GameObject;
-        player.GetComponent<Player>().id = PhotonNetwork.player.ID;
+		GameObject player = PhotonNetwork.Instantiate("Prefabs/Player/Player", pos, transform.localRotation, 0, data) as GameObject;
         
 	}
 
