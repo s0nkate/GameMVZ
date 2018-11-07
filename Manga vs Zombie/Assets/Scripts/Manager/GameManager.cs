@@ -276,7 +276,7 @@ public class GameManager : MonoBehaviour {
     }
     public void PlayGame()
     {
-        PlayerPrefs.SetFloat("Sound", SoundManager.Instance.volumeSilder.value);
+       
         i = 0;
         MenuUI.SetActive(false);
         ResultUI.SetActive(false);
@@ -292,6 +292,7 @@ public class GameManager : MonoBehaviour {
         pause = false;
         item1 = true;
         item2 = true;
+        PlayerPrefs.SetFloat("Sound", SoundManager.Instance.volumeSilder.value);
         House.onNextLevel.Invoke();
         time = scenelist.scenelist[0].TimePlay;
         Score = 0;
