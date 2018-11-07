@@ -5507,7 +5507,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64451836d5994746a14c87aa59f908a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myPhotonView: {fileID: 0}
   version: 1.0
   maxNumberPlayerInARoom: 2
   loadingText: {fileID: 1078344895}
@@ -14493,6 +14492,8 @@ GameObject:
   - component: {fileID: 2047445516}
   - component: {fileID: 2047445515}
   - component: {fileID: 2047445517}
+  - component: {fileID: 2047445519}
+  - component: {fileID: 2047445518}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -14562,7 +14563,6 @@ MonoBehaviour:
   buttonClick: {fileID: 8300000, guid: bad257f1b905936409ae22fdc1b6efac, type: 3}
   soundBackground: {fileID: 8300000, guid: 148e6f8b5a166d64083358619d0452cf, type: 3}
   sound: {fileID: 0}
-  nowSound: 0
 --- !u!4 &2047445516
 Transform:
   m_ObjectHideFlags: 0
@@ -14671,6 +14671,44 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2047445518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2047445514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18752490bf5788046aa7c02d86b10592, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 0
+--- !u!114 &2047445519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2047445514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 3
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 2047445518}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 18
+  instantiationId: 18
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
 --- !u!1 &2048513951
 GameObject:
   m_ObjectHideFlags: 0
