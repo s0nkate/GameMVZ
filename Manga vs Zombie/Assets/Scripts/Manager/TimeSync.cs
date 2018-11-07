@@ -7,7 +7,7 @@ namespace ECSComponent
 	
 	public class TimeSync : Photon.MonoBehaviour, IPunObservable
 	{	
-		public int damage;
+		public int time;
 		
 		void Start()
 		{
@@ -17,20 +17,18 @@ namespace ECSComponent
 			if (stream.isWriting)
         	{
 
-				int state = 0;
+				int time = GameManager.Instance.time;
 
-				stream.Serialize(ref state);
+				stream.Serialize(ref time);
 
       	  	}
       	 	else
       		{
-
-				int state = 0;
-				stream.Serialize(ref state);
+				stream.Serialize(ref time);
 
                 if(!photonView.isMine)
 				{
-				
+					GameManager.Instance.time = time;
 				}
        		}
 		}

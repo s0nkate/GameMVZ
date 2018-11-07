@@ -102,6 +102,7 @@ public class ZombiePool : Photon.PunBehaviour
     [PunRPC]
 	public void DisableAllZombie()
 	{
+        zombieQueue.Clear();
         for (int i = 0; i < zombieCount; i++)
         {
             if (zombiePool[i].activeInHierarchy)
@@ -109,8 +110,6 @@ public class ZombiePool : Photon.PunBehaviour
                 zombiePool[i].SetActive(false);
             }
         }
-
-
     }
 
 
@@ -142,8 +141,6 @@ public class ZombiePool : Photon.PunBehaviour
         zombie.transform.position = spawnTransform.position;
         zombie.SetActive(true);
         faction.currentState = State.Walk;
-
-
     }
 
     [PunRPC]

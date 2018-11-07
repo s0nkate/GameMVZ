@@ -68,16 +68,16 @@ namespace ECSSystem
 					switch (entity.faction.currentState)
 					{
 						case State.Walk :							
-							
+							PlayAudio(entity.audioSource, entity.zombieSound.walkSound);
 							break;
 						case State.Attack :
 							PlayAudio(entity.audioSource, entity.zombieSound.attackSound);
 							break;
 						case State.Dead :
-						
+							PlayAudio(entity.audioSource, entity.zombieSound.deadSound);
 							break;
 						default:
-							break;  
+							break;
 					}
 				}
 			}

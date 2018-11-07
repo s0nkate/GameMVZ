@@ -488,6 +488,11 @@ Prefab:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114050307985713234, guid: 7fdc99d8d914408419b50f6b4f45548d,
+        type: 2}
+      propertyPath: m_PositionModel.TeleportIfDistanceGreaterThan
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fdc99d8d914408419b50f6b4f45548d, type: 2}
   m_IsPrefabAsset: 0
@@ -2307,6 +2312,11 @@ Prefab:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114032038070042958, guid: 3ea7abba9d2acad4582f7fe4929b6019,
+        type: 2}
+      propertyPath: m_PositionModel.TeleportIfDistanceGreaterThan
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ea7abba9d2acad4582f7fe4929b6019, type: 2}
   m_IsPrefabAsset: 0
@@ -2763,6 +2773,11 @@ Prefab:
         type: 2}
       propertyPath: value
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050307985713234, guid: 7fdc99d8d914408419b50f6b4f45548d,
+        type: 2}
+      propertyPath: m_PositionModel.TeleportIfDistanceGreaterThan
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fdc99d8d914408419b50f6b4f45548d, type: 2}
@@ -4238,6 +4253,11 @@ Prefab:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114050307985713234, guid: 7fdc99d8d914408419b50f6b4f45548d,
+        type: 2}
+      propertyPath: m_PositionModel.TeleportIfDistanceGreaterThan
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fdc99d8d914408419b50f6b4f45548d, type: 2}
   m_IsPrefabAsset: 0
@@ -5507,7 +5527,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64451836d5994746a14c87aa59f908a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myPhotonView: {fileID: 0}
   version: 1.0
   maxNumberPlayerInARoom: 2
   loadingText: {fileID: 1078344895}
@@ -6049,6 +6068,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1969749420875534, guid: 7fdc99d8d914408419b50f6b4f45548d, type: 2}
       propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050307985713234, guid: 7fdc99d8d914408419b50f6b4f45548d,
+        type: 2}
+      propertyPath: m_PositionModel.TeleportIfDistanceGreaterThan
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -7439,6 +7463,11 @@ Prefab:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114032038070042958, guid: 3ea7abba9d2acad4582f7fe4929b6019,
+        type: 2}
+      propertyPath: m_PositionModel.TeleportIfDistanceGreaterThan
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ea7abba9d2acad4582f7fe4929b6019, type: 2}
   m_IsPrefabAsset: 0
@@ -8074,6 +8103,11 @@ Prefab:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114032038070042958, guid: 3ea7abba9d2acad4582f7fe4929b6019,
+        type: 2}
+      propertyPath: m_PositionModel.TeleportIfDistanceGreaterThan
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ea7abba9d2acad4582f7fe4929b6019, type: 2}
   m_IsPrefabAsset: 0
@@ -8234,6 +8268,11 @@ Prefab:
         type: 2}
       propertyPath: value
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114032038070042958, guid: 3ea7abba9d2acad4582f7fe4929b6019,
+        type: 2}
+      propertyPath: m_PositionModel.TeleportIfDistanceGreaterThan
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ea7abba9d2acad4582f7fe4929b6019, type: 2}
@@ -9362,6 +9401,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1969749420875534, guid: 7fdc99d8d914408419b50f6b4f45548d, type: 2}
       propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050307985713234, guid: 7fdc99d8d914408419b50f6b4f45548d,
+        type: 2}
+      propertyPath: m_PositionModel.TeleportIfDistanceGreaterThan
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -11282,6 +11326,11 @@ Prefab:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114032038070042958, guid: 3ea7abba9d2acad4582f7fe4929b6019,
+        type: 2}
+      propertyPath: m_PositionModel.TeleportIfDistanceGreaterThan
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ea7abba9d2acad4582f7fe4929b6019, type: 2}
   m_IsPrefabAsset: 0
@@ -12510,6 +12559,11 @@ Prefab:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114050307985713234, guid: 7fdc99d8d914408419b50f6b4f45548d,
+        type: 2}
+      propertyPath: m_PositionModel.TeleportIfDistanceGreaterThan
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fdc99d8d914408419b50f6b4f45548d, type: 2}
   m_IsPrefabAsset: 0
@@ -13718,6 +13772,11 @@ Prefab:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114032038070042958, guid: 3ea7abba9d2acad4582f7fe4929b6019,
+        type: 2}
+      propertyPath: m_PositionModel.TeleportIfDistanceGreaterThan
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ea7abba9d2acad4582f7fe4929b6019, type: 2}
   m_IsPrefabAsset: 0
@@ -14562,7 +14621,6 @@ MonoBehaviour:
   buttonClick: {fileID: 8300000, guid: bad257f1b905936409ae22fdc1b6efac, type: 3}
   soundBackground: {fileID: 8300000, guid: 148e6f8b5a166d64083358619d0452cf, type: 3}
   sound: {fileID: 0}
-  nowSound: 0
 --- !u!4 &2047445516
 Transform:
   m_ObjectHideFlags: 0
