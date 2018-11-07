@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using ECSComponent;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : Photon.PunBehaviour {
 
 	public GameObject playScene;
     public GameObject loading;

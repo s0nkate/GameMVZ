@@ -13,6 +13,7 @@ namespace ECSSystem
 			public Transform transform;
 			public ZombieSpawn zombieSpawn;
 			public ZombiePool zombiePool;
+			public PhotonView photonView;
 			
 		}
 		
