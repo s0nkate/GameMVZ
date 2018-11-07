@@ -31,7 +31,7 @@ public class SoundManager : MonoBehaviour
 
 	void Start()
 	{
-        //Kakashis2 = Resources.Load<AudioClip>("Kakashis2");
+        volume = 1f;
         volumeSilder.maxValue = 1f;
 		volumeSilder.value = volume;
       
