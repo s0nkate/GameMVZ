@@ -488,6 +488,11 @@ Prefab:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114050307985713234, guid: 7fdc99d8d914408419b50f6b4f45548d,
+        type: 2}
+      propertyPath: m_PositionModel.TeleportIfDistanceGreaterThan
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fdc99d8d914408419b50f6b4f45548d, type: 2}
   m_IsPrefabAsset: 0
@@ -2273,7 +2278,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1308305872416930, guid: 3ea7abba9d2acad4582f7fe4929b6019, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1308305872416930, guid: 3ea7abba9d2acad4582f7fe4929b6019, type: 2}
       propertyPath: m_Layer
@@ -2305,6 +2310,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1794050105868556, guid: 3ea7abba9d2acad4582f7fe4929b6019, type: 2}
       propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114032038070042958, guid: 3ea7abba9d2acad4582f7fe4929b6019,
+        type: 2}
+      propertyPath: m_PositionModel.TeleportIfDistanceGreaterThan
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2763,6 +2773,11 @@ Prefab:
         type: 2}
       propertyPath: value
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050307985713234, guid: 7fdc99d8d914408419b50f6b4f45548d,
+        type: 2}
+      propertyPath: m_PositionModel.TeleportIfDistanceGreaterThan
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fdc99d8d914408419b50f6b4f45548d, type: 2}
@@ -4238,6 +4253,11 @@ Prefab:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114050307985713234, guid: 7fdc99d8d914408419b50f6b4f45548d,
+        type: 2}
+      propertyPath: m_PositionModel.TeleportIfDistanceGreaterThan
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fdc99d8d914408419b50f6b4f45548d, type: 2}
   m_IsPrefabAsset: 0
@@ -5489,6 +5509,7 @@ GameObject:
   m_Component:
   - component: {fileID: 655681920}
   - component: {fileID: 655681919}
+  - component: {fileID: 655681921}
   m_Layer: 0
   m_Name: NetwokManager
   m_TagString: Untagged
@@ -5513,6 +5534,9 @@ MonoBehaviour:
   isOwn: 0
   isInLobby: 0
   isInRoom: 0
+  onlineMode: {fileID: 1044372635}
+  isCancel: 0
+  masterClientID: 0
 --- !u!224 &655681920
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5531,6 +5555,32 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &655681921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 655681918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 0
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 19
+  instantiationId: 19
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
 --- !u!1 &663572968
 GameObject:
   m_ObjectHideFlags: 0
@@ -6048,6 +6098,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1969749420875534, guid: 7fdc99d8d914408419b50f6b4f45548d, type: 2}
       propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050307985713234, guid: 7fdc99d8d914408419b50f6b4f45548d,
+        type: 2}
+      propertyPath: m_PositionModel.TeleportIfDistanceGreaterThan
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -7404,7 +7459,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1308305872416930, guid: 3ea7abba9d2acad4582f7fe4929b6019, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1308305872416930, guid: 3ea7abba9d2acad4582f7fe4929b6019, type: 2}
       propertyPath: m_Layer
@@ -7436,6 +7491,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1794050105868556, guid: 3ea7abba9d2acad4582f7fe4929b6019, type: 2}
       propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114032038070042958, guid: 3ea7abba9d2acad4582f7fe4929b6019,
+        type: 2}
+      propertyPath: m_PositionModel.TeleportIfDistanceGreaterThan
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -8039,7 +8099,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1308305872416930, guid: 3ea7abba9d2acad4582f7fe4929b6019, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1308305872416930, guid: 3ea7abba9d2acad4582f7fe4929b6019, type: 2}
       propertyPath: m_Layer
@@ -8071,6 +8131,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1794050105868556, guid: 3ea7abba9d2acad4582f7fe4929b6019, type: 2}
       propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114032038070042958, guid: 3ea7abba9d2acad4582f7fe4929b6019,
+        type: 2}
+      propertyPath: m_PositionModel.TeleportIfDistanceGreaterThan
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -8190,7 +8255,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1308305872416930, guid: 3ea7abba9d2acad4582f7fe4929b6019, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1308305872416930, guid: 3ea7abba9d2acad4582f7fe4929b6019, type: 2}
       propertyPath: m_Layer
@@ -8233,6 +8298,11 @@ Prefab:
         type: 2}
       propertyPath: value
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114032038070042958, guid: 3ea7abba9d2acad4582f7fe4929b6019,
+        type: 2}
+      propertyPath: m_PositionModel.TeleportIfDistanceGreaterThan
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ea7abba9d2acad4582f7fe4929b6019, type: 2}
@@ -8753,7 +8823,7 @@ MonoBehaviour:
   - {fileID: 1985544658}
   inventorySceneList: {fileID: 11400000, guid: 9e10a03d91893394bad85cee5b0aa859, type: 2}
   zombieCount: 6
-  inventoryEnemyList: {fileID: 0}
+  inventoryEnemyList: {fileID: 11400000, guid: bc4a9ed02062832448e07af55a0b5e9a, type: 2}
 --- !u!114 &1275350188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9361,6 +9431,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1969749420875534, guid: 7fdc99d8d914408419b50f6b4f45548d, type: 2}
       propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050307985713234, guid: 7fdc99d8d914408419b50f6b4f45548d,
+        type: 2}
+      propertyPath: m_PositionModel.TeleportIfDistanceGreaterThan
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -11247,7 +11322,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1308305872416930, guid: 3ea7abba9d2acad4582f7fe4929b6019, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1308305872416930, guid: 3ea7abba9d2acad4582f7fe4929b6019, type: 2}
       propertyPath: m_Layer
@@ -11279,6 +11354,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1794050105868556, guid: 3ea7abba9d2acad4582f7fe4929b6019, type: 2}
       propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114032038070042958, guid: 3ea7abba9d2acad4582f7fe4929b6019,
+        type: 2}
+      propertyPath: m_PositionModel.TeleportIfDistanceGreaterThan
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -11596,7 +11676,7 @@ MonoBehaviour:
   - {fileID: 30526149}
   inventorySceneList: {fileID: 11400000, guid: 9e10a03d91893394bad85cee5b0aa859, type: 2}
   zombieCount: 6
-  inventoryEnemyList: {fileID: 0}
+  inventoryEnemyList: {fileID: 11400000, guid: bc4a9ed02062832448e07af55a0b5e9a, type: 2}
 --- !u!114 &1619988118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12507,6 +12587,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1969749420875534, guid: 7fdc99d8d914408419b50f6b4f45548d, type: 2}
       propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050307985713234, guid: 7fdc99d8d914408419b50f6b4f45548d,
+        type: 2}
+      propertyPath: m_PositionModel.TeleportIfDistanceGreaterThan
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -13683,7 +13768,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1308305872416930, guid: 3ea7abba9d2acad4582f7fe4929b6019, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1308305872416930, guid: 3ea7abba9d2acad4582f7fe4929b6019, type: 2}
       propertyPath: m_Layer
@@ -13715,6 +13800,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1794050105868556, guid: 3ea7abba9d2acad4582f7fe4929b6019, type: 2}
       propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114032038070042958, guid: 3ea7abba9d2acad4582f7fe4929b6019,
+        type: 2}
+      propertyPath: m_PositionModel.TeleportIfDistanceGreaterThan
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

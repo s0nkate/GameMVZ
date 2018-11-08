@@ -58,4 +58,5 @@ MonoBehaviour:
   - NextLV
   - InactiveZombie
   - MarkDead
+  - SetMasterID
   DisableAutoOpenWizard: 1

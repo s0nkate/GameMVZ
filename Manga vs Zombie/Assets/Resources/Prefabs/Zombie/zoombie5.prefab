@@ -341,7 +341,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23faa3a9e378a014597673b5fbbe5d57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  photonView: {fileID: 0}
 --- !u!114 &114049164686691554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -573,6 +572,7 @@ MonoBehaviour:
   score: 10
   type: 0
   explosion: {fileID: 1079571020079808, guid: 79ea189393775f54ebad08cf23df75f2, type: 2}
+  inventoryEnemyList: {fileID: 11400000, guid: bc4a9ed02062832448e07af55a0b5e9a, type: 2}
 --- !u!114 &114649672145799754
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -658,7 +658,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 704e6c8e0046bfa4dac50a39215ac250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  walkSound: {fileID: 0}
   attackSound: {fileID: 8300000, guid: 25ef2af4c37e4254ea6c6ca03d5bc6db, type: 3}
+  deadSound: {fileID: 0}
 --- !u!114 &114815643190148760
 MonoBehaviour:
   m_ObjectHideFlags: 1

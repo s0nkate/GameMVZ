@@ -27,7 +27,7 @@ public class ShopItems : MonoBehaviour {
 	private GameObject pricePanel;
 	private Color color;
 	public GameObject useButton;
-	public string name;
+	public new string name;
 	public static int itemSelected = 0;
 
 	void Start () {

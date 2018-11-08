@@ -36,18 +36,13 @@ public class PlayerSpawn : Photon.PunBehaviour {
 		{
 			pos = transform.position + new Vector3(0.2f, 0, 0);
 		}
-		GameObject player = PhotonNetwork.Instantiate("Prefabs/Player/Player", pos, transform.localRotation, 0, data) as GameObject;
-        
+		PhotonNetwork.Instantiate("Prefabs/Player/Player", pos, transform.localRotation, 0, data);
 	}
 
-	[PunRPC]
-	void SpawnPlayer()
-	{
-		GameObject player = Instantiate(Resources.Load("Prefabs/Player/Player"), transform.position, transform.localRotation, transform) as GameObject;
-		player.GetComponent<Player>().id = PhotonNetwork.player.ID;
-	}
-
-	
-
-	
+	// [PunRPC]
+	// void SpawnPlayer()
+	// {
+	// 	GameObject player = Instantiate(Resources.Load("Prefabs/Player/Player"), transform.position, transform.localRotation, transform) as GameObject;
+	// 	player.GetComponent<Player>().id = PhotonNetwork.player.ID;
+	// }
 }

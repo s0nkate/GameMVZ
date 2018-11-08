@@ -8,7 +8,6 @@ public class HeathSync : Photon.PunBehaviour
 	Heath heath;
     int heathNetwork = 0;
     int idNetwork;
-    static float t = 0.0f;
 	public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         

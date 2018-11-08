@@ -18,7 +18,6 @@ public class ZombiePool : Photon.PunBehaviour
 	public static UnityEvent onNextLevel;
     public InventoryEnemyList inventoryEnemyList;
 
-	// public PhotonView photonView;
 	void Awake()
 	{
 		zombieSpawn = GetComponent<ZombieSpawn>();
@@ -30,13 +29,6 @@ public class ZombiePool : Photon.PunBehaviour
 			
 		}
 		onNextLevel.AddListener(LoadLevel);
-
-        
-        //LoadLevel();
-       
-        // zombiePool = new List<GameObject>();
-
-        // StartCoroutine("CreateZombiePool");		
     }
 
 	public override void OnJoinedRoom()
@@ -45,14 +37,6 @@ public class ZombiePool : Photon.PunBehaviour
         
         onNextLevel.Invoke();
         zombieSpawn.isActived = true;
-        // if(PhotonNetwork.isMasterClient)
-        // {
-        // 	for (int i = 0; i < zombieCount; i++) 
-        // 	{
-        // 		photonView.RPC("CreateZombie", PhotonTargets.AllBuffered);
-        // 	}
-        // 	zombieSpawn.isActived = false;
-        // }
     }
 
 
@@ -61,7 +45,7 @@ public class ZombiePool : Photon.PunBehaviour
 	{
 		float time = inventorySceneList.scenelist[GameManager.Instance.i].DelayEnemy;
 		zombieSpawn.SetTimeDelay(time);
-		photonView.RPC("DisableAllZombie",PhotonTargets.AllBuffered);
+		photonView.RPC("DisableAllZombie", PhotonTargets.AllBuffered);
 		Debug.Log("loadlevel");
 	}
 
@@ -70,17 +54,20 @@ public class ZombiePool : Photon.PunBehaviour
 		photonView.RPC("GetZombie", PhotonTargets.AllBuffered);
 	}
 
-    private void Update()
+    private void FixedUpdate()
     {
-        //AddToQueue();
+        AddToQueue();
     }
 
     [PunRPC]
-    void AddDataToZombie(GameObject zombie, int index)
+    void AddDataToZombie(int viewID, int index)
     {
+
+        GameObject zombie = PhotonView.Find(viewID).gameObject;
         zombie.GetComponent<Attack>().damage = inventoryEnemyList.enemyList[index].damage;
         zombie.GetComponent<Attack>().timeDelay = inventoryEnemyList.enemyList[index].Delay;
         zombie.GetComponent<Heath>().maxValue = inventoryEnemyList.enemyList[index].health;
+        zombie.GetComponent<Heath>().value = inventoryEnemyList.enemyList[index].health;
         zombie.GetComponent<Move>().speed = inventoryEnemyList.enemyList[index].speed;
         zombie.GetComponent<Zombie>().score = inventoryEnemyList.enemyList[index].score;
         zombie.GetComponent<Zombie>().money = inventoryEnemyList.enemyList[index].money;
@@ -116,33 +103,21 @@ public class ZombiePool : Photon.PunBehaviour
 	[PunRPC]
 	public void GetZombie()
 	{
-        //for(int i = 0; i < zombieCount; i++)
-        //{
-        //if(!zombiePool[i].activeInHierarchy)
-        //{
-        //	Heath heath = zombiePool[i].GetComponent<Heath>();
-        //	Faction faction = zombiePool[i].GetComponent<Faction>();
-        //             heath.value = heath.maxValue;
-        //             heath.isDead = false;
-
-        //	zombiePool[i].transform.position = spawnTransform.position;
-        //	zombiePool[i].SetActive(true);
-        //             faction.currentState = State.Walk;
-        //             return;	
-        //}
-        //}
         AddToQueue();
         GameObject zombie = zombieQueue.Dequeue();
+        zombie.SetActive(true);
+        
+        zombie.GetComponent<Zombie>().UpdateZombieDataRPC();        
+
         Heath heath = zombie.GetComponent<Heath>();
         Faction faction = zombie.GetComponent<Faction>();
         heath.value = heath.maxValue;
         heath.isDead = false;
-
         zombie.transform.position = spawnTransform.position;
-        zombie.SetActive(true);
         faction.currentState = State.Walk;
+        
     }
-
+        
     [PunRPC]
 	void CreateZombie()
 	{

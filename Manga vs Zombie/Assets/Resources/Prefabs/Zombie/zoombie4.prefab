@@ -568,6 +568,7 @@ MonoBehaviour:
   score: 10
   type: 0
   explosion: {fileID: 1079571020079808, guid: 79ea189393775f54ebad08cf23df75f2, type: 2}
+  inventoryEnemyList: {fileID: 11400000, guid: bc4a9ed02062832448e07af55a0b5e9a, type: 2}
 --- !u!114 &114508668634094784
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -656,7 +657,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23faa3a9e378a014597673b5fbbe5d57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  photonView: {fileID: 0}
 --- !u!114 &114795641927642768
 MonoBehaviour:
   m_ObjectHideFlags: 1

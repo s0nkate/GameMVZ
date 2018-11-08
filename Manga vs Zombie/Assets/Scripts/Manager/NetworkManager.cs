@@ -16,8 +16,10 @@ public class NetworkManager : Photon.PunBehaviour
 	public const byte CancelJoinRoom = 2;	
 	public bool isInLobby;
 	public bool isInRoom;	
-	bool isCancel;
+	public Toggle onlineMode;
+	public bool isCancel;
 	bool reliable = true;
+	public int masterClientID;
 	RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 	public static NetworkManager Instance = null;
 	private void Awake()
@@ -32,7 +34,7 @@ public class NetworkManager : Photon.PunBehaviour
 		}
 		PhotonNetwork.autoJoinLobby = false;
 		PhotonNetwork.automaticallySyncScene = true;
-		PhotonNetwork.ConnectUsingSettings(version);
+		
 		DontDestroyOnLoad (gameObject);
 	}
 
@@ -40,15 +42,22 @@ public class NetworkManager : Photon.PunBehaviour
 
 	public void ConnectAndJoin () 
 	{
+		PhotonNetwork.ConnectUsingSettings(version);
         GameManager.Instance.SoundBtn();
 		loadingText.text = "Connecting to server....";
-		PhotonNetwork.JoinLobby ();
+		// PhotonNetwork.JoinLobby ();
 
 	}
 	
 	void Update () 
 	{
 		
+	}
+
+	public void ChangeMode()
+	{
+		PhotonNetwork.offlineMode = true;
+
 	}
 
 	void CreateRoom()
@@ -64,12 +73,6 @@ public class NetworkManager : Photon.PunBehaviour
 		loadingText.text = "Connected to server";
 
 	}
-	// public override void OnOwnershipRequest(object[] viewAndPlayer)
-	// {
-	// 	PhotonView view = viewAndPlayer[0] as PhotonView;
-    //  	PhotonPlayer requestingPlayer = viewAndPlayer[1] as PhotonPlayer;
-	// 	photonView.TransferOwnership(requestingPlayer.ID);
-	// }
 
 	public override void OnJoinedLobby ()
 	{
@@ -110,11 +113,20 @@ public class NetworkManager : Photon.PunBehaviour
 			loadingText.text = "Joined Room";
 			// Debug.Log("acctive player1");
 			GameManager.Instance.PlayGame();
+			UpdateMasterID(PhotonNetwork.player.ID);
 			// PlayerManager.Instance.SetPlayer(GameManager.Instance.instancePlayer[0]);
-			
-			
 		}
-			
+	}
+
+	public void UpdateMasterID(int id)
+	{
+		photonView.RPC("SetMasterID", PhotonTargets.AllBuffered, id);
+	}
+
+	[PunRPC]
+	void SetMasterID(int id)
+	{
+		masterClientID = id;
 	}
 
 	public void OnEnable()
@@ -138,19 +150,12 @@ public class NetworkManager : Photon.PunBehaviour
 				{
 					GameManager.Instance.DisplayRequestPopup();					
 				}
-				break;
-					
-				
+				break;	
 			case AcceptJoinRoom:
 				if(playerRequestId == PhotonNetwork.player.ID)
 				{
 					loadingText.text = "Joined Room";
-					GameManager.Instance.PlayGame();
-					// Debug.Log("acctive player2");
-					// PlayerManager.Instance.SetPlayer(GameManager.Instance.instancePlayer[1]);
-					// Debug.Log("acctive player1");
-					// GameManager.Instance.instancePlayer[0].SetActive(true);
-										
+					GameManager.Instance.PlayGame();										
 				}
 				break;				
 			case CancelJoinRoom:
@@ -158,7 +163,12 @@ public class NetworkManager : Photon.PunBehaviour
 				{
 					// PhotonNetwork.JoinRandomRoom();
 					isCancel = true;
+					// isOwn = false;
 					PhotonNetwork.LeaveRoom();
+				}
+				if(PhotonNetwork.player.IsMasterClient)
+				{
+					GameManager.Instance.DisableRequestPopup();					
 				}
 				break;
 			default:
@@ -169,6 +179,8 @@ public class NetworkManager : Photon.PunBehaviour
 	public override void OnLeftRoom ()
 	{
 		Debug.Log("OnLeftRoom");
+		isOwn = false;
+		isCancel = false;
 	}
 
 	public override void OnPhotonRandomJoinFailed (object[] codeAndMsg)
@@ -184,25 +196,26 @@ public class NetworkManager : Photon.PunBehaviour
   		roomsList = PhotonNetwork.GetRoomList();
 		Debug.Log("Room count: " + roomsList.Length);
 	}
-
 	public override void OnCreatedRoom ()
 	{
 		Debug.Log("OnCreatedRoom");
 		loadingText.text = "Creating a Room...";
+		Debug.Log("Creating a Room..");
 		
 	}
 	public override void OnFailedToConnectToPhoton (DisconnectCause cause)
 	{
 		Debug.Log("OnFailedToConnectToPhoton");
+		loadingText.text = "Failed to connect server,Trying connect againt...";
+		PhotonNetwork.ConnectUsingSettings(version);
 	}
 
 	public override void OnConnectedToMaster()
  	{
     	Debug.Log( "OnConnectedToMaster()" ); 
-		if(isCancel)
+		if(isOwn || !isCancel)
 		{
-			CreateRoom ();
+			PhotonNetwork.JoinLobby();
 		}
- 	}
-	
+	}
 }

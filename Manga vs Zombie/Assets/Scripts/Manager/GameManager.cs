@@ -59,7 +59,7 @@ public class GameManager : Photon.PunBehaviour
     public Text Textitem2;
     public Image Imageitem1;
     public Image Imageitem2;
-    public int effectIndex = -1;
+    public EffectType effectType = EffectType.None;
     public int masterIndex;
     public int clientIndex;
     public AudioClip buttonClick;
@@ -159,6 +159,11 @@ public class GameManager : Photon.PunBehaviour
     public void DisplayRequestPopup()
     {
         requestJoinPopup.SetActive(true);
+    }
+
+    public void DisableRequestPopup()
+    {
+        requestJoinPopup.SetActive(false);
     }
 
     public void ExitGame()

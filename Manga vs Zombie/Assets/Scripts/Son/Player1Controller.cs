@@ -60,7 +60,6 @@ public class Player1Controller : Photon.MonoBehaviour
 
     void Awake()
     {
-        
         LoadData();
 		GameObject playerSpawn = GameObject.FindWithTag("PlayerSpawn");
         transform.parent = playerSpawn.transform;
@@ -419,13 +418,15 @@ public class Player1Controller : Photon.MonoBehaviour
         switch (index)
         {
             case 0:
-
+                GameManager.Instance.effectType = EffectType.HeathUp;
                 Debug.Log("tang mau");
                 break;
             case 1:
+                GameManager.Instance.effectType = EffectType.HouseDeffent;
                 Debug.Log("tang thu");
                 break;
             case 2:
+                GameManager.Instance.effectType = EffectType.DamageDown;
                 Debug.Log("giam dame");
                 break;
 

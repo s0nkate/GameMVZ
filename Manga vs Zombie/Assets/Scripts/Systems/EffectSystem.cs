@@ -11,7 +11,7 @@ namespace ECSSystem
     public class EffectSystem : ComponentSystem
     {
 		private const int hpUpValue = 100;
-		private const int damageDownValue = 5;
+		private const int damageDownValue =10;
 		private const float timeEffect = 5;
 		public float t = 0;
         struct HouseData
@@ -29,15 +29,15 @@ namespace ECSSystem
         
         protected override void OnUpdate()
         {
-            switch(GameManager.Instance.effectIndex)
+            switch(GameManager.Instance.effectType)
 			{
-				case 0:
+				case EffectType.HeathUp:
 					HPUp();
 					break;
-				case 1:
+				case EffectType.HouseDeffent:
 					HouseDeffent();
 					break;
-				case 2:
+				case EffectType.DamageDown:
 					DamageDown();
 					break;
 				default:
@@ -53,16 +53,15 @@ namespace ECSSystem
 				int newHP = entity.heath.value + hpUpValue;
 				entity.heath.value = newHP > entity.heath.maxValue ? entity.heath.maxValue : newHP;	
 			}
-			GameManager.Instance.effectIndex = -1;
+			
+			GameManager.Instance.effectType = EffectType.None;
 		}
 
 		void DamageDown()
 		{
 			foreach (var entity in GetEntities<ZombieData>())
 			{
-				entity.attack.damage = Math.Abs(entity.attack.damage - damageDownValue);
-				// Debug.Log(entity.attack.damage);
-				Debug.Log("DamageDown" + entity.attack.damage);
+				entity.attack.damage = Math.Abs(entity.zombie.tempDamage - damageDownValue);
 			}
 			
 			CleanEffect();
@@ -74,7 +73,6 @@ namespace ECSSystem
 			foreach (var entity in GetEntities<ZombieData>())
 			{
 				entity.attack.damage = 0;
-				Debug.Log("DamageDown" + entity.attack.damage);
 			}
 			
 			
@@ -94,18 +92,12 @@ namespace ECSSystem
 				foreach (var entity in GetEntities<ZombieData>())
 				{
 					
-					entity.attack.damage += damageDownValue;
-					Debug.Log("damage " + entity.attack.damage);
+					entity.attack.damage = entity.zombie.tempDamage;
 				}
-				
 				t = 0;
-				GameManager.Instance.effectIndex = -1;
-			}
-			
+				GameManager.Instance.effectType = EffectType.None;
+			}		
 		}
-
-
-
     }
 }
 
