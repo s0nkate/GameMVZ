@@ -19,21 +19,23 @@ namespace ECSSystem
 
 		struct ZombieData
 		{
-			public Zombie zombie;
+            public Zombie zombie;
 			public Effect effect;
 			public PhotonView photonView;
 		}
 
-        
+
+
         protected override void OnUpdate()
         {
-            switch(GameManager.Instance.effectType)
+            switch (GameManager.Instance.effectType)
 			{
 				case EffectType.HeathUp:
 					HPUp();
 					break;
 				case EffectType.HouseDeffent:
-					HouseDeffent();
+                    Debug.Log("Effect start");
+                    HouseDeffent();
 					break;
 				case EffectType.DamageDown:
 					DamageDown();
@@ -59,7 +61,13 @@ namespace ECSSystem
 			{
 				entity.photonView.RPC("HouseDeffent", PhotonTargets.AllBuffered);
 			}
-		}
+
+            foreach(var entity in GetEntities<HouseData>())
+
+            {
+                entity.photonView.RPC("HouseDeffent", PhotonTargets.AllBuffered);
+            }
+        }
 
 		void DamageDown()
 		{
