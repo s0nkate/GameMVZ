@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 114551962178962584}
   - component: {fileID: 114792416650423130}
   - component: {fileID: 114353815357525888}
+  - component: {fileID: 114854402943700144}
   m_Layer: 8
   m_Name: zombie4
   m_TagString: Enemy
@@ -700,6 +701,18 @@ MonoBehaviour:
   timeDelay: 0.5
   isAttack: 0
   target: []
+--- !u!114 &114854402943700144
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1308305872416930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f85c5493926a6a0478761ca5108beac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackSound: {fileID: 8300000, guid: f328c7fe175804e4ca404e370daee00f, type: 3}
 --- !u!114 &114873816389409252
 MonoBehaviour:
   m_ObjectHideFlags: 1
