@@ -27,13 +27,14 @@ namespace ECSComponent
 		protected AnimationClipOverrides clipOverrides;
 		public int tempDamage;
 		Animator anim;
-		public void UpdateZombieDataRPC()
-		{
-			int index = Random.Range(0, inventoryEnemyList.enemyList.Count -1);
-			photonView.RPC("UpdateZombieData", PhotonTargets.AllBuffered, index);
-		}
+		
+		// public void UpdateZombieDataRPC(int index)
+		// {
+		// 	int index = Random.Range(0, inventoryEnemyList.enemyList.Count -1);
+		// 	photonView.RPC("UpdateZombieData", PhotonTargets.AllBuffered, index);
+		// }
 
-		[PunRPC]
+		
 		public void UpdateZombieData(int index)
 		{
 			if(index >= inventoryEnemyList.enemyList.Count)

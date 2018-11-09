@@ -38,6 +38,10 @@ public class NetworkManager : Photon.PunBehaviour
 		DontDestroyOnLoad (gameObject);
 	}
 
+	public void Cancel()
+	{
+		PhotonNetwork.RaiseEvent(RequestJoinRoom, PhotonNetwork.player.ID, reliable, raiseEventOptions);
+	}
 
 
 	public void ConnectAndJoin () 
@@ -124,7 +128,7 @@ public class NetworkManager : Photon.PunBehaviour
 	}
 
 	[PunRPC]
-	void SetMasterID(int id)
+	public void SetMasterID(int id)
 	{
 		masterClientID = id;
 	}
@@ -213,9 +217,7 @@ public class NetworkManager : Photon.PunBehaviour
 	public override void OnConnectedToMaster()
  	{
     	Debug.Log( "OnConnectedToMaster()" ); 
-		if(isOwn || !isCancel)
-		{
-			PhotonNetwork.JoinLobby();
-		}
+		PhotonNetwork.JoinLobby();
+
 	}
 }

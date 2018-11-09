@@ -8,10 +8,10 @@ namespace ECSSystem
 {
 	public class SoundSystem : ComponentSystem 
 	{
-		struct Data
+		struct EffectData
 		{
 			public Faction faction;
-			public ZombieSound zombieSound;
+			public EffectSound effectSound;
 			public AudioSource audioSource;
 		}
 
@@ -37,6 +37,7 @@ namespace ECSSystem
 					{
 						continue;
 					}
+					entity.audioSource.volume = SoundManager.Instance.volume;
 					entity.audioSource.Play();
 					
 				}
@@ -58,37 +59,29 @@ namespace ECSSystem
 		{
 			if(SoundManager.Instance.effectSoundActive)
 			{
-				foreach (var entity in GetEntities<Data>())
+				foreach (var entity in GetEntities<EffectData>())
 				{
 					if(entity.audioSource.isPlaying)
 					{
 						continue;
 					}
-					
-					switch (entity.faction.currentState)
+
+					if(entity.faction.value == FactionType.Zombie && entity.faction.currentState == State.Attack)
 					{
-						case State.Walk :							
-							
-							break;
-						case State.Attack :
-							PlayAudio(entity.audioSource, entity.zombieSound.attackSound);
-							break;
-						case State.Dead :
-							
-							break;
-						default:
-							break;
+						PlayAudio(entity.audioSource, entity.effectSound.attackSound);
 					}
 				}
 			}
 			else
 			{
-				foreach (var entity in GetEntities<Data>())
+				foreach (var entity in GetEntities<EffectData>())
 				{
 					if(entity.audioSource.isPlaying)
 					{
 						entity.audioSource.Stop();
 					}
+
+					
 				}
 			}
 		}

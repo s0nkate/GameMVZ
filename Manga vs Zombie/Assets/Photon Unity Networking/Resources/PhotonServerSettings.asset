@@ -27,36 +27,26 @@ MonoBehaviour:
   NetworkLogging: 1
   RunInBackground: 1
   RpcList:
+  - ActivePlayer
+  - ChangePosition
   - Chat
-  - ColorRpc
+  - DeactiveZombie
   - DestroyRpc
-  - DoJump
-  - Flash
+  - DisableAllZombie
+  - GetZombie
+  - InactiveZombie
   - InstantiateRpc
-  - Marco
+  - NextLV
   - PickupItemInit
-  - Polo
   - PunPickup
   - PunPickupSimple
   - PunRespawn
   - RequestForPickupItems
   - RequestForPickupTimes
-  - TaggedPlayer
-  - InstantiateZombie
-  - ActiveZombie
-  - DeactiveZombie
-  - CreateZombie
-  - GetZombie
-  - SpawnPlayer
-  - ActivePlayer
-  - DisableAllZombie
-  - StartDame
+  - SetMasterID
   - StartSkill
   - StartSkill1
-  - AddToQueue
-  - AddDataToZombie
-  - NextLV
-  - InactiveZombie
-  - MarkDead
-  - SetMasterID
+  - DamageDown
+  - HouseDeffent
+  - HPUp
   DisableAutoOpenWizard: 1

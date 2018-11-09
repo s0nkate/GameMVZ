@@ -28,6 +28,8 @@ public class GameManager : Photon.PunBehaviour
     public InventorySceneList scenelist;
     public GameObject Backgournd;
     public GameObject Foregournd;
+    public GameObject buttonPanel;
+    public GameObject statusPanel; 
     public GameObject Tower;
     public GameObject Towerenemy;
     public GameObject Towerenemy1;
@@ -60,8 +62,6 @@ public class GameManager : Photon.PunBehaviour
     public Image Imageitem1;
     public Image Imageitem2;
     public EffectType effectType = EffectType.None;
-    public int masterIndex;
-    public int clientIndex;
     public AudioClip buttonClick;
     public AudioClip soundBackground;
     public AudioSource sound;
@@ -101,9 +101,20 @@ public class GameManager : Photon.PunBehaviour
 
     }
     public void ExitRoom()
-
     {
-        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.Disconnect();
+    }
+
+    public void Cancel()
+    {
+        NetworkManager.Instance.Cancel();
+        MenuUI.SetActive(true);
+        loading.SetActive(false);
+        buttonPanel.SetActive(false);
+        statusPanel.SetActive(false);
+        playScene.SetActive(false);
+
+        ExitRoom();
     }
 
     public void LoadData()
@@ -304,6 +315,8 @@ public class GameManager : Photon.PunBehaviour
         Pausebtn.SetActive(true);
         loading.SetActive(false);
         Gameover = false;
+        buttonPanel.SetActive(true);
+        statusPanel.SetActive(true);
         finalPopup.SetActive(false);
         playScene.SetActive(true);
         isPlaying = true;
@@ -339,6 +352,8 @@ public class GameManager : Photon.PunBehaviour
         MenuUI.SetActive(true);
 
         Highscore.SetActive(false);
+        buttonPanel.SetActive(false);
+        statusPanel.SetActive(false);
         playScene.SetActive(false);
         HighScoreText.text = HighScore.ToString();
         ExitRoom();

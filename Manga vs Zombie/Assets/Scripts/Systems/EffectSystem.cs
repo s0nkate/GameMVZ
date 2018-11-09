@@ -4,26 +4,24 @@ using UnityEngine;
 using Unity.Entities;
 using ECSComponent;
 using UnityEngine.UI;
-using System;
 
 namespace ECSSystem
 {
     public class EffectSystem : ComponentSystem
     {
-		private const int hpUpValue = 100;
-		private const int damageDownValue =10;
-		private const float timeEffect = 5;
-		public float t = 0;
+		
         struct HouseData
         {
 			public House house;
-            public Heath heath;
+            public Effect effect;
+			public PhotonView photonView;
         }
 
 		struct ZombieData
 		{
-			public Attack attack;
 			public Zombie zombie;
+			public Effect effect;
+			public PhotonView photonView;
 		}
 
         
@@ -46,58 +44,31 @@ namespace ECSSystem
 			
         }
 
+
 		void HPUp()
 		{
 			foreach (var entity in GetEntities<HouseData>())
 			{
-				int newHP = entity.heath.value + hpUpValue;
-				entity.heath.value = newHP > entity.heath.maxValue ? entity.heath.maxValue : newHP;	
+				entity.photonView.RPC("HPUp", PhotonTargets.AllBuffered);
 			}
-			
-			GameManager.Instance.effectType = EffectType.None;
+		}
+
+		void HouseDeffent()
+		{
+			foreach (var entity in GetEntities<ZombieData>())
+			{
+				entity.photonView.RPC("HouseDeffent", PhotonTargets.AllBuffered);
+			}
 		}
 
 		void DamageDown()
 		{
 			foreach (var entity in GetEntities<ZombieData>())
 			{
-				entity.attack.damage = Math.Abs(entity.zombie.tempDamage - damageDownValue);
+				entity.photonView.RPC("DamageDown", PhotonTargets.AllBuffered);
 			}
-			
-			CleanEffect();
 		}
-
-		void HouseDeffent()
-		{
-			
-			foreach (var entity in GetEntities<ZombieData>())
-			{
-				entity.attack.damage = 0;
-			}
-			
-			
-			CleanEffect();
-		}
-
-		void CleanEffect()
-		{
-			if(t < timeEffect)
-			{
-				
-				t += Time.deltaTime;
-			}
-			else
-			{
-				Debug.Log("time " + t);
-				foreach (var entity in GetEntities<ZombieData>())
-				{
-					
-					entity.attack.damage = entity.zombie.tempDamage;
-				}
-				t = 0;
-				GameManager.Instance.effectType = EffectType.None;
-			}		
-		}
+		
     }
 }
 

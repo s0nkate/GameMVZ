@@ -59,20 +59,20 @@ public class ZombiePool : Photon.PunBehaviour
         AddToQueue();
     }
 
-    [PunRPC]
-    void AddDataToZombie(int viewID, int index)
-    {
+    // [PunRPC]
+    // void AddDataToZombie(int viewID, int index)
+    // {
 
-        GameObject zombie = PhotonView.Find(viewID).gameObject;
-        zombie.GetComponent<Attack>().damage = inventoryEnemyList.enemyList[index].damage;
-        zombie.GetComponent<Attack>().timeDelay = inventoryEnemyList.enemyList[index].Delay;
-        zombie.GetComponent<Heath>().maxValue = inventoryEnemyList.enemyList[index].health;
-        zombie.GetComponent<Heath>().value = inventoryEnemyList.enemyList[index].health;
-        zombie.GetComponent<Move>().speed = inventoryEnemyList.enemyList[index].speed;
-        zombie.GetComponent<Zombie>().score = inventoryEnemyList.enemyList[index].score;
-        zombie.GetComponent<Zombie>().money = inventoryEnemyList.enemyList[index].money;
-        zombie.GetComponent<Zombie>().type = inventoryEnemyList.enemyList[index].type;
-    }
+    //     GameObject zombie = PhotonView.Find(viewID).gameObject;
+    //     zombie.GetComponent<Attack>().damage = inventoryEnemyList.enemyList[index].damage;
+    //     zombie.GetComponent<Attack>().timeDelay = inventoryEnemyList.enemyList[index].Delay;
+    //     zombie.GetComponent<Heath>().maxValue = inventoryEnemyList.enemyList[index].health;
+    //     zombie.GetComponent<Heath>().value = inventoryEnemyList.enemyList[index].health;
+    //     zombie.GetComponent<Move>().speed = inventoryEnemyList.enemyList[index].speed;
+    //     zombie.GetComponent<Zombie>().score = inventoryEnemyList.enemyList[index].score;
+    //     zombie.GetComponent<Zombie>().money = inventoryEnemyList.enemyList[index].money;
+    //     zombie.GetComponent<Zombie>().type = inventoryEnemyList.enemyList[index].type;
+    // }
 
     void AddToQueue()
     {
@@ -106,9 +106,9 @@ public class ZombiePool : Photon.PunBehaviour
         AddToQueue();
         GameObject zombie = zombieQueue.Dequeue();
         zombie.SetActive(true);
-        
-        zombie.GetComponent<Zombie>().UpdateZombieDataRPC();        
-
+        int index = Random.Range(0, inventoryEnemyList.enemyList.Count -1);        
+        zombie.GetComponent<Zombie>().UpdateZombieData(index);        
+          
         Heath heath = zombie.GetComponent<Heath>();
         Faction faction = zombie.GetComponent<Faction>();
         heath.value = heath.maxValue;
@@ -118,34 +118,34 @@ public class ZombiePool : Photon.PunBehaviour
         
     }
         
-    [PunRPC]
-	void CreateZombie()
-	{
-			// GameObject	zombie = Instantiate(GetRandomZombiePrefab(zombieSpawn), transform.position, spawnTransform.localRotation, transform);
-			// string name = "Prefabs/Zombie/" + GetRandomZombiePrefabname(zombieSpawn);
-			GameObject	zombie = Instantiate(GetRandomZombiePrefab(zombieSpawn) , transform.position, spawnTransform.localRotation, spawnTransform);
-			//Nếu zombie từ phải sang thì xoay thanh máu theo trục y 180 độ
-			if(!spawnTransform.localRotation.Equals(new Vector3(0, 0, 0)))
-			{
-				zombie.transform.GetChild(0).localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
-			}
-			zombie.SetActive(false);
+    // [PunRPC]
+	// void CreateZombie()
+	// {
+	// 		// GameObject	zombie = Instantiate(GetRandomZombiePrefab(zombieSpawn), transform.position, spawnTransform.localRotation, transform);
+	// 		// string name = "Prefabs/Zombie/" + GetRandomZombiePrefabname(zombieSpawn);
+	// 		GameObject	zombie = Instantiate(GetRandomZombiePrefab(zombieSpawn) , transform.position, spawnTransform.localRotation, spawnTransform);
+	// 		//Nếu zombie từ phải sang thì xoay thanh máu theo trục y 180 độ
+	// 		if(!spawnTransform.localRotation.Equals(new Vector3(0, 0, 0)))
+	// 		{
+	// 			zombie.transform.GetChild(0).localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
+	// 		}
+	// 		zombie.SetActive(false);
 			
-	}
+	// }
 
 
 
-	string GetRandomZombiePrefabname(ZombieSpawn zombieSpawn)
-	{
-		int max = zombieSpawn.list.Count;
-		return zombieSpawn.list[Random.Range(0, max)].name;
-	}
+	// string GetRandomZombiePrefabname(ZombieSpawn zombieSpawn)
+	// {
+	// 	int max = zombieSpawn.list.Count;
+	// 	return zombieSpawn.list[Random.Range(0, max)].name;
+	// }
 
-	GameObject GetRandomZombiePrefab(ZombieSpawn zombieSpawn)
-	{
-		int max = zombieSpawn.list.Count;
-		return zombieSpawn.list[Random.Range(0, max)];
-	}
+	// GameObject GetRandomZombiePrefab(ZombieSpawn zombieSpawn)
+	// {
+	// 	int max = zombieSpawn.list.Count;
+	// 	return zombieSpawn.list[Random.Range(0, max)];
+	// }
 	public void SetPoolSize(int size)
 	{
 		zombieCount = size;

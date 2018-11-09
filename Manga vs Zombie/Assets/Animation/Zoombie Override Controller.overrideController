@@ -6,5 +6,5 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Zoombie Override Controller
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1e6639d448ee73a4ea7285010d031a6b, type: 2}
   m_Clips: []
