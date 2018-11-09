@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 114679474318475722}
   - component: {fileID: 114574884205551718}
   - component: {fileID: 114514563638883344}
+  - component: {fileID: 114757655538668416}
   m_Layer: 0
   m_Name: House
   m_TagString: house
@@ -255,6 +256,8 @@ MonoBehaviour:
   value: 1000
   maxValue: 1000
   heathSlider: {fileID: 114661619420978878}
+  idAttack: 0
+  isDead: 0
 --- !u!114 &114514563638883344
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -450,6 +453,18 @@ MonoBehaviour:
   instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
+--- !u!114 &114757655538668416
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1486898449754244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92bce51d2c2e99846baf6e9dab6b491c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  t: 0
 --- !u!114 &114975308185384588
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -462,6 +477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defend: 0
+  inventorySenceList: {fileID: 0}
 --- !u!212 &212308173499758512
 SpriteRenderer:
   m_ObjectHideFlags: 1

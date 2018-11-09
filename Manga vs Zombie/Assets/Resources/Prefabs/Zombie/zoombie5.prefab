@@ -51,6 +51,7 @@ GameObject:
   - component: {fileID: 114013855886646922}
   - component: {fileID: 114727738140687766}
   - component: {fileID: 114793802932204802}
+  - component: {fileID: 114709409639769684}
   m_Layer: 8
   m_Name: zoombie5
   m_TagString: Enemy
@@ -573,6 +574,7 @@ MonoBehaviour:
   type: 0
   explosion: {fileID: 1079571020079808, guid: 79ea189393775f54ebad08cf23df75f2, type: 2}
   inventoryEnemyList: {fileID: 11400000, guid: bc4a9ed02062832448e07af55a0b5e9a, type: 2}
+  tempDamage: 0
 --- !u!114 &114649672145799754
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -627,6 +629,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114709409639769684
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1071941083800032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92bce51d2c2e99846baf6e9dab6b491c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  t: 0
 --- !u!114 &114727738140687766
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -658,9 +672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 704e6c8e0046bfa4dac50a39215ac250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSound: {fileID: 0}
   attackSound: {fileID: 8300000, guid: 25ef2af4c37e4254ea6c6ca03d5bc6db, type: 3}
-  deadSound: {fileID: 0}
 --- !u!114 &114815643190148760
 MonoBehaviour:
   m_ObjectHideFlags: 1
