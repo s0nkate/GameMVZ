@@ -76,8 +76,8 @@ public class Player1Controller : Photon.MonoBehaviour
         
         if(photonView.isMine)
         {
-            playerBehaviour = GameObject.FindWithTag("SkillGUI").GetComponent<PlayerBehaviour>();
-            skillGUI = GameObject.FindWithTag("SkillGUI").GetComponent<SkillGUI>();
+            playerBehaviour = GameManager.Instance.buttonPanel.GetComponent<PlayerBehaviour>();
+            skillGUI = GameManager.Instance.buttonPanel.GetComponent<SkillGUI>();
             text1= skillGUI.text1;
             text2= skillGUI.text2;
             GetComponent<Player>().playerBehaviour = playerBehaviour;
@@ -392,26 +392,34 @@ public class Player1Controller : Photon.MonoBehaviour
     }
     public void UseItem1()
     {
-        Textitem2.text = skillGUI.DefauTextItem;
-        Imageitem2.sprite = skillGUI.DefaultItem;
+        
         if (GameManager.Instance.item1)
         {
             Effect(listItem[1].index);
             GameManager.Instance.item1 = false;
         }
+        if(Textitem2 != null)
+        {
+            Textitem2.text = skillGUI.DefauTextItem;
+            Imageitem2.sprite = skillGUI.DefaultItem;
+        }
+        
        
     }
     public void UseItem2()
     {
-        Textitem1.text = skillGUI.DefauTextItem;
-        Imageitem1.sprite = skillGUI.DefaultItem;
+        
         if (GameManager.Instance.item2)
         {
             Effect(listItem[0].index);
             GameManager.Instance.item2 = false;
         }
-       
 
+        if(Textitem1 !=  null)
+        {
+            Textitem1.text = skillGUI.DefauTextItem;
+            Imageitem1.sprite = skillGUI.DefaultItem;
+        }
     }
     public void Effect(int index)
     {

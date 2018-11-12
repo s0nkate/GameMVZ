@@ -33,11 +33,11 @@ namespace ECSSystem
 			{
 				foreach (var entity in GetEntities<MusicData>())
 				{
+					entity.audioSource.volume = SoundManager.Instance.volume;
 					if(entity.audioSource.isPlaying)
 					{
 						continue;
 					}
-					entity.audioSource.volume = SoundManager.Instance.volume;
 					entity.audioSource.Play();
 					
 				}
@@ -48,6 +48,7 @@ namespace ECSSystem
 				{
 					if(entity.audioSource.isPlaying)
 					{
+						Debug.Log("Stop audio source");
 						entity.audioSource.Stop();
 					}
 					

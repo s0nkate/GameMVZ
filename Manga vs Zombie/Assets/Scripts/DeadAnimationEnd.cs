@@ -39,7 +39,6 @@ public class DeadAnimationEnd : Photon.PunBehaviour
 
 	private void CheckID(int score,int money,int id)
     {
-		Debug.Log("Check Id:"+id + PhotonNetwork.player.ID);
         if (id == PhotonNetwork.player.ID) 
 		{ 
             GameManager.Instance.Score += score;

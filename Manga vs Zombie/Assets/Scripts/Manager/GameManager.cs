@@ -1,6 +1,4 @@
-﻿
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -66,10 +64,6 @@ public class GameManager : Photon.PunBehaviour
     public AudioClip soundBackground;
     public AudioSource sound;
 
-
-
-
-    // public GameObject[] instancePlayer;
     public static GameManager Instance = null;
     private void Awake()
     {
@@ -107,14 +101,13 @@ public class GameManager : Photon.PunBehaviour
 
     public void Cancel()
     {
-        NetworkManager.Instance.Cancel();
+        photonView.RPC("DisableRequestPopup", PhotonTargets.All);
         MenuUI.SetActive(true);
-        loading.SetActive(false);
         buttonPanel.SetActive(false);
         statusPanel.SetActive(false);
         playScene.SetActive(false);
-
-        ExitRoom();
+        PhotonNetwork.Disconnect();
+        
     }
 
     public void LoadData()
@@ -172,6 +165,7 @@ public class GameManager : Photon.PunBehaviour
         requestJoinPopup.SetActive(true);
     }
 
+    [PunRPC]
     public void DisableRequestPopup()
     {
         requestJoinPopup.SetActive(false);
@@ -250,6 +244,14 @@ public class GameManager : Photon.PunBehaviour
         }
 
     }
+
+    public void PauseRPC()
+    {
+        photonView.RPC("Pause", PhotonTargets.AllBuffered);
+    }
+
+
+    [PunRPC]
     public void Pause()
     {
         if (isPlaying == true && NextLvUI.activeInHierarchy == false)
@@ -261,14 +263,18 @@ public class GameManager : Photon.PunBehaviour
             SoundManager.Instance.volumeSilder.value = 0;
         }
     }
+
+    public void ResumeRPC()
+    {
+        photonView.RPC("Resume", PhotonTargets.AllBuffered);
+    }
+
+    [PunRPC]
     public void Resume()
     {
-
         SoundManager.Instance.volumeSilder.value = PlayerPrefs.GetFloat("Sound");
         pause = false;
         PauseUI.SetActive(false);
-
-
     }
 
     public void NextLv()

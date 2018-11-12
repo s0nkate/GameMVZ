@@ -33,10 +33,9 @@ public class ZombiePool : Photon.PunBehaviour
 
 	public override void OnJoinedRoom()
 	{
-		Debug.Log("OnJoinedRoom by Zombiepool");
         
         onNextLevel.Invoke();
-        zombieSpawn.isActived = true;
+        zombieSpawn.isActived = false;
     }
 
 
@@ -46,7 +45,6 @@ public class ZombiePool : Photon.PunBehaviour
 		float time = inventorySceneList.scenelist[GameManager.Instance.i].DelayEnemy;
 		zombieSpawn.SetTimeDelay(time);
 		photonView.RPC("DisableAllZombie", PhotonTargets.AllBuffered);
-		Debug.Log("loadlevel");
 	}
 
 	public void ActiveZombie()

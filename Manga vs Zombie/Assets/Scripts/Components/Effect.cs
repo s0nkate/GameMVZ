@@ -68,6 +68,7 @@ public class Effect : MonoBehaviour
 		}
 		else
 		{	
+			Debug.Log("clean effect");
 			attack.damage = zombie.tempDamage;
 		}
 		t = 0;

@@ -16,12 +16,12 @@ public class NetworkManager : Photon.PunBehaviour
 	public const byte CancelJoinRoom = 2;	
 	public bool isInLobby;
 	public bool isInRoom;	
-	public Toggle onlineMode;
 	public bool isCancel;
 	bool reliable = true;
 	public int masterClientID;
 	RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 	public static NetworkManager Instance = null;
+	bool isConnect;
 	private void Awake()
 	{
 		if (Instance == null)
@@ -40,12 +40,12 @@ public class NetworkManager : Photon.PunBehaviour
 
 	public void Cancel()
 	{
-		PhotonNetwork.RaiseEvent(RequestJoinRoom, PhotonNetwork.player.ID, reliable, raiseEventOptions);
+		PhotonNetwork.RaiseEvent(NetworkManager.CancelJoinRoom, PhotonNetwork.player.ID, reliable, raiseEventOptions);
 	}
 
 
 	public void ConnectAndJoin () 
-	{
+	{	
 		PhotonNetwork.ConnectUsingSettings(version);
         GameManager.Instance.SoundBtn();
 		loadingText.text = "Connecting to server....";
@@ -61,7 +61,6 @@ public class NetworkManager : Photon.PunBehaviour
 	public void ChangeMode()
 	{
 		PhotonNetwork.offlineMode = true;
-
 	}
 
 	void CreateRoom()
@@ -69,12 +68,18 @@ public class NetworkManager : Photon.PunBehaviour
 		PhotonNetwork.CreateRoom(null, new RoomOptions() { MaxPlayers = maxNumberPlayerInARoom }, null);
 	}
 
+	public override void OnDisconnectedFromPhoton()
+	{
+		GameManager.Instance.loading.SetActive(false);
+		isConnect = false;
+	}
 
 
 	public override void OnConnectedToPhoton()
 	{
 		Debug.Log("OnConnectedToPhoton");
 		loadingText.text = "Connected to server";
+		isConnect = true;
 
 	}
 
@@ -165,6 +170,7 @@ public class NetworkManager : Photon.PunBehaviour
 			case CancelJoinRoom:
 				if(playerRequestId == PhotonNetwork.player.ID)
 				{
+					Debug.Log("cancel");
 					// PhotonNetwork.JoinRandomRoom();
 					isCancel = true;
 					// isOwn = false;
@@ -172,6 +178,7 @@ public class NetworkManager : Photon.PunBehaviour
 				}
 				if(PhotonNetwork.player.IsMasterClient)
 				{
+					Debug.Log("tat popup");
 					GameManager.Instance.DisableRequestPopup();					
 				}
 				break;

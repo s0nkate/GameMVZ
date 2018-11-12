@@ -50,7 +50,7 @@ namespace ECSComponent
 			GetComponent<Attack>().damage = inventoryEnemyList.enemyList[index].damage;
 			tempDamage = inventoryEnemyList.enemyList[index].damage;
 			GetComponent<Attack>().timeDelay = inventoryEnemyList.enemyList[index].Delay;
-
+			type = inventoryEnemyList.enemyList[index].type;
 			anim = GetComponent<Animator>();
 
         	animatorOverrideController = new AnimatorOverrideController(anim.runtimeAnimatorController);
