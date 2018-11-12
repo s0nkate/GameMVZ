@@ -18,10 +18,10 @@ MonoBehaviour:
     price: 0
   - nameItem: DefenseTower
     image: {fileID: 2800000, guid: 2857753413460be46a54f767f1c126a8, type: 3}
-    effect: +50 Defense for Tower
+    effect: Protect for Tower in 5s
     price: 0
   - nameItem: DownAttackEnemy
     image: {fileID: 2800000, guid: 930869112fdeef8429ed590642935232, type: 3}
-    effect: -10 Damage all Enemy
+    effect: -10 Damage all Enemy in 5s
     price: 0
   selecteditemindex: 0

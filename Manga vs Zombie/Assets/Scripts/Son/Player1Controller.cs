@@ -47,7 +47,7 @@ public class Player1Controller : Photon.MonoBehaviour
     public AudioSource audiosrc;
     //public SoundManager soundmng;
     public  List<ShopItems> listItem;
-  
+    public AudioClip useEffect;
     public InventoryPlayerList playerlist;
   
     protected AnimatorOverrideController animatorOverrideController;
@@ -396,6 +396,7 @@ public class Player1Controller : Photon.MonoBehaviour
         Imageitem2.sprite = skillGUI.DefaultItem;
         if (GameManager.Instance.item1)
         {
+            audiosrc.PlayOneShot(useEffect, SoundManager.Instance.volume*2);
             Effect(listItem[1].index);
             GameManager.Instance.item1 = false;
         }
@@ -407,6 +408,7 @@ public class Player1Controller : Photon.MonoBehaviour
         Imageitem1.sprite = skillGUI.DefaultItem;
         if (GameManager.Instance.item2)
         {
+            audiosrc.PlayOneShot(useEffect, SoundManager.Instance.volume*2);
             Effect(listItem[0].index);
             GameManager.Instance.item2 = false;
         }
