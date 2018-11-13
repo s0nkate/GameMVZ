@@ -7,7 +7,7 @@ public class GameGUI : MonoBehaviour
 {
 	public Text moneyText;
 	public Text scoreText;
-	public Text heighScoreText;
+	public Text highScoreText;
 	public Text timeText;
 	public static GameGUI Instance = null;
 	private void Awake()

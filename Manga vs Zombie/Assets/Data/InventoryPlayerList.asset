@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aab94e02876ca3543ab673770ee15b07, type: 3}
   m_Name: InventoryPlayerList
   m_EditorClassIdentifier: 
-  selectedPlayerindex: 8
+  selectedPlayerindex: 2
   playerList:
   - _image: {fileID: 2800000, guid: c41a479c5b89cf84fa61a589b2f758da, type: 3}
     _Name: Sasuke
@@ -19,7 +19,7 @@ MonoBehaviour:
     _Delay: 0.3
     _SoundPunch: {fileID: 8300000, guid: 2568b2264fa774843a69be9bb944dd17, type: 3}
     _SoundKick: {fileID: 8300000, guid: ff78cfb49a7ede745b749a3f9616116d, type: 3}
-    _DmgSkill1: 70
+    _DmgSkill1: 80
     _Cooldown1: 10
     _SoundSkill1: {fileID: 8300000, guid: 4b03a2e6a5813294cbc58ff8a67f8e88, type: 3}
     _Image1: {fileID: 21300004, guid: b456c962b7bd85544b2a8368a19cd75b, type: 3}
@@ -63,7 +63,7 @@ MonoBehaviour:
     _Cooldown1: 10
     _SoundSkill1: {fileID: 8300000, guid: 4b03a2e6a5813294cbc58ff8a67f8e88, type: 3}
     _Image1: {fileID: 21300000, guid: 65a9ba962f3c5bf4a8576274ee02885e, type: 3}
-    _DmgSkill2: 180
+    _DmgSkill2: 200
     _Cooldown2: 15
     _SoundSkill2: {fileID: 8300000, guid: 84903fcc06a273240bec53739b9beb75, type: 3}
     _Image2: {fileID: 21300014, guid: 59283993edfbcaa40ae0e55147f2e344, type: 3}
@@ -83,7 +83,7 @@ MonoBehaviour:
     _Cooldown1: 10
     _SoundSkill1: {fileID: 8300000, guid: 4b03a2e6a5813294cbc58ff8a67f8e88, type: 3}
     _Image1: {fileID: 21300004, guid: 08d7d088f9240294690ecea7f7974c99, type: 3}
-    _DmgSkill2: 170
+    _DmgSkill2: 200
     _Cooldown2: 15
     _SoundSkill2: {fileID: 8300000, guid: 0c6781030e0886f43907e65e7fd5d4ad, type: 3}
     _Image2: {fileID: 21300010, guid: 3fe5341aa9b24034db26f5521c7a7edd, type: 3}
@@ -180,11 +180,11 @@ MonoBehaviour:
     _SoundPunch: {fileID: 8300000, guid: a40677de6d6086545ab03d228cac4b01, type: 3}
     _SoundKick: {fileID: 8300000, guid: 00cf219f0fc39184ca0458699adf8867, type: 3}
     _DmgSkill1: 200
-    _Cooldown1: 20
+    _Cooldown1: 17
     _SoundSkill1: {fileID: 8300000, guid: 0dc3212c157c9dd43b9d4a724f44b47a, type: 3}
     _Image1: {fileID: 21300014, guid: 051d5fdfd187e1043b9bf753aca91866, type: 3}
     _DmgSkill2: 200
-    _Cooldown2: 25
+    _Cooldown2: 20
     _SoundSkill2: {fileID: 8300000, guid: 90e8c1b92f793494bac7dff534d9c4fe, type: 3}
     _Image2: {fileID: 21300010, guid: 58256af54864cf44aaff9b0e41a80dc4, type: 3}
     Price: 0
@@ -203,7 +203,7 @@ MonoBehaviour:
     _Cooldown1: 15
     _SoundSkill1: {fileID: 8300000, guid: 2568b2264fa774843a69be9bb944dd17, type: 3}
     _Image1: {fileID: 21300000, guid: c6befd21a9b5c71428527680792f292e, type: 3}
-    _DmgSkill2: 190
+    _DmgSkill2: 200
     _Cooldown2: 20
     _SoundSkill2: {fileID: 8300000, guid: bedb39a40e302c74db08ae68f9a1ac24, type: 3}
     _Image2: {fileID: 21300008, guid: 4a10694f49d45db4ca5d7b9691c385aa, type: 3}
