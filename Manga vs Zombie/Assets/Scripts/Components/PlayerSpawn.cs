@@ -15,22 +15,11 @@ public class PlayerSpawn : Photon.PunBehaviour {
 	void Awake()
 	{
 		isInstance = false;
-		// photonView = GetComponent<PhotonView>();
-		
-		// PhotonNetwork.isMessageQueueRunning = true;
-		// Object[] data = new Object[1];
-		// data[0] = this.transform;
-		// GameObject player = PhotonNetwork.Instantiate("Prefabs/Player/Player", transform.position, transform.localRotation, 0);
 	}
 
 	public override void OnJoinedRoom()
 	{
-		// if(NetworkManager.Instance.isInRoom && !isInstance)
-		// {
-		// 	photonView.RPC("SpawnPlayer", PhotonTargets.AllBuffered);
-		// 	isInstance = true;
-		// }
-		
+
 		data[0] = GameManager.Instance.GetSelectedPlayer().index;
 		data[1] = PhotonNetwork.player.ID;
 		Vector3 pos = transform.position;
@@ -47,11 +36,9 @@ public class PlayerSpawn : Photon.PunBehaviour {
 		{
 			NetworkManager.Instance.UpdateMasterID(PhotonNetwork.player.ID);
 			ChangePosition();
-			// photonView.RPC("ChangePosition", PhotonTargets.All);
 		}
 	}	
 
-	// [PunRPC]
 	void ChangePosition()
 	{
 		player.transform.position = transform.position;

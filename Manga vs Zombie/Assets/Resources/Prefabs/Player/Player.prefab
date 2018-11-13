@@ -514,6 +514,7 @@ MonoBehaviour:
   SoundSkill2: {fileID: 0}
   audiosrc: {fileID: 0}
   listItem: []
+  useEffect: {fileID: 8300000, guid: 03f30bd1c621f5d489f374dd6d406d23, type: 3}
   playerlist: {fileID: 11400000, guid: eeb5fd019af4f734cb696dd640d0d004, type: 2}
   dmg: 0
   dmg1: 0
@@ -530,6 +531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f85c5493926a6a0478761ca5108beac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackSound: {fileID: 0}
 --- !u!114 &114729393628145722
 MonoBehaviour:
   m_ObjectHideFlags: 1

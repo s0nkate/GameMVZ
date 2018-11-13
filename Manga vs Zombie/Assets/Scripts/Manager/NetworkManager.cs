@@ -19,6 +19,7 @@ public class NetworkManager : Photon.PunBehaviour
 	public bool isCancel;
 	bool reliable = true;
 	public int masterClientID;
+	public Toggle onlineMode;
 	RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 	public static NetworkManager Instance = null;
 	bool isConnect;
@@ -44,9 +45,20 @@ public class NetworkManager : Photon.PunBehaviour
 	}
 
 
+
+
 	public void ConnectAndJoin () 
 	{	
-		PhotonNetwork.ConnectUsingSettings(version);
+		if(onlineMode.isOn == false)
+		{
+			PhotonNetwork.offlineMode = true;
+			PhotonNetwork.CreateRoom("offlineRoom");
+		}
+		else
+		{
+			PhotonNetwork.ConnectUsingSettings(version);
+		}
+		GameManager.Instance.playScene.SetActive(true);
         GameManager.Instance.SoundBtn();
 		loadingText.text = "Connecting to server....";
 		// PhotonNetwork.JoinLobby ();
@@ -56,11 +68,6 @@ public class NetworkManager : Photon.PunBehaviour
 	void Update () 
 	{
 		
-	}
-
-	public void ChangeMode()
-	{
-		PhotonNetwork.offlineMode = true;
 	}
 
 	void CreateRoom()
@@ -79,6 +86,7 @@ public class NetworkManager : Photon.PunBehaviour
 	{
 		Debug.Log("OnConnectedToPhoton");
 		loadingText.text = "Connected to server";
+		
 		isConnect = true;
 
 	}
@@ -87,7 +95,7 @@ public class NetworkManager : Photon.PunBehaviour
 	{
 		Debug.Log("OnJoinedLobby");
 		isInLobby = true;
-		GameManager.Instance.playScene.SetActive(true);
+		
 		if(isCancel)
 		{
 			CreateRoom();
@@ -111,6 +119,15 @@ public class NetworkManager : Photon.PunBehaviour
 	{
 		Debug.Log("OnJoinedRoom");
 		isInRoom = true;
+		
+		if(onlineMode.isOn == false)
+		{
+			loadingText.text = "Joined Room";
+			GameManager.Instance.PlayGame();
+			return;
+		}
+
+		
 		if(!isOwn)
 		{
 			PhotonNetwork.RaiseEvent(RequestJoinRoom, PhotonNetwork.player.ID, reliable, raiseEventOptions);
@@ -120,10 +137,8 @@ public class NetworkManager : Photon.PunBehaviour
 		{
 			
 			loadingText.text = "Joined Room";
-			// Debug.Log("acctive player1");
 			GameManager.Instance.PlayGame();
 			UpdateMasterID(PhotonNetwork.player.ID);
-			// PlayerManager.Instance.SetPlayer(GameManager.Instance.instancePlayer[0]);
 		}
 	}
 
@@ -192,6 +207,7 @@ public class NetworkManager : Photon.PunBehaviour
 		Debug.Log("OnLeftRoom");
 		isOwn = false;
 		isCancel = false;
+		// PhotonNetwork.LeaveLobby();
 	}
 
 	public override void OnPhotonRandomJoinFailed (object[] codeAndMsg)
@@ -202,6 +218,11 @@ public class NetworkManager : Photon.PunBehaviour
 		CreateRoom();
 	}
 
+	public override void OnLeftLobby ()
+	{
+		Debug.Log("OnLeftLobby");
+	}
+
 	public override void OnReceivedRoomListUpdate()
 	{
   		roomsList = PhotonNetwork.GetRoomList();
@@ -210,9 +231,7 @@ public class NetworkManager : Photon.PunBehaviour
 	public override void OnCreatedRoom ()
 	{
 		Debug.Log("OnCreatedRoom");
-		loadingText.text = "Creating a Room...";
-		Debug.Log("Creating a Room..");
-		
+		loadingText.text = "Creating a Room...";		
 	}
 	public override void OnFailedToConnectToPhoton (DisconnectCause cause)
 	{

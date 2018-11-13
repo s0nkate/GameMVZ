@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 
 
+
 namespace ECSComponent
 {
 public enum EffectType : int 
@@ -16,11 +17,13 @@ public enum EffectType : int
 
 public class Effect : MonoBehaviour 
 {
-
+    public Animator anim;
+    public bool shield;
 	public const int hpUpValue = 100;
 	public const int damageDownValue =10;
 	public const float timeEffect = 5;
 	public float t = 0;
+    public GameObject arrow;
 	Heath heath;
 	Attack attack;
 	Zombie zombie;
@@ -30,49 +33,72 @@ public class Effect : MonoBehaviour
 		heath = GetComponent<Heath>();
 		attack = GetComponent<Attack>();
 		zombie = GetComponent<Zombie>();
+        anim =  GetComponent<Animator>();
 	}
 
 	[PunRPC]
 	void HPUp()
 	{
+            anim.SetTrigger("trigger");
+        
 		if(heath == null)
 			return;
 		int newHP = heath.value + hpUpValue;
 		heath.value = newHP > heath.maxValue ? heath.maxValue : newHP;	
 		GameManager.Instance.effectType = EffectType.None;
-	}
+     
+    }
 
 	[PunRPC]
 	void DamageDown()
-	{	
-		if(attack == null)
-			return;
-		attack.damage = Math.Abs(zombie.tempDamage - damageDownValue);
-		CleanEffect();
-	}
+	{
+            attack.damage = Math.Abs(zombie.tempDamage - damageDownValue);
+            arrow.SetActive(true);
+            Invoke("CleanEffect", timeEffect);
+        }
 
 	[PunRPC]
 	void HouseDeffent()
 	{
-		if(attack == null)
-			return;
-		attack.damage = 0;		
-		CleanEffect();
-	}
+		if(zombie == null)
+        {
+                if (!shield)
+                {
+                    shield = true;
+                    anim.SetBool("bool", shield);
+                }
+
+        }else
+            {
+                
+                attack.damage = 0;
+                
+            }
+            Invoke("CleanEffect", timeEffect);
+
+        }
 
 	void CleanEffect()
 	{
-		if(t < timeEffect)
-		{	
-			t += Time.deltaTime;
-		}
-		else
-		{	
-			Debug.Log("clean effect");
-			attack.damage = zombie.tempDamage;
-		}
-		t = 0;
-		GameManager.Instance.effectType = EffectType.None;		
-	}
+
+            Debug.Log("clean");
+
+            shield = false;
+            
+            if (zombie == null)
+            {
+                
+                anim.SetBool("bool", false);
+                GameManager.Instance.effectType = EffectType.None;
+            }
+            else
+            {
+                arrow.SetActive(false);
+                GameManager.Instance.effectType = EffectType.None;
+                attack.damage = zombie.tempDamage;
+            }
+            
+        }
+    
 }
 }
