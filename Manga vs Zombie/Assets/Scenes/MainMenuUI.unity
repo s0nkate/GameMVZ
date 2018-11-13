@@ -2612,7 +2612,7 @@ Prefab:
     - target: {fileID: 114908535157405782, guid: a3a4f77c31417944695519e4087da53e,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Pause
+      value: PauseRPC
       objectReference: {fileID: 0}
     - target: {fileID: 1763670461124992, guid: a3a4f77c31417944695519e4087da53e, type: 2}
       propertyPath: m_IsActive
