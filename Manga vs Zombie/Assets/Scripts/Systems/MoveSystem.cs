@@ -16,7 +16,6 @@ namespace ECSSystem
 			public Move move;
 			public Faction faction;
 			public Animator animator;
-			// public Rigidbody2D rigidbody;
 		}
 
 		protected override void OnUpdate()
@@ -32,7 +31,6 @@ namespace ECSSystem
 				{
 					e.animator.SetInteger("stage", (int)State.Walk);
 					e.transform.Translate(e.move.speed * Time.deltaTime, 0 , 0);
-					// e.rigidbody.velocity = new Vector2(e.move.speed, 0);
 				}
 			}
 		}

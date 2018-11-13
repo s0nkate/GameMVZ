@@ -15,13 +15,13 @@ MonoBehaviour:
   - nameItem: HpTower
     image: {fileID: 2800000, guid: 3d31477841c2a9246ab78f436e888260, type: 3}
     effect: +100 Hp for Tower
-    price: 0
+    price: 10
   - nameItem: DefenseTower
     image: {fileID: 2800000, guid: 2857753413460be46a54f767f1c126a8, type: 3}
     effect: Protect for Tower in 5s
-    price: 0
+    price: 300
   - nameItem: DownAttackEnemy
     image: {fileID: 2800000, guid: 930869112fdeef8429ed590642935232, type: 3}
     effect: -10 Damage all Enemy in 5s
-    price: 0
+    price: 50
   selecteditemindex: 0

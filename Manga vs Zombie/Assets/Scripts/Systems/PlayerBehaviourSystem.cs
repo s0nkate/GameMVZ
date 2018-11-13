@@ -18,7 +18,6 @@ namespace ECSSystem
 		{
 			foreach (var entity in GetEntities<Data> ()) 
 			{
-				// if (entity.photonView.isMine && entity.controller.playerBehaviour != null)
 				if (entity.controller.playerBehaviour != null)
 				{
 					switch (entity.controller.playerBehaviour.behaviour) 

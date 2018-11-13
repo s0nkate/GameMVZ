@@ -1,12 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using ECSComponent;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class GameManager : Photon.PunBehaviour
-{
+public class GameManager : Photon.PunBehaviour {
 
     public GameObject playScene;
     public GameObject loading;
@@ -27,7 +26,7 @@ public class GameManager : Photon.PunBehaviour
     public GameObject Backgournd;
     public GameObject Foregournd;
     public GameObject buttonPanel;
-    public GameObject statusPanel; 
+    public GameObject statusPanel;
     public GameObject Tower;
     public GameObject Towerenemy;
     public GameObject Towerenemy1;
@@ -65,74 +64,53 @@ public class GameManager : Photon.PunBehaviour
     public AudioSource sound;
 
     public static GameManager Instance = null;
-    private void Awake()
-    {
-        if (Instance == null)
-        {
+    private void Awake () {
+        if (Instance == null) {
             Instance = this;
+        } else if (Instance != this) {
+            Destroy (gameObject);
         }
-        else if (Instance != this)
-        {
-            Destroy(gameObject);
+        DontDestroyOnLoad (gameObject);
+    }
+
+    void Start () {
+        sound = GetComponent<AudioSource> ();
+        LoadData ();
+        YNUI.SetActive (false);
+        MenuUI.SetActive (true);
+        PauseUI.SetActive (false);
+        ResultUI.SetActive (false);
+        NextLvUI.SetActive (false);
+        Highscore.SetActive (false);
+        YNQuitUI.SetActive (false);
+
+    }
+    public void ExitRoom () {
+        if (PhotonNetwork.offlineMode) {
+            PhotonNetwork.LeaveRoom ();
+
+        } else {
+            PhotonNetwork.Disconnect ();
         }
-        DontDestroyOnLoad(gameObject);
-    }
-
-    void Start()
-    {
-        sound = GetComponent<AudioSource>();
-        LoadData();
-        YNUI.SetActive(false);
-        MenuUI.SetActive(true);
-        PauseUI.SetActive(false);
-        ResultUI.SetActive(false);
-        NextLvUI.SetActive(false);
-        Highscore.SetActive(false);
-        YNQuitUI.SetActive(false);
-
-
-        //Backgournd = gameObject.GetComponent<SpriteRenderer>().sprite;
 
     }
-    public void ExitRoom()
-    {
-        if(PhotonNetwork.offlineMode)
-        {
-            PhotonNetwork.LeaveRoom();
-
-        }
-        else
-        {
-            PhotonNetwork.Disconnect();
-        }
-        
+    public void Cancel () {
+        MenuUI.SetActive (true);
+        buttonPanel.SetActive (false);
+        statusPanel.SetActive (false);
+        playScene.SetActive (false);
     }
 
-    public void Cancel()
-    {
-        // photonView.RPC("DisableRequestPopup", PhotonTargets.All);
-        MenuUI.SetActive(true);
-        buttonPanel.SetActive(false);
-        statusPanel.SetActive(false);
-        playScene.SetActive(false);
-        // PhotonNetwork.Disconnect();
-        
+    public void LoadData () {
+        Gold = PlayerPrefs.GetInt ("Gold");
+        HighScore = PlayerPrefs.GetInt ("HighScore");
+        HighScoreText.text = HighScore.ToString ();
     }
 
-    public void LoadData()
-    {
-        Gold = PlayerPrefs.GetInt("Gold");
-        HighScore = PlayerPrefs.GetInt("HighScore");
-        HighScoreText.text = HighScore.ToString();
-    }
-
-    public ShopItems GetSelectedPlayer()
-    {
+    public ShopItems GetSelectedPlayer () {
         ShopItems selectedPlayer = null;
-        foreach (var player in playerShopList)
-        {
-            if (player.isSelected)
-            {
+        foreach (var player in playerShopList) {
+            if (player.isSelected) {
                 selectedPlayer = player;
                 break;
             }
@@ -141,327 +119,277 @@ public class GameManager : Photon.PunBehaviour
         return selectedPlayer;
     }
 
-    public List<ShopItems> GetSelectedItem()
-    {
-        List<ShopItems> selectedItem = new List<ShopItems>();
-        foreach (var item in itemShopList)
-        {
+    public List<ShopItems> GetSelectedItem () {
+        List<ShopItems> selectedItem = new List<ShopItems> ();
+        foreach (var item in itemShopList) {
             if (item.isSelected)
-                selectedItem.Add(item);
+                selectedItem.Add (item);
         }
         return selectedItem;
     }
 
-
-    public void SaveData()
-    {
+    public void SaveData () {
         playerShopList = null;
         itemShopList = null;
 
     }
 
-    public void GameOver()
-    {
+    public void GameOver () {
         if (isPlaying)
-            finalPopup.SetActive(true);
+        {
+            finalPopup.SetActive (true);
+        }
         isPlaying = false;
         pause = true;
         Gameover = true;
     }
 
-    public void DisplayRequestPopup()
-    {
-        requestJoinPopup.SetActive(true);
+    public void DisplayRequestPopup () {
+        requestJoinPopup.SetActive (true);
     }
 
     [PunRPC]
-    public void DisableRequestPopup()
-    {
-        requestJoinPopup.SetActive(false);
+    public void DisableRequestPopup () {
+        requestJoinPopup.SetActive (false);
     }
 
-    public void ExitGame()
-    {
-        SaveData();
+    public void ExitGame () {
+        SaveData ();
     }
 
-    void Update()
-    {
+    void Update () {
 
-        if (t >= 1 && isPlaying == true)
-        {
+        if (t >= 1 && isPlaying == true) {
             time--;
             t = 0;
-        }
-        else
+        } else
             t += Time.deltaTime;
 
-        scoreText.text = Score.ToString();
-        timeText.text = time.ToString();
-        goldText.text = Gold.ToString();
+        scoreText.text = Score.ToString ();
+        timeText.text = time.ToString ();
+        goldText.text = Gold.ToString ();
 
-        if (isPlaying && time == 0 && i < scenelist.scenelist.Count - 1)
-        {
-            NextLv();
-            UpLevel();
-            LoadLevel();
+        if (isPlaying && time == 0 && i < scenelist.scenelist.Count - 1) {
+            NextLv ();
+            UpLevel ();
+            LoadLevel ();
         }
 
-        if (time == 0 && i == scenelist.scenelist.Count - 1)
-        {
-            EndGame();
+        if (time == 0 && i == scenelist.scenelist.Count - 1) {
+            EndGame ();
         }
 
-        if (pause)
-        {
+        if (pause) {
             Time.timeScale = 0;
-        }
-        else
-        {
+        } else {
             Time.timeScale = 1;
         }
     }
 
-    public void UpLevel()
-    {
-        PlayerPrefs.SetInt("Score", Score);
-        PlayerPrefs.SetInt("Gold", Gold);
+    public void UpLevel () {
+        PlayerPrefs.SetInt ("Score", Score);
+        PlayerPrefs.SetInt ("Gold", Gold);
     }
-    public void LoadLevel()
-    {
+    public void LoadLevel () {
 
-
-        ZombiePool.onNextLevel.Invoke();
-        House.onNextLevel.Invoke();
-        Score = PlayerPrefs.GetInt("Score");
-        Gold = PlayerPrefs.GetInt("Gold");
+        ZombiePool.onNextLevel.Invoke ();
+        House.onNextLevel.Invoke ();
+        Score = PlayerPrefs.GetInt ("Score");
+        Gold = PlayerPrefs.GetInt ("Gold");
     }
-    public void EndGame()
-    {
-        ResultUI.SetActive(true);
+    public void EndGame () {
+        ResultUI.SetActive (true);
         isPlaying = false;
         pause = true;
         SoundManager.Instance.volumeSilder.value = 0;
-        ScoreWin.text = Score.ToString();
-        GoldWin.text = "+" + Gold.ToString();
-        PlayerPrefs.SetInt("Gold", Gold);
-        HighScore = PlayerPrefs.GetInt("HighScore");
-        if (HighScore < Score)
-        {
-            PlayerPrefs.SetInt("HighScore", Score);
-            Highscore.SetActive(true);
+        ScoreWin.text = Score.ToString ();
+        GoldWin.text = "+" + Gold.ToString ();
+        PlayerPrefs.SetInt ("Gold", Gold);
+        HighScore = PlayerPrefs.GetInt ("HighScore");
+        if (HighScore < Score) {
+            PlayerPrefs.SetInt ("HighScore", Score);
+            Highscore.SetActive (true);
         }
 
     }
 
-    public void PauseRPC()
-    {
-        photonView.RPC("Pause", PhotonTargets.AllBuffered);
+    public void PauseRPC () {
+        photonView.RPC ("Pause", PhotonTargets.AllBuffered);
     }
 
-
     [PunRPC]
-    public void Pause()
-    {
-        if (isPlaying == true && NextLvUI.activeInHierarchy == false)
-        {
-            SoundBtn();
-            PauseUI.SetActive(true);
+    public void Pause () {
+        if (isPlaying == true && NextLvUI.activeInHierarchy == false) {
+            SoundBtn ();
+            PauseUI.SetActive (true);
             pause = true;
 
             SoundManager.Instance.volumeSilder.value = 0;
         }
     }
 
-    public void ResumeRPC()
-    {
-        photonView.RPC("Resume", PhotonTargets.AllBuffered);
+    public void ResumeRPC () {
+        photonView.RPC ("Resume", PhotonTargets.AllBuffered);
     }
 
     [PunRPC]
-    public void Resume()
-    {
-        SoundManager.Instance.volumeSilder.value = PlayerPrefs.GetFloat("Sound");
+    public void Resume () {
+        SoundManager.Instance.volumeSilder.value = PlayerPrefs.GetFloat ("Sound");
         pause = false;
-        PauseUI.SetActive(false);
+        PauseUI.SetActive (false);
     }
 
-    public void NextLv()
-    {
+    public void NextLv () {
         pause = true;
-        NextLvUI.SetActive(true);
+        NextLvUI.SetActive (true);
 
     }
-    public void NextLvRPC()
-    {
-        photonView.RPC("NextLV", PhotonTargets.All);
+    public void NextLvRPC () {
+        photonView.RPC ("NextLV", PhotonTargets.All);
     }
 
     [PunRPC]
 
-    public void NextLV()
-    {
-        SoundBtn();
+    public void NextLV () {
+        SoundBtn ();
         i++;
         pause = false;
         isPlaying = true;
-        NextLvUI.SetActive(false);
+        NextLvUI.SetActive (false);
         time = scenelist.scenelist[i].TimePlay;
-        Backgournd.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Backgournd;
-        Foregournd.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Foregournd;
-        Tower.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Tower;
-        Towerenemy.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Towerenemy;
-        Towerenemy1.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[i].Towerenemy;
+        Backgournd.GetComponent<SpriteRenderer> ().sprite = scenelist.scenelist[i].Backgournd;
+        Foregournd.GetComponent<SpriteRenderer> ().sprite = scenelist.scenelist[i].Foregournd;
+        Tower.GetComponent<SpriteRenderer> ().sprite = scenelist.scenelist[i].Tower;
+        Towerenemy.GetComponent<SpriteRenderer> ().sprite = scenelist.scenelist[i].Towerenemy;
+        Towerenemy1.GetComponent<SpriteRenderer> ().sprite = scenelist.scenelist[i].Towerenemy;
     }
 
-    public void SoundBtn()
-    {
-        sound.PlayOneShot(buttonClick, SoundManager.Instance.volume * 5);
+    public void SoundBtn () {
+        sound.PlayOneShot (buttonClick, SoundManager.Instance.volume * 5);
     }
-    public void PlayGame()
-    {
-        PlayerPrefs.SetFloat("Sound", SoundManager.Instance.volumeSilder.value);
+    public void PlayGame () {
+        PlayerPrefs.SetFloat ("Sound", SoundManager.Instance.volumeSilder.value);
         i = 0;
-        MenuUI.SetActive(false);
-        ResultUI.SetActive(false);
-        NextLvUI.SetActive(false);
-        quitResult.SetActive(true);
-        backResult.SetActive(true);
-        Pausebtn.SetActive(true);
-        loading.SetActive(false);
+        MenuUI.SetActive (false);
+        ResultUI.SetActive (false);
+        NextLvUI.SetActive (false);
+        quitResult.SetActive (true);
+        backResult.SetActive (true);
+        Pausebtn.SetActive (true);
+        loading.SetActive (false);
         Gameover = false;
-        buttonPanel.SetActive(true);
-        statusPanel.SetActive(true);
-        finalPopup.SetActive(false);
-        playScene.SetActive(true);
+        buttonPanel.SetActive (true);
+        statusPanel.SetActive (true);
+        finalPopup.SetActive (false);
+        playScene.SetActive (true);
         isPlaying = true;
         pause = false;
         item1 = true;
         item2 = true;
-        House.onNextLevel.Invoke();
+        House.onNextLevel.Invoke ();
         time = scenelist.scenelist[0].TimePlay;
         Score = 0;
-        Backgournd.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Backgournd;
-        Foregournd.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Foregournd;
-        Tower.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Tower;
-        Towerenemy.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Towerenemy;
-        Towerenemy1.GetComponent<SpriteRenderer>().sprite = scenelist.scenelist[0].Towerenemy;
+        Backgournd.GetComponent<SpriteRenderer> ().sprite = scenelist.scenelist[0].Backgournd;
+        Foregournd.GetComponent<SpriteRenderer> ().sprite = scenelist.scenelist[0].Foregournd;
+        Tower.GetComponent<SpriteRenderer> ().sprite = scenelist.scenelist[0].Tower;
+        Towerenemy.GetComponent<SpriteRenderer> ().sprite = scenelist.scenelist[0].Towerenemy;
+        Towerenemy1.GetComponent<SpriteRenderer> ().sprite = scenelist.scenelist[0].Towerenemy;
     }
-    public void BackMenu()
-    {
+    public void BackMenu () {
 
-        SoundBtn();
-        PauseUI.SetActive(false);
-        YNUI.SetActive(true);
-        quitResult.SetActive(false);
-        backResult.SetActive(false);
-        Pausebtn.SetActive(false);
-        finalPopup.SetActive(false);
+        SoundBtn ();
+        PauseUI.SetActive (false);
+        YNUI.SetActive (true);
+        quitResult.SetActive (false);
+        backResult.SetActive (false);
+        Pausebtn.SetActive (false);
+        finalPopup.SetActive (false);
     }
-    public void Yesbtn()
-    {
-        SoundManager.Instance.volumeSilder.value = PlayerPrefs.GetFloat("Sound");
-        SoundBtn();
-        ResetZombie();
+    public void Yesbtn () {
+        SoundManager.Instance.volumeSilder.value = PlayerPrefs.GetFloat ("Sound");
+        SoundBtn ();
+        ResetZombie ();
         i = 0;
-        YNUI.SetActive(false);
-        MenuUI.SetActive(true);
+        YNUI.SetActive (false);
+        MenuUI.SetActive (true);
 
-        Highscore.SetActive(false);
-        buttonPanel.SetActive(false);
-        statusPanel.SetActive(false);
-        
-        playScene.SetActive(false);
-        HighScoreText.text = HighScore.ToString();
-        ExitRoom();
+        Highscore.SetActive (false);
+        buttonPanel.SetActive (false);
+        statusPanel.SetActive (false);
+
+        playScene.SetActive (false);
+        HighScoreText.text = HighScore.ToString ();
+        ExitRoom ();
         isPlaying = false;
-        
-        ResultUI.SetActive(false);
+
+        ResultUI.SetActive (false);
     }
 
-    void ResetZombie()
-    {
+    void ResetZombie () {
         GameObject[] spawn;
-        spawn = GameObject.FindGameObjectsWithTag("ZombieSpawn");
-        if(spawn == null)
-        {
-            Debug.Log("spawn null");
-        }
-        foreach (var item in spawn)
-        {
-            item.GetComponent<ZombieSpawn>().Reset();
+        spawn = GameObject.FindGameObjectsWithTag ("ZombieSpawn");
+
+        foreach (var item in spawn) {
+            item.GetComponent<ZombieSpawn> ().Reset ();
         }
     }
-    public void Nobtn()
-    {
-        SoundManager.Instance.volumeSilder.value = PlayerPrefs.GetFloat("Sound");
-        SoundBtn();
-        Pausebtn.SetActive(true);
-        quitResult.SetActive(true);
-        backResult.SetActive(true);
-        YNUI.SetActive(false);
+    public void Nobtn () {
+        SoundManager.Instance.volumeSilder.value = PlayerPrefs.GetFloat ("Sound");
+        SoundBtn ();
+        Pausebtn.SetActive (true);
+        quitResult.SetActive (true);
+        backResult.SetActive (true);
+        YNUI.SetActive (false);
         pause = false;
-        if (Gameover)
-        {
-            finalPopup.SetActive(true);
+        if (Gameover) {
+            finalPopup.SetActive (true);
         }
     }
-    public void QuitGame()
-    {
-        SoundBtn();
-        YNQuitUI.SetActive(true);
-        Pausebtn.SetActive(false);
-        if (PauseUI.activeInHierarchy == true)
-        {
-            PauseUI.SetActive(false);
+    public void QuitGame () {
+        SoundBtn ();
+        YNQuitUI.SetActive (true);
+        Pausebtn.SetActive (false);
+        if (PauseUI.activeInHierarchy == true) {
+            PauseUI.SetActive (false);
         }
-        if (ResultUI.activeInHierarchy == true)
-        {
-            ResultUI.SetActive(false);
+        if (ResultUI.activeInHierarchy == true) {
+            ResultUI.SetActive (false);
         }
-        if (MenuUI.activeInHierarchy == true)
-        {
-            start.SetActive(false);
-            shop.SetActive(false);
-            setting.SetActive(false);
-            quit.SetActive(false);
+        if (MenuUI.activeInHierarchy == true) {
+            start.SetActive (false);
+            shop.SetActive (false);
+            setting.SetActive (false);
+            quit.SetActive (false);
         }
-        if (finalPopup.activeInHierarchy == true)
-        {
-            finalPopup.SetActive(false);
+        if (finalPopup.activeInHierarchy == true) {
+            finalPopup.SetActive (false);
         }
     }
-    public void YesQbtn()
-    {
-        SoundBtn();
-        Application.Quit();
+    public void YesQbtn () {
+        SoundBtn ();
+        Application.Quit ();
 
     }
-    public void NoQbtn()
-    {
-        SoundBtn();
-        YNQuitUI.SetActive(false);
+    public void NoQbtn () {
+        SoundBtn ();
+        YNQuitUI.SetActive (false);
         if (isPlaying)
-            Pausebtn.SetActive(true);
-        if (MenuUI.activeInHierarchy == true)
-        {
-            start.SetActive(true);
-            shop.SetActive(true);
-            setting.SetActive(true);
-            quit.SetActive(true);
+            Pausebtn.SetActive (true);
+        if (MenuUI.activeInHierarchy == true) {
+            start.SetActive (true);
+            shop.SetActive (true);
+            setting.SetActive (true);
+            quit.SetActive (true);
         }
-        if (PauseUI.activeInHierarchy == false)
-        {
+        if (PauseUI.activeInHierarchy == false) {
             pause = false;
         }
-        if (ResultUI.activeInHierarchy == true)
-        {
-            quitResult.SetActive(true);
-            backResult.SetActive(true);
+        if (ResultUI.activeInHierarchy == true) {
+            quitResult.SetActive (true);
+            backResult.SetActive (true);
         }
-        if (Gameover)
-        {
-            finalPopup.SetActive(true);
+        if (Gameover) {
+            finalPopup.SetActive (true);
         }
     }
 }

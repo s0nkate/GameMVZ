@@ -60,10 +60,10 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: zoombie1
+  - name: player
     uniqueID: 3229767683
     locked: 0
-  - name: zoombie2
+  - name: zombie
     uniqueID: 211009115
     locked: 0
   - name: background
