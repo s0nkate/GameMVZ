@@ -73,7 +73,6 @@ public class Effect : MonoBehaviour
                 
                 attack.damage = 0;
                 
-
                 
             }
         Invoke("CleanEffect", timeEffect);  

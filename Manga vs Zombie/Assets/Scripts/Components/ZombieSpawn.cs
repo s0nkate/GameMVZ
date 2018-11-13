@@ -13,6 +13,16 @@ public class ZombieSpawn : Photon.PunBehaviour
 	{
 	}
 
+	public void Reset()
+	{
+		isActived = false;
+	}
+
+	public void Actived()
+	{
+		isActived = true;
+	}
+
 	public void SetTimeDelay(float time)
 	{
 		timeDelay = time;
@@ -21,16 +31,12 @@ public class ZombieSpawn : Photon.PunBehaviour
 	void Update()
 	{
 		
-		if(!GameManager.Instance.isPlaying)
-		{
-			isActived = false;
-		}
 		if(!isActived && PhotonNetwork.player.IsMasterClient && GameManager.Instance.isPlaying)
 		{
 			Debug.Log("SpawnZombie");
 			photonView.RPC("DisableAllZombie", PhotonTargets.All);
 			StartSpawn();
-			isActived = true;
+			Actived();
 		}
 	}
 

@@ -1545,7 +1545,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   isActived: 0
-  isInstance: 0
 --- !u!1 &118701406
 GameObject:
   m_ObjectHideFlags: 0
@@ -3849,7 +3848,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2047445515}
+      - m_Target: {fileID: 655681919}
         m_MethodName: Cancel
         m_Mode: 1
         m_Arguments:
@@ -5755,6 +5754,7 @@ MonoBehaviour:
   isCancel: 0
   masterClientID: 0
   onlineMode: {fileID: 1044372635}
+  playerSpawn: {fileID: 114582500}
 --- !u!4 &655681920
 Transform:
   m_ObjectHideFlags: 0
@@ -8944,7 +8944,7 @@ GameObject:
   - component: {fileID: 1275350187}
   m_Layer: 0
   m_Name: Spawn
-  m_TagString: Untagged
+  m_TagString: ZombieSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11790,7 +11790,7 @@ GameObject:
   - component: {fileID: 1619988117}
   m_Layer: 0
   m_Name: Spawn
-  m_TagString: Untagged
+  m_TagString: ZombieSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

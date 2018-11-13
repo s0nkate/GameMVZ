@@ -12,7 +12,7 @@ namespace ECSComponent
 
 		public static UnityEvent onNextLevel;
 
-		void Start()
+		void Awake()
 		{
 			if (onNextLevel == null)
 			{

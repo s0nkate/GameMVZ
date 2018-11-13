@@ -58,7 +58,17 @@ public class Player1Controller : Photon.MonoBehaviour
     public float dmg2;
     public PlayerBehaviour playerBehaviour;
 
-    void Awake()
+    // void Awake()
+    // {
+    //     LoadData();
+	// 	GameObject playerSpawn = GameObject.FindWithTag("PlayerSpawn");
+    //     transform.parent = playerSpawn.transform;
+    //     trigger.SetActive(false);
+    //     trigger1.SetActive(false);
+    //     trigger2.SetActive(false);
+      
+    // }
+    void Start()
     {
         LoadData();
 		GameObject playerSpawn = GameObject.FindWithTag("PlayerSpawn");
@@ -66,11 +76,6 @@ public class Player1Controller : Photon.MonoBehaviour
         trigger.SetActive(false);
         trigger1.SetActive(false);
         trigger2.SetActive(false);
-      
-    }
-    void Start()
-    {
-        
         audiosrc = GetComponent<AudioSource>();
         listItem = GameManager.Instance.GetSelectedItem();
         

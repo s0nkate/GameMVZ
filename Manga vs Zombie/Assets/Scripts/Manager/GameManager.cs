@@ -96,7 +96,16 @@ public class GameManager : Photon.PunBehaviour
     }
     public void ExitRoom()
     {
-        PhotonNetwork.Disconnect();
+        if(PhotonNetwork.offlineMode)
+        {
+            PhotonNetwork.LeaveRoom();
+
+        }
+        else
+        {
+            PhotonNetwork.Disconnect();
+        }
+        
     }
 
     public void Cancel()
@@ -353,6 +362,7 @@ public class GameManager : Photon.PunBehaviour
     {
         SoundManager.Instance.volumeSilder.value = PlayerPrefs.GetFloat("Sound");
         SoundBtn();
+        ResetZombie();
         i = 0;
         YNUI.SetActive(false);
         MenuUI.SetActive(true);
@@ -360,12 +370,27 @@ public class GameManager : Photon.PunBehaviour
         Highscore.SetActive(false);
         buttonPanel.SetActive(false);
         statusPanel.SetActive(false);
+        
         playScene.SetActive(false);
         HighScoreText.text = HighScore.ToString();
         ExitRoom();
         isPlaying = false;
+        
         ResultUI.SetActive(false);
+    }
 
+    void ResetZombie()
+    {
+        GameObject[] spawn;
+        spawn = GameObject.FindGameObjectsWithTag("ZombieSpawn");
+        if(spawn == null)
+        {
+            Debug.Log("spawn null");
+        }
+        foreach (var item in spawn)
+        {
+            item.GetComponent<ZombieSpawn>().Reset();
+        }
     }
     public void Nobtn()
     {
@@ -392,8 +417,6 @@ public class GameManager : Photon.PunBehaviour
         }
         if (ResultUI.activeInHierarchy == true)
         {
-            //quitResult.SetActive(false);
-            //backResult.SetActive(false);
             ResultUI.SetActive(false);
         }
         if (MenuUI.activeInHierarchy == true)

@@ -23,7 +23,7 @@ public class NetworkManager : Photon.PunBehaviour
 	public Toggle onlineMode;
 	RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 	public static NetworkManager Instance = null;
-	bool isConnect;
+	public GameObject playerSpawn;
 	private void Awake()
 	{
 		if (Instance == null)
@@ -52,7 +52,6 @@ public class NetworkManager : Photon.PunBehaviour
 		{
 			PhotonNetwork.offlineMode = true;
 			PhotonNetwork.CreateRoom("offlineRoom");
-			Debug.Log("offline mode");
 		}
 		else
 		{
@@ -61,8 +60,6 @@ public class NetworkManager : Photon.PunBehaviour
 		GameManager.Instance.playScene.SetActive(true);
         GameManager.Instance.SoundBtn();
 		loadingText.text = "Connecting to server....";
-		// PhotonNetwork.JoinLobby ();
-
 	}
 	
 	void Update () 
@@ -78,7 +75,6 @@ public class NetworkManager : Photon.PunBehaviour
 	public override void OnDisconnectedFromPhoton()
 	{
 		GameManager.Instance.loading.SetActive(false);
-		isConnect = false;
 	}
 
 
@@ -86,9 +82,6 @@ public class NetworkManager : Photon.PunBehaviour
 	{
 		Debug.Log("OnConnectedToPhoton");
 		loadingText.text = "Connected to server";
-		
-		isConnect = true;
-
 	}
 
 	public override void OnJoinedLobby ()
@@ -119,9 +112,16 @@ public class NetworkManager : Photon.PunBehaviour
 		if(onlineMode.isOn == false)
 		{
 			loadingText.text = "Joined Room";
+			// GameObject spawn = GameObject.Find("PlayerSpawn");
+			// if(spawn != null)
+			// {
+			// 	spawn.GetComponent<PlayerSpawn>().SpawnPlayer();
+			// 	Debug.Log("player spawn khac null");
+			// }
+			playerSpawn.GetComponent<PlayerSpawn>().SpawnPlayer();
 			GameManager.Instance.PlayGame();
-			return;
-		}
+			
+		}else
 
 		
 		if(!isOwn && !isCancel)

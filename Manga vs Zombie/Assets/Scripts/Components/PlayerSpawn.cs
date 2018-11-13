@@ -7,19 +7,16 @@ public class PlayerSpawn : Photon.PunBehaviour {
 
 	public List<GameObject> list;
 	public bool isActived;
-	public bool isInstance;
 	object[] data = new object[2];
 	GameObject player;
 
-	// public PhotonView photonView;
-	void Awake()
-	{
-		isInstance = false;
-	}
-
 	public override void OnJoinedRoom()
 	{
+		SpawnPlayer();
+	}
 
+	public void SpawnPlayer()
+	{
 		data[0] = GameManager.Instance.GetSelectedPlayer().index;
 		data[1] = PhotonNetwork.player.ID;
 		Vector3 pos = transform.position;
