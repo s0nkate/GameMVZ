@@ -14,6 +14,7 @@ public class NetworkManager : Photon.PunBehaviour
 	public const byte RequestJoinRoom = 0;	
 	public const byte AcceptJoinRoom = 1;
 	public const byte CancelJoinRoom = 2;	
+	public const byte AvoidJoinRoom = 3;
 	public bool isInLobby;
 	public bool isInRoom;	
 	public bool isCancel;
@@ -41,11 +42,9 @@ public class NetworkManager : Photon.PunBehaviour
 
 	public void Cancel()
 	{
-		PhotonNetwork.RaiseEvent(NetworkManager.CancelJoinRoom, PhotonNetwork.player.ID, reliable, raiseEventOptions);
+		PhotonNetwork.RaiseEvent(NetworkManager.AvoidJoinRoom, PhotonNetwork.player.ID, reliable, raiseEventOptions);
+		GameManager.Instance.Cancel();
 	}
-
-
-
 
 	public void ConnectAndJoin () 
 	{	
@@ -53,6 +52,7 @@ public class NetworkManager : Photon.PunBehaviour
 		{
 			PhotonNetwork.offlineMode = true;
 			PhotonNetwork.CreateRoom("offlineRoom");
+			Debug.Log("offline mode");
 		}
 		else
 		{
@@ -98,6 +98,7 @@ public class NetworkManager : Photon.PunBehaviour
 		
 		if(isCancel)
 		{
+			isOwn = true;
 			CreateRoom();
 			isCancel = false;
 			return;
@@ -109,11 +110,6 @@ public class NetworkManager : Photon.PunBehaviour
 		}
 		
 	}
-	// public override void OnPhotonPlayerConnected(PhotonPlayer player)
-    // {
-    //     Debug.Log("OnPhotonPlayerConnected: " + player);
-    // }
-
 
 	public override void OnJoinedRoom()
 	{
@@ -128,7 +124,7 @@ public class NetworkManager : Photon.PunBehaviour
 		}
 
 		
-		if(!isOwn)
+		if(!isOwn && !isCancel)
 		{
 			PhotonNetwork.RaiseEvent(RequestJoinRoom, PhotonNetwork.player.ID, reliable, raiseEventOptions);
 			loadingText.text = "Waiting accept....";
@@ -186,14 +182,19 @@ public class NetworkManager : Photon.PunBehaviour
 				if(playerRequestId == PhotonNetwork.player.ID)
 				{
 					Debug.Log("cancel");
-					// PhotonNetwork.JoinRandomRoom();
-					isCancel = true;
-					// isOwn = false;
 					PhotonNetwork.LeaveRoom();
+					isCancel = true;
+					Debug.Log("tat popup");
+				}
+				break;
+			case AvoidJoinRoom:
+				
+				if(playerRequestId == PhotonNetwork.player.ID)
+				{
+					PhotonNetwork.Disconnect();
 				}
 				if(PhotonNetwork.player.IsMasterClient)
 				{
-					Debug.Log("tat popup");
 					GameManager.Instance.DisableRequestPopup();					
 				}
 				break;
@@ -206,7 +207,11 @@ public class NetworkManager : Photon.PunBehaviour
 	{
 		Debug.Log("OnLeftRoom");
 		isOwn = false;
-		isCancel = false;
+		if(isCancel)
+		{
+			PhotonNetwork.JoinLobby();
+			
+		}
 		// PhotonNetwork.LeaveLobby();
 	}
 

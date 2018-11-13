@@ -55,7 +55,7 @@ public class Effect : MonoBehaviour
             attack.damage = Math.Abs(zombie.tempDamage - damageDownValue);
             arrow.SetActive(true);
             Invoke("CleanEffect", timeEffect);
-        }
+    }
 
 	[PunRPC]
 	void HouseDeffent()
@@ -73,16 +73,14 @@ public class Effect : MonoBehaviour
                 
                 attack.damage = 0;
                 
-            }
-            Invoke("CleanEffect", timeEffect);
 
+                
+            }
+        Invoke("CleanEffect", timeEffect);  
         }
 
 	void CleanEffect()
 	{
-
-            Debug.Log("clean");
-
             shield = false;
             
             if (zombie == null)
@@ -99,6 +97,6 @@ public class Effect : MonoBehaviour
             }
             
         }
-    
+
 }
 }

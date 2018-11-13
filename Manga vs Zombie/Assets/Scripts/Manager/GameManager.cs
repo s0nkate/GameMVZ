@@ -101,12 +101,12 @@ public class GameManager : Photon.PunBehaviour
 
     public void Cancel()
     {
-        photonView.RPC("DisableRequestPopup", PhotonTargets.All);
+        // photonView.RPC("DisableRequestPopup", PhotonTargets.All);
         MenuUI.SetActive(true);
         buttonPanel.SetActive(false);
         statusPanel.SetActive(false);
         playScene.SetActive(false);
-        PhotonNetwork.Disconnect();
+        // PhotonNetwork.Disconnect();
         
     }
 
