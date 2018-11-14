@@ -21,6 +21,7 @@ public class GameManager : Photon.PunBehaviour {
     public Text HighScoreText;
     public Text ScoreWin;
     public Text GoldWin;
+    public Text levelText;
 
     public InventorySceneList scenelist;
     public GameObject Backgournd;
@@ -203,7 +204,7 @@ public class GameManager : Photon.PunBehaviour {
         pause = true;
         SoundManager.Instance.volumeSilder.value = 0;
         ScoreWin.text = Score.ToString ();
-        GoldWin.text = "+" + Gold.ToString ();
+        GoldWin.text = Gold.ToString ();
         PlayerPrefs.SetInt ("Gold", Gold);
         HighScore = PlayerPrefs.GetInt ("HighScore");
         if (HighScore < Score) {
@@ -262,6 +263,7 @@ public class GameManager : Photon.PunBehaviour {
         Tower.GetComponent<SpriteRenderer> ().sprite = scenelist.scenelist[i].Tower;
         Towerenemy.GetComponent<SpriteRenderer> ().sprite = scenelist.scenelist[i].Towerenemy;
         Towerenemy1.GetComponent<SpriteRenderer> ().sprite = scenelist.scenelist[i].Towerenemy;
+        levelText.text = "Level: " + (i + 1);
     }
 
     public void SoundBtn () {
@@ -294,6 +296,7 @@ public class GameManager : Photon.PunBehaviour {
         Tower.GetComponent<SpriteRenderer> ().sprite = scenelist.scenelist[0].Tower;
         Towerenemy.GetComponent<SpriteRenderer> ().sprite = scenelist.scenelist[0].Towerenemy;
         Towerenemy1.GetComponent<SpriteRenderer> ().sprite = scenelist.scenelist[0].Towerenemy;
+        levelText.text = "Level: " + (i+1);
     }
     public void BackMenu () {
 
