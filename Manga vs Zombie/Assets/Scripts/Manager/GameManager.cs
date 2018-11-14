@@ -326,6 +326,7 @@ public class GameManager : Photon.PunBehaviour {
         isPlaying = false;
 
         ResultUI.SetActive (false);
+        levelText.text = "";
     }
 
     void ResetZombie () {

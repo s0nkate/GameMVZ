@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aab94e02876ca3543ab673770ee15b07, type: 3}
   m_Name: InventoryPlayerList
   m_EditorClassIdentifier: 
-  selectedPlayerindex: 6
+  selectedPlayerindex: 2
   playerList:
   - _image: {fileID: 2800000, guid: c41a479c5b89cf84fa61a589b2f758da, type: 3}
     _Name: Sasuke
@@ -43,7 +43,7 @@ MonoBehaviour:
     _Cooldown1: 10
     _SoundSkill1: {fileID: 8300000, guid: 20ea26fa3f90a7a44a119d12ca10c711, type: 3}
     _Image1: {fileID: 21300006, guid: 85a8af187bcd2684d8b2d877f9316e69, type: 3}
-    _DmgSkill2: 140
+    _DmgSkill2: 170
     _Cooldown2: 15
     _SoundSkill2: {fileID: 8300000, guid: 0d77bebc1fbf8384492d266458c5019a, type: 3}
     _Image2: {fileID: 21300018, guid: 49537196f236ebe4f85a0d21906c0e01, type: 3}
@@ -139,7 +139,7 @@ MonoBehaviour:
     _Delay: 0.3
     _SoundPunch: {fileID: 8300000, guid: 2568b2264fa774843a69be9bb944dd17, type: 3}
     _SoundKick: {fileID: 8300000, guid: ff78cfb49a7ede745b749a3f9616116d, type: 3}
-    _DmgSkill1: 80
+    _DmgSkill1: 120
     _Cooldown1: 10
     _SoundSkill1: {fileID: 8300000, guid: 29a87a4d2a17b7340bae49dd602962bf, type: 3}
     _Image1: {fileID: 21300014, guid: 20b99a0745544e64697486cf6bc7c3e1, type: 3}
