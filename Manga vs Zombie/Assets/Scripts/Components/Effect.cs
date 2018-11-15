@@ -18,7 +18,8 @@ namespace ECSComponent {
         public const int damageDownValue = 10;
         public const float timeEffect = 5;
         public float t = 0;
-        bool isCalledClean;
+        bool isHouseDefentCalled;
+        bool isDownDamageCalled;
         public GameObject arrow;
         Heath heath;
         Attack attack;
@@ -48,9 +49,9 @@ namespace ECSComponent {
             int newDamage = zombie.tempDamage - damageDownValue;
             attack.damage = newDamage > 0 ? newDamage : 0;
             arrow.SetActive (true);
-            if(!isCalledClean)
+            if(!isDownDamageCalled)
             {
-                isCalledClean = true;
+                isDownDamageCalled = true;
                 Invoke ("CleanEffect", timeEffect);
             }
         }
@@ -65,9 +66,9 @@ namespace ECSComponent {
             } else {
                 attack.damage = 0;
             }
-            if(!isCalledClean)
+            if(!isHouseDefentCalled)
             {
-                isCalledClean = true;
+                isHouseDefentCalled = true;
                 Invoke ("CleanEffect", timeEffect);
             }
             
@@ -83,7 +84,7 @@ namespace ECSComponent {
                 GameManager.Instance.effectType = EffectType.None;
                 attack.damage = zombie.tempDamage;
             }
-
+            Debug.Log("clean");
         }
 
     }

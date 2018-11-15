@@ -252,7 +252,7 @@ public class InventoryItemEditor : EditorWindow
                         inventoryEnemyList.enemyList[viewIndex1 - 1].Delay = EditorGUILayout.FloatField("Delay ", inventoryEnemyList.enemyList[viewIndex1 - 1].Delay, GUILayout.ExpandWidth(false));
                         inventoryEnemyList.enemyList[viewIndex1 - 1].money = EditorGUILayout.IntField("Money ", inventoryEnemyList.enemyList[viewIndex1 - 1].money, GUILayout.ExpandWidth(false));
                         inventoryEnemyList.enemyList[viewIndex1 - 1].score = EditorGUILayout.IntField("Scose ", inventoryEnemyList.enemyList[viewIndex1 - 1].score, GUILayout.ExpandWidth(false));
-                        type = (ZombieType)EditorGUILayout.EnumPopup("Type", type, GUILayout.ExpandWidth(false));
+                        inventoryEnemyList.enemyList[viewIndex1 - 1].type = (ZombieType)EditorGUILayout.EnumPopup("Type", inventoryEnemyList.enemyList[viewIndex1 - 1].type, GUILayout.ExpandWidth(false));
                         GUILayout.Label("Animation", EditorStyles.boldLabel);
                         inventoryEnemyList.enemyList[viewIndex1 - 1].idle = EditorGUILayout.ObjectField("Idle", inventoryEnemyList.enemyList[viewIndex1 - 1].idle, typeof(AnimationClip), false) as AnimationClip;
                         inventoryEnemyList.enemyList[viewIndex1 - 1].walk = EditorGUILayout.ObjectField("Walk", inventoryEnemyList.enemyList[viewIndex1 - 1].walk, typeof(AnimationClip), false) as AnimationClip;
